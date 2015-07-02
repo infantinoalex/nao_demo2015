@@ -13,53 +13,63 @@ int main(int argc, char ** argv){
 	ros::Publisher move = n.advertise<nao_msgs::JointAnglesWithSpeed>("/joint_angles", 100);
 
 	std_msgs::String line;
-	nao_msgs::JointAnglesWithSpeed mrsr, mrsp, mrer;
+	nao_msgs::JointAnglesWithSpeed mrsr, mrsp, mrer, mrwy;
+
+	mrsr.joint_names.push_back("RShoulderRoll");
+	mrsp.joint_names.push_back("RShoulderPitch");	
+	mrer.joint_names.push_back("RElbowRoll");
+	mrwy.joint_names.push_back("RWristYaw");
+	mrsr.joint_angles.push_back(0);
+	mrsp.joint_angles.push_back(0);
+	mrer.joint_angles.push_back(0);
+	mrwy.joint_angles.push_back(0);
+
 
 	while(ros::ok()){
 		ROS_INFO("Talking Robot\n");
 		loop_rate.sleep();
 		
-		line.data = "Today I am going to show you how to wave";
-		speak.publish(line);
+		//line.data = "Today I am going to show you how to wave";
+		//speak.publish(line);
 		ros::Duration(3).sleep();
 	
 		ROS_INFO("Moving Arms\n");
 		loop_rate.sleep();
 		
-		line.data = "Here we go";
-		speak.publish(line);	
+		//line.data = "Here we go";
+		//speak.publish(line);	
 		ros::Duration(1).sleep();
 
-		line.data = "The first thing you want to do is move your arm up over your head";
-		speak.publish(line);
+		//line.data = "The first thing you want to do is move your arm up over your head";
+		//speak.publish(line);
 		ros::Duration(3).sleep();
 	
-		mrsr.joint_names.push_back("RShoulderRoll");
-		mrsp.joint_names.push_back("RShoulderPitch");
-		mrer.joint_names.push_back("RElbowRoll");
-		mrsr.joint_angles.push_back(0.3142);
-		mrsp.joint_angles.push_back(-1);
-		mrer.joint_angles.push_back( 0.0349);
+		mrsr.joint_angles[0] = 0.3142;
+		mrsp.joint_angles[0] = -1;
+		mrer.joint_angles[0] = 0.0349;
+		mrwy.joint_angles[0] = 0;
 		mrsr.speed = 0.7;
 		mrsp.speed = 0.7;
 		mrer.speed = 0.7;
+		mrwy.speed = 0.7;
 		move.publish(mrsr);
 		move.publish(mrsp);
 		move.publish(mrer);
+		move.publish(mrwy);
 		ros::Duration(2).sleep();
 	
-		line.data = "Just like that";
-		speak.publish(line);
+		//line.data = "Just like that";
+		//speak.publish(line);
 		ros::Duration(1).sleep();
 
-		line.data = "Now what you want to do it move your whole arm left and right like this";
-		speak.publish(line);
+		//line.data = "Now what you want to do it move your whole arm left and right like this";
+		//speak.publish(line);
 		ros::Duration(2).sleep();
-		for(i = 0; i < 5; i++){
+		for(i = 0; i < 20; i++){
 			ROS_INFO("Waving\n");
 			loop_rate.sleep();
 			mrsr.joint_angles[0] = -1;
-			mrer.joint_angles[0] = 0.5;
+			mrer.joint_angles[0] = 0.7;
 			mrsr.speed = 0.5;
 			mrer.speed = 0.5;
 			move.publish(mrsr);
@@ -80,11 +90,11 @@ int main(int argc, char ** argv){
 		move.publish(mrsp);
 		ros::Duration(1).sleep();
 
-		line.data = "Dont forget to put your arm back down";
-		speak.publish(line);
+		//line.data = "Dont forget to put your arm back down";
+		//speak.publish(line);
 		ros::Duration(2).sleep();
-		line.data = "Looks like we did it";
-		speak.publish(line);
+		//line.data = "Looks like we did it";
+		//speak.publish(line);
 		ros::Duration(1).sleep();
 		line.data = "YEA";
 		speak.publish(line);
