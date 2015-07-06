@@ -20,12 +20,16 @@ int main(int argc, char ** argv){
 	ros::Publisher move = n.advertise<nao_msgs::JointAnglesWithSpeed>("/joint_angles", 100);
 
 	std_msgs::String talk;
-	nao_msgs::JointAnglesWithSpeed mrsp;
+	nao_msgs::JointAnglesWithSpeed mrsp, mlsp;
 
 	mrsp.joint_names.push_back("RShoulderPitch");
+	mlsp.joint_names.push_back("LShoulderPitch");
 	mrsp.joint_angles.push_back(1.4);
-	mrsp.speed = 0.9;
+	mlsp.joint_angles.push_back(1.4);
+	mrsp.speed = 0.4;
+	mlsp.speed = 0.4;
 	move.publish(mrsp);
+	move.publish(mlsp);
 	loop_rate.sleep();
 
 	while(ros::ok()){
@@ -35,13 +39,15 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 			//talk.data = "Get your hands off my front button";
 			//pub.publish(talk);
-			mrsp.joint_angles[0] = -1.4;
-			mrsp.speed = 0.7;
+			mrsp.joint_angles[0] = -2;
+			mlsp.joint_angles[0] = -2;
 			move.publish(mrsp);
-			ros::Duration(1).sleep();
+			move.publish(mlsp);
+			ros::Duration(2).sleep();
 			mrsp.joint_angles[0] = 1.4;
-			mrsp.speed = 0.7;
+			mlsp.joint_angles[0] = 1.4;
 			move.publish(mrsp);
+			move.publish(mlsp);
 			ros::Duration(4).sleep();
 			ros::spinOnce();
 			if(buttonn == 1 && buttonp == 1){
@@ -65,12 +71,14 @@ int main(int argc, char ** argv){
 			//talk.data = "Get your hands off my middle button";
 			//pub.publish(talk);
 			mrsp.joint_angles[0] = -2;
-			mrsp.speed = 0.7;
+			mlsp.joint_angles[0] = -2;
 			move.publish(mrsp);
-			ros::Duration(1).sleep();
+			move.publish(mlsp);
+			ros::Duration(2).sleep();
 			mrsp.joint_angles[0] = 1.4;
-			mrsp.speed = 0.7;
+			mlsp.joint_angles[0] = 1.4;
 			move.publish(mrsp);
+			move.publish(mlsp);
 			ros::Duration(4).sleep();
 			ros::spinOnce();
 			if(buttonn == 2 && buttonp == 1){
@@ -95,12 +103,14 @@ int main(int argc, char ** argv){
 			//talk.data = "Get your hands off my back button";
 			//pub.publish(talk);
 			mrsp.joint_angles[0] = -2;
-			mrsp.speed = 0.7;
+			mlsp.joint_angles[0] = -2;
 			move.publish(mrsp);
+			move.publish(mlsp);
 			ros::Duration(1).sleep();
 			mrsp.joint_angles[0] = 1.4;
-			mrsp.speed = 0.7;
+			mlsp.joint_angles[0] = 1.4;
 			move.publish(mrsp);
+			move.publish(mlsp);
 			ros::Duration(4).sleep();
 			ros::spinOnce();
 			if(buttonn == 3 && buttonp == 1){
