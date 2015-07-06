@@ -1,3 +1,5 @@
+/* Who needs Documentatoin on code? */
+/* Not Alexander Infantino          */
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "nao_msgs/TactileTouch.h"
