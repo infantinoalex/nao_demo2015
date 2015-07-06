@@ -23,7 +23,7 @@ void callback(const sensor_msgs::JointState::ConstPtr& Joints){
 int main(int argc, char ** argv){
 	ros::init(argc, argv, "startup");
 	ros::NodeHandle n;
-	ros::Rate loop_rate(10);
+	ros::Rate loop_rate(50);
 
 	ros::Subscriber sub = n.subscribe("/joint_states", 100, callback);
 	ros::Publisher pub = n.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
@@ -88,12 +88,14 @@ int main(int argc, char ** argv){
 				mhy.joint_angles[0] = -0.0031099319458007812;
 				mhy.speed = 0.5;
 				pub.publish(mhy);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				bhy = false;
 			}
 			else{
 				ROS_INFO("HEAD YAW IS IN CORRECT STARTUP POSITION");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				bhy = true;
 			}
 
@@ -110,12 +112,14 @@ int main(int argc, char ** argv){
 				mhp.joint_angles[0] = 0.06438612937927246;
 				mhp.speed = 0.5;
 				pub.publish(mhp);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				bhp = false;
 			}
 			else{
 				ROS_INFO("HEAD PITCH IS IN CORRECT STARTUP POSITION");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				bhp = true;
 			}
 		
@@ -132,12 +136,14 @@ int main(int argc, char ** argv){
 				mler.joint_angles[0]  = -1.0031940937042236;
 				mler.speed = 0.5;
 				pub.publish(mler);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				bler = false;
 			}
 			else{
 				ROS_INFO("LEFT ELBOW ROLL IS IN CORRECT STARTUP POSITION");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				bler = true;
 			}
 		
@@ -154,12 +160,14 @@ int main(int argc, char ** argv){
 				mrer.joint_angles[0] = 1.0446958541870117;
 				mrer.speed = 0.5;
 				pub.publish(mrer);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				brer = true;
 			}
 			else{
 				ROS_INFO("RIGHT ELBOW ROLL IS IN CORRECT STARTUP POSITION");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				brer = true;
 			}
 		
@@ -176,12 +184,14 @@ int main(int argc, char ** argv){
 				mley.joint_angles[0] = -0.751702070236206;
 				mley.speed = 0.5;
 				pub.publish(mley);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				bley = false;
 			}
 			else{
 				ROS_INFO("LEFT ELBOW YAW IS IN CORRECT STARTUP POSITION");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				bley = true;
 			}
 			
@@ -198,12 +208,14 @@ int main(int argc, char ** argv){
 				mrey.joint_angles[0] = 0.7853660583496094;
 				mrey.speed = 0.5;
 				pub.publish(mrey);
-				ros::Duration(1).sleep();
+				//ros::Duration(1).sleep();
+				loop_rate.sleep();
 				brey = false;
 			}
 			else{
 				ROS_INFO("RIGHT ELBOW YAW IS IN CORRECT STARTUP POSITION");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				brey = true;
 			}
 		
@@ -220,12 +232,14 @@ int main(int argc, char ** argv){
 				mlwy.joint_angles[0] = 0.11961007118225098;
 				mlwy.speed = 0.5;
 				pub.publish(mlwy);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				blwy = false;
 			}
 			else{
 				ROS_INFO("LEFT WRIST YAW IS IN CORRECT STARTUP POSITION");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				blwy = true;
 			}
 		
@@ -242,12 +256,14 @@ int main(int argc, char ** argv){
 				mrwy.joint_angles[0] = -0.12582993507385254;
 				mrwy.speed = 0.5;
 				pub.publish(mrwy);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				brwy = false;
 			}
 			else{
 				ROS_INFO("RIGHT WRIST YAW IS IN CORRECT STARTUP POSITION");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				brwy = true;
 			}			
 		
@@ -264,11 +280,13 @@ int main(int argc, char ** argv){
 				mrsr.joint_angles[0] = -0.16571402549743652;
 				mrsr.speed = 0.5;
 				pub.publish(mrsr);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				brsr = false;
 			}
 			else{
 				ROS_INFO("RIGHT SHOULDER ROLL IS IN CORRECT STARTUP POSITION");
+				loop_rate.sleep();
 				ros::Duration(1).sleep();
 				brsr = true;
 			}
@@ -286,12 +304,14 @@ int main(int argc, char ** argv){
 				mlsr.joint_angles[0] = 0.10120201110839844;
 				mlsr.speed = 0.5;
 				pub.publish(mlsr);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				blsr = false;
 			}
 			else{
 				ROS_INFO("LEFT SHOULDER ROLL IS IN CORRECT STARTUP POSITION");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				blsr = true;
 			}
 		
@@ -308,12 +328,14 @@ int main(int argc, char ** argv){
 				mrsp.joint_angles[0] = 1.4496722221374512;
 				mrsp.speed = 0.5;
 				pub.publish(mrsp);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				brsp = false;
 			}
 			else{
 				ROS_INFO("RIGHT SHOULDER PITCH IS IN CORRECT STARTUP POSITION");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				brsp = true;
 			}
 		
@@ -330,12 +352,14 @@ int main(int argc, char ** argv){
 				mlsp.joint_angles[0] = 1.3805580139160156;
 				mlsp.speed = 0.5;
 				pub.publish(mlsp);
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				blsp = false;
 			}
 			else{
 				ROS_INFO("LEFT SHOULDER PITCH IS IN CORRECT STARTUP POSTITION\n");
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
+				//ros::Duration(1).sleep();
 				blsp = true;
 			}
 
@@ -362,10 +386,10 @@ int main(int argc, char ** argv){
 			//pub.message.startup = false;			
 
 			ROS_INFO("WAITING TO BE NEEDED AGAIN\n");
-			while(checkit == false || ros::ok()){
+			while(checkit == false){
 				/* waiting for main node to publisg message telling this node to run again */
 				ros::spinOnce();
-				ros::Duration(1).sleep();
+				loop_rate.sleep();
 				//if(message.startup == true){
 					//checkit = true;
 				//}
