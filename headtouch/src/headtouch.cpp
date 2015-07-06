@@ -39,8 +39,8 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 			//talk.data = "Get your hands off my front button";
 			//pub.publish(talk);
-			mrsp.joint_angles[0] = -2;
-			mlsp.joint_angles[0] = -2;
+			mrsp.joint_angles[0] = -1.4;
+			mlsp.joint_angles[0] = -1.4;
 			move.publish(mrsp);
 			move.publish(mlsp);
 			ros::Duration(2).sleep();
@@ -70,8 +70,8 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 			//talk.data = "Get your hands off my middle button";
 			//pub.publish(talk);
-			mrsp.joint_angles[0] = -2;
-			mlsp.joint_angles[0] = -2;
+			mrsp.joint_angles[0] = -1.4;
+			mlsp.joint_angles[0] = -1.4;
 			move.publish(mrsp);
 			move.publish(mlsp);
 			ros::Duration(2).sleep();
@@ -102,8 +102,8 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 			//talk.data = "Get your hands off my back button";
 			//pub.publish(talk);
-			mrsp.joint_angles[0] = -2;
-			mlsp.joint_angles[0] = -2;
+			mrsp.joint_angles[0] = -1.4;
+			mlsp.joint_angles[0] = -1.4;
 			move.publish(mrsp);
 			move.publish(mlsp);
 			ros::Duration(1).sleep();
