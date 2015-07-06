@@ -34,7 +34,15 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
-		if(buttonn == 1 && buttonp == 1){
+		// this one might need to be changed because I do not believe there is a way to determine
+		// if all the buttons are being pressed at once
+		if(buttonn == 1 && buttonn == 2 && buttonn == 3 && buttonp == 1){
+			ROS_INFO("TOUCHING ALL BUTTONS\n");
+			talk.data = "Why are you touching all of my buttons";
+			pub.publish(talk);
+			ros::Duration(1).sleep();
+		}
+		else if(buttonn == 1 && buttonp == 1){
 			ROS_INFO("TOUCHING FRONT SENSOR\n");
 			loop_rate.sleep();
 			talk.data = "Get your hands off my front button";
@@ -61,8 +69,9 @@ int main(int argc, char ** argv){
 				ros::Duration(4).sleep();
 				ros::spinOnce();
 			}
+			ros::Duration(1).sleep();
 			if(buttonn == 1 && buttonp == 0){
-				talk.data = "Thank you";
+				talk.data = "Thank you now dont do that again";
 				pub.publish(talk);
 				ros::Duration(4).sleep();
 			}
@@ -99,8 +108,9 @@ int main(int argc, char ** argv){
 				ros::Duration(4).sleep();
 				ros::spinOnce();
 			}
+			ros::Duration(1).sleep();
 			if(buttonn == 2 && buttonp == 0){
-				talk.data = "Thank you";
+				talk.data = "Thank you now dont do that again";
 				pub.publish(talk);
 				ros::Duration(4).sleep();
 			}
@@ -137,8 +147,9 @@ int main(int argc, char ** argv){
 				ros::Duration(4).sleep();
 				ros::spinOnce();
 			}
+			ros::Duration(1).sleep();
 			if(buttonn == 3 && buttonp == 0){
-				talk.data = "Thank you";
+				talk.data = "Thank you now dont do that again";
 				pub.publish(talk);
 				ros::Duration(2).sleep();
 			}
@@ -150,6 +161,12 @@ int main(int argc, char ** argv){
 		}
 		else{
 			ros::spinOnce();
+			talk.data = "Please do not push my buttons you will make me very upset";
+			pub.publish(talk);
+			ros::Duration(2).sleep();
+			do{
+				loop_rate.sleep();
+			}while(buttonp == 0);
 		}
 	}
 	return 0;
