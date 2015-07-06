@@ -38,6 +38,7 @@ void callback(const sensor_msgs::JointState::ConstPtr& Joints){
 int main(int argc, char ** argv){
 	ros::init(argc, argv, "startup");
 	ros::NodeHandle n;
+	ros::Rate loop_rate(10);
 
 	ros::Subscriber sub = n.subscribe("/joint_states", 100, callback);
 	ros::Publisher pub = n.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
@@ -47,6 +48,8 @@ int main(int argc, char ** argv){
 	bool upright = true, bhp, bhy, blap, blar, bler, bley, blh, blhp, blhr, blhyp, blkp, blsp, blsr, blwy, brap,
 		brer, brey, brh, brhp, brhr, brgyp, brkp, brsp, brsr, brwy; 
 
+	ROS_INFO("READING JOINT STATES\n");
+	ros::spinOnce();
 	mhp.joint_names.push_back("HeadPitch");
 	mhy.joint_names.push_back("HeadYaw");
 	mler.joint_names.push_back("LElbowRoll");
@@ -59,35 +62,45 @@ int main(int argc, char ** argv){
 	mrsr.joint_names.push_back("RShoulderRoll");
 	mrsp.joint_names.push_back("RShoulderPitch");	
 	mrer.joint_names.push_back("RElbowRoll");
-	mrwy.joint_names.push_back("RWristYaw");
-	mrsr.joint_angles.push_back(0);
-	mrsp.joint_angles.push_back(0);
-	mrer.joint_angles.push_back(0);
-	mrwy.joint_angles.push_back(0);
-	mhp.joint_angles.push_back(0);
-	mhy.joint_angles.push_back(0);
-	mler.joint_angles.push_back(0);
-	mlwy.joint_angles.push_back(0);
-	mrwy.joint_angles.push_back(0);
-	mley.joint_angles.push_back(0);
-	mrey.joint_angles.push_back(0);
-	mlsr.joint_angles.push_back(0);
-	mlsp.joint_angles.push_back(0);
-	
+	mhp.joint_angles.push_back(php);
+	mhy.joint_angles.push_back(phy);
+	mler.joint_angles.push_back(pler);
+	mlwy.joint_angles.push_back(plwy);
+	mrwy.joint_angles.push_back(prwy);
+	mley.joint_angles.push_back(pley);
+	mrey.joint_angles.push_back(prey);
+	mlsr.joint_angles.push_back(plsr);
+	mlsp.joint_angles.push_back(plsp);
+	mrsr.joint_angles.push_back(prsr);
+	mrsp.joint_angles.push_back(prsp);
+	mrer.joint_angles.push_back(prer);
+	pub.publish(mhp);
+	pub.publish(mhy);
+	pub.publish(mler);
+	pub.publish(mlwy);
+	pub.publish(mrwy);
+	pub.publish(mley);
+	pub.publish(mrey);
+	pub.publish(mlsr);
+	pub.publish(mlsp);
+	pub.publish(mrsr);
+	pub.publish(mrsp);
+	pub.publish(mrer);
 
 	while(ros::ok()){
 		ros::spinOnce();
 		if(upright){
 			ros::spinOnce();
-			if(php < -0.1 || php > 0.1){
+			loop_rate.sleep();
+			if(php != 0.06438612937927246){
 				ROS_INFO("HEAD PITCH INCORRECT");
-				std::cout << "\t\t\t\tHeadPitch: " << php << std::endl;
+				std::cout << "\t\t\t\tHEADPITCH: " << php << std::endl;
 				std::cout << "\t\t\t\tMOVING HEAD PITCH TO STARTUP POSITION" << std::endl << std::endl;
-				mhp.joint_angles[0] = 0.0;
+				mhp.joint_angles[0] = 0.06438612937927246;
 				mhp.speed = 0.5;
 				pub.publish(mhp);
 				ros::Duration(1).sleep();
-				bhp = false;
+				bhp = true;
 			}
 			else{
 				ROS_INFO("HEAD PITCH IS IN CORRECT STARTUP POSITION");
@@ -100,15 +113,16 @@ int main(int argc, char ** argv){
 			 * if the phy is > -0.1 && < 0.1 */
 
 			ros::spinOnce();
-			if(phy < -0.1 || phy > 0.1){
+			loop_rate.sleep();
+			if(phy != -0.0031099319458007812){
 				ROS_INFO("HEAD YAW INCORRECT");
-				std::cout << "\t\t\t\tHeadYaw: " << phy << std::endl;
+				std::cout << "\t\t\t\tHEADYAW: " << phy << std::endl;
 				std::cout << "\t\t\t\tMOVING HEAD YAW TO STARTUP POSITION" << std::endl << std::endl;
-				mhy.joint_angles[0] = 0.0;
+				mhy.joint_angles[0] = -0.0031099319458007812;
 				mhy.speed = 0.5;
 				pub.publish(mhy);
 				ros::Duration(1).sleep();
-				bhy = false;
+				bhy = true;
 			}
 			else{
 				ROS_INFO("HEAD YAW IS IN CORRECT STARTUP POSITION");
@@ -121,15 +135,16 @@ int main(int argc, char ** argv){
 			 * if the pler is > -0.04 && < 0 */
 	
 			ros::spinOnce();
-			if(pler < -0.04 || pler > 0){
+			loop_rate.sleep();
+			if(pler != -1.0031940937042236){
 				ROS_INFO("LEFT ELBOW ROLL INCORRECT");
-				std::cout << "\t\t\t\tLEblowRoll: " << pler << std::endl;
+				std::cout << "\t\t\t\tLELBOWROLL: " << pler << std::endl;
 				std::cout << "\t\t\t\tMOVING LEFT ELBOW ROLL TO STARTUP POSITION" << std::endl << std::endl;
-				mler.joint_angles[0]  = 0.0;
+				mler.joint_angles[0]  = -1.0031940937042236;
 				mler.speed = 0.5;
 				pub.publish(mler);
 				ros::Duration(1).sleep();
-				bler = false;
+				bler = true;
 			}
 			else{
 				ROS_INFO("LEFT ELBOW ROLL IS IN CORRECT STARTUP POSITION");
@@ -142,15 +157,16 @@ int main(int argc, char ** argv){
 			 * if the prer is < 0.01 && > 0 */
 
 			ros::spinOnce();
-			if(prer > 0.04 || prer < 0){
+			loop_rate.sleep();
+			if(prer != 1.0446958541870117){
 				ROS_INFO("RIGHT ELBOW ROLL INCORRECT");
-				std::cout << "\t\t\t\tRElbowRoll: " << prer << std::endl;
+				std::cout << "\t\t\t\tRELBOWROLL: " << prer << std::endl;
 				std::cout << "\t\t\t\tMOVING RIGHT ELBOW ROLL TO STARTUP POSITION" << std::endl << std::endl;
-				mrer.joint_angles[0] = 0.0;
+				mrer.joint_angles[0] = 1.0446958541870117;
 				mrer.speed = 0.5;
 				pub.publish(mrer);
 				ros::Duration(1).sleep();
-				brer = false;
+				brer = true;
 			}
 			else{
 				ROS_INFO("RIGHT ELBOW ROLL IS IN CORRECT STARTUP POSITION");
@@ -163,15 +179,16 @@ int main(int argc, char ** argv){
 			 * if the pley is > -0.02 && < 0 */
 
 			ros::spinOnce();
-			if(pley < -0.3 || pley > 0.1){
+			loop_rate.sleep();
+			if(pley != -0.751702070236206){
 				ROS_INFO("LEFT ELBOW YAW INCORRECT");
-				std::cout << "\t\t\t\tLEblowYaw: " << pley << std::endl;
+				std::cout << "\t\t\t\tLELBOWYAW: " << pley << std::endl;
 				std::cout << "\t\t\t\tMOVING LEFT ELBOW YAW TO STARTUP POSITION" << std::endl << std::endl;
-				mley.joint_angles[0] = 0.0;
+				mley.joint_angles[0] = -0.751702070236206;
 				mley.speed = 0.5;
 				pub.publish(mley);
 				ros::Duration(1).sleep();
-				bley = false;
+				bley = true;
 			}
 			else{
 				ROS_INFO("LEFT ELBOW YAW IS IN CORRECT STARTUP POSITION");
@@ -184,15 +201,16 @@ int main(int argc, char ** argv){
 			 * if the prey is > -0.02 && < 0 */
 
 			ros::spinOnce();
-			if(prey < -0.3 || prey > 0.1){
+			loop_rate.sleep();
+			if(prey != 0.7853660583496094){
 				ROS_INFO("RIGHT ELBOW YAW INCORRECT");
-				std::cout << "\t\t\t\tRElbowYaw: " << prey << std::endl;
+				std::cout << "\t\t\t\tRELBOWYAW: " << prey << std::endl;
 				std::cout << "\t\t\t\tMOVING RIGHT ELBOW YAW TO STARTUP POSITION" << std::endl << std::endl;
-				mrey.joint_angles[0] = 0.0;
+				mrey.joint_angles[0] = 0.7853660583496094;
 				mrey.speed = 0.5;
 				pub.publish(mrey);
 				ros::Duration(1).sleep();
-				brey = false;
+				brey = true;
 			}
 			else{
 				ROS_INFO("RIGHT ELBOW YAW IS IN CORRECT STARTUP POSITION");
@@ -205,15 +223,16 @@ int main(int argc, char ** argv){
 			 * if the plwy is < 0.1 && > -0.1 */
 
 			ros::spinOnce();
-			if(plwy > 0.1 || plwy < -0.1){
+			loop_rate.sleep();
+			if(plwy != 0.11961007118225098){
 				ROS_INFO("LEFT WRIST YAW INCORRECT");
-				std::cout << "\t\t\t\tLWristYaw: " << plwy << std::endl;
+				std::cout << "\t\t\t\tLWRISTYAW: " << plwy << std::endl;
 				std::cout << "\t\t\t\tMOVING LEFT WRIST YAW TO STARTUP POSITION" << std::endl << std::endl;
-				mlwy.joint_angles[0] = 0.0;
+				mlwy.joint_angles[0] = 0.11961007118225098;
 				mlwy.speed = 0.5;
 				pub.publish(mlwy);
 				ros::Duration(1).sleep();
-				blwy = false;
+				blwy = true;
 			}
 			else{
 				ROS_INFO("LEFT WRIST YAW IS IN CORRECT STARTUP POSITION");
@@ -226,15 +245,16 @@ int main(int argc, char ** argv){
 			 * if the prwy is < 0.1 && > -0.1 */
 		
 			ros::spinOnce();
-			if(prwy > 0.1 || prwy < -0.1){
+			loop_rate.sleep();
+			if(prwy != -0.12582993507385254){
 				ROS_INFO("RIGHT WRIST YAW INCORRECT");
-				std::cout << "\t\t\t\tRWristYaw: " << prwy << std::endl;
+				std::cout << "\t\t\t\tRWRISTYAW: " << prwy << std::endl;
 				std::cout << "\t\t\t\tMOVING RIGHT WRIST YAW TO STARTUP POSITION" << std::endl << std::endl;
-				mrwy.joint_angles[0] = 0.0;
+				mrwy.joint_angles[0] = -0.12582993507385254;
 				mrwy.speed = 0.5;
 				pub.publish(mrwy);
 				ros::Duration(1).sleep();
-				brwy = false;
+				brwy = true;
 			}
 			else{
 				ROS_INFO("RIGHT WRIST YAW IS IN CORRECT STARTUP POSITION");
@@ -247,15 +267,16 @@ int main(int argc, char ** argv){
 			 * if the prsr is > 0 && < 0.01 */
 		
 			ros::spinOnce();
-			if(prsr < 0 || prsr > 0.01){
+			loop_rate.sleep();
+			if(prsr != -0.16571402549743652){
 				ROS_INFO("RIGHT SHOULDER ROLL INCORRECT");
-				std::cout << "\t\t\t\tRShoulderRoll: " << prsr<< std::endl;
+				std::cout << "\t\t\t\tRSHOULDERROLL: " << prsr<< std::endl;
 				std::cout << "\t\t\t\tMOVING RIGHT SHOULDER ROLL TO STARTUP POSITION" << std::endl << std::endl;
-				mrsr.joint_angles[0] = 0.0;
+				mrsr.joint_angles[0] = -0.16571402549743652;
 				mrsr.speed = 0.5;
 				pub.publish(mrsr);
 				ros::Duration(1).sleep();
-				brsr = false;
+				brsr = true;
 			}
 			else{
 				ROS_INFO("RIGHT SHOULDER ROLL IS IN CORRECT STARTUP POSITION");
@@ -268,15 +289,16 @@ int main(int argc, char ** argv){
 			 * if the prsr is < 0 && > -0.01 */
 
 			ros::spinOnce();
-			if(plsr > 0 || plsr < -0.01){
+			loop_rate.sleep();
+			if(plsr != 0.10120201110839844){
 				ROS_INFO("LEFT SHOULDER ROLL INCORRECT");
-				std::cout << "\t\t\t\tLShoulderRoll: " << plsr << std::endl;
+				std::cout << "\t\t\t\tLSHOULDERROLL: " << plsr << std::endl;
 				std::cout << "\t\t\t\tMOVING LEFT SHOULDER ROLL TO STARTUP POSITION" << std::endl << std::endl;
-				mlsr.joint_angles[0] = 0.0;
+				mlsr.joint_angles[0] = 0.10120201110839844;
 				mlsr.speed = 0.5;
 				pub.publish(mlsr);
 				ros::Duration(1).sleep();
-				blsr = false;
+				blsr = true;
 			}
 			else{
 				ROS_INFO("LEFT SHOULDER ROLL IS IN CORRECT STARTUP POSITION");
@@ -289,15 +311,16 @@ int main(int argc, char ** argv){
 			 * if the prsp is > 1.4, it is in the correct position  */
 		
 			ros::spinOnce();
-			if(prsp < 1.4){
+			loop_rate.sleep();
+			if(prsp != 1.4496722221374512){
 				ROS_INFO("RIGHT SHOULDER PITCH INCCORECT");
-				std::cout << "\t\t\t\tRShoulderPitch: " << prsp << std::endl;
+				std::cout << "\t\t\t\tRSHOULDERPITCH: " << prsp << std::endl;
 				std::cout << "\t\t\t\tMOVING RIGHT SHOULDER PITCH TO STARTUP POSITION" << std::endl << std::endl;
-				mrsp.joint_angles[0] = 1.4;
+				mrsp.joint_angles[0] = 1.4496722221374512;
 				mrsp.speed = 0.5;
 				pub.publish(mrsp);
 				ros::Duration(1).sleep();
-				brsp = false;
+				brsp = true;
 			}
 			else{
 				ROS_INFO("RIGHT SHOULDER PITCH IS IN CORRECT STARTUP POSITION");
@@ -310,15 +333,16 @@ int main(int argc, char ** argv){
 			 * if the psrp is > 1.4, it is in the correct position   */
 	
 			ros::spinOnce();
-			if(plsp < 1.4){
+			loop_rate.sleep();
+			if(plsp != 1.3805580139160156){
 				ROS_INFO("LEFT SHOULDER PITCH INCORRECT");
-				std::cout << "\t\t\t\tLShoulderPitch: " << plsp << std::endl;
+				std::cout << "\t\t\t\tLSHOULDERPITCH: " << plsp << std::endl;
 				std::cout << "\t\t\t\tMOVING LEFT SHOULDER PITCH TO STARTUP POSITION" << std::endl << std::endl;
-				mlsp.joint_angles[0] = 1.4;
+				mlsp.joint_angles[0] = 1.3805580139160156;
 				mlsp.speed = 0.5;
 				pub.publish(mlsp);
 				ros::Duration(1).sleep();
-				blsp = false;
+				blsp = true;
 			}
 			else{
 				ROS_INFO("LEFT SHOULDER PITCH IS IN CORRECT STARTUP POSTITION\n");
