@@ -61,9 +61,16 @@ int main(int argc, char ** argv){
 				ros::Duration(4).sleep();
 				ros::spinOnce();
 			}
+			if(buttonn == 1 && buttonp == 0){
 			//talk.data = "Thank you";
-			pub.publish(talk);
+			//pub.publish(talk);
 			ros::Duration(4).sleep();
+			}
+			else{
+				//talk.data = "You are the worst";
+				//pub.publish(talk);
+				ros::Duration(2).sleep();
+			}
 		}	
 		else if(buttonn == 2 && buttonp == 1){
 			ROS_INFO("TOUCHING MIDDLE SENSOR\n");
@@ -92,10 +99,16 @@ int main(int argc, char ** argv){
 				ros::Duration(4).sleep();
 				ros::spinOnce();
 			}
-			//talk.data = "Thank you";
-			//pub.publish(talk);
-			ros::Duration(4).sleep();
-
+			if(buttonn == 2 && buttonp == 0){
+				//talk.data = "Thank you";
+				//pub.publish(talk);
+				ros::Duration(4).sleep();
+			}
+			else{
+				//talk.data = "You are the worst";
+				//pub.publish(talk);
+				ros::Duration(2).sleep();
+			}
 		}
 		else if(buttonn == 3 && buttonp == 1){
 			ROS_INFO("TOUCHING BACK SENSOR\n");
@@ -124,9 +137,16 @@ int main(int argc, char ** argv){
 				ros::Duration(4).sleep();
 				ros::spinOnce();
 			}
-			//talk.data = "Thank you";
-			//pub.publish(talk);
-			ros::Duration(4).sleep();
+			if(buttonn == 3 && buttonp == 0){
+				//talk.data = "Thank you";
+				//pub.publish(talk);
+				ros::Duration(2).sleep();
+			}
+			else{
+				//talk.data = "You are the worst";
+				//pub.publish(talk);
+				ros::Duration(2).sleep();
+			}
 		}
 		else{
 			ros::spinOnce();
