@@ -65,10 +65,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   nao_msgs#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  nao_msgs#   std_msgs
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -103,16 +103,16 @@ include_directories(
 # )
 
 ## Declare a cpp executable
-# add_executable(headtouch_node src/headtouch_node.cpp)
+add_executable(headtouch src/headtouch.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(headtouch_node headtouch_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(headtouch_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(headtouch
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
