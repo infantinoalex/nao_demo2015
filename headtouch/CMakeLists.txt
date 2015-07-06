@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(nao_standup)
+project(headtouch)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -81,7 +81,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES nao_standup
+#  LIBRARIES headtouch
 #  CATKIN_DEPENDS nao_msgs roscpp std_msgs
 #  DEPENDS system_lib
 )
@@ -98,27 +98,19 @@ include_directories(
 )
 
 ## Declare a cpp library
-#add_library(nao_standup
-#   src/${PROJECT_NAME}/nao_standup.cpp
+# add_library(headtouch
+#   src/${PROJECT_NAME}/headtouch.cpp
 # )
 
 ## Declare a cpp executable
-add_executable(get_up src/get_up.cpp)
-add_executable(stand_up src/stand_up.cpp)
-add_executable(fall_down src/fall_down.cpp)
+add_executable(headtouch src/headtouch.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(nao_standup_node nao_standup_generate_messages_cpp)
+# add_dependencies(headtouch_node headtouch_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(get_up
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(stand_up
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(fall_down
+target_link_libraries(headtouch
   ${catkin_LIBRARIES}
 )
 
@@ -137,7 +129,7 @@ target_link_libraries(fall_down
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS nao_standup nao_standup_node
+# install(TARGETS headtouch headtouch_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -162,7 +154,7 @@ target_link_libraries(fall_down
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_nao_standup.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_headtouch.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

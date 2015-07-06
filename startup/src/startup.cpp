@@ -1,7 +1,6 @@
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
 #include "nao_msgs/JointAnglesWithSpeed.h"
-#include <iostream>
 
 float php, phy, plap, plar, pler, pley, plh, plhp ,plhr, plhyp, plkp, plsp, plsr, plwy, prap, prar, prer, prey, prh, prhp, prhr, prhyp, prkp, prsp,
 	prsr, prwy;
@@ -31,7 +30,7 @@ int main(int argc, char ** argv){
 
 	nao_msgs::JointAnglesWithSpeed mhp, mhy, mler, mrer, mley, mrey, mlwy, mrwy, mrsr, mlsr, mrsp, mlsp;
 
-	bool upright = true, bhp, bhy, blap, blar, bler, bley, blh, blhp, blhr, blhyp, blkp, blsp, blsr, blwy, brap,
+	bool checkit = true, bhp, bhy, blap, blar, bler, bley, blh, blhp, blhr, blhyp, blkp, blsp, blsr, blwy, brap,
 		brer, brey, brh, brhp, brhr, brgyp, brkp, brsp, brsr, brwy; 
 
 	ROS_INFO("READING JOINT STATES\n");
@@ -75,7 +74,7 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
-		if(upright){
+		if(checkit){
 			/* If the HeadYaw position is not between the desired state, it will move it there
 			 * The desired state is the point where the head is looking straight, parallel to the flat ground
 			 * if the phy is < -0.1 && > 0.1 */
@@ -104,7 +103,7 @@ int main(int argc, char ** argv){
 
 			ros::spinOnce();
 			loop_rate.sleep();
-			if(php < -0.05 || php > 0.07){ //!= 0.06438612937927246){
+			if(php < -0.05 || php > 0.08){ //!= 0.06438612937927246){
 				ROS_INFO("HEAD PITCH INCORRECT");
 				ROS_INFO("HEADPITCH: %f", php);
 				ROS_INFO("MOVING HEAD PITCH TO STARTUP POSITION\n");
@@ -346,7 +345,7 @@ int main(int argc, char ** argv){
 
 			if(blsp && brsp && bhp && bhy && bler && bley && brey && blwy && brwy && brsr && blsr){ 
 				ROS_INFO("ALL UPPER JOINTS ARE IN CORRECT POSITION\n");
-				upright = false;
+				checkit = false;
 				ros::Duration(2).sleep();
 			}
 			else{
@@ -358,8 +357,20 @@ int main(int argc, char ** argv){
 		else{
 			/* After going through this function, the robot should be standing appropriately in the startup pose */
 			ROS_INFO("STARTUP COMPLETE");
-			ROS_INFO("PLEASE TERMINATE NODE\n");
-			ros::Duration(100).sleep();
+		
+			/* publish message to main node saying this is complete */
+			//pub.message.startup = false;			
+
+			ROS_INFO("WAITING TO BE NEEDED AGAIN\n");
+			while(checkit == false || ros::ok()){
+				/* waiting for main node to publisg message telling this node to run again */
+				ros::spinOnce();
+				ros::Duration(1).sleep();
+				//if(message.startup == true){
+					//checkit = true;
+				//}
+			}
+			ROS_INFO("RESETTING TO DEFAULT POSITION\n");
 		}
 		ros::spinOnce();
 	}
