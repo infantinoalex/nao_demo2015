@@ -105,7 +105,7 @@ int main(int argc, char ** argv){
 
 			ros::spinOnce();
 			loop_rate.sleep();
-			if(php < -0.05 || php > 0.08){ //!= 0.06438612937927246){
+			if(php < -0.1 || php > 0.1){ //!= 0.06438612937927246){
 				ROS_INFO("HEAD PITCH INCORRECT");
 				ROS_INFO("HEADPITCH: %f", php);
 				ROS_INFO("MOVING HEAD PITCH TO STARTUP POSITION\n");

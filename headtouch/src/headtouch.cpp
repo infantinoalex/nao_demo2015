@@ -45,7 +45,7 @@ int main(int argc, char ** argv){
 		else if(buttonn == 1 && buttonp == 1){
 			ROS_INFO("TOUCHING FRONT SENSOR\n");
 			loop_rate.sleep();
-			talk.data = "Get your hands off my front button";
+			talk.data = "EEEEK Get your hands off my front button";
 			pub.publish(talk);
 			mrsp.joint_angles[0] = -1.4;
 			mlsp.joint_angles[0] = -1.4;
@@ -71,12 +71,12 @@ int main(int argc, char ** argv){
 			}
 			ros::Duration(1).sleep();
 			if(buttonn == 1 && buttonp == 0){
-				talk.data = "Thank you now dont do that again";
+				talk.data = "Oh why thank you now dont do that again";
 				pub.publish(talk);
 				ros::Duration(4).sleep();
 			}
 			else{
-				talk.data = "You are the worst";
+				talk.data = "Oh my just take your hands off of me please";
 				pub.publish(talk);
 				ros::Duration(2).sleep();
 			}
@@ -84,7 +84,7 @@ int main(int argc, char ** argv){
 		else if(buttonn == 2 && buttonp == 1){
 			ROS_INFO("TOUCHING MIDDLE SENSOR\n");
 			loop_rate.sleep();
-			talk.data = "Get your hands off my middle button";
+			talk.data = "AAH Get your hands off my middle button";
 			pub.publish(talk);
 			mrsp.joint_angles[0] = -1.4;
 			mlsp.joint_angles[0] = -1.4;
@@ -110,12 +110,12 @@ int main(int argc, char ** argv){
 			}
 			ros::Duration(1).sleep();
 			if(buttonn == 2 && buttonp == 0){
-				talk.data = "Thank you now dont do that again";
+				talk.data = "Finally now dont do that again";
 				pub.publish(talk);
 				ros::Duration(4).sleep();
 			}
 			else{
-				talk.data = "You are the worst";
+				talk.data = "I dislike you very much";
 				pub.publish(talk);
 				ros::Duration(2).sleep();
 			}
@@ -123,7 +123,7 @@ int main(int argc, char ** argv){
 		else if(buttonn == 3 && buttonp == 1){
 			ROS_INFO("TOUCHING BACK SENSOR\n");
 			loop_rate.sleep();
-			talk.data = "Get your hands off my back button";
+			talk.data = "STOP Get your hands off my back button";
 			pub.publish(talk);
 			mrsp.joint_angles[0] = -1.4;
 			mlsp.joint_angles[0] = -1.4;
@@ -149,7 +149,7 @@ int main(int argc, char ** argv){
 			}
 			ros::Duration(1).sleep();
 			if(buttonn == 3 && buttonp == 0){
-				talk.data = "Thank you now dont do that again";
+				talk.data = "Holy moley now dont do that again";
 				pub.publish(talk);
 				ros::Duration(2).sleep();
 			}
@@ -165,6 +165,7 @@ int main(int argc, char ** argv){
 			pub.publish(talk);
 			ros::Duration(2).sleep();
 			do{
+				ros::spinOnce();
 				loop_rate.sleep();
 			}while(buttonp == 0);
 		}
