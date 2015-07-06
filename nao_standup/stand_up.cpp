@@ -107,7 +107,7 @@ int main(int argc, char **argv) {
     
     /************************************************/
    
-    narration.data = "Arms out.";
+    //narration.data = "Arms out.";
     pub_narration.publish(narration);
 
     lsr.joint_angles[0] = 1.35;
@@ -130,7 +130,7 @@ int main(int argc, char **argv) {
    
    /************************************************/
 
-    narration.data = "Arms up.";
+    //narration.data = "Arms up.";
     pub_narration.publish(narration);
 
     lsr.joint_angles[0] = 0.0;
@@ -201,7 +201,7 @@ int main(int argc, char **argv) {
 
    /************************************************/
 
-    narration.data = "Open hips.";
+    //narration.data = "Open hips.";
     pub_narration.publish(narration);
 
     lhr.joint_angles[0] = 0.8;
@@ -245,7 +245,7 @@ int main(int argc, char **argv) {
    
    /************************************************/
 
-    narration.data = "Turn feet in.";
+    //narration.data = "Turn feet in.";
     pub_narration.publish(narration);
 
     lhr.joint_angles[0] = 0.4;
@@ -280,7 +280,7 @@ int main(int argc, char **argv) {
    
    /************************************************/
 
-    narration.data = "Turn in hips.";
+    //narration.data = "Turn in hips.";
     pub_narration.publish(narration);
 
     lhr.joint_angles[0] = -0.4;
@@ -352,7 +352,7 @@ int main(int argc, char **argv) {
 
    /************************************************/
 
-    narration.data = "Now do the running man.";
+    //narration.data = "Now do the running man.";
     pub_narration.publish(narration);
 
     lhyp.joint_angles[0] = -1.2;
@@ -400,7 +400,7 @@ int main(int argc, char **argv) {
    
    /************************************************/
 
-    narration.data = "Adjusting back leg.";
+    //narration.data = "Adjusting back leg.";
     pub_narration.publish(narration);
 
     lhp.joint_angles[0] = -1.0;
@@ -440,7 +440,7 @@ int main(int argc, char **argv) {
    
    /************************************************/
 
-    narration.data = "Back leg stable.";
+    //narration.data = "Back leg stable.";
     pub_narration.publish(narration);
 
     lhp.joint_angles[0] = -1.6;
@@ -527,7 +527,7 @@ int main(int argc, char **argv) {
    
    /************************************************/
 
-    narration.data = "Closing hips.";
+    //narration.data = "Closing hips.";
     pub_narration.publish(narration);
 
     rhr.joint_angles[0] = 0.6;
@@ -545,7 +545,7 @@ int main(int argc, char **argv) {
     lsp.speed = 0.5;
     pub_move.publish(lsp);
 
-    lsr.joint_angles[0] = -0.8;
+    lsr.joint_angles[0] = 0.8;
     lsr.speed = 0.5;
     pub_move.publish(lsr);
 
