@@ -37,8 +37,8 @@ int main(int argc, char ** argv){
 		if(buttonn == 1 && buttonp == 1){
 			ROS_INFO("TOUCHING FRONT SENSOR\n");
 			loop_rate.sleep();
-			//talk.data = "Get your hands off my front button";
-			//pub.publish(talk);
+			talk.data = "Get your hands off my front button";
+			pub.publish(talk);
 			mrsp.joint_angles[0] = -1.4;
 			mlsp.joint_angles[0] = -1.4;
 			move.publish(mrsp);
@@ -48,35 +48,35 @@ int main(int argc, char ** argv){
 			mlsp.joint_angles[0] = 1.4;
 			move.publish(mrsp);
 			move.publish(mlsp);
-			ros::Duration(4).sleep();
+			ros::Duration(5).sleep();
 			ros::spinOnce();
 			if(buttonn == 1 && buttonp == 1){
 				ROS_INFO("STILL TOUCHING IT\n");
 				loop_rate.sleep();
-				//talk.data = "Did you not hear me the first time";
-				//pub.publish(talk);
+				talk.data = "Did you not hear me the first time";
+				pub.publish(talk);
 				ros::Duration(1).sleep();
-				//talk.data = "Get your hands off me";
-				//pub.publish(talk);
+				talk.data = "Get your hands off me";
+				pub.publish(talk);
 				ros::Duration(4).sleep();
 				ros::spinOnce();
 			}
 			if(buttonn == 1 && buttonp == 0){
-			//talk.data = "Thank you";
-			//pub.publish(talk);
-			ros::Duration(4).sleep();
+				talk.data = "Thank you";
+				pub.publish(talk);
+				ros::Duration(4).sleep();
 			}
 			else{
-				//talk.data = "You are the worst";
-				//pub.publish(talk);
+				talk.data = "You are the worst";
+				pub.publish(talk);
 				ros::Duration(2).sleep();
 			}
 		}	
 		else if(buttonn == 2 && buttonp == 1){
 			ROS_INFO("TOUCHING MIDDLE SENSOR\n");
 			loop_rate.sleep();
-			//talk.data = "Get your hands off my middle button";
-			//pub.publish(talk);
+			talk.data = "Get your hands off my middle button";
+			pub.publish(talk);
 			mrsp.joint_angles[0] = -1.4;
 			mlsp.joint_angles[0] = -1.4;
 			move.publish(mrsp);
@@ -86,35 +86,35 @@ int main(int argc, char ** argv){
 			mlsp.joint_angles[0] = 1.4;
 			move.publish(mrsp);
 			move.publish(mlsp);
-			ros::Duration(4).sleep();
+			ros::Duration(5).sleep();
 			ros::spinOnce();
 			if(buttonn == 2 && buttonp == 1){
 				ROS_INFO("STILL TOUCHING IT\n");
 				loop_rate.sleep();
-				//talk.data = "Did you not hear me the first time";
-				//pub.publish(talk);
+				talk.data = "Did you not hear me the first time";
+				pub.publish(talk);
 				ros::Duration(1).sleep();
-				//talk.data = "Get your hands off me";
-				//pub.publish(talk);
+				talk.data = "Get your hands off me";
+				pub.publish(talk);
 				ros::Duration(4).sleep();
 				ros::spinOnce();
 			}
 			if(buttonn == 2 && buttonp == 0){
-				//talk.data = "Thank you";
-				//pub.publish(talk);
+				talk.data = "Thank you";
+				pub.publish(talk);
 				ros::Duration(4).sleep();
 			}
 			else{
-				//talk.data = "You are the worst";
-				//pub.publish(talk);
+				talk.data = "You are the worst";
+				pub.publish(talk);
 				ros::Duration(2).sleep();
 			}
 		}
 		else if(buttonn == 3 && buttonp == 1){
 			ROS_INFO("TOUCHING BACK SENSOR\n");
 			loop_rate.sleep();
-			//talk.data = "Get your hands off my back button";
-			//pub.publish(talk);
+			talk.data = "Get your hands off my back button";
+			pub.publish(talk);
 			mrsp.joint_angles[0] = -1.4;
 			mlsp.joint_angles[0] = -1.4;
 			move.publish(mrsp);
@@ -124,27 +124,27 @@ int main(int argc, char ** argv){
 			mlsp.joint_angles[0] = 1.4;
 			move.publish(mrsp);
 			move.publish(mlsp);
-			ros::Duration(4).sleep();
+			ros::Duration(5).sleep();
 			ros::spinOnce();
 			if(buttonn == 3 && buttonp == 1){
 				ROS_INFO("STILL TOUCHING IT\n");
 				loop_rate.sleep();
-				//talk.data = "Did you not hear me the first time";
-				//pub.publish(talk);
+				talk.data = "Did you not hear me the first time";
+				pub.publish(talk);
 				ros::Duration(1).sleep();
-				//talk.data = "Get your hands off me";
-				//pub.publish(talk);
+				talk.data = "Get your hands off me";
+				pub.publish(talk);
 				ros::Duration(4).sleep();
 				ros::spinOnce();
 			}
 			if(buttonn == 3 && buttonp == 0){
-				//talk.data = "Thank you";
-				//pub.publish(talk);
+				talk.data = "Thank you";
+				pub.publish(talk);
 				ros::Duration(2).sleep();
 			}
 			else{
-				//talk.data = "You are the worst";
-				//pub.publish(talk);
+				talk.data = "You are the worst";
+				pub.publish(talk);
 				ros::Duration(2).sleep();
 			}
 		}
