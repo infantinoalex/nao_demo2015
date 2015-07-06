@@ -556,7 +556,7 @@ int main(int argc, char **argv) {
     //narration.data = "Trying to get up.";
     pub_narration.publish(narration);
 
-    lhp.joint_angles[0] = -1.4;
+    lhp.joint_angles[0] = -1.2;
     lhp.speed = 0.5;
     pub_move.publish(lhp);
 
