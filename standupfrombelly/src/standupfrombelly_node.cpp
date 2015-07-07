@@ -8,7 +8,8 @@ int main(int argc, char ** argv){
 	ros::Rate loop_rate(20);
 
 	ros::Publisher pub = n.advertise<nao_msgs::JointAnglesWithSpeed>("/joint_angles", 100);
-
+	
+	float fast = 0.9;
 	nao_msgs::JointAnglesWithSpeed mhp, mhy, mler, mrer, mley, mrey, mlwy, mrwy, mrsr, mlsr, mrsp, mlsp,
 	mrhp, mlhp, mrhyp, mlhyp, mrkp, mlkp, mrar, mlar, mrap, mlap, mlhr, mrhr;
 
@@ -36,14 +37,14 @@ int main(int argc, char ** argv){
 	pub.publish(mlhyp); pub.publish(mrkp); pub.publish(mlkp); 
 	pub.publish(mrar); pub.publish(mlar); pub.publish(mrap);
 	pub.publish(mlap); pub.publish(mlhr); pub.publish(mrhr);
-	mhp.speed = 0.7; mhy.speed = 0.7; mler.speed = 0.7;
-	mlwy.speed = 0.7; mrwy.speed = 0.7; mley.speed = 0.7;
-	mrey.speed = 0.7; mlsr.speed = 0.7; mlsp.speed = 0.7;
-	mrsr.speed = 0.7; mrsp.speed = 0.7; mrer.speed = 0.7;
-	mrhp.speed = 0.7; mlhp.speed = 0.7; mrhyp.speed = 0.7;
-	mlhyp.speed = 0.7; mrkp.speed = 0.7; mlkp.speed = 0.7;
-	mrar.speed = 0.7; mlar.speed = 0.7; mrap.speed = 0.7;
-	mlap.speed = 0.7; mlhr.speed = 0.7; mrhr.speed = 0.7;
+	mhp.speed = fast; mhy.speed = fast; mler.speed = fast;
+	mlwy.speed = fast; mrwy.speed = fast; mley.speed = fast;
+	mrey.speed = fast; mlsr.speed = fast; mlsp.speed = fast;
+	mrsr.speed = fast; mrsp.speed = fast; mrer.speed = fast;
+	mrhp.speed = fast; mlhp.speed = fast; mrhyp.speed = fast;
+	mlhyp.speed = fast; mrkp.speed = fast; mlkp.speed = fast;
+	mrar.speed = fast; mlar.speed = fast; mrap.speed = fast;
+	mlap.speed = fast; mlhr.speed = fast; mrhr.speed = fast;
 	
 	while(ros::ok()){
 		ROS_INFO("ROBOT IS ON ITS BACK");
@@ -103,7 +104,22 @@ int main(int argc, char ** argv){
 		mrhp.joint_angles[0] = -0.5; mlhp.joint_angles[0] = -0.5;
 		pub.publish(mrhp); pub.publish(mlhp);
 		loop_rate.sleep();
-		
+	
+		/* moves ankle pitch so that the robot can sit up */
+		mrap.joint_angles[0] = 0.5; mlap.joint_angles[0] = 0.5;
+		pub.publish(mrap); pub.publish(mlap);
+		//loop_rate.sleep();
+
+		/* moves knee pitch so that they are fully bent */
+		mrkp.joint_angles[0] = 2; mlkp.joint_angles[0] = 2;
+		pub.publish(mrkp); pub.publish(mlkp);
+		//loop_rate.sleep();
+
+		/* moves hip pitch so that robot is completely sitting up */
+		mrhp.joint_angles[0] = -1; mlhp.joint_angles[0] = -1;		
+		pub.publish(mrhp); pub.publish(mlhp);
+		loop_rate.sleep();
+
 		ros::Duration(20).sleep();
 	}
 	return 0;
