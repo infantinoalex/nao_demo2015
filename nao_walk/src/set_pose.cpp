@@ -106,12 +106,12 @@ int main(int argc, char **argv) {
   while (ros::ok()) {
 
     /************************************************/
-        
-    narration.data = "Assume starting position.";
-    pub_narration.publish(narration);
   
     ros::Duration(3).sleep();
-    
+         
+    //narration.data = "Assume starting position.";
+    pub_narration.publish(narration);
+   
     /************************************************/
     
     //narration.data = "Arms down.";
@@ -124,6 +124,8 @@ int main(int argc, char **argv) {
     pub_move.publish(lsp);
     pub_move.publish(rsp);
 
+    ros::Duration(5).sleep();
+
    /************************************************/
     
     //narration.data = "Bend knees.";
@@ -131,24 +133,26 @@ int main(int argc, char **argv) {
 
     lhp.joint_angles[0] = -0.2;
     rhp.joint_angles[0] = -0.2;
-    lhp.speed = 0.5;
-    rhp.speed = 0.5;
+    lhp.speed = 0.1;
+    rhp.speed = 0.1;
     pub_move.publish(lhp);
     pub_move.publish(rhp);
 
     lkp.joint_angles[0] = 0.4;
     rkp.joint_angles[0] = 0.4;
-    lkp.speed = 0.5;
-    rkp.speed = 0.5;
+    lkp.speed = 0.1;
+    rkp.speed = 0.1;
     pub_move.publish(lkp);
     pub_move.publish(rkp);
 
-    lap.joint_angles[0] = -0.3;
-    rap.joint_angles[0] = -0.3;
-    lap.speed = 0.5;
-    rap.speed = 0.5;
+    lap.joint_angles[0] = -0.2;
+    rap.joint_angles[0] = -0.2;
+    lap.speed = 0.1;
+    rap.speed = 0.1;
     pub_move.publish(lap);
     pub_move.publish(rap);
+
+    ros::Duration(5).sleep();
 
    /************************************************/
   
@@ -157,8 +161,8 @@ int main(int argc, char **argv) {
 
     lhr.joint_angles[0] = 0.1;
     rhr.joint_angles[0] = -0.1;
-    lhr.speed = 0.5;
-    rhr.speed = 0.5;
+    lhr.speed = 0.1;
+    rhr.speed = 0.1;
     pub_move.publish(lhr);
     pub_move.publish(rhr);
 
@@ -173,7 +177,7 @@ int main(int argc, char **argv) {
 
     ros::Duration(3).sleep();
   
-    narration.data = "Ready for action.";
+    //narration.data = "Ready for action.";
     pub_narration.publish(narration);
 
    /************************************************/
