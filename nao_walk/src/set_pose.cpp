@@ -131,20 +131,20 @@ int main(int argc, char **argv) {
     //narration.data = "Bend knees.";
     pub_narration.publish(narration);
 
-    lhp.joint_angles[0] = -0.2;
-    rhp.joint_angles[0] = -0.2;
+    lhp.joint_angles[0] = -0.3;
+    rhp.joint_angles[0] = -0.3;
     lhp.speed = 0.05;
     rhp.speed = 0.05;
 
-    lkp.joint_angles[0] = 0.6;
-    rkp.joint_angles[0] = 0.6;
+    lkp.joint_angles[0] = 0.8;
+    rkp.joint_angles[0] = 0.8;
     lkp.speed = 0.05;
     rkp.speed = 0.05;
 
-    lap.joint_angles[0] = -0.4;
-    rap.joint_angles[0] = -0.4;
-    lap.speed = 0.05;
-    rap.speed = 0.05;
+    lap.joint_angles[0] = -0.5;
+    rap.joint_angles[0] = -0.5;
+    lap.speed = 0.02;
+    rap.speed = 0.02;
 
     pub_move.publish(lkp);
     pub_move.publish(rkp);
