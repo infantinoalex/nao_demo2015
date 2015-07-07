@@ -106,16 +106,19 @@ int main(int argc, char ** argv){
 		loop_rate.sleep();
 	
 		/* moves ankle pitch so that the robot can sit up */
+		ROS_INFO("MOVING ANKLE PITCH\n");
 		mrap.joint_angles[0] = 0.5; mlap.joint_angles[0] = 0.5;
 		pub.publish(mrap); pub.publish(mlap);
 		//loop_rate.sleep();
 
 		/* moves knee pitch so that they are fully bent */
+		ROS_INFO("MOVING KNEE PITCH\n");
 		mrkp.joint_angles[0] = 2; mlkp.joint_angles[0] = 2;
 		pub.publish(mrkp); pub.publish(mlkp);
 		//loop_rate.sleep();
 
 		/* moves hip pitch so that robot is completely sitting up */
+		ROS_INFO("MOVING HIP PITCH\n");
 		mrhp.joint_angles[0] = -1; mlhp.joint_angles[0] = -1;		
 		pub.publish(mrhp); pub.publish(mlhp);
 		loop_rate.sleep();
