@@ -133,22 +133,23 @@ int main(int argc, char **argv) {
 
     lhp.joint_angles[0] = -0.2;
     rhp.joint_angles[0] = -0.2;
-    lhp.speed = 0.1;
-    rhp.speed = 0.1;
-    pub_move.publish(lhp);
-    pub_move.publish(rhp);
+    lhp.speed = 0.05;
+    rhp.speed = 0.05;
 
     lkp.joint_angles[0] = 0.4;
     rkp.joint_angles[0] = 0.4;
-    lkp.speed = 0.1;
-    rkp.speed = 0.1;
-    pub_move.publish(lkp);
-    pub_move.publish(rkp);
+    lkp.speed = 0.05;
+    rkp.speed = 0.05;
 
     lap.joint_angles[0] = -0.2;
     rap.joint_angles[0] = -0.2;
-    lap.speed = 0.1;
-    rap.speed = 0.1;
+    lap.speed = 0.05;
+    rap.speed = 0.05;
+
+    pub_move.publish(lkp);
+    pub_move.publish(rkp);
+    pub_move.publish(lhp);
+    pub_move.publish(rhp);
     pub_move.publish(lap);
     pub_move.publish(rap);
 
