@@ -56,7 +56,7 @@ int main(int argc, char ** argv){
 		ROS_INFO("CHANGING HEAD PITCH\n");
 		mhp.joint_angles[0] = 1;
 		pub.publish(mhp);
-		//loop_rate.sleep();
+		loop_rate.sleep();
 
 		/* moves the arms so that they are close the the nao's hips */
 		ROS_INFO("CHANGING ARMS\n");
@@ -66,12 +66,12 @@ int main(int argc, char ** argv){
 		mrer.joint_angles[0] = 1.5; mler.joint_angles[0] = -1.5;
 		pub.publish(mrer); pub.publish(mler);
 		loop_rate.sleep();
-		mrsp.joint_angles[0] = 1.5; mlsp.joint_angles[0] = 1.5;
+		mrsp.joint_angles[0] = 1.8; mlsp.joint_angles[0] = 1.8;
 		pub.publish(mrsp); pub.publish(mlsp);
 		loop_rate.sleep();
 		mley.joint_angles[0] = 0.5; mrey.joint_angles[0] = -0.5;
 		pub.publish(mley); pub.publish(mrey);
-		//loop_rate.sleep();
+		loop_rate.sleep();
 
 		/* slightly moves the hip pitch so that the nao can move its arms behind its back */
 		ROS_INFO("MOVING HIP PITCH\n");
@@ -83,7 +83,7 @@ int main(int argc, char ** argv){
 		ROS_INFO("MOVING ARMS\n");
 		mrsr.joint_angles[0] = -0.5; mlsr.joint_angles[0] = 0.5;
 		pub.publish(mrsr); pub.publish(mlsr);
-		//loop_rate.sleep();
+		loop_rate.sleep();
 		
 		/* moves the knee pitch amd ankle pitch to support the nao better */
 		ROS_INFO("MOVING KNEE PITCH AND ANKLE PITCH\n");
@@ -109,13 +109,13 @@ int main(int argc, char ** argv){
 		ROS_INFO("MOVING ANKLE PITCH\n");
 		mrap.joint_angles[0] = 0.5; mlap.joint_angles[0] = 0.5;
 		pub.publish(mrap); pub.publish(mlap);
-		//loop_rate.sleep();
+		loop_rate.sleep();
 
 		/* moves knee pitch so that they are fully bent */
 		ROS_INFO("MOVING KNEE PITCH\n");
 		mrkp.joint_angles[0] = 2; mlkp.joint_angles[0] = 2;
 		pub.publish(mrkp); pub.publish(mlkp);
-		//loop_rate.sleep();
+		loop_rate.sleep();
 
 		/* moves hip pitch so that robot is completely sitting up */
 		ROS_INFO("MOVING HIP PITCH\n");
