@@ -105,7 +105,7 @@ int main(int argc, char ** argv){
 
 			ros::spinOnce();
 			loop_rate.sleep();
-			if(php < -0.1 || php > 0.1){ //!= 0.06438612937927246){
+			if(php < -0.2 || php > 0.2){ //!= 0.06438612937927246){
 				ROS_INFO("HEAD PITCH INCORRECT");
 				ROS_INFO("HEADPITCH: %f", php);
 				ROS_INFO("MOVING HEAD PITCH TO STARTUP POSITION\n");
@@ -287,7 +287,7 @@ int main(int argc, char ** argv){
 			else{
 				ROS_INFO("RIGHT SHOULDER ROLL IS IN CORRECT STARTUP POSITION");
 				loop_rate.sleep();
-				ros::Duration(1).sleep();
+				//ros::Duration(1).sleep();
 				brsr = true;
 			}
 		
