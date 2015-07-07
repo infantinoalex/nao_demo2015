@@ -9,6 +9,8 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "move_robot");
   ros::NodeHandle node;
 
+  float i;
+
   //All the publishers
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
@@ -17,8 +19,8 @@ int main(int argc, char **argv) {
   std_msgs::String narration;
   //nao_msgs::JointAnglesWithSpeed hy;
   //nao_msgs::JointAnglesWithSpeed hp;
-  //nao_msgs::JointAnglesWithSpeed lsp;
-  //nao_msgs::JointAnglesWithSpeed rsp;
+  nao_msgs::JointAnglesWithSpeed lsp;
+  nao_msgs::JointAnglesWithSpeed rsp;
   //nao_msgs::JointAnglesWithSpeed lsr;
   //nao_msgs::JointAnglesWithSpeed rsr;
   //nao_msgs::JointAnglesWithSpeed ley;
@@ -45,8 +47,8 @@ int main(int argc, char **argv) {
   //All joint name statements
   //hy.joint_names.push_back("HeadYaw");
   //hp.joint_names.push_back("HeadPitch");
-  //lsp.joint_names.push_back("LShoulderPitch");
-  //rsp.joint_names.push_back("RShoulderPitch");
+  lsp.joint_names.push_back("LShoulderPitch");
+  rsp.joint_names.push_back("RShoulderPitch");
   //lsr.joint_names.push_back("LShoulderRoll");
   //rsr.joint_names.push_back("RShoulderRoll");
   //ley.joint_names.push_back("LElbowYaw");
@@ -73,8 +75,8 @@ int main(int argc, char **argv) {
   //All joint angle statements
   //hy.joint_angles.push_back(0);
   //hp.joint_angles.push_back(0);
-  //lsp.joint_angles.push_back(0);
-  //rsp.joint_angles.push_back(0);
+  lsp.joint_angles.push_back(0);
+  rsp.joint_angles.push_back(0);
   //lsr.joint_angles.push_back(0);
   //rsr.joint_angles.push_back(0);
   //ley.joint_angles.push_back(0);
@@ -98,130 +100,84 @@ int main(int argc, char **argv) {
   lar.joint_angles.push_back(0);
   rar.joint_angles.push_back(0);
 
+  ros::Rate loop_rate(10); 
 
-  ros::Rate loop_rate(15); 
+
   while (ros::ok()) {
+
+    /************************************************/
+        
+    narration.data = "Assume starting position.";
+    pub_narration.publish(narration);
+  
+    ros::Duration(3).sleep();
+    
+    /************************************************/
+    
+    //narration.data = "Arms down.";
+    pub_narration.publish(narration);
+
+    lsp.joint_angles[0] = 1.0;
+    rsp.joint_angles[0] = 1.0;
+    lsp.speed = 0.5;
+    rsp.speed = 0.5;
+    pub_move.publish(lsp);
+    pub_move.publish(rsp);
 
    /************************************************/
     
-    //ros::Duration(3).sleep();
-
-   /************************************************/
-
-    narration.data = "Lean right.";
+    //narration.data = "Bend knees.";
     pub_narration.publish(narration);
-
-    lhr.joint_angles[0] = 0.3;
-    lar.joint_angles[0] = -0.3;
-    lhr.speed = 0.5;
-    lar.speed = 0.5;
-    pub_move.publish(lhr);
-    pub_move.publish(lar);
-
-    rhr.joint_angles[0] = 0.0;
-    rar.joint_angles[0] = 0.0;
-    rhr.speed = 0.5;
-    rar.speed = 0.5;
-    pub_move.publish(rhr);
-    pub_move.publish(rar);
-
-    ros::Duration(2).sleep();
- 
-   /************************************************/
-
-    narration.data = "Stomp left.";
-    pub_narration.publish(narration);
-
-    lhp.joint_angles[0] = -0.5;
-    lhp.speed = 0.5;
-    pub_move.publish(lhp);
-
-    lkp.joint_angles[0] = 1.2;
-    lkp.speed = 0.5;
-    pub_move.publish(lkp);
-
-    lap.joint_angles[0] = -0.7;
-    lap.speed = 0.5;
-    pub_move.publish(lap);
-
-    ros::Duration(0.1).sleep();
-
 
     lhp.joint_angles[0] = -0.2;
+    rhp.joint_angles[0] = -0.2;
     lhp.speed = 0.5;
+    rhp.speed = 0.5;
     pub_move.publish(lhp);
+    pub_move.publish(rhp);
 
     lkp.joint_angles[0] = 0.4;
+    rkp.joint_angles[0] = 0.4;
     lkp.speed = 0.5;
+    rkp.speed = 0.5;
     pub_move.publish(lkp);
+    pub_move.publish(rkp);
 
-    lap.joint_angles[0] = -0.2;
+    lap.joint_angles[0] = -0.3;
+    rap.joint_angles[0] = -0.3;
     lap.speed = 0.5;
+    rap.speed = 0.5;
     pub_move.publish(lap);
+    pub_move.publish(rap);
 
-    ros::Duration(0.1).sleep();
- 
    /************************************************/
-
-    narration.data = "Lean left.";
+  
+    //narration.data = "Open hips.";
     pub_narration.publish(narration);
 
-    lhr.joint_angles[0] = 0.0;
-    lar.joint_angles[0] = 0.0;
+    lhr.joint_angles[0] = 0.1;
+    rhr.joint_angles[0] = -0.1;
     lhr.speed = 0.5;
-    lar.speed = 0.5;
-    pub_move.publish(lhr);
-    pub_move.publish(lar);
-
-    rhr.joint_angles[0] = -0.3;
-    rar.joint_angles[0] = 0.3;
     rhr.speed = 0.5;
-    rar.speed = 0.5;
+    pub_move.publish(lhr);
     pub_move.publish(rhr);
+
+    lar.joint_angles[0] = -0.1;
+    rar.joint_angles[0] = 0.1;
+    lar.speed = 0.5;
+    rar.speed = 0.5;
+    pub_move.publish(lar);
     pub_move.publish(rar);
 
-    ros::Duration(2).sleep();
- 
    /************************************************/
 
-    narration.data = "Stomp right.";
+    ros::Duration(3).sleep();
+  
+    narration.data = "Ready for action.";
     pub_narration.publish(narration);
 
-    rhp.joint_angles[0] = -0.5;
-    rhp.speed = 0.5;
-    pub_move.publish(rhp);
-
-    rkp.joint_angles[0] = 1.2;
-    rkp.speed = 0.5;
-    pub_move.publish(rkp);
-
-    rap.joint_angles[0] = -0.7;
-    rap.speed = 0.5;
-    pub_move.publish(rap);
-
-    ros::Duration(0.1).sleep();
-
-
-    rhp.joint_angles[0] = -0.2;
-    rhp.speed = 0.5;
-    pub_move.publish(rhp);
-
-    rkp.joint_angles[0] = 0.4;
-    rkp.speed = 0.5;
-    pub_move.publish(rkp);
-
-    rap.joint_angles[0] = -0.2;
-    rap.speed = 0.5;
-    pub_move.publish(rap);
-
-    ros::Duration(0.1).sleep();
- 
    /************************************************/
- 
-    //ros::Duration(3).sleep();
-
-   /************************************************/
-   
+  
     ros::spinOnce();
     loop_rate.sleep();
 
