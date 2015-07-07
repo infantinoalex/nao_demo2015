@@ -564,6 +564,9 @@ int main(int argc, char **argv) {
     
     pub_move.publish(lap);
     pub_move.publish(lhp);
+
+    ros::Duration(10).sleep();
+
    /*
     lkp.joint_angles[0] = 1.6;
     lkp.speed = 0.5;
