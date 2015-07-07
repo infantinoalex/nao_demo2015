@@ -119,7 +119,7 @@ int main(int argc, char ** argv){
 		ROS_INFO("CHANGING HEAD PITCH\n");
 		mhp.joint_angles[0] = 1;
 		pub.publish(mhp);
-		loop_rate.sleep();
+		//loop_rate.sleep();
 
 		/* moves the arms so that they are close the the nao's hips */
 		ROS_INFO("CHANGING ARMS\n");
@@ -133,16 +133,16 @@ int main(int argc, char ** argv){
 		pub.publish(mrer);
 		pub.publish(mler);
 		loop_rate.sleep();
-		mrsp.joint_angles[0] = 2;
-		mlsp.joint_angles[0] = 2;
+		mrsp.joint_angles[0] = 1.5;
+		mlsp.joint_angles[0] = 1.5;
 		pub.publish(mrsp);
 		pub.publish(mlsp);
 		loop_rate.sleep();
-		mley.joint_angles[0] = 1;
-		mrey.joint_angles[0] = -1;
+		mley.joint_angles[0] = 0.5;
+		mrey.joint_angles[0] = -0.5;
 		pub.publish(mley);
 		pub.publish(mrey);
-		loop_rate.sleep();
+		//loop_rate.sleep();
 
 		/* slightly moves the hip pitch so that the nao can move its arms behind its back */
 		ROS_INFO("MOVING HIP PITCH\n");
@@ -158,7 +158,7 @@ int main(int argc, char ** argv){
 		mlsr.joint_angles[0] = 0.5;
 		pub.publish(mrsr);
 		pub.publish(mlsr);
-		loop_rate.sleep();
+		//loop_rate.sleep();
 		
 		/* moves the knee pitch amd ankle pitch to support the nao better */
 		ROS_INFO("MOVING KNEE PITCH AND ANKLE PITCH\n");
@@ -182,11 +182,13 @@ int main(int argc, char ** argv){
 		
 		/* moves hip pitch to fall back on the arms */
 		ROS_INFO("MOVING HIP PITCH\n");
-		mrhp.joint_angles[0] = 0;
-		mlhp.joint_angles[0] = 0;
+		mrhp.joint_angles[0] = -0.5;
+		mlhp.joint_angles[0] = -0.5;
 		pub.publish(mrhp);
 		pub.publish(mlhp);
 		loop_rate.sleep();
+		
+		
 
 		ros::Duration(20).sleep();
 	}
