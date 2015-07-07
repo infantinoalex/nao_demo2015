@@ -119,8 +119,8 @@ int main(int argc, char **argv) {
 
     lsp.joint_angles[0] = 1.0;
     rsp.joint_angles[0] = 1.0;
-    lsp.speed = 0.5;
-    rsp.speed = 0.5;
+    lsp.speed = 0.05;
+    rsp.speed = 0.05;
     pub_move.publish(lsp);
     pub_move.publish(rsp);
 
@@ -162,15 +162,15 @@ int main(int argc, char **argv) {
 
     lhr.joint_angles[0] = 0.1;
     rhr.joint_angles[0] = -0.1;
-    lhr.speed = 0.1;
-    rhr.speed = 0.1;
+    lhr.speed = 0.05;
+    rhr.speed = 0.05;
     pub_move.publish(lhr);
     pub_move.publish(rhr);
 
     lar.joint_angles[0] = -0.1;
     rar.joint_angles[0] = 0.1;
-    lar.speed = 0.5;
-    rar.speed = 0.5;
+    lar.speed = 0.05;
+    rar.speed = 0.05;
     pub_move.publish(lar);
     pub_move.publish(rar);
 
