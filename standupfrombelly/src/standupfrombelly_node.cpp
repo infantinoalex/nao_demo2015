@@ -174,10 +174,18 @@ int main(int argc, char ** argv){
 	
 		/* moving arms further behind nao */
 		ROS_INFO("MOVING ARMS\n");
-		mrsr.joint_angles[0] = 0;
-		mlsr.joint_angles[0] = 0;
+		mrsr.joint_angles[0] = 0.3142;
+		mlsr.joint_angles[0] = -0.3142;
 		pub.publish(mrsr);
 		pub.publish(mlsr);
+		loop_rate.sleep();
+		
+		/* moves hip pitch to fall back on the arms */
+		ROS_INFO("MOVING HIP PITCH\n");
+		mrhp.joint_angles[0] = 0;
+		mlhp.joint_angles[0] = 0;
+		pub.publish(mrhp);
+		pub.publish(mlhp);
 		loop_rate.sleep();
 
 		ros::Duration(20).sleep();
