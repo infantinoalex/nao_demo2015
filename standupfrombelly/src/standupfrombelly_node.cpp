@@ -123,6 +123,8 @@ int main(int argc, char ** argv){
 		pub.publish(mrhp); pub.publish(mlhp);
 		loop_rate.sleep();
 
+		/* */
+
 		ros::Duration(20).sleep();
 	}
 	return 0;
