@@ -8,7 +8,7 @@
 
 int buttonn, buttonp;
 
-char stringname[10];
+bool stringname;
 
 void callback(const nao_msgs::TactileTouch::ConstPtr& Buttons){
 	buttonn = Buttons->button;
@@ -16,7 +16,12 @@ void callback(const nao_msgs::TactileTouch::ConstPtr& Buttons){
 }
 
 void gettingit(custom_msgs::isit gotit){
-	//stringname = gotit.nodename;
+	if(gotit.nodename == "headtouch"){
+		stringname == true;
+	}
+	else{
+		stringname == false;
+	}
 }
 
 int main(int argc, char ** argv){
@@ -31,7 +36,8 @@ int main(int argc, char ** argv){
 
 	std_msgs::String talk;
 	nao_msgs::JointAnglesWithSpeed mrsp, mlsp;
-	bool run = false;
+	bool run = false, check = true;
+	int i = 0;
 
 	mrsp.joint_names.push_back("RShoulderPitch");
 	mlsp.joint_names.push_back("LShoulderPitch");
@@ -45,10 +51,21 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
-		if(stringname == "headtouch"){
-			ROS_INFO("GOT HEADTOUCH\n");
-			loop_rate.sleep();
-			run = true;
+		if(check){
+			if(stringname == true){
+				ROS_INFO("GOT HEADTOUCH\n");
+				ros::Duration(2).sleep();
+				loop_rate.sleep();
+				run = true;
+				check = false;
+			}
+			else{
+				ROS_INFO("WAITING FOR STATEPUBLISH\n");
+				ros::Duration(2).sleep();
+				loop_rate.sleep();
+				run = false;
+				check = true;
+			}
 		}
 		// this one might need to be changed because I do not believe there is a way to determine
 		// if all the buttons are being pressed at once
@@ -181,13 +198,18 @@ int main(int argc, char ** argv){
 			else{
 				ros::Duration(1).sleep();
 				ros::spinOnce();
-				talk.data = "Please do not push my buttons you will make me very upset";
-				pub.publish(talk);
-				ros::Duration(2).sleep();
-				do{
-					ros::spinOnce();
-					loop_rate.sleep();
-				}while(buttonp == 0);
+				if(i == 100){
+					ROS_INFO("FINISHED EXECUTING CHECKING AGAIN\n");
+					ros::Duration(2).sleep();
+					check == true;
+					run == false;
+				}
+				else if(i%10 == 0){
+					talk.data = "Please do not push my buttons you will make me very upset";
+					pub.publish(talk);
+					ros::Duration(2).sleep();
+				}
+				i++;
 			}	
 		}
 	}
