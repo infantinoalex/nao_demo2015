@@ -136,13 +136,13 @@ int main(int argc, char **argv) {
     lhp.speed = 0.05;
     rhp.speed = 0.05;
 
-    lkp.joint_angles[0] = 0.4;
-    rkp.joint_angles[0] = 0.4;
+    lkp.joint_angles[0] = 0.6;
+    rkp.joint_angles[0] = 0.6;
     lkp.speed = 0.05;
     rkp.speed = 0.05;
 
-    lap.joint_angles[0] = -0.2;
-    rap.joint_angles[0] = -0.2;
+    lap.joint_angles[0] = -0.4;
+    rap.joint_angles[0] = -0.4;
     lap.speed = 0.05;
     rap.speed = 0.05;
 
