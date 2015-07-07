@@ -556,22 +556,24 @@ int main(int argc, char **argv) {
     //narration.data = "Trying to get up.";
     pub_narration.publish(narration);
 
-    lhp.joint_angles[0] = -1.2;
-    lhp.speed = 0.5;
+    lhp.joint_angles[0] = -0.8;
+    lhp.speed = 0.01;
+ 
+    lap.joint_angles[0] = -0.8;
+    lap.speed = 0.01;
+    
+    pub_move.publish(lap);
     pub_move.publish(lhp);
-
+   /*
     lkp.joint_angles[0] = 1.6;
     lkp.speed = 0.5;
     pub_move.publish(lkp);
-
-    lap.joint_angles[0] = 0.0;
-    lap.speed = 0.5;
-    pub_move.publish(lap);
-
+    */
+    /*
     lar.joint_angles[0] = 0.1;
     lar.speed = 0.5;
     pub_move.publish(lar);
-
+    */
     /*
     rhp.joint_angles[0] = -1.0;
     rhp.speed = 0.5;
