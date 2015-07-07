@@ -4,12 +4,19 @@
 #include "std_msgs/String.h"
 #include "nao_msgs/TactileTouch.h"
 #include "nao_msgs/JointAnglesWithSpeed.h"
+#include "custom_msgs/isit.h"
 
 int buttonn, buttonp;
+
+char stringname[10];
 
 void callback(const nao_msgs::TactileTouch::ConstPtr& Buttons){
 	buttonn = Buttons->button;
 	buttonp = Buttons->state;
+}
+
+void gettingit(custom_msgs::isit gotit){
+	//stringname = gotit.nodename;
 }
 
 int main(int argc, char ** argv){
@@ -17,12 +24,14 @@ int main(int argc, char ** argv){
 	ros::NodeHandle n;
 	ros::Rate loop_rate(1);
 
+	ros::Subscriber sub2 = n.subscribe("/publishit", 100, gettingit);
 	ros::Subscriber sub = n.subscribe("/tactile_touch", 100, callback);
 	ros::Publisher pub = n.advertise<std_msgs::String>("/speech", 100);
 	ros::Publisher move = n.advertise<nao_msgs::JointAnglesWithSpeed>("/joint_angles", 100);
 
 	std_msgs::String talk;
 	nao_msgs::JointAnglesWithSpeed mrsp, mlsp;
+	bool run = false;
 
 	mrsp.joint_names.push_back("RShoulderPitch");
 	mlsp.joint_names.push_back("LShoulderPitch");
@@ -36,141 +45,150 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
+		if(stringname == "headtouch"){
+			ROS_INFO("GOT HEADTOUCH\n");
+			loop_rate.sleep();
+			run = true;
+		}
 		// this one might need to be changed because I do not believe there is a way to determine
 		// if all the buttons are being pressed at once
-		if(buttonn == 1 && buttonn == 2 && buttonn == 3 && buttonp == 1){
-			ROS_INFO("TOUCHING ALL BUTTONS\n");
-			talk.data = "Why are you touching all of my buttons";
-			pub.publish(talk);
-			ros::Duration(1).sleep();
-		}
-		else if(buttonn == 1 && buttonp == 1){
-			ROS_INFO("TOUCHING FRONT SENSOR\n");
-			loop_rate.sleep();
-			talk.data = "EEEEK Get your hands off my front button";
-			pub.publish(talk);
-			mrsp.joint_angles[0] = -1.4;
-			mlsp.joint_angles[0] = -1.4;
-			move.publish(mrsp);
-			move.publish(mlsp);
-			ros::Duration(2).sleep();
-			mrsp.joint_angles[0] = 1.4;
-			mlsp.joint_angles[0] = 1.4;
-			move.publish(mrsp);
-			move.publish(mlsp);
-			ros::Duration(3).sleep();
-			ros::spinOnce();
-			if(buttonn == 1 && buttonp == 1){
-				ROS_INFO("STILL TOUCHING IT\n");
-				loop_rate.sleep();
-				talk.data = "Did you not hear me the first time";
+		loop_rate.sleep();
+		ros::spinOnce();
+		if(run){
+			if(buttonn == 1 && buttonn == 2 && buttonn == 3 && buttonp == 1){
+				ROS_INFO("TOUCHING ALL BUTTONS\n");
+				talk.data = "Why are you touching all of my buttons";
 				pub.publish(talk);
 				ros::Duration(1).sleep();
-				talk.data = "Get your hands off me";
-				pub.publish(talk);
-				ros::Duration(4).sleep();
-				ros::spinOnce();
 			}
-			ros::Duration(2).sleep();
-			if(buttonn == 1 && buttonp == 0){
-				talk.data = "Oh why thank you now dont do that again";
-				pub.publish(talk);
-				ros::Duration(4).sleep();
-			}
-			else{
-				talk.data = "Oh my just take your hands off of me please";
-				pub.publish(talk);
-				ros::Duration(2).sleep();
-			}
-		}	
-		else if(buttonn == 2 && buttonp == 1){
-			ROS_INFO("TOUCHING MIDDLE SENSOR\n");
-			loop_rate.sleep();
-			talk.data = "AAH Get your hands off my middle button";
-			pub.publish(talk);
-			mrsp.joint_angles[0] = -1.4;
-			mlsp.joint_angles[0] = -1.4;
-			move.publish(mrsp);
-			move.publish(mlsp);
-			ros::Duration(2).sleep();
-			mrsp.joint_angles[0] = 1.4;
-			mlsp.joint_angles[0] = 1.4;
-			move.publish(mrsp);
-			move.publish(mlsp);
-			ros::Duration(3).sleep();
-			ros::spinOnce();
-			if(buttonn == 2 && buttonp == 1){
-				ROS_INFO("STILL TOUCHING IT\n");
+			else if(buttonn == 1 && buttonp == 1){
+				ROS_INFO("TOUCHING FRONT SENSOR\n");
 				loop_rate.sleep();
-				talk.data = "Did you not hear me the first time";
+				talk.data = "EEEEK Get your hands off my front button";
 				pub.publish(talk);
+				mrsp.joint_angles[0] = -1.4;
+				mlsp.joint_angles[0] = -1.4;
+				move.publish(mrsp);
+				move.publish(mlsp);
+				ros::Duration(2).sleep();
+				mrsp.joint_angles[0] = 1.4;
+				mlsp.joint_angles[0] = 1.4;
+				move.publish(mrsp);
+				move.publish(mlsp);
+				ros::Duration(3).sleep();
+				ros::spinOnce();
+				if(buttonn == 1 && buttonp == 1){
+					ROS_INFO("STILL TOUCHING IT\n");
+					loop_rate.sleep();
+					talk.data = "Did you not hear me the first time";
+					pub.publish(talk);
+					ros::Duration(1).sleep();
+					talk.data = "Get your hands off me";
+					pub.publish(talk);
+					ros::Duration(4).sleep();
+					ros::spinOnce();
+				}
+				ros::Duration(2).sleep();
+				if(buttonn == 1 && buttonp == 0){
+					talk.data = "Oh why thank you now dont do that again";
+					pub.publish(talk);
+					ros::Duration(4).sleep();
+				}
+				else{
+					talk.data = "Oh my just take your hands off of me please";
+					pub.publish(talk);
+					ros::Duration(2).sleep();
+				}
+			}	
+			else if(buttonn == 2 && buttonp == 1){
+				ROS_INFO("TOUCHING MIDDLE SENSOR\n");
+				loop_rate.sleep();
+				talk.data = "AAH Get your hands off my middle button";
+				pub.publish(talk);
+				mrsp.joint_angles[0] = -1.4;
+				mlsp.joint_angles[0] = -1.4;
+				move.publish(mrsp);
+				move.publish(mlsp);
+				ros::Duration(2).sleep();
+				mrsp.joint_angles[0] = 1.4;
+				mlsp.joint_angles[0] = 1.4;
+				move.publish(mrsp);
+				move.publish(mlsp);
+				ros::Duration(3).sleep();
+				ros::spinOnce();
+				if(buttonn == 2 && buttonp == 1){
+					ROS_INFO("STILL TOUCHING IT\n");
+					loop_rate.sleep();
+					talk.data = "Did you not hear me the first time";
+					pub.publish(talk);
+					ros::Duration(1).sleep();
+					talk.data = "Get your hands off me";
+					pub.publish(talk);
+					ros::Duration(4).sleep();
+					ros::spinOnce();
+				}
 				ros::Duration(1).sleep();
-				talk.data = "Get your hands off me";
-				pub.publish(talk);
-				ros::Duration(4).sleep();
-				ros::spinOnce();
+				if(buttonn == 2 && buttonp == 0){
+					talk.data = "Finally now dont do that again";
+					pub.publish(talk);
+					ros::Duration(4).sleep();
+				}
+				else{
+					talk.data = "I dislike you very much";
+					pub.publish(talk);
+					ros::Duration(2).sleep();
+				}
 			}
-			ros::Duration(1).sleep();
-			if(buttonn == 2 && buttonp == 0){
-				talk.data = "Finally now dont do that again";
-				pub.publish(talk);
-				ros::Duration(4).sleep();
-			}
-			else{
-				talk.data = "I dislike you very much";
-				pub.publish(talk);
-				ros::Duration(2).sleep();
-			}
-		}
-		else if(buttonn == 3 && buttonp == 1){
-			ROS_INFO("TOUCHING BACK SENSOR\n");
-			loop_rate.sleep();
-			talk.data = "STOP Get your hands off my back button";
-			pub.publish(talk);
-			mrsp.joint_angles[0] = -1.4;
-			mlsp.joint_angles[0] = -1.4;
-			move.publish(mrsp);
-			move.publish(mlsp);
-			ros::Duration(1).sleep();
-			mrsp.joint_angles[0] = 1.4;
-			mlsp.joint_angles[0] = 1.4;
-			move.publish(mrsp);
-			move.publish(mlsp);
-			ros::Duration(3).sleep();
-			ros::spinOnce();
-			if(buttonn == 3 && buttonp == 1){
-				ROS_INFO("STILL TOUCHING IT\n");
+			else if(buttonn == 3 && buttonp == 1){
+				ROS_INFO("TOUCHING BACK SENSOR\n");
 				loop_rate.sleep();
-				talk.data = "Did you not hear me the first time";
+				talk.data = "STOP Get your hands off my back button";
 				pub.publish(talk);
+				mrsp.joint_angles[0] = -1.4;
+				mlsp.joint_angles[0] = -1.4;
+				move.publish(mrsp);
+				move.publish(mlsp);
 				ros::Duration(1).sleep();
-				talk.data = "Get your hands off me";
-				pub.publish(talk);
-				ros::Duration(4).sleep();
+				mrsp.joint_angles[0] = 1.4;
+				mlsp.joint_angles[0] = 1.4;
+				move.publish(mrsp);
+				move.publish(mlsp);
+				ros::Duration(3).sleep();
 				ros::spinOnce();
-			}
-			ros::Duration(1).sleep();
-			if(buttonn == 3 && buttonp == 0){
-				talk.data = "Holy moley now dont do that again";
-				pub.publish(talk);
-				ros::Duration(2).sleep();
+				if(buttonn == 3 && buttonp == 1){
+					ROS_INFO("STILL TOUCHING IT\n");
+					loop_rate.sleep();
+					talk.data = "Did you not hear me the first time";
+					pub.publish(talk);
+					ros::Duration(1).sleep();
+					talk.data = "Get your hands off me";
+					pub.publish(talk);
+					ros::Duration(4).sleep();
+					ros::spinOnce();
+				}
+				ros::Duration(1).sleep();
+				if(buttonn == 3 && buttonp == 0){
+					talk.data = "Holy moley now dont do that again";
+					pub.publish(talk);
+					ros::Duration(2).sleep();
+				}
+				else{
+					talk.data = "You are the worst";
+					pub.publish(talk);
+					ros::Duration(2).sleep();
+				}
 			}
 			else{
-				talk.data = "You are the worst";
+				ros::Duration(1).sleep();
+				ros::spinOnce();
+				talk.data = "Please do not push my buttons you will make me very upset";
 				pub.publish(talk);
 				ros::Duration(2).sleep();
-			}
-		}
-		else{
-			ros::Duration(1).sleep();
-			ros::spinOnce();
-			talk.data = "Please do not push my buttons you will make me very upset";
-			pub.publish(talk);
-			ros::Duration(2).sleep();
-			do{
-				ros::spinOnce();
-				loop_rate.sleep();
-			}while(buttonp == 0);
+				do{
+					ros::spinOnce();
+					loop_rate.sleep();
+				}while(buttonp == 0);
+			}	
 		}
 	}
 	return 0;
