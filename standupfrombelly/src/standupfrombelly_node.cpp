@@ -172,6 +172,14 @@ int main(int argc, char ** argv){
 		pub.publish(mlap);
 		loop_rate.sleep();	
 	
+		/* moving arms further behind nao */
+		ROS_INFO("MOVING ARMS\n");
+		mrsr.joint_angles[0] = 0;
+		mlsr.joint_angles[0] = 0;
+		pub.publish(mrsr);
+		pub.publish(mlsr);
+		loop_rate.sleep();
+
 		ros::Duration(20).sleep();
 	}
 	return 0;
