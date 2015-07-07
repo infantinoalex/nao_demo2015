@@ -108,7 +108,7 @@ int main(int argc, char **argv) {
 
    /************************************************/
 
-    narration.data = "Lean right.";
+    //narration.data = "Lean right.";
     pub_narration.publish(narration);
 
     lhr.joint_angles[0] = 0.3;
@@ -129,7 +129,7 @@ int main(int argc, char **argv) {
  
    /************************************************/
 
-    narration.data = "Stomp left.";
+    //narration.data = "Stomp left.";
     pub_narration.publish(narration);
 
     lhp.joint_angles[0] = -0.5;
@@ -163,7 +163,7 @@ int main(int argc, char **argv) {
  
    /************************************************/
 
-    narration.data = "Lean left.";
+    //narration.data = "Lean left.";
     pub_narration.publish(narration);
 
     lhr.joint_angles[0] = 0.0;
@@ -184,7 +184,7 @@ int main(int argc, char **argv) {
  
    /************************************************/
 
-    narration.data = "Stomp right.";
+    //narration.data = "Stomp right.";
     pub_narration.publish(narration);
 
     rhp.joint_angles[0] = -0.5;
