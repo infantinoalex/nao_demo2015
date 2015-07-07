@@ -273,7 +273,7 @@ int main(int argc, char ** argv){
 		
 			ros::spinOnce();
 			loop_rate.sleep();
-			if(prsr < -0.2 || prsr > -0.1){ //!= -0.16571402549743652){
+			if(prsr < -0.22 || prsr > -0.12){ //!= -0.16571402549743652){
 				ROS_INFO("RIGHT SHOULDER ROLL INCORRECT");
 				ROS_INFO("RSHOULDERROLL: %f", prsr);
 				ROS_INFO("MOVING RIGHT SHOULDER ROLL TO STARTUP POSITION\n");
@@ -386,14 +386,15 @@ int main(int argc, char ** argv){
 			//pub.message.startup = false;			
 
 			ROS_INFO("WAITING TO BE NEEDED AGAIN\n");
-			while(checkit == false){
+			//while(checkit == false){
 				/* waiting for main node to publisg message telling this node to run again */
-				ros::spinOnce();
-				loop_rate.sleep();
+				//ros::spinOnce();
+				//loop_rate.sleep();
 				//if(message.startup == true){
 					//checkit = true;
 				//}
-			}
+			//}
+			ros::Duration(21).sleep();
 			ROS_INFO("RESETTING TO DEFAULT POSITION\n");
 		}
 		ros::spinOnce();
