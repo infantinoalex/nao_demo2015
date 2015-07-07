@@ -165,7 +165,7 @@ int main(int argc, char **argv) {
     pub_move.publish(lkp);
     pub_move.publish(lap);
 
-    ros::Duration(0.1).sleep();
+    ros::Duration(0.5).sleep();
  
    /************************************************/
 
@@ -226,7 +226,7 @@ int main(int argc, char **argv) {
     pub_move.publish(rkp);
     pub_move.publish(rap);
 
-    ros::Duration(0.1).sleep();
+    ros::Duration(0.5).sleep();
  
    /************************************************/
  
