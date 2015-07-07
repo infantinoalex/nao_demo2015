@@ -103,7 +103,7 @@ include_directories(
 # )
 
 ## Declare a cpp executable
-  add_executable(set_pose src/set_initial_pose.cpp)
+  add_executable(set_pose src/set_pose.cpp)
   add_executable(walk src/walk.cpp)
 
 ## Add cmake target dependencies of the executable/library
