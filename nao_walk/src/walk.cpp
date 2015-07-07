@@ -134,13 +134,13 @@ int main(int argc, char **argv) {
     //narration.data = "Stomp left.";
     pub_narration.publish(narration);
 
-    lhp.joint_angles[0] = -0.8;
+    lhp.joint_angles[0] = -1.0;
     lhp.speed = 0.1;
 
-    lkp.joint_angles[0] = 1.2;
+    lkp.joint_angles[0] = 1.6;
     lkp.speed = 0.1;
 
-    lap.joint_angles[0] = -0.4;
+    lap.joint_angles[0] = -0.6;
     lap.speed = 0.1;
     
     
