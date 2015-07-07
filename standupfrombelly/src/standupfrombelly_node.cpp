@@ -59,73 +59,51 @@ int main(int argc, char ** argv){
 
 		/* moves the arms so that they are close the the nao's hips */
 		ROS_INFO("CHANGING ARMS\n");
-		mrsr.joint_angles[0] = -1;
-		mlsr.joint_angles[0] = 1;
-		pub.publish(mrsr);
-		pub.publish(mlsr);
+		mrsr.joint_angles[0] = -1; mlsr.joint_angles[0] = 1;
+		pub.publish(mrsr); pub.publish(mlsr);
 		loop_rate.sleep();
-		mrer.joint_angles[0] = 1.5;
-		mler.joint_angles[0] = -1.5;
-		pub.publish(mrer);
-		pub.publish(mler);
+		mrer.joint_angles[0] = 1.5; mler.joint_angles[0] = -1.5;
+		pub.publish(mrer); pub.publish(mler);
 		loop_rate.sleep();
-		mrsp.joint_angles[0] = 1.5;
-		mlsp.joint_angles[0] = 1.5;
-		pub.publish(mrsp);
-		pub.publish(mlsp);
+		mrsp.joint_angles[0] = 1.5; mlsp.joint_angles[0] = 1.5;
+		pub.publish(mrsp); pub.publish(mlsp);
 		loop_rate.sleep();
-		mley.joint_angles[0] = 0.5;
-		mrey.joint_angles[0] = -0.5;
-		pub.publish(mley);
-		pub.publish(mrey);
+		mley.joint_angles[0] = 0.5; mrey.joint_angles[0] = -0.5;
+		pub.publish(mley); pub.publish(mrey);
 		//loop_rate.sleep();
 
 		/* slightly moves the hip pitch so that the nao can move its arms behind its back */
 		ROS_INFO("MOVING HIP PITCH\n");
-		mrhp.joint_angles[0] = 0.5;
-		mlhp.joint_angles[0] = 0.5;
-		pub.publish(mrhp);
-		pub.publish(mlhp);
+		mrhp.joint_angles[0] = 0.5; mlhp.joint_angles[0] = 0.5;
+		pub.publish(mrhp); pub.publish(mlhp);
 		loop_rate.sleep();
 		
 		/* moves arms behind nao */
 		ROS_INFO("MOVING ARMS\n");
-		mrsr.joint_angles[0] = -0.5;
-		mlsr.joint_angles[0] = 0.5;
-		pub.publish(mrsr);
-		pub.publish(mlsr);
+		mrsr.joint_angles[0] = -0.5; mlsr.joint_angles[0] = 0.5;
+		pub.publish(mrsr); pub.publish(mlsr);
 		//loop_rate.sleep();
 		
 		/* moves the knee pitch amd ankle pitch to support the nao better */
 		ROS_INFO("MOVING KNEE PITCH AND ANKLE PITCH\n");
-		mrkp.joint_angles[0] = 0.5;
-		mlkp.joint_angles[0] = 0.5;
-		mrap.joint_angles[0] = 0.5;
-		mlap.joint_angles[0] = 0.5;
-		pub.publish(mrkp);
-		pub.publish(mlkp);
-		pub.publish(mrap);
-		pub.publish(mlap);
+		mrkp.joint_angles[0] = 0.5; mlkp.joint_angles[0] = 0.5;
+		mrap.joint_angles[0] = 0.5; mlap.joint_angles[0] = 0.5;
+		pub.publish(mrkp); pub.publish(mlkp);
+		pub.publish(mrap); pub.publish(mlap);
 		loop_rate.sleep();	
 	
 		/* moving arms further behind nao */
 		ROS_INFO("MOVING ARMS\n");
-		mrsr.joint_angles[0] = 0.3142;
-		mlsr.joint_angles[0] = -0.3142;
-		pub.publish(mrsr);
-		pub.publish(mlsr);
+		mrsr.joint_angles[0] = 0.3142; mlsr.joint_angles[0] = -0.3142;
+		pub.publish(mrsr); pub.publish(mlsr);
 		loop_rate.sleep();
 		
 		/* moves hip pitch to fall back on the arms */
 		ROS_INFO("MOVING HIP PITCH\n");
-		mrhp.joint_angles[0] = -0.5;
-		mlhp.joint_angles[0] = -0.5;
-		pub.publish(mrhp);
-		pub.publish(mlhp);
+		mrhp.joint_angles[0] = -0.5; mlhp.joint_angles[0] = -0.5;
+		pub.publish(mrhp); pub.publish(mlhp);
 		loop_rate.sleep();
 		
-		
-
 		ros::Duration(20).sleep();
 	}
 	return 0;
