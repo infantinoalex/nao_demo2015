@@ -58,7 +58,7 @@ int main(int argc, char ** argv){
 			mlsp.joint_angles[0] = 1.4;
 			move.publish(mrsp);
 			move.publish(mlsp);
-			ros::Duration(5).sleep();
+			ros::Duration(3).sleep();
 			ros::spinOnce();
 			if(buttonn == 1 && buttonp == 1){
 				ROS_INFO("STILL TOUCHING IT\n");
@@ -71,7 +71,7 @@ int main(int argc, char ** argv){
 				ros::Duration(4).sleep();
 				ros::spinOnce();
 			}
-			ros::Duration(1).sleep();
+			ros::Duration(2).sleep();
 			if(buttonn == 1 && buttonp == 0){
 				talk.data = "Oh why thank you now dont do that again";
 				pub.publish(talk);
@@ -97,7 +97,7 @@ int main(int argc, char ** argv){
 			mlsp.joint_angles[0] = 1.4;
 			move.publish(mrsp);
 			move.publish(mlsp);
-			ros::Duration(5).sleep();
+			ros::Duration(3).sleep();
 			ros::spinOnce();
 			if(buttonn == 2 && buttonp == 1){
 				ROS_INFO("STILL TOUCHING IT\n");
@@ -136,7 +136,7 @@ int main(int argc, char ** argv){
 			mlsp.joint_angles[0] = 1.4;
 			move.publish(mrsp);
 			move.publish(mlsp);
-			ros::Duration(5).sleep();
+			ros::Duration(3).sleep();
 			ros::spinOnce();
 			if(buttonn == 3 && buttonp == 1){
 				ROS_INFO("STILL TOUCHING IT\n");
@@ -162,6 +162,7 @@ int main(int argc, char ** argv){
 			}
 		}
 		else{
+			ros::Duration(1).sleep();
 			ros::spinOnce();
 			talk.data = "Please do not push my buttons you will make me very upset";
 			pub.publish(talk);
