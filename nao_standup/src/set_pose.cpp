@@ -72,49 +72,49 @@ int main(int argc, char **argv) {
   lar.joint_names.push_back("LAnkleRoll");
   rar.joint_names.push_back("RAnkleRoll");
 
-/*
+
   //All joint angle statements
   hy.joint_angles.push_back(0);
-  hp.joint_names.push_back(0);
-  lsp.joint_names.push_back(0);
-  rsp.joint_names.push_back(0);
-  lsr.joint_names.push_back(0);
-  rsr.joint_names.push_back(0);
-  ley.joint_names.push_back(0);
-  rey.joint_names.push_back(0);
-  ler.joint_names.push_back(0);
-  rer.joint_names.push_back(0);
-  lwy.joint_names.push_back(0);
-  rwy.joint_names.push_back(0);
-  lh.joint_names.push_back(0);
-  rh.joint_names.push_back(0);
-  lhyp.joint_names.push_back(0);
-  rhyp.joint_names.push_back(0);
-  lhp.joint_names.push_back(0);
-  rhp.joint_names.push_back(0);
-  lhr.joint_names.push_back(0);
-  rhr.joint_names.push_back(0);
-  lkp.joint_names.push_back(0);
-  rkp.joint_names.push_back(0);
-  lap.joint_names.push_back(0);
-  rap.joint_names.push_back(0);
-  lar.joint_names.push_back(0);
-  rar.joint_names.push_back(0);
+  hp.joint_angles.push_back(0);
+  lsp.joint_angles.push_back(0);
+  rsp.joint_angles.push_back(0);
+  lsr.joint_angles.push_back(0);
+  rsr.joint_angles.push_back(0);
+  ley.joint_angles.push_back(0);
+  rey.joint_angles.push_back(0);
+  ler.joint_angles.push_back(0);
+  rer.joint_angles.push_back(0);
+  lwy.joint_angles.push_back(0);
+  rwy.joint_angles.push_back(0);
+  lh.joint_angles.push_back(0);
+  rh.joint_angles.push_back(0);
+  lhyp.joint_angles.push_back(0);
+  rhyp.joint_angles.push_back(0);
+  lhp.joint_angles.push_back(0);
+  rhp.joint_angles.push_back(0);
+  lhr.joint_angles.push_back(0);
+  rhr.joint_angles.push_back(0);
+  lkp.joint_angles.push_back(0);
+  rkp.joint_angles.push_back(0);
+  lap.joint_angles.push_back(0);
+  rap.joint_angles.push_back(0);
+  lar.joint_angles.push_back(0);
+  rar.joint_angles.push_back(0);
 
 
 
   ros::Rate loop_rate(10); 
   while (ros::ok()) {
-*/
+
     /************************************************/
-/*    
+    
     ros::Duration(2).sleep();
-*/    
+    
     /************************************************/
     
     //narration.data = "Adjust head.";
     //pub_narration.publish(narration);
-/*
+
     hy.joint_angles[0] = 0.0;
     hy.joint_angles[0] = 0.0;
     hy.speed = 0.5;
@@ -132,7 +132,7 @@ int main(int argc, char **argv) {
     pub_move.publish(hp);
 
     ros::Duration(1).sleep();
-*/     
+     
     /************************************************/
 /*    
     //narration.data = "Adjust shoulders.";
@@ -277,11 +277,11 @@ int main(int argc, char **argv) {
     ros::Duration(1).sleep();
 */   
     /************************************************/
-/*
+
    ros::Duration(2).sleep();
-*/
+
    /************************************************/
-/*  
+  
     ros::spinOnce();
     loop_rate.sleep();
 
@@ -289,5 +289,5 @@ int main(int argc, char **argv) {
 
 
   return 0;
-*/
+
 }
