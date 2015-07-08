@@ -110,6 +110,24 @@ int main(int argc, char **argv) {
     //narration.data = "Arms out.";
     pub_narration.publish(narration);
 
+    lsp.joint_angles[0] = 1.6;
+    rsp.joint_angles[0] = 1.6;
+    lsp.speed = 0.5;
+    rsp.speed = 0.5;
+    pub_move.publish(lsp);
+    pub_move.publish(rsp);
+
+    ros::Duration(1).sleep();
+
+    ley.joint_angles[0] = 0.0;
+    rey.joint_angles[0] = 0.0;
+    ley.speed = 0.5;
+    rey.speed = 0.5;
+    pub_move.publish(ley);
+    pub_move.publish(rey);
+
+    ros::Duration(1).sleep();
+
     lsr.joint_angles[0] = 1.35;
     rsr.joint_angles[0] = -1.35;
     lsr.speed = 0.5;
@@ -523,7 +541,7 @@ int main(int argc, char **argv) {
     rap.speed = 0.5;
     pub_move.publish(rap);
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
    
    /************************************************/
 
@@ -534,7 +552,7 @@ int main(int argc, char **argv) {
     rhr.speed = 0.5;
     pub_move.publish(rhr);
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
    
    /************************************************/
 
@@ -549,7 +567,7 @@ int main(int argc, char **argv) {
     lsr.speed = 0.5;
     pub_move.publish(lsr);
 
-    ros::Duration(3).sleep();
+    ros::Duration(2).sleep();
    
    /************************************************/
 
@@ -564,7 +582,7 @@ int main(int argc, char **argv) {
     lhp.speed = 1.0;
     pub_move.publish(lhp);
     */
-    lap.joint_angles[0] = 0.4;
+    lap.joint_angles[0] = 0.2;
     lap.speed = 0.01;
     pub_move.publish(lap);
     
@@ -572,8 +590,7 @@ int main(int argc, char **argv) {
     lkp.joint_angles[0] = 1.6;
     lkp.speed = 0.5;
     pub_move.publish(lkp);
-    */
-    /*
+
     lar.joint_angles[0] = 0.1;
     lar.speed = 0.5;
     pub_move.publish(lar);
@@ -582,8 +599,7 @@ int main(int argc, char **argv) {
     rhyp.joint_angles[0] = -0.9;
     rhyp.speed = 1.0;
     pub_move.publish(rhyp);
-    */
-    /*
+
     rhp.joint_angles[0] = -0.9;
     rhp.speed = 1.0;
     pub_move.publish(rhp);
@@ -595,9 +611,13 @@ int main(int argc, char **argv) {
     rap.joint_angles[0] = 0.6;
     rap.speed = 0.5;
     pub_move.publish(rap);
+    */
+    rar.joint_angles[0] = 0.4;
+    rar.speed = 0.5;
+    pub_move.publish(rar);
 
     ros::Duration(3).sleep();
-    */
+    
     ros::Duration(10).sleep();
    /************************************************/
 
