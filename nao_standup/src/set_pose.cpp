@@ -1,5 +1,6 @@
 #include <ros/ros.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
+#include <std_msgs/String.h>
 #include <sensor_msgs/JointState.h>
 #include <sstream>
 
@@ -75,7 +76,7 @@ int main(int argc, char **argv) {
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
 
   //All the subscribers
-  ros::Subscriber sub_joints = n.subscribe("joint_states", 100, callback);
+  ros::Subscriber sub_joints = node.subscribe("joint_states", 100, callback);
 
   //All the message declarations
   std_msgs::String narration;
@@ -273,7 +274,7 @@ int main(int argc, char **argv) {
 
     else {
 
-      ROS_INFO("All done!"):
+      ROS_INFO("All done!");
       ros::Duration(20).sleep();
 
     }
