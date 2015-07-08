@@ -570,7 +570,7 @@ int main(int argc, char **argv) {
         ROS_INFO("LHipYawPitch position incorrect...");
         ROS_INFO("Moving LHipYawPitch to the correct position...");
   
-        lhyp.joint_angles[0] = 1.6;
+        lhyp.joint_angles[0] = 0.0;
         lhyp.speed = 0.5;
         pub_move.publish(lhyp);
   
@@ -595,7 +595,7 @@ int main(int argc, char **argv) {
         ROS_INFO("RHipYawPitch position incorrect...");
         ROS_INFO("Moving RHipYawPitch to the correct position...");
   
-        rhyp.joint_angles[0] = 1.6;
+        rhyp.joint_angles[0] = 0.0;
         rhyp.speed = 0.5;
         pub_move.publish(rhyp);
   
@@ -620,7 +620,7 @@ int main(int argc, char **argv) {
         ROS_INFO("LHipPitch position incorrect...");
         ROS_INFO("Moving LHipPitch to the correct position...");
   
-        lhp.joint_angles[0] = 1.6;
+        lhp.joint_angles[0] = 0.0;
         lhp.speed = 0.5;
         pub_move.publish(lhp);
   
@@ -645,7 +645,7 @@ int main(int argc, char **argv) {
         ROS_INFO("RHipPitch position incorrect...");
         ROS_INFO("Moving RHipPitch to the correct position...");
   
-        rhp.joint_angles[0] = 1.6;
+        rhp.joint_angles[0] = 0.0;
         rhp.speed = 0.5;
         pub_move.publish(rhp);
   
@@ -670,7 +670,7 @@ int main(int argc, char **argv) {
         ROS_INFO("LHipRoll position incorrect...");
         ROS_INFO("Moving LHipRoll to the correct position...");
   
-        lhr.joint_angles[0] = 1.6;
+        lhr.joint_angles[0] = 0.0;
         lhr.speed = 0.5;
         pub_move.publish(lhr);
   
@@ -695,7 +695,7 @@ int main(int argc, char **argv) {
         ROS_INFO("RHipRoll position incorrect...");
         ROS_INFO("Moving RHipRoll to the correct position...");
   
-        rhr.joint_angles[0] = 1.6;
+        rhr.joint_angles[0] = 0.0;
         rhr.speed = 0.5;
         pub_move.publish(rhr);
   
@@ -720,7 +720,7 @@ int main(int argc, char **argv) {
         ROS_INFO("LKneePitch position incorrect...");
         ROS_INFO("Moving LKneePitch to the correct position...");
   
-        lkp.joint_angles[0] = 1.6;
+        lkp.joint_angles[0] = 0.0;
         lkp.speed = 0.5;
         pub_move.publish(lkp);
   
@@ -745,7 +745,7 @@ int main(int argc, char **argv) {
         ROS_INFO("RKneePitch position incorrect...");
         ROS_INFO("Moving RKneePitch to the correct position...");
   
-        rkp.joint_angles[0] = 1.6;
+        rkp.joint_angles[0] = 0.0;
         rkp.speed = 0.5;
         pub_move.publish(rkp);
   
@@ -770,7 +770,7 @@ int main(int argc, char **argv) {
         ROS_INFO("LAnklePitch position incorrect...");
         ROS_INFO("Moving LAnklePitch to the correct position...");
   
-        lap.joint_angles[0] = 1.6;
+        lap.joint_angles[0] = 0.0;
         lap.speed = 0.5;
         pub_move.publish(lap);
   
@@ -795,7 +795,7 @@ int main(int argc, char **argv) {
         ROS_INFO("RAnklePitch position incorrect...");
         ROS_INFO("Moving RAnklePitch to the correct position...");
   
-        rap.joint_angles[0] = 1.6;
+        rap.joint_angles[0] = 0.0;
         rap.speed = 0.5;
         pub_move.publish(rap);
   
@@ -820,7 +820,7 @@ int main(int argc, char **argv) {
         ROS_INFO("LAnkleRoll position incorrect...");
         ROS_INFO("Moving LAnkleRoll to the correct position...");
   
-        lar.joint_angles[0] = 1.6;
+        lar.joint_angles[0] = 0.0;
         lar.speed = 0.5;
         pub_move.publish(lar);
   
@@ -845,7 +845,7 @@ int main(int argc, char **argv) {
         ROS_INFO("RAnkleRoll position incorrect...");
         ROS_INFO("Moving RAnkleRoll to the correct position...");
   
-        rar.joint_angles[0] = 1.6;
+        rar.joint_angles[0] = 0.0;
         rar.speed = 0.5;
         pub_move.publish(rsp);
   
