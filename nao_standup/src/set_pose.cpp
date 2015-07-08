@@ -259,7 +259,7 @@ int main(int argc, char **argv) {
 
     if ( hy_check && hp_check ) {
       
-      ROS_INFO("Head position set!"):
+      ROS_INFO("Head position set!");
       all_good = 1;
 
     }
