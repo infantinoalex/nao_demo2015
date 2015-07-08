@@ -113,7 +113,7 @@ int main(int argc, char **argv) {
     /************************************************/
     
     //narration.data = "Adjust head.";
-    pub_narration.publish(narration);
+    //pub_narration.publish(narration);
 
     hy.joint_angles[0] = 0.0;
     hy.joint_angles[0] = 0.0;
