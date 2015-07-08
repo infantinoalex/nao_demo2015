@@ -844,6 +844,10 @@ int main(int argc, char **argv) {
     else {
 
       ROS_INFO("All done!");
+
+      narration.data = "Position set. Goodbye!";
+      pub_narration.publish(narration);
+
       ros::shutdown();
 
     }
