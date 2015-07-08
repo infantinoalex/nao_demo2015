@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
-//#include <std_msgs/String.h>
+#include <std_msgs/String.h>
 #include <sstream>
 
 
@@ -114,7 +114,7 @@ int main(int argc, char **argv) {
     
     //narration.data = "Adjust head.";
     //pub_narration.publish(narration);
-
+/*
     hy.joint_angles[0] = 0.0;
     hy.joint_angles[0] = 0.0;
     hy.speed = 0.5;
@@ -132,7 +132,7 @@ int main(int argc, char **argv) {
     pub_move.publish(hp);
 
     ros::Duration(1).sleep();
-     
+*/     
     /************************************************/
 /*    
     //narration.data = "Adjust shoulders.";
