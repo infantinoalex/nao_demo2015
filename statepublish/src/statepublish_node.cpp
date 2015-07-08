@@ -52,25 +52,25 @@ int main(int argc, char ** argv){
 			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
-		else if((lax <= 2.4 && lax >= 2) && (laz <= -9.5 && laz >= -10)){
+		else if((lax <= 1.8 && lax >= 1) && (laz <= -9.5 && laz >= -10.2)){
 			ROS_INFO("CURRENTLY SQUATTING\n");
 			ros::Duration(5).sleep();
 			words.data = "I am currently upright but in a squat position";
-			//talk.publish(words);
+			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
 		else if((lax >= 0 && lax <= 1) && (laz <= -9.8 && laz >= -10.2)){
 			ROS_INFO("CURRENTLY UPRIGHT\n");
 			ros::Duration(5).sleep();
 			words.data = "I am currently completely upright";
-			//talk.publish(words);
+			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
 		else{
 			ROS_INFO("UNKNOWN POSITION\n");
 			ros::Duration(5).sleep();
 			words.data = "I am in an unknown position";
-			//talk.publish(words);	
+			talk.publish(words);	
 			ros::Duration(5).sleep();
 		}
 	}
