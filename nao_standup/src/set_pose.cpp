@@ -200,7 +200,7 @@ int main(int argc, char **argv) {
     
     ros::Duration(2).sleep();
  
-    if ( hy_check && hp_check ) {
+    if ( !all_good ) {
    
     /************************************************/
 
@@ -256,6 +256,19 @@ int main(int argc, char **argv) {
     /************************************************/
  
     ros::Duration(2).sleep();
+
+    if ( hy_check && hp_check ) {
+      
+      ROS_INFO("Head position set!"):
+      all_good = 1;
+
+    }
+
+    else {
+
+      ROS_INFO("Something's not right...");
+
+    }
 
     }
 
