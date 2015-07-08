@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
   nao_msgs::JointAnglesWithSpeed lar;
   nao_msgs::JointAnglesWithSpeed rar;
 
-
+/*
   //All joint name statements
   hy.joint_names.push_back("HeadYaw");
   hp.joint_names.push_back("HeadPitch");
@@ -102,7 +102,7 @@ int main(int argc, char **argv) {
   rar.joint_names.push_back(0);
 
 
-/*
+
   ros::Rate loop_rate(10); 
   while (ros::ok()) {
 */
