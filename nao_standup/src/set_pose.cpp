@@ -5,7 +5,7 @@
 
 
 int main(int argc, char **argv) {
-
+/*
   ros::init(argc, argv, "move_robot");
   ros::NodeHandle node;
 
@@ -105,11 +105,11 @@ int main(int argc, char **argv) {
 
   ros::Rate loop_rate(10); 
   while (ros::ok()) {
-
+*/
     /************************************************/
-    
+/*    
     ros::Duration(2).sleep();
-    
+*/    
     /************************************************/
     
     //narration.data = "Adjust head.";
@@ -277,11 +277,11 @@ int main(int argc, char **argv) {
     ros::Duration(1).sleep();
 */   
     /************************************************/
-
+/*
    ros::Duration(2).sleep();
-
+*/
    /************************************************/
-  
+/*  
     ros::spinOnce();
     loop_rate.sleep();
 
@@ -289,5 +289,5 @@ int main(int argc, char **argv) {
 
 
   return 0;
-
+*/
 }
