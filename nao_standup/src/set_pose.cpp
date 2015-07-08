@@ -1,11 +1,9 @@
 #include <ros/ros.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
-#include <std_msgs/String.h>
+#include <sensor_msgs/JointState.h>
 #include <sstream>
 
 float hy_state;
-float hy_state;
-float hp_state;
 float hp_state;
 float lsp_state;
 float rsp_state;
@@ -76,6 +74,9 @@ int main(int argc, char **argv) {
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
 
+  //All the subscribers
+  ros::Subscriber sub_joints = n.subscribe("joint_states", 100, callback);
+
   //All the message declarations
   std_msgs::String narration;
   nao_msgs::JointAnglesWithSpeed hy;
@@ -108,8 +109,6 @@ int main(int argc, char **argv) {
   //All check variable declarations
   bool all_good = false;
   bool hy_check = false;
-  bool hy_check = false;
-  bool hp_check = false;
   bool hp_check = false;
   bool lsp_check = false;
   bool rsp_check = false;
