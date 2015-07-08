@@ -37,18 +37,19 @@ int main(int argc, char ** argv){
 		loop_rate.sleep();
 		ROS_INFO("FIGURING OUT POSITION\n");
 		ros::Duration(5).sleep();
-		if((lax <=10.1 && lax >= 9.8) && (laz <= -0.8 && laz >= -2)){
+		ros::spinOnce();
+		if((lax <=10.5 && lax >= 9.8) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
 			ros::Duration(5).sleep();
 			words.data = "I am currently laying down on my stomach";
-			//talk.publish(words);
+			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
-		else if((lax <= -9.1 && lax >= -9.9) && (laz <= 0.55 && laz >= 0)){
+		else if((lax <= -9.1 && lax >= -9.9) && (laz <= 1 && laz >= 0)){
 			ROS_INFO("CURRENTLY ON BACK\n");
 			ros::Duration(5).sleep();
 			words.data = "I am currently lying on my back";
-			//talk.publish(words);
+			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
 		else if((lax <= 2.4 && lax >= 2) && (laz <= -9.5 && laz >= -10)){
