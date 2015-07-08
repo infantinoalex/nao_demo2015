@@ -194,7 +194,7 @@ int main(int argc, char **argv) {
     ros::Duration(1).sleep();
 
     /************************************************/
-    
+/*    
     //narration.data = "Adjust hands.";
     pub_narration.publish(narration);
 
@@ -206,9 +206,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rh);
 
     ros::Duration(1).sleep();
-     
+*/     
    /************************************************/
-      
+/*      
     //narration.data = "Adjust hips.";
     pub_narration.publish(narration);
 
@@ -238,9 +238,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rhr);
  
     ros::Duration(1).sleep();
-  
+*/  
     /************************************************/
-   
+/*   
     //narration.data = "Adjust knees.";
     pub_narration.publish(narration);
  
@@ -252,9 +252,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rkp);
 
     ros::Duration(1).sleep();
-   
+*/   
     /************************************************/
-   
+/*   
     //narration.data = "Adjust ankles.";
     pub_narration.publish(narration);
  
@@ -275,7 +275,7 @@ int main(int argc, char **argv) {
     pub_move.publish(rar);
  
     ros::Duration(1).sleep();
-   
+*/   
     /************************************************/
 
    ros::Duration(2).sleep();
