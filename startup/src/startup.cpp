@@ -273,7 +273,7 @@ int main(int argc, char ** argv){
 		
 			ros::spinOnce();
 			loop_rate.sleep();
-			if(prsr < -0.22 || prsr > -0.12){ //!= -0.16571402549743652){
+			if(prsr < -0.3 || prsr > -0.1){ //!= -0.16571402549743652){
 				ROS_INFO("RIGHT SHOULDER ROLL INCORRECT");
 				ROS_INFO("RSHOULDERROLL: %f", prsr);
 				ROS_INFO("MOVING RIGHT SHOULDER ROLL TO STARTUP POSITION\n");
