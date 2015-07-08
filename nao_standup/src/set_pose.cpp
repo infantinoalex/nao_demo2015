@@ -5,7 +5,7 @@
 
 
 int main(int argc, char **argv) {
-/*
+
   ros::init(argc, argv, "move_robot");
   ros::NodeHandle node;
 
@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
   //All the publishers
   //ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
-
+/*
   //All the message declarations
   //std_msgs::String narration;
   nao_msgs::JointAnglesWithSpeed hy;
