@@ -113,7 +113,7 @@ int main(int argc, char **argv) {
     /************************************************/
     
     //narration.data = "Adjust head.";
-    pub_narration.publish(narration);
+    //pub_narration.publish(narration);
 
     hy.joint_angles[0] = 0.0;
     hy.joint_angles[0] = 0.0;
@@ -134,7 +134,7 @@ int main(int argc, char **argv) {
     ros::Duration(1).sleep();
      
     /************************************************/
-    
+/*    
     //narration.data = "Adjust shoulders.";
     pub_narration.publish(narration);
 
@@ -155,9 +155,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rsr);
 
     ros::Duration(1).sleep();
-     
+*/     
     /************************************************/
-    
+/*    
     //narration.data = "Adjust elbows.";
     pub_narration.publish(narration);
 
@@ -178,9 +178,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rer);
 
     ros::Duration(1).sleep();
-   
+*/   
     /************************************************/
-    
+/*    
     //narration.data = "Adjust wrists.";
     pub_narration.publish(narration);
 
@@ -192,7 +192,7 @@ int main(int argc, char **argv) {
     pub_move.publish(rwy);
 
     ros::Duration(1).sleep();
-
+*/
     /************************************************/
 /*    
     //narration.data = "Adjust hands.";
