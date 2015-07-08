@@ -3,6 +3,68 @@
 #include <std_msgs/String.h>
 #include <sstream>
 
+float hy_state;
+float hy_state;
+float hp_state;
+float hp_state;
+float lsp_state;
+float rsp_state;
+float lsr_state;
+float rsr_state;
+float ley_state;
+float rey_state;
+float ler_state;
+float rer_state;
+float lwy_state;
+float rwy_state;
+float lh_state;
+float rh_state;
+float lhyp_state;
+float rhyp_state;
+float lhp_state;
+float rhp_state;
+float lhr_state;
+float rhr_state;
+float lkp_state;
+float rkp_state;
+float lap_state;
+float rap_state;
+float lar_state;
+float rar_state;
+
+void callback(const sensor_msgs::JointState::ConstPtr& Joints){
+
+  hy_state = Joints->position[0];
+  hp_state = Joints->position[1];
+  lsp_state = Joints->position[2];
+  lsr_state = Joints->position[3];
+  ley_state = Joints->position[4];
+  ler_state = Joints->position[5];
+  lwy_state = Joints->position[6];
+  lh_state = Joints->position[7];
+  lhyp_state = Joints->position[8];
+  lhp_state = Joints->position[9];
+  lhr_state = Joints->position[10];
+  lkp_state = Joints->position[11];
+  lap_state = Joints->position[12];
+  lar_state = Joints->position[13];
+  rhyp_state = Joints->position[14];
+  rhr_state = Joints->position[15];
+  rhp_state = Joints->position[16];
+  rkp_state = Joints->position[17];
+  rap_state = Joints->position[18];
+  rar_state = Joints->position[19];
+  rsp_state = Joints->position[20];
+  rsr_state = Joints->position[21];
+  rey_state = Joints->position[22];
+  rer_state = Joints->position[23];
+  rwy_state = Joints->position[24];
+  rh_state = Joints->position[25];
+
+}
+
+
+
 
 int main(int argc, char **argv) {
 
@@ -11,11 +73,11 @@ int main(int argc, char **argv) {
 
 
   //All the publishers
-  //ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
+  ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
 
   //All the message declarations
-  //std_msgs::String narration;
+  std_msgs::String narration;
   nao_msgs::JointAnglesWithSpeed hy;
   nao_msgs::JointAnglesWithSpeed hp;
   nao_msgs::JointAnglesWithSpeed lsp;
@@ -43,6 +105,36 @@ int main(int argc, char **argv) {
   nao_msgs::JointAnglesWithSpeed lar;
   nao_msgs::JointAnglesWithSpeed rar;
 
+  //All check variable declarations
+  bool all_good = false;
+  bool hy_check = false;
+  bool hy_check = false;
+  bool hp_check = false;
+  bool hp_check = false;
+  bool lsp_check = false;
+  bool rsp_check = false;
+  bool lsr_check = false;
+  bool rsr_check = false;
+  bool ley_check = false;
+  bool rey_check = false;
+  bool ler_check = false;
+  bool rer_check = false;
+  bool lwy_check = false;
+  bool rwy_check = false;
+  bool lh_check = false;
+  bool rh_check = false;
+  bool lhyp_check = false;
+  bool rhyp_check = false;
+  bool lhp_check = false;
+  bool rhp_check = false;
+  bool lhr_check = false;
+  bool rhr_check = false;
+  bool lkp_check = false;
+  bool rkp_check = false;
+  bool lap_check = false;
+  bool rap_check = false;
+  bool lar_check = false;
+  bool rar_check = false;
 
   //All joint name statements
   hy.joint_names.push_back("HeadYaw");
@@ -71,7 +163,6 @@ int main(int argc, char **argv) {
   rap.joint_names.push_back("RAnklePitch");
   lar.joint_names.push_back("LAnkleRoll");
   rar.joint_names.push_back("RAnkleRoll");
-
 
   //All joint angle statements
   hy.joint_angles.push_back(0);
@@ -102,39 +193,82 @@ int main(int argc, char **argv) {
   rar.joint_angles.push_back(0);
 
 
-
   ros::Rate loop_rate(10); 
   while (ros::ok()) {
 
     /************************************************/
     
     ros::Duration(2).sleep();
-    
+ 
+    if ( hy_check && hp_check ) {
+   
     /************************************************/
-    
-    //narration.data = "Adjust head.";
-    //pub_narration.publish(narration);
 
-    hy.joint_angles[0] = 0.0;
-    hy.joint_angles[0] = 0.0;
-    hy.speed = 0.5;
-    hy.speed = 0.5;
-    pub_move.publish(hy);
-    pub_move.publish(hy);
+    //Adjusting head yaw to desired position    
+    ros::spinOnce();
 
-    ros::Duration(1).sleep();
 
-    hp.joint_angles[0] = 0.0;
-    hp.joint_angles[0] = 0.0;
-    hp.speed = 0.5;
-    hp.speed = 0.5;
-    pub_move.publish(hp);
-    pub_move.publish(hp);
+    if ( hy_state > -0.05 && hy_state < 0.05 ) {
 
-    ros::Duration(1).sleep();
+      hy_check = true;
+      ROS_INFO("HeadYaw position correct...");
+
+    }
+
+    else {
+
+      ROS_INFO("HeadYaw position incorrect...");
+      ROS_INFO("Moving HeadYaw to the correct position...");
+
+      hy.joint_angles[0] = 0.0;
+      hy.speed = 0.5;
+      pub_move.publish(hy);
+
+      ros::Duration(1).sleep();
+
+    }
      
     /************************************************/
-    
+
+    //Adjusting head pitch to desired position    
+    ros::spinOnce();
+  
+    if ( hp_state > -0.05 && hp_state < 0.05 ) {
+
+      hp_check = true;
+      ROS_INFO("HeadPitch position correct...");
+
+    }
+
+    else {
+
+      ROS_INFO("HeadPitch position incorrect...");
+      ROS_INFO("Moving HeadPitch to the correct position...");
+
+      hp.joint_angles[0] = 0.0;
+      hp.speed = 0.5;
+      pub_move.publish(hp);
+
+      ros::Duration(1).sleep();
+
+    }
+
+    /************************************************/
+ 
+    ros::Duration(2).sleep();
+
+    }
+
+    else {
+
+      ROS_INFO("All done!"):
+      ros::Duration(20).sleep();
+
+    }
+
+
+    /************************************************/
+    /* 
     //narration.data = "Adjust shoulders.";
     pub_narration.publish(narration);
 
@@ -155,9 +289,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rsr);
 
     ros::Duration(1).sleep();
-     
+    */ 
     /************************************************/
-    
+    /*
     //narration.data = "Adjust elbows.";
     pub_narration.publish(narration);
 
@@ -178,9 +312,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rer);
 
     ros::Duration(1).sleep();
-   
+    */
     /************************************************/
-    
+    /*
     //narration.data = "Adjust wrists.";
     pub_narration.publish(narration);
 
@@ -190,11 +324,11 @@ int main(int argc, char **argv) {
     rwy.speed = 0.5;
     pub_move.publish(lwy);
     pub_move.publish(rwy);
-
+ 
     ros::Duration(1).sleep();
-
+    */
     /************************************************/
-    
+    /*
     //narration.data = "Adjust hands.";
     pub_narration.publish(narration);
 
@@ -206,9 +340,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rh);
 
     ros::Duration(1).sleep();
-     
-   /************************************************/
-      
+    */
+    /************************************************/
+    /*  
     //narration.data = "Adjust hips.";
     pub_narration.publish(narration);
 
@@ -238,9 +372,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rhr);
  
     ros::Duration(1).sleep();
-  
+    */
     /************************************************/
-   
+    /*
     //narration.data = "Adjust knees.";
     pub_narration.publish(narration);
  
@@ -252,9 +386,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rkp);
 
     ros::Duration(1).sleep();
-   
+    */
     /************************************************/
-   
+    /*
     //narration.data = "Adjust ankles.";
     pub_narration.publish(narration);
  
@@ -275,12 +409,12 @@ int main(int argc, char **argv) {
     pub_move.publish(rar);
  
     ros::Duration(1).sleep();
-   
+    */
     /************************************************/
 
-   ros::Duration(2).sleep();
+    ros::Duration(2).sleep();
 
-   /************************************************/
+    /************************************************/
   
     ros::spinOnce();
     loop_rate.sleep();
