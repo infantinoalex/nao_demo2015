@@ -381,11 +381,28 @@ int main(int argc, char ** argv){
 		else{
 			/* After going through this function, the robot should be standing appropriately in the startup pose */
 			ROS_INFO("STARTUP COMPLETE");
+			ros::Duration(1).sleep();
+			ROS_INFO("SHUTTING DOWN NODE IN");
+			ros::Duration(0.5).sleep();
+			ROS_INFO("5");
+			ros::Duration(1).sleep();
+			ROS_INFO("4");
+			ros::Duration(1).sleep();
+			ROS_INFO("3");
+			ros::Duration(1).sleep();
+			ROS_INFO("2");
+			ros::Duration(1).sleep();
+			ROS_INFO("1");
+			ros::Duration(1).sleep();
+			ROS_INFO("GOODBYE\n");
+			ros::Duration(1).sleep();
+		
+			ros::shutdown();
 		
 			/* publish message to main node saying this is complete */
 			//pub.message.startup = false;			
 
-			ROS_INFO("WAITING TO BE NEEDED AGAIN\n");
+			//ROS_INFO("WAITING TO BE NEEDED AGAIN\n");
 			//while(checkit == false){
 				/* waiting for main node to publisg message telling this node to run again */
 				//ros::spinOnce();
@@ -394,8 +411,8 @@ int main(int argc, char ** argv){
 					//checkit = true;
 				//}
 			//}
-			ros::Duration(21).sleep();
-			ROS_INFO("RESETTING TO DEFAULT POSITION\n");
+			//ros::Duration(21).sleep();
+			//ROS_INFO("RESETTING TO DEFAULT POSITION\n");
 		}
 		ros::spinOnce();
 	}
