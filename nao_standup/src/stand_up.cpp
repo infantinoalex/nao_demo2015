@@ -107,7 +107,7 @@ int main(int argc, char **argv) {
     
     /************************************************/
    
-    //narration.data = "Arms out.";
+    //narration.data = "Adjust arms.";
     pub_narration.publish(narration);
 
     lsp.joint_angles[0] = 1.6;
@@ -119,6 +119,22 @@ int main(int argc, char **argv) {
 
     ros::Duration(1).sleep();
 
+    lsr.joint_angles[0] = 0.0;
+    rsr.joint_angles[0] = 0.0;
+    lsr.speed = 0.5;
+    rsr.speed = 0.5;
+    pub_move.publish(lsr);
+    pub_move.publish(rsr);
+
+    ros::Duration(1).sleep();
+
+    ler.joint_angles[0] = 0.0;
+    rer.joint_angles[0] = 0.0;
+    ler.speed = 0.5;
+    rer.speed = 0.5;
+    pub_move.publish(ler);
+    pub_move.publish(rer);
+
     ley.joint_angles[0] = 0.0;
     rey.joint_angles[0] = 0.0;
     ley.speed = 0.5;
@@ -126,7 +142,19 @@ int main(int argc, char **argv) {
     pub_move.publish(ley);
     pub_move.publish(rey);
 
+    lwy.joint_angles[0] = 0.0;
+    rwy.joint_angles[0] = 0.0;
+    lwy.speed = 0.5;
+    rwy.speed = 0.5;
+    pub_move.publish(lwy);
+    pub_move.publish(rwy);
+
     ros::Duration(1).sleep();
+     
+    /************************************************/
+   
+    //narration.data = "Arms out.";
+    pub_narration.publish(narration);
 
     lsr.joint_angles[0] = 1.35;
     rsr.joint_angles[0] = -1.35;
