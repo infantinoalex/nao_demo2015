@@ -4,32 +4,13 @@
 #include <sensor_msgs/JointState.h>
 #include <sstream>
 
-float hy_state;
-float hp_state;
-float lsp_state;
-float rsp_state;
-float lsr_state;
-float rsr_state;
-float ley_state;
-float rey_state;
-float ler_state;
-float rer_state;
-float lwy_state;
-float rwy_state;
-float lh_state;
-float rh_state;
-float lhyp_state;
-float rhyp_state;
-float lhp_state;
-float rhp_state;
-float lhr_state;
-float rhr_state;
-float lkp_state;
-float rkp_state;
-float lap_state;
-float rap_state;
-float lar_state;
-float rar_state;
+float hy_state, hp_state, lsp_state, rsp_state,
+      lsr_state, rsr_state, ley_state, rey_state,
+      ler_state, rer_state, lwy_state, rwy_state,
+      lh_state, rh_state, lhyp_state, rhyp_state,
+      lhp_state, rhp_state, lhr_state, rhr_state,
+      lkp_state, rkp_state, lap_state, rap_state,
+      lar_state, rar_state;
 
 void callback(const sensor_msgs::JointState::ConstPtr& Joints){
 
@@ -108,33 +89,15 @@ int main(int argc, char **argv) {
   nao_msgs::JointAnglesWithSpeed rar;
 
   //All check variable declarations
-  bool all_good = false;
-  bool hy_check = false;
-  bool hp_check = false;
-  bool lsp_check = false;
-  bool rsp_check = false;
-  bool lsr_check = false;
-  bool rsr_check = false;
-  bool ley_check = false;
-  bool rey_check = false;
-  bool ler_check = false;
-  bool rer_check = false;
-  bool lwy_check = false;
-  bool rwy_check = false;
-  bool lh_check = false;
-  bool rh_check = false;
-  bool lhyp_check = false;
-  bool rhyp_check = false;
-  bool lhp_check = false;
-  bool rhp_check = false;
-  bool lhr_check = false;
-  bool rhr_check = false;
-  bool lkp_check = false;
-  bool rkp_check = false;
-  bool lap_check = false;
-  bool rap_check = false;
-  bool lar_check = false;
-  bool rar_check = false;
+  bool all_good = false, hy_check = false, hp_check = false,
+       lsp_check = false, rsp_check = false, lsr_check = false,
+       rsr_check = false, ley_check = false, rey_check = false,
+       ler_check = false, rer_check = false, lwy_check = false,
+       rwy_check = false, lh_check = false, rh_check = false,
+       lhyp_check = false, rhyp_check = false, lhp_check = false,
+       rhp_check = false, lhr_check = false, rhr_check = false,
+       lkp_check = false, rkp_check = false, lap_check = false,
+       rap_check = false, lar_check = false, rar_check = false;
 
   //All joint name statements
   hy.joint_names.push_back("HeadYaw");
@@ -881,7 +844,11 @@ int main(int argc, char **argv) {
     else {
 
       ROS_INFO("All done!");
-      ros::Duration(20).sleep();
+
+      narration.data = "Position set. Goodbye!";
+      pub_narration.publish(narration);
+
+      ros::shutdown();
 
     }
 

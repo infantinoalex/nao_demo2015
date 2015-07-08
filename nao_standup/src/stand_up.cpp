@@ -15,32 +15,11 @@ int main(int argc, char **argv) {
 
   //All the message declarations
   std_msgs::String narration;
-  nao_msgs::JointAnglesWithSpeed hy;
-  nao_msgs::JointAnglesWithSpeed hp;
-  nao_msgs::JointAnglesWithSpeed lsp;
-  nao_msgs::JointAnglesWithSpeed rsp;
-  nao_msgs::JointAnglesWithSpeed lsr;
-  nao_msgs::JointAnglesWithSpeed rsr;
-  nao_msgs::JointAnglesWithSpeed ley;
-  nao_msgs::JointAnglesWithSpeed rey;
-  nao_msgs::JointAnglesWithSpeed ler;
-  nao_msgs::JointAnglesWithSpeed rer;
-  nao_msgs::JointAnglesWithSpeed lwy;
-  nao_msgs::JointAnglesWithSpeed rwy;
-  nao_msgs::JointAnglesWithSpeed lh;
-  nao_msgs::JointAnglesWithSpeed rh;
-  nao_msgs::JointAnglesWithSpeed lhyp;
-  nao_msgs::JointAnglesWithSpeed rhyp;
-  nao_msgs::JointAnglesWithSpeed lhr;
-  nao_msgs::JointAnglesWithSpeed rhr;
-  nao_msgs::JointAnglesWithSpeed lhp;
-  nao_msgs::JointAnglesWithSpeed rhp;
-  nao_msgs::JointAnglesWithSpeed lkp;
-  nao_msgs::JointAnglesWithSpeed rkp;
-  nao_msgs::JointAnglesWithSpeed lap;
-  nao_msgs::JointAnglesWithSpeed rap;
-  nao_msgs::JointAnglesWithSpeed lar;
-  nao_msgs::JointAnglesWithSpeed rar;
+  nao_msgs::JointAnglesWithSpeed hy, hp, lsp, rsp, lsr, rsr,
+                                 ley, rey, ler, rer, lwy, rwy,
+                                 lh, rh, lhyp, rhyp, lhr, rhr,
+                                 lhp, rhp, lkp, rkp, lap, rap,
+                                 lar, rar;
 
   //All joint name statements
   hy.joint_names.push_back("HeadYaw");
@@ -105,52 +84,6 @@ int main(int argc, char **argv) {
     
     ros::Duration(3).sleep();
     
-    /************************************************/
-   
-    //narration.data = "Adjust arms.";
-    pub_narration.publish(narration);
-
-    lsp.joint_angles[0] = 1.6;
-    rsp.joint_angles[0] = 1.6;
-    lsp.speed = 0.5;
-    rsp.speed = 0.5;
-    pub_move.publish(lsp);
-    pub_move.publish(rsp);
-
-    ros::Duration(1).sleep();
-
-    lsr.joint_angles[0] = 0.0;
-    rsr.joint_angles[0] = 0.0;
-    lsr.speed = 0.5;
-    rsr.speed = 0.5;
-    pub_move.publish(lsr);
-    pub_move.publish(rsr);
-
-    ros::Duration(1).sleep();
-
-    ler.joint_angles[0] = 0.0;
-    rer.joint_angles[0] = 0.0;
-    ler.speed = 0.5;
-    rer.speed = 0.5;
-    pub_move.publish(ler);
-    pub_move.publish(rer);
-
-    ley.joint_angles[0] = 0.0;
-    rey.joint_angles[0] = 0.0;
-    ley.speed = 0.5;
-    rey.speed = 0.5;
-    pub_move.publish(ley);
-    pub_move.publish(rey);
-
-    lwy.joint_angles[0] = 0.0;
-    rwy.joint_angles[0] = 0.0;
-    lwy.speed = 0.5;
-    rwy.speed = 0.5;
-    pub_move.publish(lwy);
-    pub_move.publish(rwy);
-
-    ros::Duration(1).sleep();
-     
     /************************************************/
    
     //narration.data = "Arms out.";
