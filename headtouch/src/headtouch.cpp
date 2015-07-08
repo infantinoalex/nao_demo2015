@@ -51,22 +51,22 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
-		if(check){
-			if(stringname == true){
-				ROS_INFO("GOT HEADTOUCH\n");
-				ros::Duration(2).sleep();
-				loop_rate.sleep();
+	//	if(check){
+	//		if(stringname == true){
+	//			ROS_INFO("GOT HEADTOUCH\n");
+	//			ros::Duration(2).sleep();
+	//			loop_rate.sleep();
 				run = true;
-				check = false;
-			}
-			else{
-				ROS_INFO("WAITING FOR STATEPUBLISH\n");
-				ros::Duration(2).sleep();
-				loop_rate.sleep();
-				run = false;
-				check = true;
-			}
-		}
+	//			check = false;
+	//		}
+	//		else{
+	//			ROS_INFO("WAITING FOR STATEPUBLISH\n");
+	//			ros::Duration(2).sleep();
+	//			loop_rate.sleep();
+	//			run = false;
+	//			check = true;
+	//		}
+	//	}
 		// this one might need to be changed because I do not believe there is a way to determine
 		// if all the buttons are being pressed at once
 		loop_rate.sleep();
