@@ -25,30 +25,30 @@ int main(int argc, char ** argv){
 			ROS_INFO("NOT ON GROUND\n");
 			ros::Duration(1).sleep();
 			talk.data = "Aah please make sure both of my feet are on the ground";
-			//pub.publish(talk);
-			ros::Duration(2).sleep();
+			pub.publish(talk);
+			ros::Duration(5).sleep();
 			loop_rate.sleep();
 			ros::spinOnce();
 			loop_rate.sleep();
 			if(!onground){
 				ROS_INFO("NOT ON GROUND\n");
 				talk.data = "Please I am begging you to put me back on the ground";
-				//pub.publish(talk);
-				ros::Duration(2).sleep();
+				pub.publish(talk);
+				ros::Duration(5).sleep();
 				loop_rate.sleep();
 				ros::spinOnce();
 				loop_rate.sleep();
 				if(onground){
 					ROS_INFO("ON GROUND\n");
 					talk.data = "Thank you so much";
-					//pub.publish(talk);
+					pub.publish(talk);
 					ros::Duration(2).sleep();
 				}
 			}
 			else{
 				ROS_INFO("ON GROUND\n");
 				talk.data = "Thank you for putting me back on the ground";
-				//pub.publish(talk);
+				pub.publish(talk);
 				ros::Duration(2).sleep();
 			}
 		}
