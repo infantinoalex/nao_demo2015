@@ -474,7 +474,7 @@ int main(int argc, char **argv) {
     ros::Duration(3).sleep();
     
    /************************************************/
-   
+    
     //narration.data = "Halfway there... oh, oh, living on a prayer!.";
     pub_narration.publish(narration);
 
@@ -501,6 +501,41 @@ int main(int argc, char **argv) {
 
     lar.joint_angles[0] = 0.085;
     rar.joint_angles[0] = -0.085;
+    lar.speed = 0.2;
+    rar.speed = 0.2;
+    pub_move.publish(lar);
+    pub_move.publish(rar);
+
+    ros::Duration(5).sleep();
+    
+   /************************************************/
+  
+    //narration.data = "Welcome to platform 9 and three quarters of the way there!!!.";
+    pub_narration.publish(narration);
+
+    lhyp.joint_angles[0] = -1.0125;
+    rhyp.joint_angles[0] = -1.0125;
+    lhyp.speed = 0.2;
+    rhyp.speed = 0.2;
+    pub_move.publish(lhyp);
+    pub_move.publish(rhyp);
+   
+    lhp.joint_angles[0] = -1.525;
+    rhp.joint_angles[0] = -1.525;
+    lhp.speed = 0.2;
+    rhp.speed = 0.2;
+    pub_move.publish(lhp);
+    pub_move.publish(rhp);
+    
+    lap.joint_angles[0] = -0.4375;
+    rap.joint_angles[0] = -0.4375;
+    lap.speed = 0.2;
+    rap.speed = 0.2;
+    pub_move.publish(lap);
+    pub_move.publish(rap);
+
+    lar.joint_angles[0] = 0.0675;
+    rar.joint_angles[0] = -0.0675;
     lar.speed = 0.2;
     rar.speed = 0.2;
     pub_move.publish(lar);
