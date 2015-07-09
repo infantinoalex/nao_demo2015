@@ -18,8 +18,8 @@ int main(int argc, char ** argv){
 	ros::NodeHandle n;
 	ros::Rate loop_rate(50);
 
-	ros::Subscriber sub_0 = n.subscribe("/nao_robot/sonar/left/naoqi_sonar", 100, sonarleftcb);
-	ros::Subscriber sub_1 = n.subscribe("/nao_robot/sonar/right/naoqi_sonar", 100, sonarrightcb);
+	ros::Subscriber sub_0 = n.subscribe("/nao_robot/sonar/left/sonar", 100, sonarleftcb);
+	ros::Subscriber sub_1 = n.subscribe("/nao_robot/sonar/right/sonar", 100, sonarrightcb);
 	
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
 	ros::Publisher move = n.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
@@ -36,58 +36,70 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
-		if(rsonarr > 0.3 && lsonarr > 0.3){
+		move.publish(stop);
+		loop_rate.sleep();
+		ros::spinOnce();
+		while(rsonarr >= 0.3 && lsonarr >= 0.3){
 			ROS_INFO("MOVING STRAIGHT\n");
-			direct.linear.x = 0.5;
+			direct.linear.x = 0.3;
 			move.publish(direct);
 			direct.linear.x = 0;
 			loop_rate.sleep();
 			ros::spinOnce();
 		}
-		else if(rsonarr < 0.3 && lsonarr > 0.3){
+		move.publish(stop);
+		loop_rate.sleep();
+		ros::spinOnce();
+		while(rsonarr < 0.3 && lsonarr > 0.3){
 			ROS_INFO("RIGHT SIDE TO CLOSE");
 			ROS_INFO("MOVING LEFT\n");
-			move.publish(stop);
+			//move.publish(stop);
 			loop_rate.sleep();
 			direct.angular.z = 0.3;
 			move.publish(direct);
 			loop_rate.sleep();
-			move.publish(stop);
+			//move.publish(stop);
 			direct.angular.z = 0;
 			loop_rate.sleep();
 			ros::spinOnce();
 		}
-		else if(rsonarr > 0.3 && lsonarr < 0.3){
+		move.publish(stop);
+		loop_rate.sleep();
+		ros::spinOnce();
+		while(rsonarr > 0.3 && lsonarr < 0.3){
 			ROS_INFO("LEFT SIDE TOO CLOSE");
 			ROS_INFO("MOVING RIGHT\n");
-			move.publish(stop);
+			//move.publish(stop);
 			loop_rate.sleep();
 			direct.angular.z = -0.3;
 			move.publish(direct);
 			loop_rate.sleep();
-			move.publish(stop);
+			//move.publish(stop);
 			direct.angular.z = 0;
 			loop_rate.sleep();
 			ros::spinOnce();
 		}
-		else if(rsonarr < 0.3 && lsonarr < 0.3){
+		move.publish(stop);
+		loop_rate.sleep();
+		ros::spinOnce();
+		while(rsonarr < 0.26 && lsonarr < 0.26){
 			ROS_INFO("TOO CLOSE");
 			ROS_INFO("BACKING UP\n");
-			move.publish(stop);
+			//move.publish(stop);
 			loop_rate.sleep();
 			direct.linear.x = -0.5;
 			move.publish(direct);
 			loop_rate.sleep();
-			move.publish(stop);
+			//move.publish(stop);
 			direct.linear.x = 0;
 			loop_rate.sleep();
 			ros::spinOnce();
 		}
-		else{
-			ROS_INFO("UNKNOWN ERROR\n");
-			loop_rate.sleep();
-			ros::spinOnce();
-		}
+		//else{
+			//ROS_INFO("UNKNOWN ERROR\n");
+			//loop_rate.sleep();
+			//ros::spinOnce();
+		//}
 	}
 	
 	return 0;
