@@ -327,7 +327,7 @@ int main(int argc, char **argv) {
     pub_move.publish(lar);
     pub_move.publish(rar);
 
-    ros::Duration(1).sleep();
+    ros::Duration(3).sleep();
 
    /************************************************/
  
