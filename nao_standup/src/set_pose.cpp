@@ -271,7 +271,7 @@ int main(int argc, char **argv) {
       //Adjusting left shoulder roll to desired position    
       ros::spinOnce();
     
-      if ( lsr_state > -0.1 && lsr_state < 0.1 ) {
+      if ( lsr_state > 0.0 && lsr_state < 0.2 ) {
   
         lsr_check = true;
         ROS_INFO("LShoulderRoll position correct...");
@@ -471,7 +471,7 @@ int main(int argc, char **argv) {
       //Adjusting left hand to desired position    
       ros::spinOnce();
     
-      if ( lh_state > 0.4 && lh_state < 0.5 ) {
+      if ( lh_state > 0.4 && lh_state < 0.6 ) {
   
         lh_check = true;
         ROS_INFO("LHand position correct...");
@@ -496,7 +496,7 @@ int main(int argc, char **argv) {
       //Adjusting right hand to desired position    
       ros::spinOnce();
     
-      if ( rh_state > 0.4 && rh_state < 0.5 ) {
+      if ( rh_state > 0.4 && rh_state < 0.6 ) {
   
         rh_check = true;
         ROS_INFO("RHand position correct...");
