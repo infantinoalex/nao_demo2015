@@ -171,7 +171,7 @@ int main(int argc, char **argv) {
       ros::spinOnce();
 
 
-      if ( hy_state > -0.05 && hy_state < 0.05 ) {
+      if ( hy_state > -0.1 && hy_state < 0.1 ) {
 
         hy_check = true;
         ROS_INFO("HeadYaw position correct...");
@@ -196,7 +196,7 @@ int main(int argc, char **argv) {
       //Adjusting head pitch to desired position    
       ros::spinOnce();
     
-      if ( hp_state > -0.05 && hp_state < 0.05 ) {
+      if ( hp_state > -0.1 && hp_state < 0.1 ) {
   
         hp_check = true;
         ROS_INFO("HeadPitch position correct...");
@@ -221,7 +221,7 @@ int main(int argc, char **argv) {
       //Adjusting left shoulder pitch to desired position    
       ros::spinOnce();
     
-      if ( lsp_state > 1.55 && lsp_state < 1.65 ) {
+      if ( lsp_state > 1.5 && lsp_state < 1.6 ) {
   
         lsp_check = true;
         ROS_INFO("LShoulderPitch position correct...");
@@ -246,7 +246,7 @@ int main(int argc, char **argv) {
       //Adjusting right shoulder pitch to desired position    
       ros::spinOnce();
     
-      if ( rsp_state > 1.55 && rsp_state < 1.65 ) {
+      if ( rsp_state > 1.5 && rsp_state < 1.6 ) {
   
         rsp_check = true;
         ROS_INFO("RShoulderPitch position correct...");
@@ -271,7 +271,7 @@ int main(int argc, char **argv) {
       //Adjusting left shoulder roll to desired position    
       ros::spinOnce();
     
-      if ( lsr_state > -0.05 && lsr_state < 0.05 ) {
+      if ( lsr_state > -0.1 && lsr_state < 0.1 ) {
   
         lsr_check = true;
         ROS_INFO("LShoulderRoll position correct...");
@@ -296,7 +296,7 @@ int main(int argc, char **argv) {
       //Adjusting right shoulder roll to desired position    
       ros::spinOnce();
     
-      if ( rsr_state > -0.05 && rsr_state < 0.05 ) {
+      if ( rsr_state > -0.1 && rsr_state < 0.1 ) {
   
         rsr_check = true;
         ROS_INFO("RShoulderRoll position correct...");
@@ -321,7 +321,7 @@ int main(int argc, char **argv) {
       //Adjusting left elbow yaw to desired position    
       ros::spinOnce();
     
-      if ( ley_state > -0.05 && ley_state < 0.05 ) {
+      if ( ley_state > -0.1 && ley_state < 0.1 ) {
   
         ley_check = true;
         ROS_INFO("LElbowYaw position correct...");
@@ -346,7 +346,7 @@ int main(int argc, char **argv) {
       //Adjusting right elbow yaw to desired position    
       ros::spinOnce();
     
-      if ( rey_state > -0.05 && rey_state < 0.05 ) {
+      if ( rey_state > -0.1 && rey_state < 0.1 ) {
   
         rey_check = true;
         ROS_INFO("RElbowYaw position correct...");
@@ -371,7 +371,7 @@ int main(int argc, char **argv) {
       //Adjusting left elbow roll to desired position    
       ros::spinOnce();
     
-      if ( ler_state > -0.05 && ler_state < 0.05 ) {
+      if ( ler_state > -0.1 && ler_state < 0.1 ) {
   
         ler_check = true;
         ROS_INFO("LElbowRoll position correct...");
@@ -396,7 +396,7 @@ int main(int argc, char **argv) {
       //Adjusting right elbow roll to desired position    
       ros::spinOnce();
     
-      if ( rer_state > -0.05 && rer_state < 0.05 ) {
+      if ( rer_state > -0.1 && rer_state < 0.1 ) {
   
         rer_check = true;
         ROS_INFO("RElbowRoll position correct...");
@@ -421,7 +421,7 @@ int main(int argc, char **argv) {
       //Adjusting left wrist yaw to desired position    
       ros::spinOnce();
     
-      if ( lwy_state > -0.05 && lwy_state < 0.05 ) {
+      if ( lwy_state > -0.1 && lwy_state < 0.1 ) {
   
         lwy_check = true;
         ROS_INFO("LWristYaw position correct...");
@@ -446,7 +446,7 @@ int main(int argc, char **argv) {
       //Adjusting right wrist yaw to desired position    
       ros::spinOnce();
     
-      if ( rwy_state > -0.05 && rwy_state < 0.05 ) {
+      if ( rwy_state > -0.1 && rwy_state < 0.1 ) {
   
         rwy_check = true;
         ROS_INFO("RWristYaw position correct...");
@@ -471,7 +471,7 @@ int main(int argc, char **argv) {
       //Adjusting left hand to desired position    
       ros::spinOnce();
     
-      if ( lh_state > 0.45 && lh_state < 0.55 ) {
+      if ( lh_state > 0.4 && lh_state < 0.5 ) {
   
         lh_check = true;
         ROS_INFO("LHand position correct...");
@@ -496,7 +496,7 @@ int main(int argc, char **argv) {
       //Adjusting right hand to desired position    
       ros::spinOnce();
     
-      if ( rh_state > 0.45 && rh_state < 0.55 ) {
+      if ( rh_state > 0.4 && rh_state < 0.5 ) {
   
         rh_check = true;
         ROS_INFO("RHand position correct...");
@@ -521,7 +521,7 @@ int main(int argc, char **argv) {
       //Adjusting hip yaw pitch to desired position    
       ros::spinOnce();
     
-      if ( lhyp_state > 1.55 && lhyp_state < 1.65 ) {
+      if ( lhyp_state > -0.1 && lhyp_state < 0.1 ) {
   
         lhyp_check = true;
         ROS_INFO("LHipYawPitch position correct...");
@@ -546,7 +546,7 @@ int main(int argc, char **argv) {
       //Adjusting right hip yaw pitch to desired position    
       ros::spinOnce();
     
-      if ( rhyp_state > 1.55 && rhyp_state < 1.65 ) {
+      if ( rhyp_state > -0.1 && rhyp_state < 0.1 ) {
   
         rhyp_check = true;
         ROS_INFO("RHipYawPitch position correct...");
@@ -571,7 +571,7 @@ int main(int argc, char **argv) {
       //Adjusting left hip pitch to desired position    
       ros::spinOnce();
     
-      if ( lhp_state > 1.55 && lhp_state < 1.65 ) {
+      if ( lhp_state > -0.1 && lhp_state < 0.1 ) {
   
         lhp_check = true;
         ROS_INFO("LHipPitch position correct...");
@@ -596,7 +596,7 @@ int main(int argc, char **argv) {
       //Adjusting right hip pitch to desired position    
       ros::spinOnce();
     
-      if ( rhp_state > 1.55 && rhp_state < 1.65 ) {
+      if ( rhp_state > -0.1 && rhp_state < 0.1 ) {
   
         rhp_check = true;
         ROS_INFO("RHipPitch position correct...");
@@ -621,7 +621,7 @@ int main(int argc, char **argv) {
       //Adjusting left hip roll to desired position    
       ros::spinOnce();
     
-      if ( lhr_state > 1.55 && lhr_state < 1.65 ) {
+      if ( lhr_state > -0.1 && lhr_state < 0.1 ) {
   
         lhr_check = true;
         ROS_INFO("LHipRoll position correct...");
@@ -646,7 +646,7 @@ int main(int argc, char **argv) {
       //Adjusting right hip roll to desired position    
       ros::spinOnce();
     
-      if ( rhr_state > 1.55 && rhr_state < 1.65 ) {
+      if ( rhr_state > -0.1 && rhr_state < 0.1 ) {
   
         rhr_check = true;
         ROS_INFO("RHipRoll position correct...");
@@ -671,7 +671,7 @@ int main(int argc, char **argv) {
       //Adjusting left knee pitch to desired position    
       ros::spinOnce();
     
-      if ( lkp_state > 1.55 && lkp_state < 1.65 ) {
+      if ( lkp_state > -0.1 && lkp_state < 0.1 ) {
   
         lkp_check = true;
         ROS_INFO("LKneePitch position correct...");
@@ -696,7 +696,7 @@ int main(int argc, char **argv) {
       //Adjusting right knee pitch to desired position    
       ros::spinOnce();
     
-      if ( rkp_state > 1.55 && rkp_state < 1.65 ) {
+      if ( rkp_state > -0.1 && rkp_state < 0.1 ) {
   
         rkp_check = true;
         ROS_INFO("RKneePitch position correct...");
@@ -721,7 +721,7 @@ int main(int argc, char **argv) {
       //Adjusting left ankle pitch to desired position    
       ros::spinOnce();
     
-      if ( lap_state > 1.55 && lap_state < 1.65 ) {
+      if ( lap_state > -0.1 && lap_state < 0.1 ) {
   
         lap_check = true;
         ROS_INFO("LAnklePitch position correct...");
@@ -746,7 +746,7 @@ int main(int argc, char **argv) {
       //Adjusting right ankle pitch to desired position    
       ros::spinOnce();
     
-      if ( rap_state > 1.55 && rap_state < 1.65 ) {
+      if ( rap_state > -0.1 && rap_state < 0.1 ) {
   
         rap_check = true;
         ROS_INFO("RAnklePitch position correct...");
@@ -771,7 +771,7 @@ int main(int argc, char **argv) {
       //Adjusting left ankle roll to desired position    
       ros::spinOnce();
     
-      if ( lar_state > 1.55 && lar_state < 1.65 ) {
+      if ( lar_state > -0.1 && lar_state < 0.1 ) {
   
         lar_check = true;
         ROS_INFO("LAnkleRoll position correct...");
@@ -796,7 +796,7 @@ int main(int argc, char **argv) {
       //Adjusting right ankle roll to desired position    
       ros::spinOnce();
     
-      if ( rar_state > 1.55 && rar_state < 1.65 ) {
+      if ( rar_state > -0.1 && rar_state < 0.1 ) {
   
         rar_check = true;
         ROS_INFO("RAnkleRoll position correct...");
