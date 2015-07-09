@@ -3,30 +3,41 @@
 #include "sensor_msgs/Range.h"
 #include "geometry_msgs/Twist.h"
 
+// Global variables to store sonar information
 float rsonarr, lsonarr;
 
+// Left sonar callback function to update sonar data 
 void sonarleftcb(const sensor_msgs::Range::ConstPtr& LeftSonar){
 	lsonarr = LeftSonar->range;
 }
 
+// Right sonar callback function to update sonar data
 void sonarrightcb(const sensor_msgs::Range::ConstPtr& RightSonar){
 	rsonarr = RightSonar->range;
 }
 
+/* This program makes the nao walk
+   to not run into things, it is subscribed to its two sonar topics
+   and operates according to those */
 int main(int argc, char ** argv){
+	// initializing ros
 	ros::init(argc, argv, "Walk_Detect");
 	ros::NodeHandle n;
 	ros::Rate loop_rate(50);
 
+	// delcares the two subscribes so that it can retrieve the sonar values for each sonar
 	ros::Subscriber sub_0 = n.subscribe("/nao_robot/sonar/left/sonar", 100, sonarleftcb);
 	ros::Subscriber sub_1 = n.subscribe("/nao_robot/sonar/right/sonar", 100, sonarrightcb);
 	
+	// publishers to make the nao talk/move
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
 	ros::Publisher move = n.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
 
 	std_msgs::String words;
 	geometry_msgs::Twist direct, stop;
 
+	// declarations of the stop variable values so that a simple publish to stop
+	// will make the robot stop
 	stop.linear.x = 0;
         stop.linear.y = 0;
         stop.linear.z = 0;
@@ -36,72 +47,59 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
-		move.publish(stop);
-		loop_rate.sleep();
-		ros::spinOnce();
+		//move.publish(stop);
+		//loop_rate.sleep();
+		//ros::spinOnce();
+		// if nothing is too close to the nao, it will just move forward
 		if(rsonarr >= 0.3 && lsonarr >= 0.3){
 			while(rsonarr >= 0.3 && lsonarr >= 0.3){
 				ROS_INFO("MOVING STRAIGHT\n");
 				direct.linear.x = 0.3;
+				direct.angular.z = -0.1;
 				move.publish(direct);
-				direct.linear.x = 0;
 				loop_rate.sleep();
 				ros::spinOnce();
 			}
 		}
-		if(rsonarr < 0.3 && lsonarr > 0.3){
+		// if an object is too close to the right side, the nao will turn left
+		else if(rsonarr < 0.3 && lsonarr > 0.3){
 			while(rsonarr < 0.3 && lsonarr > 0.3){
 				ROS_INFO("RIGHT SIDE TO CLOSE");
 				ROS_INFO("MOVING LEFT\n");
-				//move.publish(stop);
 				loop_rate.sleep();
 				direct.angular.z = 0.3;
 				direct.linear.x = -0.2;
 				move.publish(direct);
 				loop_rate.sleep();
-				//move.publish(stop);
-				direct.angular.z = 0;
-				direct.linear.x = 0;
-				loop_rate.sleep();
 				ros::spinOnce();
 			}
 		}
-		if(rsonarr > 0.3 && lsonarr < 0.3){
+		// if an object is too close to the left side, the nao will turn right
+		else if(rsonarr > 0.3 && lsonarr < 0.3){
 			while(rsonarr > 0.3 && lsonarr < 0.3){
 				ROS_INFO("LEFT SIDE TOO CLOSE");
 				ROS_INFO("MOVING RIGHT\n");
-				//move.publish(stop);
 				loop_rate.sleep();
 				direct.angular.z = -0.3;
 				direct.linear.x = -0.2;
 				move.publish(direct);
 				loop_rate.sleep();
-				//move.publish(stop);
-				direct.angular.z = 0;
-				direct.linear.x = 0;
-				loop_rate.sleep();
 				ros::spinOnce();
 			}
 		}
-		while(rsonarr < 0.26 && lsonarr < 0.26){
-			ROS_INFO("TOO CLOSE");
-			ROS_INFO("BACKING UP\n");
-			//move.publish(stop);
-			loop_rate.sleep();
-			direct.linear.x = -0.5;
-			move.publish(direct);
-			loop_rate.sleep();
-			//move.publish(stop);
-			direct.linear.x = 0;
-			loop_rate.sleep();
-			ros::spinOnce();
+		// if an object is too close, the nao will back up
+		else{
+			while(rsonarr < 0.3 && lsonarr < 0.3){
+				ROS_INFO("TOO CLOSE");
+				ROS_INFO("BACKING UP\n");
+				loop_rate.sleep();
+				direct.linear.x = -0.5;
+				direct.angular.z = 0;
+				move.publish(direct);
+				loop_rate.sleep();
+				ros::spinOnce();
+			}	
 		}
-		//else{
-			//ROS_INFO("UNKNOWN ERROR\n");
-			//loop_rate.sleep();
-			//ros::spinOnce();
-		//}
-	}
-	
+	}	
 	return 0;
 }
