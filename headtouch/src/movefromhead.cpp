@@ -83,7 +83,7 @@ int main(int argc, char ** argv){
 			ROS_INFO("MOVING FORWARDS\n");
 			words.data = "Moving Forwards";
 			talk.publish(words);
-			directions.linear.x = 1;
+			directions.linear.x = 0.5;
 			pub.publish(directions);
 			front = false;
 			loop_rate.sleep();
@@ -102,14 +102,13 @@ int main(int argc, char ** argv){
 			ROS_INFO("MOVING BACKWARDS\n");
 			words.data = "Moving Backwards";
 			talk.publish(words);
-			directions.linear.x = -1;
+			directions.linear.x = -0.5;
 			pub.publish(directions);
 			back = false;
 			loop_rate.sleep();
 			ros::spinOnce();
 		}
 		else if((bumperp == 0 || bumperp == 1) && bumpers == 1){
-			ros::spinOnce();
 			ROS_INFO("BUMPER HIT: BACKING UP");
 			words.data = "Foot Bumper Contact Backing Up";
 			pub.publish(stop);
