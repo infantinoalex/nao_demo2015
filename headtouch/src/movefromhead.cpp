@@ -106,12 +106,16 @@ int main(int argc, char ** argv){
 			back = false;
 			ros::spinOnce();
 		}
-		else if(bumpers == 1){
+		else if((bumperp == 0 || bumperp == 1) && bumpers == 1){
 			ros::spinOnce();
 			ROS_INFO("BUMPER HIT: STOPPING\n");
 			words.data = "Foot Bumper Contact Stopping";
 			talk.publish(words);
 			pub.publish(stop);
+			ros::Duration(2).sleep();
+			words.data = "Please Move Me Away From The Obstruction";
+			pub.publish(words);
+			ros::Duration(10).sleep();
 			ros::spinOnce();
 		}
 		else if(!onground){
