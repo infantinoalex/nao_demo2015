@@ -330,7 +330,7 @@ int main(int argc, char **argv) {
     ros::Duration(1).sleep();
 
    /************************************************/
-
+    /*
     //narration.data = "Now do the running man.";
     pub_narration.publish(narration);
 
@@ -376,9 +376,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rar);
 
     ros::Duration(1).sleep();
-   
+    */
    /************************************************/
-
+    /*
     //narration.data = "Adjusting back leg.";
     pub_narration.publish(narration);
 
@@ -416,9 +416,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rar);
 
     ros::Duration(1).sleep();
-   
+    */
    /************************************************/
-
+    /*
     //narration.data = "Back leg stable.";
     pub_narration.publish(narration);
 
@@ -452,9 +452,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rar);
 
     ros::Duration(1).sleep();
-   
+    */
    /************************************************/
-
+    /*
     //narration.data = "Only one hand now.";
     pub_narration.publish(narration);
 
@@ -467,9 +467,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rsr);
 
     ros::Duration(3).sleep();
-   
+    */
    /************************************************/
-
+    /*
     //narration.data = "Assuming stable position.";
     pub_narration.publish(narration);
 
@@ -503,9 +503,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rap);
 
     ros::Duration(1).sleep();
-   
+    */
    /************************************************/
-
+    /*
     //narration.data = "Closing hips.";
     pub_narration.publish(narration);
 
@@ -514,9 +514,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rhr);
 
     ros::Duration(1).sleep();
-   
+    */
    /************************************************/
-
+    /*
     //narration.data = "Look ma, no hands.";
     pub_narration.publish(narration);
 
@@ -529,12 +529,12 @@ int main(int argc, char **argv) {
     pub_move.publish(lsr);
 
     ros::Duration(2).sleep();
-   
+    */
    /************************************************/
-
+    /*
     //narration.data = "Trying to get up.";
     pub_narration.publish(narration);
-    /*
+    
     lhyp.joint_angles[0] = -0.9;
     lhyp.speed = 1.0;
     pub_move.publish(lhyp);
@@ -542,11 +542,11 @@ int main(int argc, char **argv) {
     lhp.joint_angles[0] = -0.9;
     lhp.speed = 1.0;
     pub_move.publish(lhp);
-    */
+    
     lap.joint_angles[0] = 0.2;
     lap.speed = 0.01;
     pub_move.publish(lap);
-    
+    */
     /*
     lkp.joint_angles[0] = 1.6;
     lkp.speed = 0.5;
@@ -572,7 +572,7 @@ int main(int argc, char **argv) {
     rap.joint_angles[0] = 0.6;
     rap.speed = 0.5;
     pub_move.publish(rap);
-    */
+    
     rar.joint_angles[0] = 0.4;
     rar.speed = 0.5;
     pub_move.publish(rar);
@@ -580,6 +580,7 @@ int main(int argc, char **argv) {
     ros::Duration(3).sleep();
     
     ros::Duration(10).sleep();
+    */
    /************************************************/
 
     ros::Duration(3).sleep();
