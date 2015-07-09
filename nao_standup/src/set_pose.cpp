@@ -283,7 +283,7 @@ int main(int argc, char **argv) {
         ROS_INFO("LShoulderRoll position incorrect...");
         ROS_INFO("Moving LShoulderRoll to the correct position...");
   
-        lsr.joint_angles[0] = 0.0;
+        lsr.joint_angles[0] = 0.1;
         lsr.speed = 0.5;
         pub_move.publish(lsr);
   
@@ -308,7 +308,7 @@ int main(int argc, char **argv) {
         ROS_INFO("RShoulderRoll position incorrect...");
         ROS_INFO("Moving RShoulderRoll to the correct position...");
   
-        rsr.joint_angles[0] = 0.0;
+        rsr.joint_angles[0] = 0.1;
         rsr.speed = 0.5;
         pub_move.publish(rsr);
   
@@ -342,7 +342,7 @@ int main(int argc, char **argv) {
       }
   
       /************************************************/
-//ppp
+
       //Adjusting right elbow yaw to desired position    
       ros::spinOnce();
     
@@ -515,7 +515,7 @@ int main(int argc, char **argv) {
         ros::Duration(1).sleep();
   
       }
-  //ppp
+  
       /************************************************/
        
       //Adjusting hip yaw pitch to desired position    
