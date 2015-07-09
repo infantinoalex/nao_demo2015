@@ -6,7 +6,7 @@
 #include "std_msgs/Bool.h"
 
 int buttonn, buttonp, bumperp, bumpers;
-bool onground;
+bool onground = true;
 
 void headcb(const nao_msgs::TactileTouch::ConstPtr& Buttons){
 	buttonn = Buttons->button;
@@ -47,7 +47,6 @@ int main(int argc, char ** argv){
 	int i;
 
 	while(ros::ok()){
-		loop_rate.sleep();
 		ros::spinOnce();
 		if(buttonn == 1 && buttonp == 1){
 			ROS_INFO("FRONT BUTTON HIT\n");
@@ -115,7 +114,8 @@ int main(int argc, char ** argv){
 			for(i = 0; i < 10; i++){
 				loop_rate.sleep();
 			}
-			directions.linear.x = -1;
+			directions.linear.x = -0.5;
+			directions.angular.z = 0.5;
 			pub.publish(directions);
 			talk.publish(words);
 			ros::Duration(2).sleep();
