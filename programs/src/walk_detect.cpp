@@ -91,12 +91,12 @@ int main(int argc, char ** argv){
 			ros::shutdown();
 		}
 		else{
-			if(rsonarr >= 0.3 && lsonarr >= 0.3){
-				while(rsonarr >= 0.3 && lsonarr >= 0.3){
+			if(rsonarr >= 0.4 && lsonarr >= 0.4){
+				while(rsonarr >= 0.4 && lsonarr >= 0.4){
 					// if statement so that ROS_INFO will not be constantly printed out
 					if(i == 0){
 						ROS_INFO("MOVING STRAIGHT\n");
-						direct.linear.x = 0.3;
+						direct.linear.x = 0.5;
 						direct.angular.z = -0.05;
 						move.publish(direct);
 						loop_rate.sleep();
@@ -111,8 +111,8 @@ int main(int argc, char ** argv){
 				}
 			}
 			// if an object is too close to the right side, the nao will turn left
-			else if(rsonarr < 0.3 && lsonarr > 0.3){
-				while(rsonarr < 0.3 && lsonarr > 0.3){
+			else if(rsonarr < 0.4 && lsonarr > 0.4){
+				while(rsonarr < 0.4 && lsonarr > 0.4){
 					// if statement so that ROS_INFO will not be constantly printed out
 					if(i == 0){
 						ROS_INFO("RIGHT SIDE TO CLOSE");
@@ -133,8 +133,8 @@ int main(int argc, char ** argv){
 				}
 			}
 			// if an object is too close to the left side, the nao will turn right
-			else if(rsonarr > 0.3 && lsonarr < 0.3){
-				while(rsonarr > 0.3 && lsonarr < 0.3){
+			else if(rsonarr > 0.4 && lsonarr < 0.4){
+				while(rsonarr > 0.4 && lsonarr < 0.4){
 					// if statement so that ROS_INFO will not be constantly printed out
 					if(i == 0){
 						ROS_INFO("LEFT SIDE TOO CLOSE");
@@ -156,7 +156,7 @@ int main(int argc, char ** argv){
 			}
 			// if an object is too close, the nao will back up
 			else{
-				while(rsonarr < 0.3 && lsonarr < 0.3){
+				while(rsonarr < 0.4 && lsonarr < 0.4){
 					// if statement so that ROS_INFO will not be constantly printed out
 					if(i == 0){
 						ROS_INFO("TOO CLOSE");
