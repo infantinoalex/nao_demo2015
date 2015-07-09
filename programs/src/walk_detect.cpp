@@ -62,7 +62,7 @@ int main(int argc, char ** argv){
 	while(ros::ok()){
 		ros::spinOnce();
 		i = 0;
-		move.publish(stop);
+		//move.publish(stop);
 		loop_rate.sleep();
 		ros::spinOnce();
 		// if nothing is too close to the nao, it will just move forward
@@ -72,7 +72,7 @@ int main(int argc, char ** argv){
 			words.data = "I HAVE FALLEN DOWN";
 			talk.publish(words);
 			ros::Duration(2).sleep();
-			words.data = "SHUTTIN DOWN NODE";
+			words.data = "SHUTTIN DOWN";
 			talk.publish(words);
 			ros::Duration(1).sleep();
 			loop_rate.sleep();
@@ -97,7 +97,7 @@ int main(int argc, char ** argv){
 					if(i == 0){
 						ROS_INFO("MOVING STRAIGHT\n");
 						direct.linear.x = 0.3;
-						direct.angular.z = -0.1;
+						direct.angular.z = -0.05;
 						move.publish(direct);
 						loop_rate.sleep();
 						ros::spinOnce();
