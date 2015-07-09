@@ -360,7 +360,7 @@ int main(int argc, char **argv) {
   
         rey.joint_angles[0] = 0.0;
         rey.speed = 0.5;
-        pub_move.publish(ley);
+        pub_move.publish(rey);
   
         ros::Duration(1).sleep();
   
