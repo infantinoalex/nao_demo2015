@@ -544,7 +544,7 @@ int main(int argc, char **argv) {
     ros::Duration(5).sleep();
     
    /************************************************/
- 
+    /*
     //narration.data = "Knees together.";
     pub_narration.publish(narration);
 
@@ -577,7 +577,7 @@ int main(int argc, char **argv) {
     pub_move.publish(rar);
 
     ros::Duration(5).sleep();
-    
+    */ 
    /************************************************/
    /*
     //narration.data = "Now do the running man.";
