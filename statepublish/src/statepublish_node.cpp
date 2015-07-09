@@ -1,6 +1,5 @@
 #include "ros/ros.h"
 #include "std_msgs/Bool.h"
-#include "custom_msgs/isit.h"
 #include "sensor_msgs/Imu.h"
 #include "std_msgs/String.h"
 
@@ -23,7 +22,6 @@ int main(int argc, char ** argv){
 	ros::init(argc, argv, "statepublish_node");
 	ros::NodeHandle n;
 	
-	//ros::Publisher topic_publish = n.advertise<custom_msgs::isit>("publishit", 100);
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
 	ros::Subscriber sub = n.subscribe("/imu", 100, callback);
 
