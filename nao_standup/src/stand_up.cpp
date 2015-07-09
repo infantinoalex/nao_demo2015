@@ -442,7 +442,39 @@ int main(int argc, char **argv) {
     ros::Duration(2).sleep();
 
    /************************************************/
-   /*
+     
+    //narration.data = "Only one hand now.";
+    pub_narration.publish(narration);
+
+    lsr.joint_angles[0] = -0.8;
+    rsr.joint_angles[0] = 0.8;
+    lsr.speed = 0.5;
+    rsr.speed = 0.5;
+    pub_move.publish(lsr);
+    pub_move.publish(rsr);
+
+    ros::Duration(1).sleep();
+
+    lsp.joint_angles[0] = 2.0;
+    rsp.joint_angles[0] = 2.0;
+    lsp.speed = 0.5;
+    rsp.speed = 0.5;
+    pub_move.publish(lsp);
+    pub_move.publish(rsp);
+
+    ros::Duration(1).sleep();
+
+    lsr.joint_angles[0] = -0.15;
+    rsr.joint_angles[0] = 0.15;
+    lsr.speed = 0.5;
+    rsr.speed = 0.5;
+    pub_move.publish(lsr);
+    pub_move.publish(rsr);
+
+    ros::Duration(3).sleep();
+    
+   /************************************************/
+  /*
     //narration.data = "Sit up a bit.";
     pub_narration.publish(narration);
 
