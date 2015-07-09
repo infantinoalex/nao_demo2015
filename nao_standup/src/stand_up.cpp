@@ -432,8 +432,8 @@ int main(int argc, char **argv) {
     pub_move.publish(lap);
     pub_move.publish(rap);
 
-    lar.joint_angles[0] = 0.3;
-    rar.joint_angles[0] = -0.3;
+    lar.joint_angles[0] = 0.05;
+    rar.joint_angles[0] = -0.05;
     lar.speed = 0.5;
     rar.speed = 0.5;
     pub_move.publish(lar);
