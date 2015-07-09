@@ -39,49 +39,50 @@ int main(int argc, char ** argv){
 		move.publish(stop);
 		loop_rate.sleep();
 		ros::spinOnce();
-		while(rsonarr >= 0.3 && lsonarr >= 0.3){
-			ROS_INFO("MOVING STRAIGHT\n");
-			direct.linear.x = 0.3;
-			move.publish(direct);
-			direct.linear.x = 0;
-			loop_rate.sleep();
-			ros::spinOnce();
+		if(rsonarr >= 0.3 && lsonarr >= 0.3){
+			while(rsonarr >= 0.3 && lsonarr >= 0.3){
+				ROS_INFO("MOVING STRAIGHT\n");
+				direct.linear.x = 0.3;
+				move.publish(direct);
+				direct.linear.x = 0;
+				loop_rate.sleep();
+				ros::spinOnce();
+			}
 		}
-		move.publish(stop);
-		loop_rate.sleep();
-		ros::spinOnce();
-		while(rsonarr < 0.3 && lsonarr > 0.3){
-			ROS_INFO("RIGHT SIDE TO CLOSE");
-			ROS_INFO("MOVING LEFT\n");
-			//move.publish(stop);
-			loop_rate.sleep();
-			direct.angular.z = 0.3;
-			move.publish(direct);
-			loop_rate.sleep();
-			//move.publish(stop);
-			direct.angular.z = 0;
-			loop_rate.sleep();
-			ros::spinOnce();
+		if(rsonarr < 0.3 && lsonarr > 0.3){
+			while(rsonarr < 0.3 && lsonarr > 0.3){
+				ROS_INFO("RIGHT SIDE TO CLOSE");
+				ROS_INFO("MOVING LEFT\n");
+				//move.publish(stop);
+				loop_rate.sleep();
+				direct.angular.z = 0.3;
+				direct.linear.x = -0.2;
+				move.publish(direct);
+				loop_rate.sleep();
+				//move.publish(stop);
+				direct.angular.z = 0;
+				direct.linear.x = 0;
+				loop_rate.sleep();
+				ros::spinOnce();
+			}
 		}
-		move.publish(stop);
-		loop_rate.sleep();
-		ros::spinOnce();
-		while(rsonarr > 0.3 && lsonarr < 0.3){
-			ROS_INFO("LEFT SIDE TOO CLOSE");
-			ROS_INFO("MOVING RIGHT\n");
-			//move.publish(stop);
-			loop_rate.sleep();
-			direct.angular.z = -0.3;
-			move.publish(direct);
-			loop_rate.sleep();
-			//move.publish(stop);
-			direct.angular.z = 0;
-			loop_rate.sleep();
-			ros::spinOnce();
+		if(rsonarr > 0.3 && lsonarr < 0.3){
+			while(rsonarr > 0.3 && lsonarr < 0.3){
+				ROS_INFO("LEFT SIDE TOO CLOSE");
+				ROS_INFO("MOVING RIGHT\n");
+				//move.publish(stop);
+				loop_rate.sleep();
+				direct.angular.z = -0.3;
+				direct.linear.x = -0.2;
+				move.publish(direct);
+				loop_rate.sleep();
+				//move.publish(stop);
+				direct.angular.z = 0;
+				direct.linear.x = 0;
+				loop_rate.sleep();
+				ros::spinOnce();
+			}
 		}
-		move.publish(stop);
-		loop_rate.sleep();
-		ros::spinOnce();
 		while(rsonarr < 0.26 && lsonarr < 0.26){
 			ROS_INFO("TOO CLOSE");
 			ROS_INFO("BACKING UP\n");
