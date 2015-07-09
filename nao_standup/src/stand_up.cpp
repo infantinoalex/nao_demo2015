@@ -404,8 +404,8 @@ int main(int argc, char **argv) {
     //narration.data = "Close hips a smidge.";
     pub_narration.publish(narration);
 
-    lhyp.joint_angles[0] = -0.8;
-    rhyp.joint_angles[0] = -0.8;
+    lhyp.joint_angles[0] = -1.15;
+    rhyp.joint_angles[0] = -1.15;
     lhyp.speed = 0.5;
     rhyp.speed = 0.5;
     pub_move.publish(lhyp);
