@@ -126,6 +126,18 @@ int main(int argc, char ** argv){
 						i++;
 					}
 					else{
+						if(rsonarr < 0.32 && lsonarr < 0.32){
+							while(rsonarr < 0.32 && lsonarr < 0.32){
+								ROS_INFO("TOO CLOSE");
+								ROS_INFO("BACKING UP\n");
+								loop_rate.sleep();
+								direct.linear.x = -0.5;
+								direct.angular.z = 0;
+								move.publish(direct);
+								loop_rate.sleep();
+								ros::spinOnce();
+							}
+						}
 						loop_rate.sleep();
 						ros::spinOnce();
 						i++;
@@ -148,6 +160,18 @@ int main(int argc, char ** argv){
 						i++;
 					}
 					else{
+						if(rsonarr < 0.32 && lsonarr < 0.32){
+							while(rsonarr < 0.32 && lsonarr < 0.32){
+								ROS_INFO("TOO CLOSE");
+								ROS_INFO("BACKING UP\n");
+								loop_rate.sleep();
+								direct.linear.x = -0.5;
+								direct.angular.z = 0;
+								move.publish(direct);
+								loop_rate.sleep();
+								ros::spinOnce();
+							}
+						}
 						loop_rate.sleep();
 						ros::spinOnce();
 						i++;
