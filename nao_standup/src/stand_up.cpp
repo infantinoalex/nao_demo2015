@@ -452,14 +452,14 @@ int main(int argc, char **argv) {
     rhyp.speed = 0.5;
     pub_move.publish(lhyp);
     pub_move.publish(rhyp);
-
+    /*
     lhp.joint_angles[0] = -1.5;
     rhp.joint_angles[0] = -1.5;
     lhp.speed = 0.5;
     rhp.speed = 0.5;
     pub_move.publish(lhp);
     pub_move.publish(rhp);
-
+    */
     lap.joint_angles[0] = -0.65;
     rap.joint_angles[0] = -0.65;
     lap.speed = 0.5;
