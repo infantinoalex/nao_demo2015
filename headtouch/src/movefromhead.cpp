@@ -120,6 +120,7 @@ int main(int argc, char ** argv){
 			talk.publish(words);
 			ros::Duration(2).sleep();
 			pub.publish(stop);
+			directions.angular.z = 0;
 			ros::Duration(1).sleep();
 			pub.publish(stop);
 			words.data = "Please Make Sure I Am Away From The Obstruction";
