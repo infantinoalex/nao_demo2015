@@ -114,12 +114,16 @@ int main(int argc, char ** argv){
 			pub.publish(stop);
 			ros::spinOnce();
 		}
-		else if(onground){
+		else if(!onground){
 			ros::spinOnce();
 			ROS_INFO("FEET OFF GROUND: STOPPING\n");
 			words.data = "Feet Off Ground Stopping";
 			talk.publish(words);
 			pub.publish(stop);
+			ros::Duration(2).sleep();
+			words.data = "Please Put Me Back On The Ground";
+			talk.publish(words);
+			ros::Duration(10).sleep();
 			ros::spinOnce();
 		}
 		else{
