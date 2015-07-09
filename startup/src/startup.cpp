@@ -105,7 +105,7 @@ int main(int argc, char ** argv){
 
 			ros::spinOnce();
 			loop_rate.sleep();
-			if(php < -0.1 || php > 0.1){ //!= 0.06438612937927246){
+			if(php < -0.2 || php > 0.2){ //!= 0.06438612937927246){
 				ROS_INFO("HEAD PITCH INCORRECT");
 				ROS_INFO("HEADPITCH: %f", php);
 				ROS_INFO("MOVING HEAD PITCH TO STARTUP POSITION\n");
@@ -273,7 +273,7 @@ int main(int argc, char ** argv){
 		
 			ros::spinOnce();
 			loop_rate.sleep();
-			if(prsr < -0.2 || prsr > -0.1){ //!= -0.16571402549743652){
+			if(prsr < -0.3 || prsr > -0.1){ //!= -0.16571402549743652){
 				ROS_INFO("RIGHT SHOULDER ROLL INCORRECT");
 				ROS_INFO("RSHOULDERROLL: %f", prsr);
 				ROS_INFO("MOVING RIGHT SHOULDER ROLL TO STARTUP POSITION\n");
@@ -287,7 +287,7 @@ int main(int argc, char ** argv){
 			else{
 				ROS_INFO("RIGHT SHOULDER ROLL IS IN CORRECT STARTUP POSITION");
 				loop_rate.sleep();
-				ros::Duration(1).sleep();
+				//ros::Duration(1).sleep();
 				brsr = true;
 			}
 		
@@ -381,20 +381,38 @@ int main(int argc, char ** argv){
 		else{
 			/* After going through this function, the robot should be standing appropriately in the startup pose */
 			ROS_INFO("STARTUP COMPLETE");
+			ros::Duration(1).sleep();
+			ROS_INFO("SHUTTING DOWN NODE IN");
+			ros::Duration(0.5).sleep();
+			ROS_INFO("5");
+			ros::Duration(1).sleep();
+			ROS_INFO("4");
+			ros::Duration(1).sleep();
+			ROS_INFO("3");
+			ros::Duration(1).sleep();
+			ROS_INFO("2");
+			ros::Duration(1).sleep();
+			ROS_INFO("1");
+			ros::Duration(1).sleep();
+			ROS_INFO("GOODBYE\n");
+			ros::Duration(1).sleep();
+		
+			ros::shutdown();
 		
 			/* publish message to main node saying this is complete */
 			//pub.message.startup = false;			
 
-			ROS_INFO("WAITING TO BE NEEDED AGAIN\n");
-			while(checkit == false){
+			//ROS_INFO("WAITING TO BE NEEDED AGAIN\n");
+			//while(checkit == false){
 				/* waiting for main node to publisg message telling this node to run again */
-				ros::spinOnce();
-				loop_rate.sleep();
+				//ros::spinOnce();
+				//loop_rate.sleep();
 				//if(message.startup == true){
 					//checkit = true;
 				//}
-			}
-			ROS_INFO("RESETTING TO DEFAULT POSITION\n");
+			//}
+			//ros::Duration(21).sleep();
+			//ROS_INFO("RESETTING TO DEFAULT POSITION\n");
 		}
 		ros::spinOnce();
 	}

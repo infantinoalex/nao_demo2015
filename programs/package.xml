@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>wavenao</name>
+  <name>programs</name>
   <version>0.0.0</version>
-  <description>The wavenao package</description>
+  <description>The programs package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
@@ -46,7 +46,6 @@
   <run_depend>nao_msgs</run_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>std_msgs</run_depend>
-
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

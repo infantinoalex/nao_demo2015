@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   nao_msgs
   roscpp
   std_msgs
+  geometry_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -104,6 +105,7 @@ include_directories(
 
 ## Declare a cpp executable
 add_executable(headtouch src/headtouch.cpp)
+add_executable(head_move src/movefromhead.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -111,6 +113,9 @@ add_executable(headtouch src/headtouch.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(headtouch
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(head_move
   ${catkin_LIBRARIES}
 )
 

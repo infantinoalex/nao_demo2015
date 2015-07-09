@@ -4,7 +4,6 @@
 #include "std_msgs/String.h"
 #include "nao_msgs/TactileTouch.h"
 #include "nao_msgs/JointAnglesWithSpeed.h"
-#include "custom_msgs/isit.h"
 
 int buttonn, buttonp;
 
@@ -15,21 +14,11 @@ void callback(const nao_msgs::TactileTouch::ConstPtr& Buttons){
 	buttonp = Buttons->state;
 }
 
-void gettingit(custom_msgs::isit gotit){
-	if(gotit.nodename == "headtouch"){
-		stringname == true;
-	}
-	else{
-		stringname == false;
-	}
-}
-
 int main(int argc, char ** argv){
 	ros::init(argc, argv, "headtouch");
 	ros::NodeHandle n;
 	ros::Rate loop_rate(1);
 
-	ros::Subscriber sub2 = n.subscribe("/publishit", 100, gettingit);
 	ros::Subscriber sub = n.subscribe("/tactile_touch", 100, callback);
 	ros::Publisher pub = n.advertise<std_msgs::String>("/speech", 100);
 	ros::Publisher move = n.advertise<nao_msgs::JointAnglesWithSpeed>("/joint_angles", 100);
@@ -51,22 +40,22 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
-		if(check){
-			if(stringname == true){
-				ROS_INFO("GOT HEADTOUCH\n");
-				ros::Duration(2).sleep();
-				loop_rate.sleep();
+	//	if(check){
+	//		if(stringname == true){
+	//			ROS_INFO("GOT HEADTOUCH\n");
+	//			ros::Duration(2).sleep();
+	//			loop_rate.sleep();
 				run = true;
-				check = false;
-			}
-			else{
-				ROS_INFO("WAITING FOR STATEPUBLISH\n");
-				ros::Duration(2).sleep();
-				loop_rate.sleep();
-				run = false;
-				check = true;
-			}
-		}
+	//			check = false;
+	//		}
+	//		else{
+	//			ROS_INFO("WAITING FOR STATEPUBLISH\n");
+	//			ros::Duration(2).sleep();
+	//			loop_rate.sleep();
+	//			run = false;
+	//			check = true;
+	//		}
+	//	}
 		// this one might need to be changed because I do not believe there is a way to determine
 		// if all the buttons are being pressed at once
 		loop_rate.sleep();

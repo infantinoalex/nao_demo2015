@@ -38,11 +38,11 @@ int main(int argc, char ** argv){
 		
 		//line.data = "Here we go";
 		//speak.publish(line);	
-		ros::Duration(1).sleep();
+		//ros::Duration(1).sleep();
 
 		//line.data = "The first thing you want to do is move your arm up over your head";
 		//speak.publish(line);
-		ros::Duration(3).sleep();
+		//ros::Duration(3).sleep();
 	
 		mrsr.joint_angles[0] = 0.3142;
 		mrsp.joint_angles[0] = -1;
