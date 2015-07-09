@@ -62,9 +62,9 @@ int main(int argc, char ** argv){
 	while(ros::ok()){
 		ros::spinOnce();
 		i = 0;
-		//move.publish(stop);
-		//loop_rate.sleep();
-		//ros::spinOnce();
+		move.publish(stop);
+		loop_rate.sleep();
+		ros::spinOnce();
 		// if nothing is too close to the nao, it will just move forward
 		if(!onground){
 			ROS_INFO("ROBOT IS NOT ON GROUND");
