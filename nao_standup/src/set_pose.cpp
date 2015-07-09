@@ -44,13 +44,10 @@ void callback(const sensor_msgs::JointState::ConstPtr& Joints){
 }
 
 
-
-
 int main(int argc, char **argv) {
 
   ros::init(argc, argv, "move_robot");
   ros::NodeHandle node;
-
 
   //All the publishers
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
@@ -155,13 +152,12 @@ int main(int argc, char **argv) {
   lar.joint_angles.push_back(0);
   rar.joint_angles.push_back(0);
 
-
   ros::Rate loop_rate(10); 
   while (ros::ok()) {
 
     /************************************************/
     
-    ros::Duration(2).sleep();
+    ros::Duration(1).sleep();
  
     if ( !all_good ) {
    
@@ -187,7 +183,7 @@ int main(int argc, char **argv) {
         hy.speed = 0.5;
         pub_move.publish(hy);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
        
@@ -212,7 +208,7 @@ int main(int argc, char **argv) {
         hp.speed = 0.5;
         pub_move.publish(hp);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -237,7 +233,7 @@ int main(int argc, char **argv) {
         lsp.speed = 0.5;
         pub_move.publish(lsp);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -262,7 +258,7 @@ int main(int argc, char **argv) {
         rsp.speed = 0.5;
         pub_move.publish(rsp);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -271,7 +267,7 @@ int main(int argc, char **argv) {
       //Adjusting left shoulder roll to desired position    
       ros::spinOnce();
     
-      if ( lsr_state > 0.0 && lsr_state < 0.2 ) {
+      if ( lsr_state > 0.1 && lsr_state < 0.3 ) {
   
         lsr_check = true;
         ROS_INFO("LShoulderRoll position correct...");
@@ -287,7 +283,7 @@ int main(int argc, char **argv) {
         lsr.speed = 0.5;
         pub_move.publish(lsr);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
 //  
@@ -296,7 +292,7 @@ int main(int argc, char **argv) {
       //Adjusting right shoulder roll to desired position    
       ros::spinOnce();
     
-      if ( rsr_state > 0.0 && rsr_state < 0.2 ) {
+      if ( rsr_state > 0.1 && rsr_state < 0.3 ) {
   
         rsr_check = true;
         ROS_INFO("RShoulderRoll position correct...");
@@ -312,7 +308,7 @@ int main(int argc, char **argv) {
         rsr.speed = 0.5;
         pub_move.publish(rsr);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -337,7 +333,7 @@ int main(int argc, char **argv) {
         ley.speed = 0.5;
         pub_move.publish(ley);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -362,7 +358,7 @@ int main(int argc, char **argv) {
         rey.speed = 0.5;
         pub_move.publish(rey);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -387,7 +383,7 @@ int main(int argc, char **argv) {
         ler.speed = 0.5;
         pub_move.publish(ler);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -412,7 +408,7 @@ int main(int argc, char **argv) {
         rer.speed = 0.5;
         pub_move.publish(rer);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -437,7 +433,7 @@ int main(int argc, char **argv) {
         lwy.speed = 0.5;
         pub_move.publish(lwy);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -462,7 +458,7 @@ int main(int argc, char **argv) {
         rwy.speed = 0.5;
         pub_move.publish(rwy);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -487,7 +483,7 @@ int main(int argc, char **argv) {
         lh.speed = 0.5;
         pub_move.publish(lh);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -512,7 +508,7 @@ int main(int argc, char **argv) {
         rh.speed = 0.5;
         pub_move.publish(rh);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -587,10 +583,10 @@ int main(int argc, char **argv) {
         lhp.speed = 0.5;
         pub_move.publish(lhp);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
- // ppp
+ 
       /************************************************/
 
       //Adjusting right hip pitch to desired position    
@@ -612,7 +608,7 @@ int main(int argc, char **argv) {
         rhp.speed = 0.5;
         pub_move.publish(rhp);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -637,7 +633,7 @@ int main(int argc, char **argv) {
         lhr.speed = 0.5;
         pub_move.publish(lhr);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -662,7 +658,7 @@ int main(int argc, char **argv) {
         rhr.speed = 0.5;
         pub_move.publish(rhr);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -687,7 +683,7 @@ int main(int argc, char **argv) {
         lkp.speed = 0.5;
         pub_move.publish(lkp);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -712,7 +708,7 @@ int main(int argc, char **argv) {
         rkp.speed = 0.5;
         pub_move.publish(rkp);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -737,7 +733,7 @@ int main(int argc, char **argv) {
         lap.speed = 0.5;
         pub_move.publish(lap);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -762,7 +758,7 @@ int main(int argc, char **argv) {
         rap.speed = 0.5;
         pub_move.publish(rap);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -787,7 +783,7 @@ int main(int argc, char **argv) {
         lar.speed = 0.5;
         pub_move.publish(lar);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
   
@@ -812,10 +808,10 @@ int main(int argc, char **argv) {
         rar.speed = 0.5;
         pub_move.publish(rsp);
   
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
   
       }
-  //ppp:wq
+  
 
       /************************************************/
    
