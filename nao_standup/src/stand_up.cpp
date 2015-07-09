@@ -404,36 +404,36 @@ int main(int argc, char **argv) {
     //narration.data = "Close hips a smidge.";
     pub_narration.publish(narration);
 
-    lhyp.joint_angles[0] = -0.9;
-    rhyp.joint_angles[0] = -0.9;
+    lhyp.joint_angles[0] = -0.8;
+    rhyp.joint_angles[0] = -0.8;
     lhyp.speed = 0.5;
     rhyp.speed = 0.5;
     pub_move.publish(lhyp);
     pub_move.publish(rhyp);
 
-    lhr.joint_angles[0] = -0.3;
-    rhr.joint_angles[0] = 0.3;
+    lhr.joint_angles[0] = -0.35;
+    rhr.joint_angles[0] = 0.35;
     lhr.speed = 0.5;
     rhr.speed = 0.5;
     pub_move.publish(lhr);
     pub_move.publish(rhr);
 
-    lkp.joint_angles[0] = 2.0;
-    rkp.joint_angles[0] = 2.0;
+    lkp.joint_angles[0] = 2.1;
+    rkp.joint_angles[0] = 2.1;
     lkp.speed = 0.5;
     rkp.speed = 0.5;
     pub_move.publish(lkp);
     pub_move.publish(rkp);
 
-    lap.joint_angles[0] = 0.25;
-    rap.joint_angles[0] = 0.25;
+    lap.joint_angles[0] = -0.3;
+    rap.joint_angles[0] = -0.3;
     lap.speed = 0.5;
     rap.speed = 0.5;
     pub_move.publish(lap);
     pub_move.publish(rap);
 
-    lar.joint_angles[0] = 0.15;
-    rar.joint_angles[0] = -0.15;
+    lar.joint_angles[0] = 0.3;
+    rar.joint_angles[0] = -0.3;
     lar.speed = 0.5;
     rar.speed = 0.5;
     pub_move.publish(lar);
