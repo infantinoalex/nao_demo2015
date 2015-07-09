@@ -23,8 +23,8 @@ void callback(const sensor_msgs::JointState::ConstPtr& Joints){
   lwy_state = Joints->position[6];
   lh_state = Joints->position[7];
   lhyp_state = Joints->position[8];
-  lhp_state = Joints->position[9];
-  lhr_state = Joints->position[10];
+  lhr_state = Joints->position[9];
+  lhp_state = Joints->position[10];
   lkp_state = Joints->position[11];
   lap_state = Joints->position[12];
   lar_state = Joints->position[13];
