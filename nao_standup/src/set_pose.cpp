@@ -342,7 +342,7 @@ int main(int argc, char **argv) {
       }
   
       /************************************************/
-//ppp
+
       //Adjusting right elbow yaw to desired position    
       ros::spinOnce();
     
@@ -515,7 +515,7 @@ int main(int argc, char **argv) {
         ros::Duration(1).sleep();
   
       }
-  //ppp
+  
       /************************************************/
        
       //Adjusting hip yaw pitch to desired position    
