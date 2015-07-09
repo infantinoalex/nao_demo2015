@@ -157,7 +157,8 @@ int main(int argc, char ** argv){
 			ros::spinOnce();
 		}
 		else{
-			//ROS_INFO("WAITING\n");
+			ROS_INFO("WAITING");
+			loop_rate.sleep();
 			ros::spinOnce();
 		}
 	}
