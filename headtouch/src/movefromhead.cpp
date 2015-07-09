@@ -44,7 +44,7 @@ int main(int argc, char ** argv){
 	stop.angular.z = 0;
 
 	bool front, middle, back;
-	int i;
+	int i = 0;
 
 	while(ros::ok()){
 		ros::spinOnce();
@@ -157,7 +157,10 @@ int main(int argc, char ** argv){
 			ros::spinOnce();
 		}
 		else{
-			ROS_INFO("WAITING");
+			if(i%40 == 0){
+				ROS_INFO("WAITING");
+			}
+			i++;
 			loop_rate.sleep();
 			ros::spinOnce();
 		}
