@@ -69,7 +69,7 @@ int main(int argc, char ** argv){
 		if(!onground){
 			ROS_INFO("ROBOT IS NOT ON GROUND");
 			ROS_INFO("SHUTTING DOWN NODE\n");
-			words.data = "I HAVE FALLEN DOWN";
+			words.data = "I HAVE FALLEN DOWN!";
 			talk.publish(words);
 			ros::Duration(2).sleep();
 			words.data = "SHUTTIN DOWN";
@@ -91,8 +91,8 @@ int main(int argc, char ** argv){
 			ros::shutdown();
 		}
 		else{
-			if(rsonarr >= 0.4 && lsonarr >= 0.4){
-				while(rsonarr >= 0.4 && lsonarr >= 0.4){
+			if(rsonarr >= 0.32 && lsonarr >= 0.32){
+				while(rsonarr >= 0.32 && lsonarr >= 0.32){
 					// if statement so that ROS_INFO will not be constantly printed out
 					if(i == 0){
 						ROS_INFO("MOVING STRAIGHT\n");
@@ -111,8 +111,8 @@ int main(int argc, char ** argv){
 				}
 			}
 			// if an object is too close to the right side, the nao will turn left
-			else if(rsonarr < 0.4 && lsonarr > 0.4){
-				while(rsonarr < 0.4 && lsonarr > 0.4){
+			else if(rsonarr < 0.32 && lsonarr > 0.32){
+				while(rsonarr < 0.32 && lsonarr > 0.32){
 					// if statement so that ROS_INFO will not be constantly printed out
 					if(i == 0){
 						ROS_INFO("RIGHT SIDE TO CLOSE");
@@ -133,8 +133,8 @@ int main(int argc, char ** argv){
 				}
 			}
 			// if an object is too close to the left side, the nao will turn right
-			else if(rsonarr > 0.4 && lsonarr < 0.4){
-				while(rsonarr > 0.4 && lsonarr < 0.4){
+			else if(rsonarr > 0.32 && lsonarr < 0.32){
+				while(rsonarr > 0.32 && lsonarr < 0.32){
 					// if statement so that ROS_INFO will not be constantly printed out
 					if(i == 0){
 						ROS_INFO("LEFT SIDE TOO CLOSE");
@@ -156,7 +156,7 @@ int main(int argc, char ** argv){
 			}
 			// if an object is too close, the nao will back up
 			else{
-				while(rsonarr < 0.4 && lsonarr < 0.4){
+				while(rsonarr < 0.32 && lsonarr < 0.32){
 					// if statement so that ROS_INFO will not be constantly printed out
 					if(i == 0){
 						ROS_INFO("TOO CLOSE");
