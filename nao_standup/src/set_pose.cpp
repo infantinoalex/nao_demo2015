@@ -290,13 +290,13 @@ int main(int argc, char **argv) {
         ros::Duration(1).sleep();
   
       }
-ppp  
+//  
       /************************************************/
-
+//
       //Adjusting right shoulder roll to desired position    
       ros::spinOnce();
     
-      if ( rsr_state > -0.1 && rsr_state < 0.1 ) {
+      if ( rsr_state > 0.0 && rsr_state < 0.2 ) {
   
         rsr_check = true;
         ROS_INFO("RShoulderRoll position correct...");
@@ -315,7 +315,7 @@ ppp
         ros::Duration(1).sleep();
   
       }
-  ppp
+  
       /************************************************/
   
       //Adjusting left elbow yaw to desired position    
@@ -342,7 +342,7 @@ ppp
       }
   
       /************************************************/
-ppp
+//ppp
       //Adjusting right elbow yaw to desired position    
       ros::spinOnce();
     
@@ -515,7 +515,7 @@ ppp
         ros::Duration(1).sleep();
   
       }
-  ppp
+  //ppp
       /************************************************/
        
       //Adjusting hip yaw pitch to desired position    
@@ -590,7 +590,7 @@ ppp
         ros::Duration(1).sleep();
   
       }
-  ppp
+ // ppp
       /************************************************/
 
       //Adjusting right hip pitch to desired position    
@@ -815,7 +815,7 @@ ppp
         ros::Duration(1).sleep();
   
       }
-  ppp:wq
+  //ppp:wq
 
       /************************************************/
    
