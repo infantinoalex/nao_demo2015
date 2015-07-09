@@ -446,8 +446,8 @@ int main(int argc, char **argv) {
     //narration.data = "Only one hand now.";
     pub_narration.publish(narration);
 
-    lsr.joint_angles[0] = -0.8;
-    rsr.joint_angles[0] = 0.8;
+    lsr.joint_angles[0] = 0.8;
+    rsr.joint_angles[0] = -0.8;
     lsr.speed = 0.5;
     rsr.speed = 0.5;
     pub_move.publish(lsr);
@@ -763,6 +763,7 @@ int main(int argc, char **argv) {
    /************************************************/
 
     ros::Duration(3).sleep();
+    ros::shutdown();
 
    /************************************************/
   
