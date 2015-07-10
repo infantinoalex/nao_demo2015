@@ -33,13 +33,21 @@ void feetcb(const std_msgs::Bool Bools){
 	onground = Bools.data;
 }
 
+/** This main program reads sensor data so that it can tell the other nodes
+ ** what functions it needs to perform */
 int main(int argc, char ** argv){
+	
+	// initializes ros
 	ros::init(argc, argv, "statepublish_node");
 	ros::NodeHandle n;
 	
+	// publishes to speech so we can get verbal feedback
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
-
+	
+	// subscribes to imu to determine position of the nao's body
 	ros::Subscriber sub_1 = n.subscribe("/imu", 100, imucb);
+
+	// subscribes to foot_contact to determine if the nao has both feet on the ground 
 	ros::Subscriber sub_2 = n.subscribe("/foot_contact", 100, feetcb);
 
 	ros::Rate loop_rate(50);
