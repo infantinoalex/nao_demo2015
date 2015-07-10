@@ -11,7 +11,7 @@ int main(int argc, char ** argv) {
   //All the publishers
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
-  ros::Publisher pub = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
+  ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
 
   //All the message declarations
   std_msgs::String narration;
@@ -87,129 +87,174 @@ int main(int argc, char ** argv) {
 
     /************************************************/
 
-    /* moves the arms so that they are close the the nao's hips */
-    lsr.joint_angles[0] = 1;
-    rsr.joint_angles[0] = -1; 
+    //narration.data = "Setup arms.";
+    pub_narration.publish(narration);
+
+    lsr.joint_angles[0] = 1.0;
+    rsr.joint_angles[0] = -1.0; 
     lsr.speed = 0.5;
     rsr.speed = 0.5;
-    pub.publish(lsr);
-    pub.publish(rsr); 
+    pub_move.publish(lsr);
+    pub_move.publish(rsr); 
 
-    ros::Duration(1).sleep();
+    //ros::Duration(1).sleep();
 
     ler.joint_angles[0] = -1.5;
     rer.joint_angles[0] = 1.5; 
     ler.speed = 0.5;
     rer.speed = 0.5;
-    pub.publish(ler);
-    pub.publish(rer); 
+    pub_move.publish(ler);
+    pub_move.publish(rer); 
 
-    ros::Duration(1).sleep();
+    //ros::Duration(1).sleep();
 
     lsp.joint_angles[0] = 1.8;
     rsp.joint_angles[0] = 1.8; 
     lsp.speed = 0.5;
     rsp.speed = 0.5;
-    pub.publish(lsp);
-    pub.publish(rsp); 
+    pub_move.publish(lsp);
+    pub_move.publish(rsp); 
 
-    ros::Duration(1).sleep();
+    //ros::Duration(1).sleep();
 
     ley.joint_angles[0] = 0.5; 
     rey.joint_angles[0] = -0.5;
     ley.speed = 0.5;
     rey.speed = 0.5;
-    pub.publish(ley); 
-    pub.publish(rey);
+    pub_move.publish(ley); 
+    pub_move.publish(rey);
 
-    ros::Duration(1).sleep();
+    ros::Duration(2).sleep();
+
+    /************************************************/
+
+    //narration.data = "Setup arms.";
+    pub_narration.publish(narration);
 
     /* slightly moves the hip pitch so that the nao can move its arms behind its back */
     lhp.joint_angles[0] = 0.5;
     rhp.joint_angles[0] = 0.5; 
     lhp.speed = 0.5;
     rhp.speed = 0.5;
-    pub.publish(lhp);
-    pub.publish(rhp); 
+    pub_move.publish(lhp);
+    pub_move.publish(rhp); 
 
     ros::Duration(1).sleep();
-		
-    /* moves arms behind nao */
+	
+    /************************************************/
+    
+    //narration.data = "Setup arms.";
+    pub_narration.publish(narration);
+	
+    /* moves arms behind nao 
     lsr.joint_angles[0] = 0.5;
     rsr.joint_angles[0] = -0.5; 
     lsr.speed = 0.5;
     rsr.speed = 0.5;
-    pub.publish(lsr);
-    pub.publish(rsr); 
+    pub_move.publish(lsr);
+    pub_move.publish(rsr); 
 
     ros::Duration(1).sleep();
-		
-    /* moves the knee pitch amd ankle pitch to support the nao better */
+    */	
+    /************************************************/
+
+    //narration.data = "Setup arms.";
+    pub_narration.publish(narration);
+	
+    /* moves the knee pitch amd ankle pitch to support the nao better 
     lkp.joint_angles[0] = 0.5;
     rkp.joint_angles[0] = 0.5; 
-    lap.joint_angles[0] = 0.5;
-    rap.joint_angles[0] = 0.5; 
     lkp.speed = 0.5;
     rkp.speed = 0.5;
-    lap.speed = 0.5;
-    rap.speed = 0.5;
-    pub.publish(lkp);
-    pub.publish(rkp); 
-    pub.publish(lap);
-    pub.publish(rap); 
+    pub_move.publish(lkp);
+    pub_move.publish(rkp); 
 
     ros::Duration(1).sleep();
- 
-    /* moving arms further behind nao */
+
+    lap.joint_angles[0] = 0.5;
+    rap.joint_angles[0] = 0.5; 
+    lap.speed = 0.5;
+    rap.speed = 0.5;
+    pub_move.publish(lap);
+    pub_move.publish(rap); 
+
+    ros::Duration(1).sleep();
+    */
+    /************************************************/
+
+    //narration.data = "Setup arms.";
+    pub_narration.publish(narration);
+
+    /* moving arms further behind nao 
     lsr.joint_angles[0] = -0.3142;
     rsr.joint_angles[0] = 0.3142; 
     lsr.speed = 0.5;
     rsr.speed = 0.5;
-    pub.publish(lsr);
-    pub.publish(rsr); 
+    pub_move.publish(lsr);
+    pub_move.publish(rsr); 
 
     ros::Duration(1).sleep();
-		
-    /* moves hip pitch to fall back on the arms */
+    */	
+    /************************************************/
+
+    //narration.data = "Setup arms.";
+    pub_narration.publish(narration);
+	
+    /* moves hip pitch to fall back on the arms 
     lhp.joint_angles[0] = -0.5;
     rhp.joint_angles[0] = -0.5; 
     lhp.speed = 0.5;
     rhp.speed = 0.5;
-    pub.publish(lhp);
-    pub.publish(rhp); 
+    pub_move.publish(lhp);
+    pub_move.publish(rhp); 
 
     ros::Duration(1).sleep();
-	
-    /* moves ankle pitch so that the robot can sit up */
+    */
+    /************************************************/
+
+    //narration.data = "Setup arms.";
+    pub_narration.publish(narration);
+
+    /* moves ankle pitch so that the robot can sit up 
     lap.joint_angles[0] = 0.5;
     rap.joint_angles[0] = 0.5; 
     lap.speed = 0.5;
     rap.speed = 0.5;
-    pub.publish(lap);
-    pub.publish(rap); 
+    pub_move.publish(lap);
+    pub_move.publish(rap); 
 
     ros::Duration(1).sleep();
+    */
+    /************************************************/
 
-    /* moves knee pitch so that they are fully bent */
+    //narration.data = "Setup arms.";
+    pub_narration.publish(narration);
+   
+    /* moves knee pitch so that they are fully bent 
     lkp.joint_angles[0] = 2;
     rkp.joint_angles[0] = 2; 
     lkp.speed = 0.5;
     rkp.speed = 0.5;
-    pub.publish(lkp);
-    pub.publish(rkp); 
+    pub_move.publish(lkp);
+    pub_move.publish(rkp); 
 
     ros::Duration(1).sleep();
-    
-    /* moves hip pitch so that robot is completely sitting up */
+    */
+    /************************************************/
+
+    //narration.data = "Setup arms.";
+    pub_narration.publish(narration);
+   
+    /* moves hip pitch so that robot is completely sitting up 
     lhp.joint_angles[0] = -1;		
     rhp.joint_angles[0] = -1; 
     lhp.speed = 0.5;
     rhp.speed = 0.5;
-    pub.publish(lhp);
-    pub.publish(rhp); 
+    pub_move.publish(lhp);
+    pub_move.publish(rhp); 
 
     ros::Duration(1).sleep();
-
+    */
     /************************************************/
 
     ros::Duration(3).sleep();
