@@ -275,7 +275,7 @@ int main(int argc, char **argv) {
       //Adjusting left shoulder roll to desired position    
       ros::spinOnce();
     
-      if ( lsr_state > -0.3 && lsr_state < 0.3 ) {
+      if ( lsr_state > -0.3 && lsr_state < -0.1 ) {
   
         lsr_check = true;
         ROS_INFO("LShoulderRoll position correct...");
@@ -285,7 +285,7 @@ int main(int argc, char **argv) {
       else {
        
         ROS_INFO("\nLShoulderRoll position incorrect...");
-        ROS_INFO("LShoulderRoll position should be between [ -0.3 ] - [ 0.3 ]...");
+        ROS_INFO("LShoulderRoll position should be between [ -0.3 ] - [ -0.1 ]...");
         ROS_INFO("LShoulderRoll position currently [ %d ]...", lsr_state );
         ROS_INFO("Moving LShoulderRoll to the correct position...\n");
  
@@ -302,7 +302,7 @@ int main(int argc, char **argv) {
       //Adjusting right shoulder roll to desired position    
       ros::spinOnce();
     
-      if ( rsr_state > -0.3 && rsr_state < 0.3 ) {
+      if ( rsr_state > -0.3 && rsr_state < -0.1 ) {
   
         rsr_check = true;
         ROS_INFO("RShoulderRoll position correct...");
@@ -312,7 +312,7 @@ int main(int argc, char **argv) {
       else {
         
         ROS_INFO("\nRShoulderRoll position incorrect...");
-        ROS_INFO("RShoulderRoll position should be between [ -0.3 ] - [ 0.3 ]...");
+        ROS_INFO("RShoulderRoll position should be between [ -0.3 ] - [ -0.1 ]...");
         ROS_INFO("RShoulderRoll position currently [ %d ]...", rsr_state );
         ROS_INFO("Moving RShoulderRoll to the correct position...\n");
  
@@ -894,7 +894,7 @@ int main(int argc, char **argv) {
 
       ROS_INFO("All done!");
 
-      narration.data = "Position set. Goodbye!";
+      narration.data = "Position set. Peace out... man.";
       pub_narration.publish(narration);
 
       ros::shutdown();
