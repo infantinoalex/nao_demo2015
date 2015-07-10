@@ -1,18 +1,17 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "nao_msgs/JointAnglesWithSpeed.h"
+#include "geometry_msgs/Twist.h"
 
 int main(int argc, char ** argv) {
 
   ros::init(argc, argv, "standupfrombelly_node");
-  ros::NodeHandle n;
-
-  float fast = 0.9;
+  ros::NodeHandle node;
 
   //All the publishers
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
-  ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
+  ros::Publisher pub = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
 
   //All the message declarations
   std_msgs::String narration;
