@@ -200,64 +200,39 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
 
-    //narration.data = "Setup arms.";
+    //narration.data = "Adjust legs to help sit up.";
     pub_narration.publish(narration);
 	
-    /* moves hip pitch to fall back on the arms*/ 
-    lhp.joint_angles[0] = -0.5;
-    rhp.joint_angles[0] = -0.5; 
+    lhyp.joint_angles[0] = 0.1;
+    rhyp.joint_angles[0] = 0.1; 
+    lhyp.speed = 0.5;
+    rhyp.speed = 0.5;
+    pub_move.publish(lhyp);
+    pub_move.publish(rhyp); 
+
+    lhr.joint_angles[0] = 0.25;
+    rhr.joint_angles[0] = -0.25; 
+    lhr.speed = 0.5;
+    rhr.speed = 0.5;
+    pub_move.publish(lhr);
+    pub_move.publish(rhr); 
+
+    lhp.joint_angles[0] = -0.45;
+    rhp.joint_angles[0] = -0.45; 
     lhp.speed = 0.5;
     rhp.speed = 0.5;
     pub_move.publish(lhp);
     pub_move.publish(rhp); 
 
-    ros::Duration(1).sleep();
-    
-    /************************************************/
-
-    //narration.data = "Setup arms.";
-    pub_narration.publish(narration);
-
-    /* moves ankle pitch so that the robot can sit up 
-    lap.joint_angles[0] = 0.5;
-    rap.joint_angles[0] = 0.5; 
-    lap.speed = 0.5;
-    rap.speed = 0.5;
-    pub_move.publish(lap);
-    pub_move.publish(rap); 
-
-    ros::Duration(1).sleep();
-    */
-    /************************************************/
-
-    //narration.data = "Setup arms.";
-    pub_narration.publish(narration);
-   
-    /* moves knee pitch so that they are fully bent 
-    lkp.joint_angles[0] = 2;
-    rkp.joint_angles[0] = 2; 
+    lkp.joint_angles[0] = -0.1;
+    rkp.joint_angles[0] = -0.1; 
     lkp.speed = 0.5;
     rkp.speed = 0.5;
     pub_move.publish(lkp);
     pub_move.publish(rkp); 
 
-    ros::Duration(1).sleep();
-    */
-    /************************************************/
-
-    //narration.data = "Setup arms.";
-    pub_narration.publish(narration);
-   
-    /* moves hip pitch so that robot is completely sitting up 
-    lhp.joint_angles[0] = -1;		
-    rhp.joint_angles[0] = -1; 
-    lhp.speed = 0.5;
-    rhp.speed = 0.5;
-    pub_move.publish(lhp);
-    pub_move.publish(rhp); 
-
-    ros::Duration(1).sleep();
-    */
+    ros::Duration(3).sleep();
+    
     /************************************************/
 
     ros::Duration(3).sleep();
