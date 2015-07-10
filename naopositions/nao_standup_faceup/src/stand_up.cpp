@@ -132,16 +132,12 @@ int main(int argc, char ** argv) {
     pub_move.publish(lhp);
     pub_move.publish(rhp); 
 
-    //ros::Duration(1).sleep();
-
     lkp.joint_angles[0] = 0.5;
     rkp.joint_angles[0] = 0.5; 
     lkp.speed = 0.5;
     rkp.speed = 0.5;
     pub_move.publish(lkp);
     pub_move.publish(rkp); 
-
-    //ros::Duration(1).sleep();
 
     lap.joint_angles[0] = 0.9;
     rap.joint_angles[0] = 0.9; 
@@ -164,7 +160,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(lsp);
     pub_move.publish(rsp); 
 
-    ros::Duration(1).sleep();
+    //ros::Duration(1).sleep();
 
     lsr.joint_angles[0] = 0.15;
     rsr.joint_angles[0] = -0.15; 
@@ -173,7 +169,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(lsr);
     pub_move.publish(rsr); 
 
-    ros::Duration(1).sleep();
+    //ros::Duration(1).sleep();
 
     ley.joint_angles[0] = -0.15; 
     rey.joint_angles[0] = 0.15;
@@ -182,7 +178,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(ley); 
     pub_move.publish(rey);
 
-    ros::Duration(1).sleep();
+    //ros::Duration(1).sleep();
 
     ler.joint_angles[0] = -1.4;
     rer.joint_angles[0] = 1.4; 
@@ -197,32 +193,8 @@ int main(int argc, char ** argv) {
 
     //narration.data = "Setup arms.";
     pub_narration.publish(narration);
-	
-    /* moves the knee pitch amd ankle pitch to support the nao better */
-    lkp.joint_angles[0] = 0.5;
-    rkp.joint_angles[0] = 0.5; 
-    lkp.speed = 0.5;
-    rkp.speed = 0.5;
-    pub_move.publish(lkp);
-    pub_move.publish(rkp); 
 
-    ros::Duration(1).sleep();
-
-    lap.joint_angles[0] = 0.5;
-    rap.joint_angles[0] = 0.5; 
-    lap.speed = 0.5;
-    rap.speed = 0.5;
-    pub_move.publish(lap);
-    pub_move.publish(rap); 
-
-    ros::Duration(1).sleep();
-    
-    /************************************************/
-
-    //narration.data = "Setup arms.";
-    pub_narration.publish(narration);
-
-    /* moving arms further behind nao 
+    /* moving arms further behind nao*/ 
     lsr.joint_angles[0] = -0.3142;
     rsr.joint_angles[0] = 0.3142; 
     lsr.speed = 0.5;
@@ -230,8 +202,8 @@ int main(int argc, char ** argv) {
     pub_move.publish(lsr);
     pub_move.publish(rsr); 
 
-    ros::Duration(1).sleep();
-    */	
+    ros::Duration(3).sleep();
+    	
     /************************************************/
 
     //narration.data = "Setup arms.";
