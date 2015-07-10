@@ -160,16 +160,12 @@ int main(int argc, char ** argv) {
     pub_move.publish(lsp);
     pub_move.publish(rsp); 
 
-    //ros::Duration(1).sleep();
-
     lsr.joint_angles[0] = 0.15;
     rsr.joint_angles[0] = -0.15; 
     lsr.speed = 0.5;
     rsr.speed = 0.5;
     pub_move.publish(lsr);
     pub_move.publish(rsr); 
-
-    //ros::Duration(1).sleep();
 
     ley.joint_angles[0] = -0.15; 
     rey.joint_angles[0] = 0.15;
@@ -178,8 +174,6 @@ int main(int argc, char ** argv) {
     pub_move.publish(ley); 
     pub_move.publish(rey);
 
-    //ros::Duration(1).sleep();
-
     ler.joint_angles[0] = -1.4;
     rer.joint_angles[0] = 1.4; 
     ler.speed = 0.5;
@@ -187,14 +181,14 @@ int main(int argc, char ** argv) {
     pub_move.publish(ler);
     pub_move.publish(rer); 
 
-    ros::Duration(3).sleep();
+
+    ros::Duration(2).sleep();
 
     /************************************************/
 
-    //narration.data = "Setup arms.";
+    //narration.data = "Move arms further behind back.";
     pub_narration.publish(narration);
 
-    /* moving arms further behind nao*/ 
     lsr.joint_angles[0] = -0.3142;
     rsr.joint_angles[0] = 0.3142; 
     lsr.speed = 0.5;
@@ -209,7 +203,7 @@ int main(int argc, char ** argv) {
     //narration.data = "Setup arms.";
     pub_narration.publish(narration);
 	
-    /* moves hip pitch to fall back on the arms 
+    /* moves hip pitch to fall back on the arms*/ 
     lhp.joint_angles[0] = -0.5;
     rhp.joint_angles[0] = -0.5; 
     lhp.speed = 0.5;
@@ -218,7 +212,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(rhp); 
 
     ros::Duration(1).sleep();
-    */
+    
     /************************************************/
 
     //narration.data = "Setup arms.";
