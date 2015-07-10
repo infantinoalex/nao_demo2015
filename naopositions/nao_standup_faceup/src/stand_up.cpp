@@ -5,7 +5,7 @@
 int main(int argc, char ** argv) {
 
   ros::init(argc, argv, "standupfrombelly_node");
-  ros::NodeHandle n;
+  ros::NodeHandle node;
 
   float fast = 0.9;
 
