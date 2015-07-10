@@ -202,13 +202,6 @@ int main(int argc, char ** argv) {
 
     //narration.data = "Adjust legs to help sit up.";
     pub_narration.publish(narration);
-	
-    lhyp.joint_angles[0] = 0.1;
-    rhyp.joint_angles[0] = 0.1; 
-    lhyp.speed = 0.5;
-    rhyp.speed = 0.5;
-    pub_move.publish(lhyp);
-    pub_move.publish(rhyp); 
 
     lhr.joint_angles[0] = 0.25;
     rhr.joint_angles[0] = -0.25; 
@@ -217,19 +210,35 @@ int main(int argc, char ** argv) {
     pub_move.publish(lhr);
     pub_move.publish(rhr); 
 
-    lhp.joint_angles[0] = -0.45;
-    rhp.joint_angles[0] = -0.45; 
-    lhp.speed = 0.5;
-    rhp.speed = 0.5;
-    pub_move.publish(lhp);
-    pub_move.publish(rhp); 
-
     lkp.joint_angles[0] = -0.1;
     rkp.joint_angles[0] = -0.1; 
     lkp.speed = 0.5;
     rkp.speed = 0.5;
     pub_move.publish(lkp);
     pub_move.publish(rkp); 
+
+    lap.joint_angles[0] = -0.125;
+    rap.joint_angles[0] = -0.125; 
+    lap.speed = 0.5;
+    rap.speed = 0.5;
+    pub_move.publish(lap);
+    pub_move.publish(rap); 
+
+    ros::Duration(1).sleep();
+	
+    lhyp.joint_angles[0] = 0.1;
+    rhyp.joint_angles[0] = 0.1; 
+    lhyp.speed = 0.5;
+    rhyp.speed = 0.5;
+    pub_move.publish(lhyp);
+    pub_move.publish(rhyp); 
+
+    lhp.joint_angles[0] = -0.45;
+    rhp.joint_angles[0] = -0.45; 
+    lhp.speed = 0.5;
+    rhp.speed = 0.5;
+    pub_move.publish(lhp);
+    pub_move.publish(rhp); 
 
     ros::Duration(3).sleep();
     
