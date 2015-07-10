@@ -5,7 +5,9 @@
 
 float orix, oriy, oriz, oriw, avx, avy, avz, lax, lay, laz;
 
-void callback(const sensor_msgs::Imu::ConstPtr& info){
+bool onground = false;
+
+void imucb(const sensor_msgs::Imu::ConstPtr& info){
 	orix = info->orientation.x;
 	oriy = info->orientation.y;
 	oriz = info->orientation.z;
@@ -18,12 +20,18 @@ void callback(const sensor_msgs::Imu::ConstPtr& info){
 	laz = info->linear_acceleration.z;
 }
 
+void feetcb(const std_msgs::Bool Bools){
+	onground = Bools.data;
+}
+
 int main(int argc, char ** argv){
 	ros::init(argc, argv, "statepublish_node");
 	ros::NodeHandle n;
 	
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
-	ros::Subscriber sub = n.subscribe("/imu", 100, callback);
+
+	ros::Subscriber sub = n.subscribe("/imu", 100, imucb);
+	ros::Subscriber sub = n.subscribe("/foot_contact", 100, feetcb);
 
 	ros::Rate loop_rate(50);
 
