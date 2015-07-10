@@ -76,6 +76,10 @@ int main(int argc, char ** argv){
         stop.angular.y = 0;
         stop.angular.z = 0;
 
+	words.data = "I can walk around freely without assistance. Watch me.";
+	talk.publish(words);
+	ros::Duration(5).sleep();
+
 	while(ros::ok()){
 		ros::spinOnce();
 		i = 0;
