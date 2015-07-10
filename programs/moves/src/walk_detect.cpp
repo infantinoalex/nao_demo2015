@@ -66,6 +66,7 @@ int main(int argc, char ** argv){
 	std_msgs::String words;
 	geometry_msgs::Twist direct, stop;
 	int i;
+	bool firsttime = true;
 
 	// declarations of the stop variable values so that a simple publish to stop
 	// will make the robot stop
@@ -76,17 +77,20 @@ int main(int argc, char ** argv){
         stop.angular.y = 0;
         stop.angular.z = 0;
 
-	words.data = "I can walk around freely without assistance. Watch me.";
-	talk.publish(words);
-	ros::Duration(5).sleep();
+	
 
 	while(ros::ok()){
 		ros::spinOnce();
 		loop_rate.sleep();
 		ros::spinOnce();
-
+		if(firsttime){
+			words.data = "I can walk around freely without assistance Watch me";
+			talk.publish(words);
+			ros::Duration(5).sleep();		
+			firsttime = false;
+		}
 		// if nothing is too close to the nao, it will just move forward
-		if(!onground){
+		else if(!onground){
 			ROS_INFO("ROBOT IS NOT ON GROUND");
 			words.data = "WAITING UNTIL BACK ON GROUND.";
 			talk.publish(words);
@@ -114,7 +118,7 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 			move.publish(stop);
 			loop_rate.sleep();
-			direct.linear.x = -1;
+			direct.linear.x = -0.5;
 			direct.angular.z = 0;
 			move.publish(direct);
 			for(i = 0; i < 5; i++){
@@ -128,9 +132,9 @@ int main(int argc, char ** argv){
 		else{
 
 			// if its clearn infront, the nao will move forward
-			if(rsonarr >= 0.35 && lsonarr >= 0.35){
+			if(rsonarr >= 0.335 && lsonarr >= 0.335){
 				ROS_INFO("MOVING STRAIGHT\n");
-				direct.linear.x = 1;
+				direct.linear.x = 0.5;
 				direct.angular.z = -0.05;
 				move.publish(direct);
 				loop_rate.sleep();
@@ -138,24 +142,24 @@ int main(int argc, char ** argv){
 			}
 
 			// if an object is too close to the right side, the nao will turn left
-			else if(rsonarr < 0.35 && lsonarr > 0.35){
+			else if(rsonarr < 0.335 && lsonarr > 0.335){
 				ROS_INFO("RIGHT SIDE TO CLOSE");
 				ROS_INFO("MOVING LEFT\n");
 				loop_rate.sleep();
-				direct.angular.z = 0.6;
-				direct.linear.x = -0.4;
+				direct.angular.z = 0.3;
+				direct.linear.x = -0.2;
 				move.publish(direct);
 				loop_rate.sleep();
 				ros::spinOnce();
 			}
 
 			// if an object is too close to the left side, the nao will turn right
-			else if(rsonarr > 0.35 && lsonarr < 0.35){
+			else if(rsonarr > 0.335 && lsonarr < 0.335){
 				ROS_INFO("LEFT SIDE TOO CLOSE");
 				ROS_INFO("MOVING RIGHT\n");
 				loop_rate.sleep();
-				direct.angular.z = -0.6;
-				direct.linear.x = -0.4;
+				direct.angular.z = -0.3;
+				direct.linear.x = -0.2;
 				move.publish(direct);
 				loop_rate.sleep();
 				ros::spinOnce();
@@ -163,11 +167,11 @@ int main(int argc, char ** argv){
 
 			// if an object is too close, the nao will back up
 			else{
-				if(rsonarr < 0.35 && lsonarr < 0.35){
+				if(rsonarr < 0.335 && lsonarr < 0.335){
 					ROS_INFO("TOO CLOSE");
 					ROS_INFO("BACKING UP\n");
 					loop_rate.sleep();
-					direct.linear.x = -1;
+					direct.linear.x = -0.5;
 					direct.angular.z = 0;
 					move.publish(direct);
 					loop_rate.sleep();
