@@ -97,8 +97,6 @@ int main(int argc, char ** argv) {
     pub_move.publish(lsr);
     pub_move.publish(rsr); 
 
-    //ros::Duration(1).sleep();
-
     ler.joint_angles[0] = -1.5;
     rer.joint_angles[0] = 1.5; 
     ler.speed = 0.5;
@@ -106,16 +104,12 @@ int main(int argc, char ** argv) {
     pub_move.publish(ler);
     pub_move.publish(rer); 
 
-    //ros::Duration(1).sleep();
-
     lsp.joint_angles[0] = 1.8;
     rsp.joint_angles[0] = 1.8; 
     lsp.speed = 0.5;
     rsp.speed = 0.5;
     pub_move.publish(lsp);
     pub_move.publish(rsp); 
-
-    //ros::Duration(1).sleep();
 
     ley.joint_angles[0] = 0.5; 
     rey.joint_angles[0] = -0.5;
@@ -128,10 +122,9 @@ int main(int argc, char ** argv) {
 
     /************************************************/
 
-    //narration.data = "Setup arms.";
+    //narration.data = "Upward hip thrust.";
     pub_narration.publish(narration);
 
-    /* slightly moves the hip pitch so that the nao can move its arms behind its back */
     lhp.joint_angles[0] = 0.5;
     rhp.joint_angles[0] = 0.5; 
     lhp.speed = 0.5;
@@ -140,13 +133,31 @@ int main(int argc, char ** argv) {
     pub_move.publish(rhp); 
 
     ros::Duration(1).sleep();
+
+    lkp.joint_angles[0] = 0.5;
+    rkp.joint_angles[0] = 0.5; 
+    lkp.speed = 0.5;
+    rkp.speed = 0.5;
+    pub_move.publish(lkp);
+    pub_move.publish(rkp); 
+
+    ros::Duration(1).sleep();
+
+    lap.joint_angles[0] = 0.9;
+    rap.joint_angles[0] = 0.9; 
+    lap.speed = 0.5;
+    rap.speed = 0.5;
+    pub_move.publish(lap);
+    pub_move.publish(rap); 
+
+    ros::Duration(3).sleep();
 	
     /************************************************/
     
     //narration.data = "Setup arms.";
     pub_narration.publish(narration);
 	
-    /* moves arms behind nao 
+    /* moves arms behind nao*/ 
     lsr.joint_angles[0] = 0.5;
     rsr.joint_angles[0] = -0.5; 
     lsr.speed = 0.5;
@@ -155,7 +166,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(rsr); 
 
     ros::Duration(1).sleep();
-    */	
+    	
     /************************************************/
 
     //narration.data = "Setup arms.";
