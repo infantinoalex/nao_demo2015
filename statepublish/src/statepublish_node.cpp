@@ -2,11 +2,19 @@
 #include "std_msgs/Bool.h"
 #include "sensor_msgs/Imu.h"
 #include "std_msgs/String.h"
+//#include "custom_msgs/States.h"
 
+// Global variables to store the imu sensor data
 float orix, oriy, oriz, oriw, avx, avy, avz, lax, lay, laz;
 
+// Global variables to store the state data for publishing + subscribing
+//int istate;
+//bool bstate;
+
+// Global variable to store the bool of whether or not the nao's feet are on the ground
 bool onground = false;
 
+// IMU subscriber call back, stores all the information obtained from the IMU
 void imucb(const sensor_msgs::Imu::ConstPtr& info){
 	orix = info->orientation.x;
 	oriy = info->orientation.y;
@@ -20,6 +28,7 @@ void imucb(const sensor_msgs::Imu::ConstPtr& info){
 	laz = info->linear_acceleration.z;
 }
 
+// Feet subscriber call back, stores the bool of whether or not the nao's feet are on the ground
 void feetcb(const std_msgs::Bool Bools){
 	onground = Bools.data;
 }
@@ -30,8 +39,8 @@ int main(int argc, char ** argv){
 	
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
 
-	ros::Subscriber sub = n.subscribe("/imu", 100, imucb);
-	ros::Subscriber sub = n.subscribe("/foot_contact", 100, feetcb);
+	ros::Subscriber sub_1 = n.subscribe("/imu", 100, imucb);
+	ros::Subscriber sub_2 = n.subscribe("/foot_contact", 100, feetcb);
 
 	ros::Rate loop_rate(50);
 
