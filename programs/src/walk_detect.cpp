@@ -123,12 +123,13 @@ int main(int argc, char ** argv){
 			ros::spinOnce();
 			loop_rate.sleep();
 			move.publish(stop);
-			ros::Duration(1).sleep();
 			loop_rate.sleep();
 			direct.linear.x = -0.5;
 			direct.angular.z = 0;
 			move.publish(direct);
-			loop_rate.sleep();
+			for(i = 0; i < 5; i++){
+				loop_rate.sleep();
+			}
 			ros::Duration(2).sleep();
 			loop_rate.sleep();
 			ros::spinOnce();
@@ -136,9 +137,9 @@ int main(int argc, char ** argv){
 		else{
 			// if its clearn infront, the nao will move forward
 			if(rsonarr >= 0.32 && lsonarr >= 0.32){
-				while(rsonarr >= 0.32 && lsonarr >= 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
+				//while(rsonarr >= 0.32 && lsonarr >= 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
 					// if statement so that ROS_INFO will not be constantly printed out
-					if(i == 0){
+					//if(i == 0){
 						ROS_INFO("MOVING STRAIGHT\n");
 						direct.linear.x = 0.5;
 						direct.angular.z = -0.05;
@@ -146,19 +147,19 @@ int main(int argc, char ** argv){
 						loop_rate.sleep();
 						ros::spinOnce();
 						i++;
-					}
-					else{
-						loop_rate.sleep();
-						ros::spinOnce();
-						i++;
-					}
-				}
+					//}
+					//else{
+						//loop_rate.sleep();
+						//ros::spinOnce();
+						//i++;
+					//}
+				//}
 			}
 			// if an object is too close to the right side, the nao will turn left
 			else if(rsonarr < 0.32 && lsonarr > 0.32){
-				while(rsonarr < 0.32 && lsonarr > 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
+				//while(rsonarr < 0.32 && lsonarr > 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
 					// if statement so that ROS_INFO will not be constantly printed out
-					if(i == 0){
+					//if(i == 0){
 						ROS_INFO("RIGHT SIDE TO CLOSE");
 						ROS_INFO("MOVING LEFT\n");
 						loop_rate.sleep();
@@ -168,31 +169,31 @@ int main(int argc, char ** argv){
 						loop_rate.sleep();
 						ros::spinOnce();
 						i++;
-					}
-					else{
-						if(rsonarr < 0.32 && lsonarr < 0.32){
-							while(rsonarr < 0.32 && lsonarr < 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
-								ROS_INFO("TOO CLOSE");
-								ROS_INFO("BACKING UP\n");
-								loop_rate.sleep();
-								direct.linear.x = -0.5;
-								direct.angular.z = 0;
-								move.publish(direct);
-								loop_rate.sleep();
-								ros::spinOnce();
-							}
-						}
-						loop_rate.sleep();
-						ros::spinOnce();
-						i++;
-					}
-				}
+					//}
+					//else{
+						//if(rsonarr < 0.32 && lsonarr < 0.32){
+							//while(rsonarr < 0.32 && lsonarr < 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
+								//ROS_INFO("TOO CLOSE");
+								//ROS_INFO("BACKING UP\n");
+								//loop_rate.sleep();
+								//direct.linear.x = -0.5;
+								//direct.angular.z = 0;
+								//move.publish(direct);
+								//loop_rate.sleep();
+								//ros::spinOnce();
+							//}
+						//}
+						//loop_rate.sleep();
+						//ros::spinOnce();
+						//i++;
+					//}
+				//}
 			}
 			// if an object is too close to the left side, the nao will turn right
 			else if(rsonarr > 0.32 && lsonarr < 0.32){
-				while(rsonarr > 0.32 && lsonarr < 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
+				//while(rsonarr > 0.32 && lsonarr < 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
 					// if statement so that ROS_INFO will not be constantly printed out
-					if(i == 0){
+					//if(i == 0){
 						ROS_INFO("LEFT SIDE TOO CLOSE");
 						ROS_INFO("MOVING RIGHT\n");
 						loop_rate.sleep();
@@ -202,31 +203,31 @@ int main(int argc, char ** argv){
 						loop_rate.sleep();
 						ros::spinOnce();
 						i++;
-					}
-					else{
-						if(rsonarr < 0.32 && lsonarr < 0.32){
-							while(rsonarr < 0.32 && lsonarr < 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
-								ROS_INFO("TOO CLOSE");
-								ROS_INFO("BACKING UP\n");
-								loop_rate.sleep();
-								direct.linear.x = -0.5;
-								direct.angular.z = 0;
-								move.publish(direct);
-								loop_rate.sleep();
-								ros::spinOnce();
-							}
-						}
-						loop_rate.sleep();
-						ros::spinOnce();
-						i++;
-					}
-				}
+					//}
+					//else{
+						//if(rsonarr < 0.32 && lsonarr < 0.32){
+							//while(rsonarr < 0.32 && lsonarr < 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
+								//ROS_INFO("TOO CLOSE");
+								//ROS_INFO("BACKING UP\n");
+								//loop_rate.sleep();
+								//direct.linear.x = -0.5;
+								//direct.angular.z = 0;
+								//move.publish(direct);
+								//loop_rate.sleep();
+								//ros::spinOnce();
+							//}
+						//}
+						//loop_rate.sleep();
+						//ros::spinOnce();
+						//i++;
+					//}
+				//}
 			}
 			// if an object is too close, the nao will back up
 			else{
-				while(rsonarr < 0.32 && lsonarr < 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
+				if(rsonarr < 0.32 && lsonarr < 0.32){ //|| !((bumperp == 0 || bumperp == 1) && bumpers == 1)){
 					// if statement so that ROS_INFO will not be constantly printed out
-					if(i == 0){
+					//if(i == 0){
 						ROS_INFO("TOO CLOSE");
 						ROS_INFO("BACKING UP\n");
 						loop_rate.sleep();
@@ -236,12 +237,12 @@ int main(int argc, char ** argv){
 						loop_rate.sleep();
 						ros::spinOnce();
 						i++;
-					}
-					else{
-						loop_rate.sleep();
-						ros::spinOnce();
-						i++;
-					}
+					//}
+					//else{
+						//loop_rate.sleep();
+						//ros::spinOnce();
+						//i++;
+					//}
 				}	
 			}
 		}
