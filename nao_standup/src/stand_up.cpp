@@ -330,7 +330,7 @@ int main(int argc, char **argv) {
     pub_move.publish(lar);
     pub_move.publish(rar);
 
-    ros::Duration(2).sleep();
+    ros::Duration(1).sleep();
 
    /************************************************/
   
@@ -365,7 +365,7 @@ int main(int argc, char **argv) {
     pub_move.publish(lap);
     pub_move.publish(rap);
 
-    ros::Duration(2).sleep();
+    ros::Duration(1).sleep();
 
    /************************************************/
 
@@ -400,7 +400,7 @@ int main(int argc, char **argv) {
     pub_move.publish(lar);
     pub_move.publish(rar);
 
-    ros::Duration(2).sleep();
+    ros::Duration(1).sleep();
 
    /************************************************/
 
@@ -442,11 +442,11 @@ int main(int argc, char **argv) {
     pub_move.publish(lar);
     pub_move.publish(rar);
 
-    ros::Duration(2).sleep();
+    ros::Duration(1).sleep();
 
    /************************************************/
      
-    //narration.data = "Only one hand now.";
+    //narration.data = "Look ma, no hands!.";
     pub_narration.publish(narration);
 
     lsr.joint_angles[0] = 0.8;
@@ -474,7 +474,7 @@ int main(int argc, char **argv) {
     pub_move.publish(lsr);
     pub_move.publish(rsr);
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     
    /************************************************/
     
@@ -509,7 +509,7 @@ int main(int argc, char **argv) {
     pub_move.publish(lar);
     pub_move.publish(rar);
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     
    /************************************************/
   
@@ -544,7 +544,7 @@ int main(int argc, char **argv) {
     pub_move.publish(lar);
     pub_move.publish(rar);
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     
    /************************************************/
   
