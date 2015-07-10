@@ -43,6 +43,7 @@ void bumpercb(const nao_msgs::Bumper::ConstPtr& Bump){
    to not run into things, it is subscribed to its two sonar topics
    and operates according to those */
 int main(int argc, char ** argv){
+
 	// initializing ros
 	ros::init(argc, argv, "Walk_Detect");
 	ros::NodeHandle n;
@@ -77,18 +78,21 @@ int main(int argc, char ** argv){
         stop.angular.y = 0;
         stop.angular.z = 0;
 
-	
-
+	// execute while not terminated
 	while(ros::ok()){
 		ros::spinOnce();
 		loop_rate.sleep();
 		ros::spinOnce();
+
 		if(firsttime){
-			words.data = "I can walk around freely without assistance Watch me";
+			loop_rate.sleep();
+			words.data = "I can walk around freely without assistance. Watch me.";
 			talk.publish(words);
+			loop_rate.sleep();
 			ros::Duration(5).sleep();		
 			firsttime = false;
 		}
+
 		// if nothing is too close to the nao, it will just move forward
 		else if(!onground){
 			ROS_INFO("ROBOT IS NOT ON GROUND");
