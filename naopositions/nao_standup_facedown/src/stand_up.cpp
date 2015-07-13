@@ -25,6 +25,8 @@ int main(int argc, char **argv) {
   // subscriber
   ros::Subscriber sub = node.subscribe("/control_msgs", 100, controlcb);
 
+	int i;
+
   //All the message declarations
   std_msgs::String narration;
   geometry_msgs::Twist walk;
@@ -95,6 +97,7 @@ int main(int argc, char **argv) {
     ros::spinOnce();
     loop_rate.sleep();
     if(controlmsgs.nao_standup_facedown == true){
+    i = 0;
     /************************************************/
     
     ros::Duration(3).sleep();
@@ -590,7 +593,10 @@ int main(int argc, char **argv) {
     ros::spinOnce();
     }
     else{
-	ROS_INFO("WAITING\n");
+	if(i == 0){
+		ROS_INFO("WAITING FOR STATEPUBLISHER\n");
+	}
+	i++;
 	ros::spinOnce();
 	loop_rate.sleep();
     }

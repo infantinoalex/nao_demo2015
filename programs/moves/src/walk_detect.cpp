@@ -100,7 +100,7 @@ int main(int argc, char ** argv){
 		ros::spinOnce();
 	
 		if(controlmsgs.walk_detect == true){
-
+			i = 0;
 			if(firsttime){
 				loop_rate.sleep();
 				words.data = "I can walk around freely without assistance. Watch me.";
@@ -190,7 +190,10 @@ int main(int argc, char ** argv){
 			}
 		}
 		else{
-			ROS_INFO("WAITING\n");
+			if(i == 0){
+				ROS_INFO("WAITING FOR STATEPUBLISHER\n");
+			}
+			i++;
 			ros::spinOnce();
 			loop_rate.sleep();
 		}

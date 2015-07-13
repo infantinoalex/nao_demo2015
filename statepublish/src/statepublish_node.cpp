@@ -66,9 +66,8 @@ int main(int argc, char ** argv){
 		
 	while(ros::ok()){
 		ros::spinOnce();
-		loop_rate.sleep();
 		ROS_INFO("FIGURING OUT POSITION\n");
-		ros::Duration(1).sleep();
+		loop_rate.sleep();
 		ros::spinOnce();
 		if((lax <=10.5 && lax >= 9.5) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
@@ -83,9 +82,8 @@ int main(int argc, char ** argv){
 			control.publish(controlstate);
 			loop_rate.sleep();
 			ros::spinOnce();
+			ROS_INFO("WAITING UNTIL STANDUP COMPLETE\n");
 			while(controlstate.nao_standup_facedown == true){
-				ROS_INFO("WAITING UNTIL STANDUP COMPLETE\n");
-				ros::Duration(3).sleep();
 				ros::spinOnce();
 				loop_rate.sleep();
 			}
@@ -108,11 +106,11 @@ int main(int argc, char ** argv){
 		}
 		else if((lax >= 0 && lax <= 1) && (laz <= -9.5 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY UPRIGHT\n");
-			ros::Duration(1).sleep();
 			words.data = "I am currently completely upright";
 			talk.publish(words);
 			ros::Duration(1).sleep();
 			if(onground){
+				ROS_INFO("ON GROUND\n");
 				words.data = "I am going to start walking using my sonar.";
 				talk.publish(words);
 				ros::Duration(2).sleep();
@@ -120,14 +118,19 @@ int main(int argc, char ** argv){
 				control.publish(controlstate);
 				ros::spinOnce();
 				loop_rate.sleep();
+				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
 				while(controlstate.walk_detect == true){
-					ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
-					ros::Duration(3).sleep();
 					ros::spinOnce();
 					loop_rate.sleep();
 				}
 				ROS_INFO("WALK COMPLETE\n");
 				loop_rate.sleep();
+			}
+			else{
+				ROS_INFO("NOT ON GROUND\n");
+				words.data = "Put me on the ground so I can walk please.";
+				talk.publish(words);
+				ros::Duration(2).sleep();
 			}
 		}
 		else{
