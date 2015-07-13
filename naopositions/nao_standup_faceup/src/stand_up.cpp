@@ -386,52 +386,52 @@ int main(int argc, char ** argv) {
     pub_narration.publish(narration);
 		
     lhyp.joint_angles[0] = -1.05;
-    lhyp.speed = 0.5;
+    lhyp.speed = 0.2;
     pub_move.publish(lhyp);
 
     lhr.joint_angles[0] = 0.05;
-    lhr.speed = 0.5;
+    lhr.speed = 0.2;
     pub_move.publish(lhr);
 
     lhp.joint_angles[0] = -0.25;
-    lhp.speed = 0.5;
+    lhp.speed = 0.2;
     pub_move.publish(lhp);
 
     lkp.joint_angles[0] = 2.1;
-    lkp.speed = 0.5;
+    lkp.speed = 0.2;
     pub_move.publish(lkp);
 
     lap.joint_angles[0] = -0.9;
-    lap.speed = 0.5;
+    lap.speed = 0.2;
     pub_move.publish(lap);
 
     lar.joint_angles[0] = -0.1;
-    lar.speed = 0.5;
+    lar.speed = 0.2;
     pub_move.publish(lar);
 
 
     rhyp.joint_angles[0] = -1.05;
-    rhyp.speed = 0.5;
+    rhyp.speed = 0.2;
     pub_move.publish(rhyp);
 
     rhr.joint_angles[0] = -0.55;
-    rhr.speed = 0.5;
+    rhr.speed = 0.2;
     pub_move.publish(rhr);
 
     rhp.joint_angles[0] = -1.5;
-    rhp.speed = 0.5;
+    rhp.speed = 0.2;
     pub_move.publish(rhp);
 
     rkp.joint_angles[0] = 1.15;
-    rkp.speed = 0.5;
+    rkp.speed = 0.2;
     pub_move.publish(rkp);
 
     rap.joint_angles[0] = 0.70;
-    rap.speed = 0.5;
+    rap.speed = 0.2;
     pub_move.publish(rap);
 
     rar.joint_angles[0] = -0.05;
-    rar.speed = 0.5;
+    rar.speed = 0.2;
     pub_move.publish(rar);
 
     ros::Duration(1).sleep();
