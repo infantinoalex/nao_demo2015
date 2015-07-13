@@ -244,11 +244,8 @@ int main(int argc, char ** argv) {
     
     /************************************************/
 
-<<<<<<< HEAD
     //narration.data = "Move arms further behind back.";
-=======
     //narration.data = "Straighten arms.";
->>>>>>> 24c049ea4f5200a79f543cc84b3cd12288472c71
     pub_narration.publish(narration);
 
     ler.joint_angles[0] = -0.95;
@@ -262,8 +259,6 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
 
-<<<<<<< HEAD
-=======
     //narration.data = "Not quite sure what this does...?.";
     pub_narration.publish(narration);
 
@@ -362,7 +357,6 @@ int main(int argc, char ** argv) {
     
     /************************************************/
 
->>>>>>> 24c049ea4f5200a79f543cc84b3cd12288472c71
     ros::Duration(3).sleep();
 
     /************************************************/
