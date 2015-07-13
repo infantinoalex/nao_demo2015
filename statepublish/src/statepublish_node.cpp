@@ -8,8 +8,7 @@
 float orix, oriy, oriz, oriw, avx, avy, avz, lax, lay, laz;
 
 // Global variables to store the state data for publishing + subscribing
-//int istate;
-//bool bstate;
+statepublish::states controlstate;
 
 // Global variable to store the bool of whether or not the nao's feet are on the ground
 bool onground = false;
@@ -45,7 +44,7 @@ int main(int argc, char ** argv){
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
 
 	// publishes to custom topic to control everything
-	ros::Publisher control = n.advertise<statepublish::state>("/control_msgs", 100);
+	ros::Publisher control = n.advertise<statepublish::states>("/control_msgs", 100);
 	
 	// subscribes to imu to determine position of the nao's body
 	ros::Subscriber sub_1 = n.subscribe("/imu", 100, imucb);
@@ -55,7 +54,6 @@ int main(int argc, char ** argv){
 
 	ros::Rate loop_rate(50);
 
-	statepublish::state controlstate;
 	std_msgs::String words;	
 		
 	while(ros::ok()){
@@ -64,7 +62,7 @@ int main(int argc, char ** argv){
 		ROS_INFO("FIGURING OUT POSITION\n");
 		ros::Duration(5).sleep();
 		ros::spinOnce();
-		if((lax <=10.5 && lax >= 9.8) && (laz <= 1 && laz >= -1)){
+		if((lax <=10 && lax >= 9) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
 			controlstate.nao_standup_facedown = true;
 			control.publish(controlstate);
@@ -74,21 +72,21 @@ int main(int argc, char ** argv){
 			ros::Duration(5).sleep();
 			// while
 		}
-		else if((lax <= -9.1 && lax >= -9.9) && (laz <= 1 && laz >= 0)){
+		else if((lax <= -9 && lax >= -10) && (laz <= 1 && laz >= 0)){
 			ROS_INFO("CURRENTLY ON BACK\n");
 			ros::Duration(5).sleep();
 			words.data = "I am currently lying on my back";
 			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
-		else if((lax <= 1.8 && lax >= 1) && (laz <= -9.5 && laz >= -10.2)){
+		else if((lax <= 2 && lax >= 1) && (laz <= -9 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY SQUATTING\n");
 			ros::Duration(5).sleep();
 			words.data = "I am currently upright but in a squat position";
 			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
-		else if((lax >= 0 && lax <= 1) && (laz <= -9.8 && laz >= -10.2)){
+		else if((lax >= 0 && lax <= 1) && (laz <= -9.5 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY UPRIGHT\n");
 			ros::Duration(5).sleep();
 			words.data = "I am currently completely upright";
