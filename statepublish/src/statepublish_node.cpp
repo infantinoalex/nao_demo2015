@@ -68,7 +68,7 @@ int main(int argc, char ** argv){
 		ros::spinOnce();
 		ROS_INFO("FIGURING OUT POSITION\n");
 		loop_rate.sleep();
-		ros::spinOnce();
+		ros::Duration(2).sleep();
 		if((lax <=10.5 && lax >= 9.5) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
 			controlstate.nao_standup_facedown = true;
