@@ -112,7 +112,7 @@ int main(int argc, char ** argv){
 			ros::Duration(1).sleep();
 			if(onground){
 				ROS_INFO("ON GROUND\n");
-				words.data = "I am going to move my upper body to the correct position before I start walking.";
+				words.data = "Fixing Upper Body.";
 				talk.publish(words);
 				loop_rate.sleep();
 				ROS_INFO("MOVING UPPERBODY\n");

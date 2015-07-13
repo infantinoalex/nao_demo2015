@@ -81,7 +81,7 @@ int main(int argc, char ** argv){
 	// variable declarations
 	std_msgs::String words;
 	geometry_msgs::Twist direct, stop;
-	int i;
+	int i = 0; 
 	bool firsttime = true;
 
 	// declarations of the stop variable values so that a simple publish to stop
@@ -97,15 +97,11 @@ int main(int argc, char ** argv){
 	while(ros::ok()){
 		ros::spinOnce();
 		loop_rate.sleep();
-		ros::spinOnce();
-	
 		if(controlmsgs.walk_detect == true){
 			i = 0;
 			if(firsttime){
-				loop_rate.sleep();
 				words.data = "I can walk around freely without assistance. Watch me.";
 				talk.publish(words);
-				loop_rate.sleep();
 				ros::Duration(5).sleep();		
 				firsttime = false;
 			}
@@ -116,6 +112,7 @@ int main(int argc, char ** argv){
 				loop_rate.sleep();
 				controlmsgs.walk_detect = false;
 				pub_contrl.publish(controlmsgs);
+				ROS_INFO("STOPPING\n");
 				loop_rate.sleep();
 				ros::spinOnce();
 			}
@@ -133,7 +130,6 @@ int main(int argc, char ** argv){
 				for(i = 0; i < 5; i++){
 					loop_rate.sleep();
 				}
-				ros::Duration(2).sleep();
 				loop_rate.sleep();
 				ros::spinOnce();
 			}
