@@ -2,7 +2,7 @@
 #include "std_msgs/Bool.h"
 #include "sensor_msgs/Imu.h"
 #include "std_msgs/String.h"
-//#include "custom_msgs/States.h"
+#include "statepublish/states.h"
 
 // Global variables to store the imu sensor data
 float orix, oriy, oriz, oriw, avx, avy, avz, lax, lay, laz;
@@ -43,6 +43,9 @@ int main(int argc, char ** argv){
 	
 	// publishes to speech so we can get verbal feedback
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
+
+	// publishes to custom topic to control everything
+	ros::Publisher control = n.advertise<statepublish::state>("/control_msgs", 100);
 	
 	// subscribes to imu to determine position of the nao's body
 	ros::Subscriber sub_1 = n.subscribe("/imu", 100, imucb);
@@ -52,7 +55,7 @@ int main(int argc, char ** argv){
 
 	ros::Rate loop_rate(50);
 
-	//custom_msgs::isit gotit;
+	statepublish::state controlstate;
 	std_msgs::String words;	
 		
 	while(ros::ok()){
@@ -63,10 +66,13 @@ int main(int argc, char ** argv){
 		ros::spinOnce();
 		if((lax <=10.5 && lax >= 9.8) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
+			controlstate.nao_standup_facedown = true;
+			control.publish(controlstate);
 			ros::Duration(5).sleep();
 			words.data = "I am currently laying down on my stomach";
 			talk.publish(words);
 			ros::Duration(5).sleep();
+			// while
 		}
 		else if((lax <= -9.1 && lax >= -9.9) && (laz <= 1 && laz >= 0)){
 			ROS_INFO("CURRENTLY ON BACK\n");
