@@ -315,7 +315,7 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
 
-    //narration.data = "Adjust legs to help sit up.";
+    //narration.data = "Adjust legs to help sit upppp.";
     pub_narration.publish(narration);
 	
     lhyp.joint_angles[0] = -0.3;
