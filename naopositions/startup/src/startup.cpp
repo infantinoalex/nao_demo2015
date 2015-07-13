@@ -86,7 +86,7 @@ int main(int argc, char ** argv){
 	while(ros::ok()){
 		ros::spinOnce();
 		if(controlmsgs.startup == true){
-			int i = 0;
+			i = 0;
 			if(checkit){
 				/* If the HeadYaw position is not between the desired state, it will move it there
 				 * The desired state is the point where the head is looking straight, parallel to the flat ground
