@@ -72,7 +72,6 @@ int main(int argc, char ** argv){
 		if((lax <=10.5 && lax >= 9.5) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
 			controlstate.nao_standup_facedown = true;
-			ros::Duration(1).sleep();
 			words.data = "I am currently laying down on my stomach";
 			talk.publish(words);
 			ros::Duration(1).sleep();
@@ -88,6 +87,8 @@ int main(int argc, char ** argv){
 				loop_rate.sleep();
 			}
 			ROS_INFO("STANDUP COMPLETE\n");
+			words.data = "Standup Completed.";
+			talk.publish(words);
 			loop_rate.sleep();
 		}
 		else if((lax <= -9 && lax >= -10) && (laz <= 1 && laz >= 0)){
@@ -111,6 +112,23 @@ int main(int argc, char ** argv){
 			ros::Duration(1).sleep();
 			if(onground){
 				ROS_INFO("ON GROUND\n");
+				words.data = "I am going to move my upper body to the correct position before I start walking.";
+				talk.publish(words);
+				loop_rate.sleep();
+				ROS_INFO("MOVING UPPERBODY\n");
+				controlstate.startup = true;
+				control.publish(controlstate);
+				ros::spinOnce();
+				loop_rate.sleep();
+				ROS_INFO("WAITING UNTIL STARTUP COMPLETE\n");
+				while(controlstate.startup == true){
+					ros::spinOnce();
+					loop_rate.sleep();
+				}
+				words.data = "All good.";
+				talk.publish(words);
+				loop_rate.sleep();
+				ROS_INFO("STARTING TO WALK\n");
 				words.data = "I am going to start walking using my sonar.";
 				talk.publish(words);
 				ros::Duration(2).sleep();
@@ -124,6 +142,8 @@ int main(int argc, char ** argv){
 					loop_rate.sleep();
 				}
 				ROS_INFO("WALK COMPLETE\n");
+				words.data = "Walk complete.";
+				talk.publish(words);
 				loop_rate.sleep();
 			}
 			else{
@@ -135,10 +155,9 @@ int main(int argc, char ** argv){
 		}
 		else{
 			ROS_INFO("UNKNOWN POSITION\n");
-			ros::Duration(5).sleep();
-			words.data = "I am in an unknown position";
+			words.data = "I am in an unknown position. I do not know what I should be doing. Please try moving my body to another position.";
 			talk.publish(words);	
-			ros::Duration(5).sleep();
+			ros::Duration(10).sleep();
 		}
 	}
 	return 0;
