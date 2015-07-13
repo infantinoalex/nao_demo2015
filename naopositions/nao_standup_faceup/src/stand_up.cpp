@@ -460,40 +460,32 @@ int main(int argc, char ** argv) {
 
     //narration.data = "Tuck left leg under.";
     pub_narration.publish(narration);
-    /*		
-    lhyp.joint_angles[0] = -1.15;
-    lhyp.speed = 0.2;
-    pub_move.publish(lhyp);
-
-    lhr.joint_angles[0] = 0.15;
-    lhr.speed = 0.2;
-    pub_move.publish(lhr);
-
-    lhp.joint_angles[0] = -1.15;
+    		
+    lhp.joint_angles[0] = -1.10;
     lhp.speed = 0.2;
     pub_move.publish(lhp);
 
-    lap.joint_angles[0] = -0.1;
+    lap.joint_angles[0] = -0.4;
     lap.speed = 0.2;
     pub_move.publish(lap);
 
-    lar.joint_angles[0] = 0.0;
+    lar.joint_angles[0] = 0.05;
     lar.speed = 0.2;
     pub_move.publish(lar);
 
 
-    rhyp.joint_angles[0] = -1.15;
-    rhyp.speed = 0.2;
-    pub_move.publish(rhyp);
-    
-    rhp.joint_angles[0] = -0.35;
+    rhr.joint_angles[0] = -0.35;
+    rhr.speed = 0.2;
+    pub_move.publish(rhr);
+
+    rhp.joint_angles[0] = -0.75;
     rhp.speed = 0.2;
     pub_move.publish(rhp);
     
-    rkp.joint_angles[0] = 0.75;
+    rkp.joint_angles[0] = 0.45;
     rkp.speed = 0.2;
     pub_move.publish(rkp);
-    */
+    
     ros::Duration(1).sleep();
     
     /************************************************/
