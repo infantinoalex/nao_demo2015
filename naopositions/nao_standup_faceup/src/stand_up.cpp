@@ -118,7 +118,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(ler);
     pub_move.publish(rer); 
 
-    ros::Duration(2).sleep();
+    ros::Duration(1).sleep();
 
     /************************************************/
 
@@ -146,7 +146,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(lap);
     pub_move.publish(rap); 
 
-    ros::Duration(2).sleep();
+    ros::Duration(1).sleep();
 	
     /************************************************/
     
@@ -181,8 +181,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(ler);
     pub_move.publish(rer); 
 
-
-    ros::Duration(2).sleep();
+    ros::Duration(1).sleep();
 
     /************************************************/
 
@@ -196,7 +195,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(lsr);
     pub_move.publish(rsr); 
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     	
     /************************************************/
 
@@ -239,8 +238,6 @@ int main(int argc, char ** argv) {
     pub_move.publish(rap); 
 
     ros::Duration(1).sleep();
-
-    ros::Duration(3).sleep();
     
     /************************************************/
 
@@ -255,12 +252,12 @@ int main(int argc, char ** argv) {
     pub_move.publish(ler);
     pub_move.publish(rer); 
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     	
     /************************************************/
 
     //narration.data = "Not quite sure what this does...?.";
-/*    pub_narration.publish(narration);
+    pub_narration.publish(narration);
 
     lhyp.joint_angles[0] = -0.5;
     rhyp.joint_angles[0] = -0.5; 
@@ -283,8 +280,8 @@ int main(int argc, char ** argv) {
     pub_move.publish(lhp);
     pub_move.publish(rhp); 
 
-    ros::Duration(3).sleep();
-    */ 
+    ros::Duration(1).sleep();
+     
     /************************************************/
 
     //narration.data = "Straighten arms.";
@@ -311,11 +308,11 @@ int main(int argc, char ** argv) {
     pub_move.publish(ley);
     pub_move.publish(rey); 
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     	
     /************************************************/
 
-    //narration.data = "Adjust legs to help sit upppp.";
+    //narration.data = "Bend legs.";
     pub_narration.publish(narration);
 	
     lhyp.joint_angles[0] = -0.3;
@@ -353,8 +350,64 @@ int main(int argc, char ** argv) {
     pub_move.publish(lap);
     pub_move.publish(rap); 
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     
+    /************************************************/
+
+    //narration.data = "Open legs.";
+    pub_narration.publish(narration);
+	
+    lhyp.joint_angles[0] = -0.8;
+    rhyp.joint_angles[0] = -0.8; 
+    lhyp.speed = 0.5;
+    rhyp.speed = 0.5;
+    pub_move.publish(lhyp);
+    pub_move.publish(rhyp); 
+
+    lhr.joint_angles[0] = 0.2;
+    rhr.joint_angles[0] = -0.2; 
+    lhr.speed = 0.5;
+    rhr.speed = 0.5;
+    pub_move.publish(lhr);
+    pub_move.publish(rhr); 
+
+    lkp.joint_angles[0] = 0.1;
+    rkp.joint_angles[0] = 0.1; 
+    lkp.speed = 0.5;
+    rkp.speed = 0.5;
+    pub_move.publish(lkp);
+    pub_move.publish(rkp); 
+
+    ros::Duration(1).sleep();
+    
+    /************************************************/
+
+    //narration.data = "Straighten arms.";
+    pub_narration.publish(narration);
+
+    lsp.joint_angles[0] = 1.9;
+    rsp.joint_angles[0] = 1.9; 
+    lsp.speed = 0.5;
+    rsp.speed = 0.5;
+    pub_move.publish(lsp);
+    pub_move.publish(rsp); 
+
+    lsr.joint_angles[0] = 0.15;
+    rsr.joint_angles[0] = -0.15; 
+    lsr.speed = 0.5;
+    rsr.speed = 0.5;
+    pub_move.publish(lsr);
+    pub_move.publish(rsr); 
+
+    ler.joint_angles[0] = 0.0;
+    rer.joint_angles[0] = 0.0; 
+    ler.speed = 0.5;
+    rer.speed = 0.5;
+    pub_move.publish(ler);
+    pub_move.publish(rer); 
+
+    ros::Duration(1).sleep();
+    	
     /************************************************/
 
     ros::Duration(3).sleep();
