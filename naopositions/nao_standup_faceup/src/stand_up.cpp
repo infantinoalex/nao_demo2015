@@ -485,11 +485,11 @@ int main(int argc, char ** argv) {
     rhyp.joint_angles[0] = -1.15;
     rhyp.speed = 0.2;
     pub_move.publish(rhyp);
-
+    /*
     rhp.joint_angles[0] = -0.35;
     rhp.speed = 0.2;
     pub_move.publish(rhp);
-
+    */
     rkp.joint_angles[0] = 0.75;
     rkp.speed = 0.2;
     pub_move.publish(rkp);
