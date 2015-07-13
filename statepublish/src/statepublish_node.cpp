@@ -73,11 +73,15 @@ int main(int argc, char ** argv){
 		if((lax <=10.5 && lax >= 9.5) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
 			controlstate.nao_standup_facedown = true;
-			control.publish(controlstate);
-			ros::Duration(5).sleep();
+			ros::Duration(1).sleep();
 			words.data = "I am currently laying down on my stomach";
 			talk.publish(words);
-			ros::Duration(5).sleep();
+			ros::Duration(1).sleep();
+			words.data = "Going to start standing up now.";
+			talk.publish(words);
+			ros::Duration(1).sleep();
+			control.publish(controlstate);
+			loop_rate.sleep();
 			ros::spinOnce();
 			while(controlstate.nao_standup_facedown == true){
 				ROS_INFO("WAITING UNTIL STANDUP COMPLETE\n");
