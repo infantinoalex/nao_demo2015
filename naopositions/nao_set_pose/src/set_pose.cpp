@@ -46,7 +46,7 @@ void callback(const sensor_msgs::JointState::ConstPtr& Joints){
 
 int main(int argc, char **argv) {
 
-  ros::init(argc, argv, "move_robot");
+  ros::init(argc, argv, "set_pose");
   ros::NodeHandle node;
 
   //All the publishers

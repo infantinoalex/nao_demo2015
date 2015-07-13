@@ -68,7 +68,7 @@ int main(int argc, char ** argv){
 		ros::spinOnce();
 		loop_rate.sleep();
 		ROS_INFO("FIGURING OUT POSITION\n");
-		ros::Duration(5).sleep();
+		ros::Duration(1).sleep();
 		ros::spinOnce();
 		if((lax <=10.5 && lax >= 9.5) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
