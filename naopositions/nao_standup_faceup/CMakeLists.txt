@@ -104,7 +104,6 @@ include_directories(
 
 ## Declare a cpp executable
 add_executable(stand_up src/stand_up.cpp)
-add_executable(set_pose src/set_pose.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -112,7 +111,6 @@ add_executable(set_pose src/set_pose.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(stand_up ${catkin_LIBRARIES})
-target_link_libraries(set_pose ${catkin_LIBRARIES})
 
 #############
 ## Install ##

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(nao_et_pose
+project(nao_set_pose)
 
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED COMPONENTS
@@ -41,7 +41,7 @@ find_package(catkin REQUIRED COMPONENTS
 generate_messages(
   DEPENDENCIES
   nao_msgs
-  #std_msgs
+  std_msgs
 )
 
 

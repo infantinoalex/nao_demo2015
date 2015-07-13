@@ -47,6 +47,7 @@
   <run_depend>nao_msgs</run_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>std_msgs</run_depend>
+  <run_depend>message_generation</run_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

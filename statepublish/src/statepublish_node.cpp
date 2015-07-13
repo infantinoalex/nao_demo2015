@@ -89,6 +89,8 @@ int main(int argc, char ** argv){
 				ros::spinOnce();
 				loop_rate.sleep();
 			}
+			ROS_INFO("STANDUP COMPLETE\n");
+			loop_rate.sleep();
 		}
 		else if((lax <= -9 && lax >= -10) && (laz <= 1 && laz >= 0)){
 			ROS_INFO("CURRENTLY ON BACK\n");
@@ -106,10 +108,27 @@ int main(int argc, char ** argv){
 		}
 		else if((lax >= 0 && lax <= 1) && (laz <= -9.5 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY UPRIGHT\n");
-			ros::Duration(5).sleep();
+			ros::Duration(1).sleep();
 			words.data = "I am currently completely upright";
 			talk.publish(words);
-			ros::Duration(5).sleep();
+			ros::Duration(1).sleep();
+			if(onground){
+				words.data = "I am going to start walking using my sonar.";
+				talk.publish(words);
+				ros::Duration(2).sleep();
+				controlstate.walk_detect = true;
+				control.publish(controlstate);
+				ros::spinOnce();
+				loop_rate.sleep();
+				while(controlstate.walk_detect == true){
+					ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
+					ros::Duration(3).sleep();
+					ros::spinOnce();
+					loop_rate.sleep();
+				}
+				ROS_INFO("WALK COMPLETE\n");
+				loop_rate.sleep();
+			}
 		}
 		else{
 			ROS_INFO("UNKNOWN POSITION\n");
