@@ -255,7 +255,7 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
 
-    //narration.data = "Not quite sure what this does...?.";
+    //narration.data = "Sit up a bit.";
     pub_narration.publish(narration);
 
     lhyp.joint_angles[0] = -0.5;
@@ -381,7 +381,77 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
 
-    //narration.data = "Bend legs.";
+    //narration.data = "Sit up a bit.";
+    pub_narration.publish(narration);
+
+    lhp.joint_angles[0] = -1.0;
+    rhp.joint_angles[0] = -1.0; 
+    lhp.speed = 0.5;
+    rhp.speed = 0.5;
+    pub_move.publish(lhp);
+    pub_move.publish(rhp); 
+
+    ros::Duration(3).sleep();
+     
+    /************************************************/
+
+    //narration.data = "Halfway there.";
+    pub_narration.publish(narration);
+		
+    lhyp.joint_angles[0] = -0.95;
+    lhyp.speed = 0.2;
+    pub_move.publish(lhyp);
+
+    lhr.joint_angles[0] = 0.2;
+    lhr.speed = 0.2;
+    pub_move.publish(lhr);
+
+    lhp.joint_angles[0] = -0.85;
+    lhp.speed = 0.2;
+    pub_move.publish(lhp);
+
+    lkp.joint_angles[0] = 1.8;
+    lkp.speed = 0.2;
+    pub_move.publish(lkp);
+
+    lap.joint_angles[0] = -0.875;
+    lap.speed = 0.2;
+    pub_move.publish(lap);
+
+    lar.joint_angles[0] = -0.05;
+    lar.speed = 0.2;
+    pub_move.publish(lar);
+
+
+    rhyp.joint_angles[0] = -0.95;
+    rhyp.speed = 0.2;
+    pub_move.publish(rhyp);
+
+    rhr.joint_angles[0] = -0.45;
+    rhr.speed = 0.2;
+    pub_move.publish(rhr);
+
+    rhp.joint_angles[0] = -1.5;
+    rhp.speed = 0.2;
+    pub_move.publish(rhp);
+
+    rkp.joint_angles[0] = 1.30;
+    rkp.speed = 0.2;
+    pub_move.publish(rkp);
+
+    rap.joint_angles[0] = 0.775;
+    rap.speed = 0.2;
+    pub_move.publish(rap);
+
+    rar.joint_angles[0] = -0.025;
+    rar.speed = 0.2;
+    pub_move.publish(rar);
+
+    ros::Duration(3).sleep();
+    
+    /************************************************/
+
+    //narration.data = "Do the running man.";
     pub_narration.publish(narration);
 		
     lhyp.joint_angles[0] = -1.05;
@@ -433,7 +503,7 @@ int main(int argc, char ** argv) {
     rar.speed = 0.2;
     pub_move.publish(rar);
 
-    ros::Duration(1).sleep();
+    ros::Duration(3).sleep();
     
     /************************************************/
 
