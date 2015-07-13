@@ -3,7 +3,13 @@
 #include <geometry_msgs/Twist.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
 #include <sstream>
+#include "statepublish/states.h"
 
+statepublish::states controlmsgs;
+
+void controlcb(const statepublish::states States){
+	controlmsgs = States;
+}
 
 int main(int argc, char **argv) {
 
@@ -14,6 +20,10 @@ int main(int argc, char **argv) {
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
+  ros::Publisher pub_contrl = node.advertise<statepublish::states>("/control_msgs", 100);
+
+  // subscriber
+  ros::Subscriber sub = node.subscribe("/control_msgs", 100, controlcb);
 
   //All the message declarations
   std_msgs::String narration;
@@ -82,7 +92,9 @@ int main(int argc, char **argv) {
 
   ros::Rate loop_rate(10); 
   while (ros::ok()) {
-
+    ros::spinOnce();
+    loop_rate.sleep();
+    if(controlmsgs.nao_standup_facedown == true){
     /************************************************/
     
     ros::Duration(3).sleep();
@@ -563,13 +575,25 @@ int main(int argc, char **argv) {
     
    /************************************************/
 
-    ros::Duration(3).sleep();
-    ros::shutdown();
+    //ros::Duration(3).sleep();
+    //ros::shutdown();
 
    /************************************************/
   
     ros::spinOnce();
     loop_rate.sleep();
+	
+    controlmsgs.nao_standup_facedown = false;
+    pub_contrl.publish(controlmsgs);
+    ROS_INFO("STANDUP COMPLETE\n");
+    loop_rate.sleep();
+    ros::spinOnce();
+    }
+    else{
+	ROS_INFO("WAITING\n");
+	ros::spinOnce();
+	loop_rate.sleep();
+    }
 
   }
 

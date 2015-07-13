@@ -13,6 +13,11 @@ statepublish::states controlstate;
 // Global variable to store the bool of whether or not the nao's feet are on the ground
 bool onground = false;
 
+// STATEPUBLISH MSGS CALLBACK
+void statecb(const statepublish::states States){
+	controlstate = States;
+}
+
 // IMU subscriber call back, stores all the information obtained from the IMU
 void imucb(const sensor_msgs::Imu::ConstPtr& info){
 	orix = info->orientation.x;
@@ -52,6 +57,9 @@ int main(int argc, char ** argv){
 	// subscribes to foot_contact to determine if the nao has both feet on the ground 
 	ros::Subscriber sub_2 = n.subscribe("/foot_contact", 100, feetcb);
 
+	// subscribes to state publish cb
+	ros::Subscriber sub_3 = n.subscribe("/control_msgs", 100, statecb);
+
 	ros::Rate loop_rate(50);
 
 	std_msgs::String words;	
@@ -62,7 +70,7 @@ int main(int argc, char ** argv){
 		ROS_INFO("FIGURING OUT POSITION\n");
 		ros::Duration(5).sleep();
 		ros::spinOnce();
-		if((lax <=10 && lax >= 9) && (laz <= 1 && laz >= -1)){
+		if((lax <=10.5 && lax >= 9.5) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
 			controlstate.nao_standup_facedown = true;
 			control.publish(controlstate);
@@ -70,7 +78,13 @@ int main(int argc, char ** argv){
 			words.data = "I am currently laying down on my stomach";
 			talk.publish(words);
 			ros::Duration(5).sleep();
-			// while
+			ros::spinOnce();
+			while(controlstate.nao_standup_facedown == true){
+				ROS_INFO("WAITING UNTIL STANDUP COMPLETE\n");
+				ros::Duration(3).sleep();
+				ros::spinOnce();
+				loop_rate.sleep();
+			}
 		}
 		else if((lax <= -9 && lax >= -10) && (laz <= 1 && laz >= 0)){
 			ROS_INFO("CURRENTLY ON BACK\n");
