@@ -3,6 +3,9 @@
 #include <std_msgs/String.h>
 #include <sensor_msgs/JointState.h>
 #include <sstream>
+#include "statepublish/states.h"
+
+statepublish::states controlmsgs;
 
 float hy_state, hp_state, lsp_state, rsp_state,
       lsr_state, rsr_state, ley_state, rey_state,
@@ -43,6 +46,9 @@ void callback(const sensor_msgs::JointState::ConstPtr& Joints){
 
 }
 
+void controlcb(const statepublish::states States){
+	controlmsgs = States;
+}
 
 int main(int argc, char **argv) {
 
@@ -52,9 +58,11 @@ int main(int argc, char **argv) {
   //All the publishers
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
+  ros::Publisher pub_contrl = node.advertise<statepublish::states>("/control_msgs", 100);
 
   //All the subscribers
   ros::Subscriber sub_joints = node.subscribe("joint_states", 100, callback);
+  ros::subscrier sub_ctrl = node.subscribe("/control_msgs", 100, controlcb);
 
   //All the message declarations
   std_msgs::String narration;
@@ -95,6 +103,8 @@ int main(int argc, char **argv) {
        rhp_check = false, lhr_check = false, rhr_check = false,
        lkp_check = false, rkp_check = false, lap_check = false,
        rap_check = false, lar_check = false, rar_check = false;
+
+	int i = 0;
 
   //All joint name statements
   hy.joint_names.push_back("HeadYaw");
@@ -153,411 +163,415 @@ int main(int argc, char **argv) {
   rar.joint_angles.push_back(0);
 
   ros::Rate loop_rate(10); 
-  while (ros::ok()) {
+	while (ros::ok()) {
+		ros::spinOnce();
+		loop_rate.sleep();
+		if(controlmsgs.nao_set_pose == true){
+			i = 0;
 
-    /************************************************/
+    		/************************************************/
     
-    ros::Duration(1).sleep();
+    			ros::Duration(1).sleep();
  
-    if ( !all_good ) {
+    			if ( !all_good ) {
    
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting head yaw to desired position    
-      ros::spinOnce();
+      				//Adjusting head yaw to desired position    
+      				ros::spinOnce();
 
 
-      if ( hy_state > -0.1 && hy_state < 0.1 ) {
+      				if ( hy_state > -0.1 && hy_state < 0.1 ) {
 
-        hy_check = true;
-        ROS_INFO("HeadYaw position correct...");
+        				hy_check = true;
+       				 	ROS_INFO("HeadYaw position correct...");
   
-      }
+      				}
   
-      else {
+     			 	else {
   
-        ROS_INFO("\nHeadYaw position incorrect...");
-        ROS_INFO("HeadYaw position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("HeadYaw position currently [ %d ]...", hy_state );
-        ROS_INFO("Moving HeadYaw to the correct position...\n");
+        				ROS_INFO("\nHeadYaw position incorrect...");
+        				ROS_INFO("HeadYaw position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("HeadYaw position currently [ %d ]...", hy_state );
+       					ROS_INFO("Moving HeadYaw to the correct position...\n");
   
-        hy.joint_angles[0] = 0.0;
-        hy.speed = 0.5;
-        pub_move.publish(hy);
+        				hy.joint_angles[0] = 0.0;
+        				hy.speed = 0.5;
+        				pub_move.publish(hy);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
        
-      /************************************************/
+      			/************************************************/
    
-      //Adjusting head pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting head pitch to desired position    
+      				ros::spinOnce();
     
-      if ( hp_state > -0.1 && hp_state < 0.1 ) {
+      				if ( hp_state > -0.1 && hp_state < 0.1 ) {
   
-        hp_check = true;
-        ROS_INFO("HeadPitch position correct...");
+        				hp_check = true;
+        				ROS_INFO("HeadPitch position correct...");
   
-      }
+     				}
   
-      else {
+     	 			else {
    
-        ROS_INFO("\nHeadPitch position incorrect...");
-        ROS_INFO("HeadPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("HeadPitch position currently [ %d ]...", hp_state );
-        ROS_INFO("Moving HeadPitch to the correct position...\n");
+        				ROS_INFO("\nHeadPitch position incorrect...");
+        				ROS_INFO("HeadPitch position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("HeadPitch position currently [ %d ]...", hp_state );
+        				ROS_INFO("Moving HeadPitch to the correct position...\n");
   
-        hp.joint_angles[0] = 0.0;
-        hp.speed = 0.5;
-        pub_move.publish(hp);
+        				hp.joint_angles[0] = 0.0;
+        				hp.speed = 0.5;
+        				pub_move.publish(hp);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
   
-      //Adjusting left shoulder pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting left shoulder pitch to desired position    
+      				ros::spinOnce();
     
-      if ( lsp_state > 1.5 && lsp_state < 1.7 ) {
+      				if ( lsp_state > 1.5 && lsp_state < 1.7 ) {
   
-        lsp_check = true;
-        ROS_INFO("LShoulderPitch position correct...");
+        				lsp_check = true;
+        				ROS_INFO("LShoulderPitch position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
     
-        ROS_INFO("\nLShoulderPitch position incorrect...");
-        ROS_INFO("LShoulderPitch position should be between [ 1.5 ] - [ 1.7 ]...");
-        ROS_INFO("LShoulderPitch position currently [ %d ]...", lsp_state );
-        ROS_INFO("Moving LShoulderPitch to the correct position...\n");
+        				ROS_INFO("\nLShoulderPitch position incorrect...");
+        				ROS_INFO("LShoulderPitch position should be between [ 1.5 ] - [ 1.7 ]...");
+        				ROS_INFO("LShoulderPitch position currently [ %d ]...", lsp_state );
+        				ROS_INFO("Moving LShoulderPitch to the correct position...\n");
 
-        lsp.joint_angles[0] = 1.6;
-        lsp.speed = 0.5;
-        pub_move.publish(lsp);
+        				lsp.joint_angles[0] = 1.6;
+        				lsp.speed = 0.5;
+        				pub_move.publish(lsp);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting right shoulder pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting right shoulder pitch to desired position    
+      				ros::spinOnce();
     
-      if ( rsp_state > 1.5 && rsp_state < 1.7 ) {
+      				if ( rsp_state > 1.5 && rsp_state < 1.7 ) {
   
-        rsp_check = true;
-        ROS_INFO("RShoulderPitch position correct...");
+        				rsp_check = true;
+        				ROS_INFO("RShoulderPitch position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
       
-        ROS_INFO("\nRShoulderPitch position incorrect...");
-        ROS_INFO("RShoulderPitch position should be between [ 1.5 ] - [ 1.7 ]...");
-        ROS_INFO("RShoulderPitch position currently [ %d ]...", rsp_state );
-        ROS_INFO("Moving RShoulderPitch to the correct position...\n");
+        				ROS_INFO("\nRShoulderPitch position incorrect...");
+        				ROS_INFO("RShoulderPitch position should be between [ 1.5 ] - [ 1.7 ]...");
+        				ROS_INFO("RShoulderPitch position currently [ %d ]...", rsp_state );
+        				ROS_INFO("Moving RShoulderPitch to the correct position...\n");
 
-        rsp.joint_angles[0] = 1.6;
-        rsp.speed = 0.5;
-        pub_move.publish(rsp);
+        				rsp.joint_angles[0] = 1.6;
+        				rsp.speed = 0.5;
+        				pub_move.publish(rsp);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting left shoulder roll to desired position    
-      ros::spinOnce();
+      				//Adjusting left shoulder roll to desired position    
+      				ros::spinOnce();
     
-      if ( lsr_state > -0.3 && lsr_state < 0.3 ) {
+      				if ( lsr_state > -0.3 && lsr_state < 0.3 ) {
   
-        lsr_check = true;
-        ROS_INFO("LShoulderRoll position correct...");
+        				lsr_check = true;
+        				ROS_INFO("LShoulderRoll position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
        
-        ROS_INFO("\nLShoulderRoll position incorrect...");
-        ROS_INFO("LShoulderRoll position should be between [ -0.3 ] - [ 0.3 ]...");
-        ROS_INFO("LShoulderRoll position currently [ %d ]...", lsr_state );
-        ROS_INFO("Moving LShoulderRoll to the correct position...\n");
+        				ROS_INFO("\nLShoulderRoll position incorrect...");
+        				ROS_INFO("LShoulderRoll position should be between [ -0.3 ] - [ 0.3 ]...");
+        				ROS_INFO("LShoulderRoll position currently [ %d ]...", lsr_state );
+        				ROS_INFO("Moving LShoulderRoll to the correct position...\n");
  
-        lsr.joint_angles[0] = 0.1;
-        lsr.speed = 0.5;
-        pub_move.publish(lsr);
+        				lsr.joint_angles[0] = 0.1;
+        				lsr.speed = 0.5;
+        				pub_move.publish(lsr);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting right shoulder roll to desired position    
-      ros::spinOnce();
+      				//Adjusting right shoulder roll to desired position    
+      				ros::spinOnce();
     
-      if ( rsr_state > -0.3 && rsr_state < 0.3 ) {
+      				if ( rsr_state > -0.3 && rsr_state < 0.3 ) {
   
-        rsr_check = true;
-        ROS_INFO("RShoulderRoll position correct...");
+        				rsr_check = true;
+        				ROS_INFO("RShoulderRoll position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
         
-        ROS_INFO("\nRShoulderRoll position incorrect...");
-        ROS_INFO("RShoulderRoll position should be between [ -0.3 ] - [ 0.3 ]...");
-        ROS_INFO("RShoulderRoll position currently [ %d ]...", rsr_state );
-        ROS_INFO("Moving RShoulderRoll to the correct position...\n");
+        				ROS_INFO("\nRShoulderRoll position incorrect...");
+        				ROS_INFO("RShoulderRoll position should be between [ -0.3 ] - [ 0.3 ]...");
+					ROS_INFO("RShoulderRoll position currently [ %d ]...", rsr_state );
+        				ROS_INFO("Moving RShoulderRoll to the correct position...\n");
  
-        rsr.joint_angles[0] = 0.1;
-        rsr.speed = 0.5;
-        pub_move.publish(rsr);
+        				rsr.joint_angles[0] = 0.1;
+        				rsr.speed = 0.5;
+        				pub_move.publish(rsr);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
   
-      //Adjusting left elbow yaw to desired position    
-      ros::spinOnce();
+      				//Adjusting left elbow yaw to desired position    
+      				ros::spinOnce();
     
-      if ( ley_state > -0.1 && ley_state < 0.1 ) {
+      				if ( ley_state > -0.1 && ley_state < 0.1 ) {
   
-        ley_check = true;
-        ROS_INFO("LElbowYaw position correct...");
+        				ley_check = true;
+       	 				ROS_INFO("LElbowYaw position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
          
-        ROS_INFO("\nLElbowYaw position incorrect...");
-        ROS_INFO("LElbowYaw position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("LElbowYaw position currently [ %d ]...", ley_state );
-        ROS_INFO("Moving LElbowYaw to the correct position...\n");
+        				ROS_INFO("\nLElbowYaw position incorrect...");
+        				ROS_INFO("LElbowYaw position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("LElbowYaw position currently [ %d ]...", ley_state );
+        				ROS_INFO("Moving LElbowYaw to the correct position...\n");
 
-        ley.joint_angles[0] = 0.0;
-        ley.speed = 0.5;
-        pub_move.publish(ley);
+        				ley.joint_angles[0] = 0.0;
+        				ley.speed = 0.5;
+        				pub_move.publish(ley);
+  		
+        				ros::Duration(0.5).sleep();
   
-        ros::Duration(0.5).sleep();
+      				}
   
-      }
-  
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting right elbow yaw to desired position    
-      ros::spinOnce();
+      				//Adjusting right elbow yaw to desired position    
+      				ros::spinOnce();
     
-      if ( rey_state > -0.1 && rey_state < 0.1 ) {
+      				if ( rey_state > -0.1 && rey_state < 0.1 ) {
   
-        rey_check = true;
-        ROS_INFO("RElbowYaw position correct...");
+        				rey_check = true;
+        				ROS_INFO("RElbowYaw position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
           
-        ROS_INFO("\nRElbowYaw position incorrect...");
-        ROS_INFO("RElbowYaw position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("RElbowYaw position currently [ %d ]...", rey_state );
-        ROS_INFO("Moving RElbowYaw to the correct position...\n");
+        				ROS_INFO("\nRElbowYaw position incorrect...");
+        				ROS_INFO("RElbowYaw position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("RElbowYaw position currently [ %d ]...", rey_state );
+        				ROS_INFO("Moving RElbowYaw to the correct position...\n");
  
-        rey.joint_angles[0] = 0.0;
-        rey.speed = 0.5;
-        pub_move.publish(rey);
+        				rey.joint_angles[0] = 0.0;
+        				rey.speed = 0.5;
+        				pub_move.publish(rey);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
       
-      //Adjusting left elbow roll to desired position    
-      ros::spinOnce();
-    
-      if ( ler_state > -0.1 && ler_state < 0.1 ) {
+      				//Adjusting left elbow roll to desired position    
+      				ros::spinOnce();
+    	
+      				if ( ler_state > -0.1 && ler_state < 0.1 ) {
   
-        ler_check = true;
-        ROS_INFO("LElbowRoll position correct...");
+        				ler_check = true;
+        				ROS_INFO("LElbowRoll position correct...");
   
-      }
+     			 	}
   
-      else {
+      				else {
            
-        ROS_INFO("\nLElbowRoll position incorrect...");
-        ROS_INFO("LElbowRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("LElbowRoll position currently [ %d ]...", ler_state );
-        ROS_INFO("Moving LElbowRoll to the correct position...\n");
+        				ROS_INFO("\nLElbowRoll position incorrect...");
+        				ROS_INFO("LElbowRoll position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("LElbowRoll position currently [ %d ]...", ler_state );
+        				ROS_INFO("Moving LElbowRoll to the correct position...\n");
 
-        ler.joint_angles[0] = 0.0;
-        ler.speed = 0.5;
-        pub_move.publish(ler);
+        				ler.joint_angles[0] = 0.0;
+        				ler.speed = 0.5;
+        				pub_move.publish(ler);
+  	
+        				ros::Duration(0.5).sleep();
   
-        ros::Duration(0.5).sleep();
+      				}
   
-      }
-  
-      /************************************************/
+      			/************************************************/
     
-      //Adjusting right elbow roll to desired position    
-      ros::spinOnce();
+      				//Adjusting right elbow roll to desired position    
+      				ros::spinOnce();
     
-      if ( rer_state > -0.1 && rer_state < 0.1 ) {
+      				if ( rer_state > -0.1 && rer_state < 0.1 ) {
   
-        rer_check = true;
-        ROS_INFO("RElbowRoll position correct...");
+        				rer_check = true;
+        				ROS_INFO("RElbowRoll position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
             
-        ROS_INFO("\nRElbowRoll position incorrect...");
-        ROS_INFO("RElbowRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("RElbowRoll position currently [ %d ]...", rer_state );
-        ROS_INFO("Moving RElbowRoll to the correct position...\n");
+        				ROS_INFO("\nRElbowRoll position incorrect...");
+        				ROS_INFO("RElbowRoll position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("RElbowRoll position currently [ %d ]...", rer_state );
+        				ROS_INFO("Moving RElbowRoll to the correct position...\n");
  
-        rer.joint_angles[0] = 0.0;
-        rer.speed = 0.5;
-        pub_move.publish(rer);
+        				rer.joint_angles[0] = 0.0;
+        				rer.speed = 0.5;
+        				pub_move.publish(rer);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
        
-      //Adjusting left wrist yaw to desired position    
-      ros::spinOnce();
+      				//Adjusting left wrist yaw to desired position    
+      				ros::spinOnce();
     
-      if ( lwy_state > -0.1 && lwy_state < 0.1 ) {
+      				if ( lwy_state > -0.1 && lwy_state < 0.1 ) {
   
-        lwy_check = true;
-        ROS_INFO("LWristYaw position correct...");
+        				lwy_check = true;
+        				ROS_INFO("LWristYaw position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
              
-        ROS_INFO("\nLWristYaw position incorrect...");
-        ROS_INFO("LWristYaw position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("LWristYaw position currently [ %d ]...", lwy_state );
-        ROS_INFO("Moving LWristYaw to the correct position...\n");
+       	 				ROS_INFO("\nLWristYaw position incorrect...");
+        				ROS_INFO("LWristYaw position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("LWristYaw position currently [ %d ]...", lwy_state );
+        				ROS_INFO("Moving LWristYaw to the correct position...\n");
 
-        lwy.joint_angles[0] = 0.0;
-        lwy.speed = 0.5;
-        pub_move.publish(lwy);
+        				lwy.joint_angles[0] = 0.0;
+        				lwy.speed = 0.5;
+        				pub_move.publish(lwy);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
      
-      //Adjusting right wrist yaw to desired position    
-      ros::spinOnce();
+      				//Adjusting right wrist yaw to desired position    
+      				ros::spinOnce();
     
-      if ( rwy_state > -0.1 && rwy_state < 0.1 ) {
+      				if ( rwy_state > -0.1 && rwy_state < 0.1 ) {
   
-        rwy_check = true;
-        ROS_INFO("RWristYaw position correct...");
+        				rwy_check = true;
+        				ROS_INFO("RWristYaw position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
               
-        ROS_INFO("\nRWristYaw position incorrect...");
-        ROS_INFO("RWristYaw position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("RWristYaw position currently [ %d ]...", rwy_state );
-        ROS_INFO("Moving RWristYaw to the correct position...\n");
+        				ROS_INFO("\nRWristYaw position incorrect...");
+        				ROS_INFO("RWristYaw position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("RWristYaw position currently [ %d ]...", rwy_state );
+       			 		ROS_INFO("Moving RWristYaw to the correct position...\n");
  
-        rwy.joint_angles[0] = 0.0;
-        rwy.speed = 0.5;
-        pub_move.publish(rwy);
+        				rwy.joint_angles[0] = 0.0;
+        				rwy.speed = 0.5;
+        				pub_move.publish(rwy);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
         
-      //Adjusting left hand to desired position    
-      ros::spinOnce();
+      				//Adjusting left hand to desired position    
+      				ros::spinOnce();
     
-      if ( lh_state > 0.4 && lh_state < 0.6 ) {
+      				if ( lh_state > 0.4 && lh_state < 0.6 ) {
   
-        lh_check = true;
-        ROS_INFO("LHand position correct...");
+        				lh_check = true;
+        				ROS_INFO("LHand position correct...");
   
-      }
+      				}	
   
-      else {
+      				else {
               
-        ROS_INFO("\nLHand position incorrect...");
-        ROS_INFO("LHand position should be between [ 0.4 ] - [ 0.6 ]...");
-        ROS_INFO("LHand position currently [ %d ]...", lh_state );
-        ROS_INFO("Moving LHand to the correct position...\n");
+        				ROS_INFO("\nLHand position incorrect...");
+        				ROS_INFO("LHand position should be between [ 0.4 ] - [ 0.6 ]...");
+        				ROS_INFO("LHand position currently [ %d ]...", lh_state );
+        				ROS_INFO("Moving LHand to the correct position...\n");
  
-        lh.joint_angles[0] = 0.5;
-        lh.speed = 0.5;
-        pub_move.publish(lh);
+        				lh.joint_angles[0] = 0.5;
+        				lh.speed = 0.5;
+        				pub_move.publish(lh);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
       
-      //Adjusting right hand to desired position    
-      ros::spinOnce();
+      				//Adjusting right hand to desired position    
+      				ros::spinOnce();
     
-      if ( rh_state > 0.4 && rh_state < 0.6 ) {
+      				if ( rh_state > 0.4 && rh_state < 0.6 ) {
   
-        rh_check = true;
-        ROS_INFO("RHand position correct...");
+        				rh_check = true;
+        				ROS_INFO("RHand position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                
-        ROS_INFO("\nRHand position incorrect...");
-        ROS_INFO("RHand position should be between [ 0.4 ] - [ 0.6 ]...");
-        ROS_INFO("RHand position currently [ %d ]...", rh_state );
-        ROS_INFO("Moving RHand to the correct position...\n");
+        				ROS_INFO("\nRHand position incorrect...");
+        				ROS_INFO("RHand position should be between [ 0.4 ] - [ 0.6 ]...");
+        				ROS_INFO("RHand position currently [ %d ]...", rh_state );
+        				ROS_INFO("Moving RHand to the correct position...\n");
  
-        rh.joint_angles[0] = 0.5;
-        rh.speed = 0.5;
-        pub_move.publish(rh);
+        				rh.joint_angles[0] = 0.5;
+        				rh.speed = 0.5;
+        				pub_move.publish(rh);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
        
-      //Adjusting hip yaw pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting hip yaw pitch to desired position    
+      				ros::spinOnce();
     
-      if ( lhyp_state > -0.1 && lhyp_state < 0.1 ) {
+      				if ( lhyp_state > -0.1 && lhyp_state < 0.1 ) {
   
-        lhyp_check = true;
-        ROS_INFO("LHipYawPitch position correct...");
+        				lhyp_check = true;
+        				ROS_INFO("LHipYawPitch position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                
-        ROS_INFO("\nLHipYawPitch position incorrect...");
-        ROS_INFO("LHipYawPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("LHipYawPitch position currently [ %d ]...", lhyp_state );
-        ROS_INFO("Moving LHipYawPitch to the correct position...\n");
+       	 				ROS_INFO("\nLHipYawPitch position incorrect...");
+        				ROS_INFO("LHipYawPitch position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("LHipYawPitch position currently [ %d ]...", lhyp_state );
+        				ROS_INFO("Moving LHipYawPitch to the correct position...\n");
 
         lhyp.joint_angles[0] = 0.0;
         lhyp.speed = 0.5;
