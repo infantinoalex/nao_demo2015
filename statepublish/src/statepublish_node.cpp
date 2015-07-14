@@ -105,7 +105,7 @@ int main(int argc, char ** argv){
 			ROS_INFO("STANDUP COMPLETE\n");
 			words.data = "Standup Completed.";
 			talk.publish(words);
-			loop_rate.sleep();
+			ros::Duration(3).sleep();
 		}
 		else if((lax <= -9 && lax >= -10) && (laz <= 1 && laz >= 0)){
 			ROS_INFO("CURRENTLY ON BACK\n");
@@ -172,6 +172,18 @@ int main(int argc, char ** argv){
 		else{
 			ROS_INFO("UNKNOWN POSITION\n");
 			loop_rate.sleep();
+			client.call(bstiff);
+			controlstate.nao_set_pose = true;
+			control.publish(controlstate);
+			loop_rate.sleep();
+			ros::spinOnce();
+			ROS_INFO("WAITING UNTIL SET POSE COMPLETE\n");
+			while(controlstate.nao_set_pose == true){
+				ros::spinOnce();
+				loop_rate.sleep();
+			}
+			ROS_INFO("SET POSE COMPLETE");
+			ROS_INFO("DETERMINING POSITION\n");
 		}
 	}
 	return 0;
