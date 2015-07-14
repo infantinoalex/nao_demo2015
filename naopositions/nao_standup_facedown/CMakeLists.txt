@@ -38,11 +38,6 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  nao_msgs
-  std_msgs
-)
 
 
 ###################################
@@ -73,7 +68,7 @@ include_directories(
 
 ## Declare a cpp executable
 add_executable(get_up src/get_up.cpp)
-add_executable(stand_up src/stand_up.cpp)
+add_executable(stand_up_fd src/stand_up.cpp)
 add_executable(fall_down src/fall_down.cpp)
 
 ## Add cmake target dependencies of the executable/library
@@ -82,7 +77,7 @@ add_executable(fall_down src/fall_down.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(get_up ${catkin_LIBRARIES})
-target_link_libraries(stand_up ${catkin_LIBRARIES})
+target_link_libraries(stand_up_fd ${catkin_LIBRARIES})
 target_link_libraries(fall_down ${catkin_LIBRARIES})
 
 

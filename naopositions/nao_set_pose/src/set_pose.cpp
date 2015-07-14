@@ -3,7 +3,7 @@
 #include <std_msgs/String.h>
 #include <sensor_msgs/JointState.h>
 #include <sstream>
-#include "statepublish/states.h"
+#include <statepublish/states.h>
 
 statepublish::states controlmsgs;
 

@@ -5,10 +5,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
 )
-generate_messages(
-  DEPENDENCIES
-  nao_msgs#   std_msgs
-)
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )

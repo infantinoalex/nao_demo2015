@@ -38,11 +38,6 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  nao_msgs
-  std_msgs
-)
 
 
 ###################################
@@ -76,7 +71,6 @@ add_executable(set_pose src/set_pose.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(nao_standup_node nao_standup_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(set_pose ${catkin_LIBRARIES})
