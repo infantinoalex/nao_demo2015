@@ -3,6 +3,7 @@
 #include "sensor_msgs/Imu.h"
 #include "std_msgs/String.h"
 #include "statepublish/states.h"
+#include "std_srvs/Empty.h"
 
 // Global variables to store the imu sensor data
 float orix, oriy, oriz, oriw, avx, avy, avz, lax, lay, laz;
@@ -60,9 +61,14 @@ int main(int argc, char ** argv){
 	// subscribes to state publish cb
 	ros::Subscriber sub_3 = n.subscribe("/control_msgs", 100, statecb);
 
+	// service call to make body stiff
+	ros::ServiceClient client = n.serviceClient<std_srvs::Empty>("/body_stiffness/enable", 100);
+
 	ros::Rate loop_rate(50);
 
 	std_msgs::String words;	
+	
+	std_srvs::Empty bstiff;
 		
 	while(ros::ok()){
 		ros::spinOnce();
@@ -74,6 +80,7 @@ int main(int argc, char ** argv){
 			words.data = "I am currently laying down on my stomach";
 			talk.publish(words);
 			ros::Duration(1).sleep();
+			client.call(bstiff);
 			words.data = "Going to start standing up now.";
 			talk.publish(words);
 			ros::Duration(1).sleep();
@@ -164,9 +171,7 @@ int main(int argc, char ** argv){
 		}
 		else{
 			ROS_INFO("UNKNOWN POSITION\n");
-			words.data = "I am in an unknown position. I do not know what I should be doing. Please try moving my body to another position.";
-			talk.publish(words);	
-			ros::Duration(10).sleep();
+			loop_rate.sleep();
 		}
 	}
 	return 0;

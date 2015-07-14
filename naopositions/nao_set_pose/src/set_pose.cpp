@@ -167,7 +167,7 @@ int main(int argc, char **argv) {
 	while (ros::ok()) {
 		ros::spinOnce();
 		loop_rate.sleep();
-		if(controlmsgs.nao_set_pose != true){
+		if(controlmsgs.nao_set_pose == true){
 			i = 0;
 
     		/************************************************/
@@ -922,6 +922,7 @@ int main(int argc, char **argv) {
 		else{
 			if(i == 0){
 				ROS_INFO("WAITING FOR STATEPUBLISHER\n");	
+				all_good = 0;
 			}	
 			i++;
 			ros::spinOnce();

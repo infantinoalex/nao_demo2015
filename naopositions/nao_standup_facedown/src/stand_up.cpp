@@ -13,7 +13,7 @@ void controlcb(const statepublish::states States){
 
 int main(int argc, char **argv) {
 
-	ros::init(argc, argv, "set_pose");
+	ros::init(argc, argv, "face_down");
 	ros::NodeHandle node;
 
 	//All the publishers
