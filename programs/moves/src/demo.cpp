@@ -36,7 +36,7 @@ int main(int argc, char ** argv){
 	mhp.joint_names.push_back("HeadPitch");
 	mhy.joint_names.push_back("HeadYaw");	
 	mler.joint_names.push_back("LElbowRoll");
-	mrer.joint_names.push_bacl("RElbowRoll");
+	mrer.joint_names.push_back("RElbowRoll");
 	mlwy.joint_names.push_back("LWristYaw");
 	mrwy.joint_names.push_back("RWristYaw");
 	mley.joint_names.push_back("LElbowYaw");
