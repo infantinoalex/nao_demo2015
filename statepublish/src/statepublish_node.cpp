@@ -143,23 +143,14 @@ int main(int argc, char ** argv){
 				words.data = "Fixing Upper Body.";
 				talk.publish(words);
 				loop_rate.sleep();
-				ROS_INFO("MOVING UPPERBODY\n");
-				controlstate.startup = true;
-				control.publish(controlstate);
 				ros::spinOnce();
-				loop_rate.sleep();
-				ROS_INFO("WAITING UNTIL STARTUP COMPLETE\n");
-				while(controlstate.startup == true){
-					ros::spinOnce();
-					loop_rate.sleep();
-				}
 				words.data = "All good.";
 				talk.publish(words);
 				loop_rate.sleep();
 				ROS_INFO("STARTING TO WALK\n");
 				words.data = "I am going to start walking using my sonar.";
 				talk.publish(words);
-				ros::Duration(2).sleep();
+				ros::Duration(4).sleep();
 				controlstate.walk_detect = true;
 				control.publish(controlstate);
 				ros::spinOnce();
