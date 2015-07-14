@@ -75,6 +75,9 @@ int main(int argc, char ** argv){
 		ROS_INFO("FIGURING OUT POSITION\n");
 		loop_rate.sleep();
 		ros::Duration(2).sleep();
+
+		// These values are found when the robot is laying on its stomach
+		// This if statement gets the robot to stand up from its stomach
 		if((lax <=10.5 && lax >= 9) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
 			words.data = "I am currently laying down on my stomach";
@@ -107,6 +110,9 @@ int main(int argc, char ** argv){
 			talk.publish(words);
 			ros::Duration(3).sleep();
 		}
+
+		// These values are found when the robot is laying on its back
+		// This if statement gets the robot to stand up from its back
 		else if((lax <= -9 && lax >= -10.5) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON BACK\n");
 			ros::Duration(5).sleep();
@@ -114,6 +120,9 @@ int main(int argc, char ** argv){
 			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
+
+		// These values are found when the robot is squatting upright
+		// not sure what to do with it currently
 		else if((lax <= 3 && lax >= 1) && (laz <= -9 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY SQUATTING\n");
 			ros::Duration(5).sleep();
@@ -121,6 +130,9 @@ int main(int argc, char ** argv){
 			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
+
+		// These values are found when the robot is standing upright
+		// It gets the robot to start walking around using its sonar
 		else if((lax >= -1 && lax <= 1) && (laz <= -9 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY UPRIGHT\n");
 			words.data = "I am currently completely upright";
@@ -169,6 +181,9 @@ int main(int argc, char ** argv){
 				ros::Duration(2).sleep();
 			}
 		}
+
+		// This is if the program cannot determine what position the robot is in
+		// makes it assume a start up pose and go from there
 		else{
 			ROS_INFO("UNKNOWN POSITION\n");
 			loop_rate.sleep();
@@ -181,6 +196,7 @@ int main(int argc, char ** argv){
 			while(controlstate.nao_set_pose == true){
 				ros::spinOnce();
 				loop_rate.sleep();
+				client.call(bstiff);
 			}
 			ROS_INFO("SET POSE COMPLETE");
 			ROS_INFO("DETERMINING POSITION\n");
