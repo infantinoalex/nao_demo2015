@@ -16,7 +16,6 @@ float hy_state, hp_state, lsp_state, rsp_state,
 	lar_state, rar_state;
 
 void callback(const sensor_msgs::JointState::ConstPtr& Joints){
-
   	hy_state = Joints->position[0];
   	hp_state = Joints->position[1];
   	lsp_state = Joints->position[2];
@@ -167,7 +166,7 @@ int main(int argc, char **argv) {
 	while (ros::ok()) {
 		ros::spinOnce();
 		loop_rate.sleep();
-		if(controlmsgs.nao_set_pose != true){
+		if(controlmsgs.nao_set_pose == true){
 			i = 0;
 
     		/************************************************/

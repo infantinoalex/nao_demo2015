@@ -75,7 +75,7 @@ int main(int argc, char ** argv){
 		ROS_INFO("FIGURING OUT POSITION\n");
 		loop_rate.sleep();
 		ros::Duration(2).sleep();
-		if((lax <=10.5 && lax >= 9.5) && (laz <= 1 && laz >= -1)){
+		if((lax <=10.5 && lax >= 9) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
 			words.data = "I am currently laying down on my stomach";
 			talk.publish(words);
@@ -107,21 +107,21 @@ int main(int argc, char ** argv){
 			talk.publish(words);
 			ros::Duration(3).sleep();
 		}
-		else if((lax <= -9 && lax >= -10) && (laz <= 1 && laz >= 0)){
+		else if((lax <= -9 && lax >= -10.5) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON BACK\n");
 			ros::Duration(5).sleep();
 			words.data = "I am currently lying on my back";
 			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
-		else if((lax <= 2 && lax >= 1) && (laz <= -9 && laz >= -10.5)){
+		else if((lax <= 3 && lax >= 1) && (laz <= -9 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY SQUATTING\n");
 			ros::Duration(5).sleep();
 			words.data = "I am currently upright but in a squat position";
 			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
-		else if((lax >= 0 && lax <= 1) && (laz <= -9.5 && laz >= -10.5)){
+		else if((lax >= -1 && lax <= 1) && (laz <= -9 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY UPRIGHT\n");
 			words.data = "I am currently completely upright";
 			talk.publish(words);
