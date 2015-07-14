@@ -21,7 +21,7 @@ int main(int argc, char ** argv) {
                                  lh, rh, lhyp, rhyp, lhr, rhr,
                                  lhp, rhp, lkp, rkp, lap, rap,
                                  lar, rar;
-
+ 
   //All joint name statements
   hy.joint_names.push_back("HeadYaw");
   hp.joint_names.push_back("HeadPitch");
