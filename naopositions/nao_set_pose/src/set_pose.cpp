@@ -8,42 +8,42 @@
 statepublish::states controlmsgs;
 
 float hy_state, hp_state, lsp_state, rsp_state,
-      lsr_state, rsr_state, ley_state, rey_state,
-      ler_state, rer_state, lwy_state, rwy_state,
-      lh_state, rh_state, lhyp_state, rhyp_state,
-      lhp_state, rhp_state, lhr_state, rhr_state,
-      lkp_state, rkp_state, lap_state, rap_state,
-      lar_state, rar_state;
+	lsr_state, rsr_state, ley_state, rey_state,
+	ler_state, rer_state, lwy_state, rwy_state,
+	lh_state, rh_state, lhyp_state, rhyp_state,
+	lhp_state, rhp_state, lhr_state, rhr_state,
+	lkp_state, rkp_state, lap_state, rap_state,
+	lar_state, rar_state;
 
 void callback(const sensor_msgs::JointState::ConstPtr& Joints){
 
-  hy_state = Joints->position[0];
-  hp_state = Joints->position[1];
-  lsp_state = Joints->position[2];
-  lsr_state = Joints->position[3];
-  ley_state = Joints->position[4];
-  ler_state = Joints->position[5];
-  lwy_state = Joints->position[6];
-  lh_state = Joints->position[7];
-  lhyp_state = Joints->position[8];
-  lhr_state = Joints->position[9];
-  lhp_state = Joints->position[10];
-  lkp_state = Joints->position[11];
-  lap_state = Joints->position[12];
-  lar_state = Joints->position[13];
-  rhyp_state = Joints->position[14];
-  rhr_state = Joints->position[15];
-  rhp_state = Joints->position[16];
-  rkp_state = Joints->position[17];
-  rap_state = Joints->position[18];
-  rar_state = Joints->position[19];
-  rsp_state = Joints->position[20];
-  rsr_state = Joints->position[21];
-  rey_state = Joints->position[22];
-  rer_state = Joints->position[23];
-  rwy_state = Joints->position[24];
-  rh_state = Joints->position[25];
-
+  	hy_state = Joints->position[0];
+  	hp_state = Joints->position[1];
+  	lsp_state = Joints->position[2];
+  	lsr_state = Joints->position[3];
+  	ley_state = Joints->position[4];
+  	ler_state = Joints->position[5];
+  	lwy_state = Joints->position[6];
+  	lh_state = Joints->position[7];
+  	lhyp_state = Joints->position[8];
+  	lhr_state = Joints->position[9];
+  	lhp_state = Joints->position[10];
+  	lkp_state = Joints->position[11];
+  	lap_state = Joints->position[12];
+  	lar_state = Joints->position[13];
+  	rhyp_state = Joints->position[14];
+  	rhr_state = Joints->position[15];
+  	rhp_state = Joints->position[16];
+  	rkp_state = Joints->position[17];
+  	rap_state = Joints->position[18];
+  	rar_state = Joints->position[19];
+  	rsp_state = Joints->position[20];
+  	rsr_state = Joints->position[21];
+  	rey_state = Joints->position[22];
+  	rer_state = Joints->position[23];
+  	rwy_state = Joints->position[24];
+  	rh_state = Joints->position[25];
+	
 }
 
 void controlcb(const statepublish::states States){
@@ -52,121 +52,122 @@ void controlcb(const statepublish::states States){
 
 int main(int argc, char **argv) {
 
-  ros::init(argc, argv, "set_pose");
-  ros::NodeHandle node;
+	ros::init(argc, argv, "set_pose");
+  	ros::NodeHandle node;
 
-  //All the publishers
-  ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
-  ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
-  ros::Publisher pub_contrl = node.advertise<statepublish::states>("/control_msgs", 100);
+  	//All the publishers
+  	ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
+  	ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
+  	ros::Publisher pub_contrl = node.advertise<statepublish::states>("/control_msgs", 100);
 
-  //All the subscribers
-  ros::Subscriber sub_joints = node.subscribe("joint_states", 100, callback);
-  ros::subscrier sub_ctrl = node.subscribe("/control_msgs", 100, controlcb);
+  	//All the subscribers
+  	ros::Subscriber sub_joints = node.subscribe("joint_states", 100, callback);
+  	ros::Subscriber sub_ctrl = node.subscribe("/control_msgs", 100, controlcb);
+	
+  	//All the message declarations
+  	std_msgs::String narration;
+  	nao_msgs::JointAnglesWithSpeed hy;
+  	nao_msgs::JointAnglesWithSpeed hp;
+  	nao_msgs::JointAnglesWithSpeed lsp;
+  	nao_msgs::JointAnglesWithSpeed rsp;
+  	nao_msgs::JointAnglesWithSpeed lsr;
+  	nao_msgs::JointAnglesWithSpeed rsr;
+  	nao_msgs::JointAnglesWithSpeed ley;
+  	nao_msgs::JointAnglesWithSpeed rey;
+  	nao_msgs::JointAnglesWithSpeed ler;
+  	nao_msgs::JointAnglesWithSpeed rer;
+  	nao_msgs::JointAnglesWithSpeed lwy;
+  	nao_msgs::JointAnglesWithSpeed rwy;
+  	nao_msgs::JointAnglesWithSpeed lh;
+  	nao_msgs::JointAnglesWithSpeed rh;
+  	nao_msgs::JointAnglesWithSpeed lhyp;
+  	nao_msgs::JointAnglesWithSpeed rhyp;
+  	nao_msgs::JointAnglesWithSpeed lhp;
+  	nao_msgs::JointAnglesWithSpeed rhp;
+  	nao_msgs::JointAnglesWithSpeed lhr;
+  	nao_msgs::JointAnglesWithSpeed rhr;
+  	nao_msgs::JointAnglesWithSpeed lkp;
+  	nao_msgs::JointAnglesWithSpeed rkp;
+  	nao_msgs::JointAnglesWithSpeed lap;
+  	nao_msgs::JointAnglesWithSpeed rap;
+  	nao_msgs::JointAnglesWithSpeed lar;
+  	nao_msgs::JointAnglesWithSpeed rar;
 
-  //All the message declarations
-  std_msgs::String narration;
-  nao_msgs::JointAnglesWithSpeed hy;
-  nao_msgs::JointAnglesWithSpeed hp;
-  nao_msgs::JointAnglesWithSpeed lsp;
-  nao_msgs::JointAnglesWithSpeed rsp;
-  nao_msgs::JointAnglesWithSpeed lsr;
-  nao_msgs::JointAnglesWithSpeed rsr;
-  nao_msgs::JointAnglesWithSpeed ley;
-  nao_msgs::JointAnglesWithSpeed rey;
-  nao_msgs::JointAnglesWithSpeed ler;
-  nao_msgs::JointAnglesWithSpeed rer;
-  nao_msgs::JointAnglesWithSpeed lwy;
-  nao_msgs::JointAnglesWithSpeed rwy;
-  nao_msgs::JointAnglesWithSpeed lh;
-  nao_msgs::JointAnglesWithSpeed rh;
-  nao_msgs::JointAnglesWithSpeed lhyp;
-  nao_msgs::JointAnglesWithSpeed rhyp;
-  nao_msgs::JointAnglesWithSpeed lhp;
-  nao_msgs::JointAnglesWithSpeed rhp;
-  nao_msgs::JointAnglesWithSpeed lhr;
-  nao_msgs::JointAnglesWithSpeed rhr;
-  nao_msgs::JointAnglesWithSpeed lkp;
-  nao_msgs::JointAnglesWithSpeed rkp;
-  nao_msgs::JointAnglesWithSpeed lap;
-  nao_msgs::JointAnglesWithSpeed rap;
-  nao_msgs::JointAnglesWithSpeed lar;
-  nao_msgs::JointAnglesWithSpeed rar;
-
-  //All check variable declarations
-  bool all_good = false, hy_check = false, hp_check = false,
-       lsp_check = false, rsp_check = false, lsr_check = false,
-       rsr_check = false, ley_check = false, rey_check = false,
-       ler_check = false, rer_check = false, lwy_check = false,
-       rwy_check = false, lh_check = false, rh_check = false,
-       lhyp_check = false, rhyp_check = false, lhp_check = false,
-       rhp_check = false, lhr_check = false, rhr_check = false,
-       lkp_check = false, rkp_check = false, lap_check = false,
-       rap_check = false, lar_check = false, rar_check = false;
+  	//All check variable declarations
+  	bool all_good = false, hy_check = false, hp_check = false,
+       		lsp_check = false, rsp_check = false, lsr_check = false,
+       		rsr_check = false, ley_check = false, rey_check = false,
+       		ler_check = false, rer_check = false, lwy_check = false,
+       		rwy_check = false, lh_check = false, rh_check = false,
+       		lhyp_check = false, rhyp_check = false, lhp_check = false,
+       		rhp_check = false, lhr_check = false, rhr_check = false,
+       		lkp_check = false, rkp_check = false, lap_check = false,
+       		rap_check = false, lar_check = false, rar_check = false;
 
 	int i = 0;
 
-  //All joint name statements
-  hy.joint_names.push_back("HeadYaw");
-  hp.joint_names.push_back("HeadPitch");
-  lsp.joint_names.push_back("LShoulderPitch");
-  rsp.joint_names.push_back("RShoulderPitch");
-  lsr.joint_names.push_back("LShoulderRoll");
-  rsr.joint_names.push_back("RShoulderRoll");
-  ley.joint_names.push_back("LElbowYaw");
-  rey.joint_names.push_back("RElbowYaw");
-  ler.joint_names.push_back("LElbowRoll");
-  rer.joint_names.push_back("RElbowRoll");
-  lwy.joint_names.push_back("LWristYaw");
-  rwy.joint_names.push_back("RWristYaw");
-  lh.joint_names.push_back("LHand");
-  rh.joint_names.push_back("RHand");
-  lhyp.joint_names.push_back("LHipYawPitch");
-  rhyp.joint_names.push_back("RHipYawPitch");
-  lhp.joint_names.push_back("LHipPitch");
-  rhp.joint_names.push_back("RHipPitch");
-  lhr.joint_names.push_back("LHipRoll");
-  rhr.joint_names.push_back("RHipRoll");
-  lkp.joint_names.push_back("LKneePitch");
-  rkp.joint_names.push_back("RKneePitch");
-  lap.joint_names.push_back("LAnklePitch");
-  rap.joint_names.push_back("RAnklePitch");
-  lar.joint_names.push_back("LAnkleRoll");
-  rar.joint_names.push_back("RAnkleRoll");
+  	//All joint name statements
+  	hy.joint_names.push_back("HeadYaw");
+  	hp.joint_names.push_back("HeadPitch");
+  	lsp.joint_names.push_back("LShoulderPitch");
+  	rsp.joint_names.push_back("RShoulderPitch");
+  	lsr.joint_names.push_back("LShoulderRoll");
+  	rsr.joint_names.push_back("RShoulderRoll");
+  	ley.joint_names.push_back("LElbowYaw");
+  	rey.joint_names.push_back("RElbowYaw");
+  	ler.joint_names.push_back("LElbowRoll");
+  	rer.joint_names.push_back("RElbowRoll");
+  	lwy.joint_names.push_back("LWristYaw");
+  	rwy.joint_names.push_back("RWristYaw");
+  	lh.joint_names.push_back("LHand");
+  	rh.joint_names.push_back("RHand");
+  	lhyp.joint_names.push_back("LHipYawPitch");
+  	rhyp.joint_names.push_back("RHipYawPitch");
+  	lhp.joint_names.push_back("LHipPitch");
+  	rhp.joint_names.push_back("RHipPitch");
+  	lhr.joint_names.push_back("LHipRoll");
+  	rhr.joint_names.push_back("RHipRoll");
+  	lkp.joint_names.push_back("LKneePitch");
+  	rkp.joint_names.push_back("RKneePitch");
+  	lap.joint_names.push_back("LAnklePitch");
+  	rap.joint_names.push_back("RAnklePitch");
+  	lar.joint_names.push_back("LAnkleRoll");
+  	rar.joint_names.push_back("RAnkleRoll");
+	
+  	//All joint angle statements
+  	hy.joint_angles.push_back(0);
+  	hp.joint_angles.push_back(0);
+  	lsp.joint_angles.push_back(0);
+  	rsp.joint_angles.push_back(0);
+  	lsr.joint_angles.push_back(0);
+  	rsr.joint_angles.push_back(0);
+  	ley.joint_angles.push_back(0);
+  	rey.joint_angles.push_back(0);
+  	ler.joint_angles.push_back(0);
+  	rer.joint_angles.push_back(0);
+  	lwy.joint_angles.push_back(0);
+  	rwy.joint_angles.push_back(0);
+  	lh.joint_angles.push_back(0);
+  	rh.joint_angles.push_back(0);
+  	lhyp.joint_angles.push_back(0);
+  	rhyp.joint_angles.push_back(0);
+  	lhp.joint_angles.push_back(0);
+  	rhp.joint_angles.push_back(0);
+  	lhr.joint_angles.push_back(0);
+  	rhr.joint_angles.push_back(0);
+  	lkp.joint_angles.push_back(0);
+  	rkp.joint_angles.push_back(0);
+  	lap.joint_angles.push_back(0);
+  	rap.joint_angles.push_back(0);
+  	lar.joint_angles.push_back(0);
+  	rar.joint_angles.push_back(0);
 
-  //All joint angle statements
-  hy.joint_angles.push_back(0);
-  hp.joint_angles.push_back(0);
-  lsp.joint_angles.push_back(0);
-  rsp.joint_angles.push_back(0);
-  lsr.joint_angles.push_back(0);
-  rsr.joint_angles.push_back(0);
-  ley.joint_angles.push_back(0);
-  rey.joint_angles.push_back(0);
-  ler.joint_angles.push_back(0);
-  rer.joint_angles.push_back(0);
-  lwy.joint_angles.push_back(0);
-  rwy.joint_angles.push_back(0);
-  lh.joint_angles.push_back(0);
-  rh.joint_angles.push_back(0);
-  lhyp.joint_angles.push_back(0);
-  rhyp.joint_angles.push_back(0);
-  lhp.joint_angles.push_back(0);
-  rhp.joint_angles.push_back(0);
-  lhr.joint_angles.push_back(0);
-  rhr.joint_angles.push_back(0);
-  lkp.joint_angles.push_back(0);
-  rkp.joint_angles.push_back(0);
-  lap.joint_angles.push_back(0);
-  rap.joint_angles.push_back(0);
-  lar.joint_angles.push_back(0);
-  rar.joint_angles.push_back(0);
+  	ros::Rate loop_rate(10); 
 
-  ros::Rate loop_rate(10); 
 	while (ros::ok()) {
 		ros::spinOnce();
 		loop_rate.sleep();
-		if(controlmsgs.nao_set_pose == true){
+		if(controlmsgs.nao_set_pose != true){
 			i = 0;
 
     		/************************************************/
@@ -573,330 +574,330 @@ int main(int argc, char **argv) {
         				ROS_INFO("LHipYawPitch position currently [ %d ]...", lhyp_state );
         				ROS_INFO("Moving LHipYawPitch to the correct position...\n");
 
-        lhyp.joint_angles[0] = 0.0;
-        lhyp.speed = 0.5;
-        pub_move.publish(lhyp);
+        				lhyp.joint_angles[0] = 0.0;
+        				lhyp.speed = 0.5;
+        				pub_move.publish(lhyp);
   
-        ros::Duration(1).sleep();
+        				ros::Duration(1).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting right hip yaw pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting right hip yaw pitch to desired position    
+      				ros::spinOnce();
     
-      if ( rhyp_state > -0.1 && rhyp_state < 0.1 ) {
+      				if ( rhyp_state > -0.1 && rhyp_state < 0.1 ) {
   
-        rhyp_check = true;
-        ROS_INFO("RHipYawPitch position correct...");
+        				rhyp_check = true;
+        				ROS_INFO("RHipYawPitch position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                 
-        ROS_INFO("\nRHipYawPitch position incorrect...");
-        ROS_INFO("RHipYawPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("RHipYawPitch position currently [ %d ]...", rhyp_state );
-        ROS_INFO("Moving RHipYawPitch to the correct position...\n");
+        				ROS_INFO("\nRHipYawPitch position incorrect...");
+        				ROS_INFO("RHipYawPitch position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("RHipYawPitch position currently [ %d ]...", rhyp_state );
+        				ROS_INFO("Moving RHipYawPitch to the correct position...\n");
  
-        rhyp.joint_angles[0] = 0.0;
-        rhyp.speed = 0.5;
-        pub_move.publish(rhyp);
+        				rhyp.joint_angles[0] = 0.0;
+        				rhyp.speed = 0.5;
+        				pub_move.publish(rhyp);
   
-        ros::Duration(1).sleep();
+        				ros::Duration(1).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
  
-      //Adjusting left hip pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting left hip pitch to desired position    
+      				ros::spinOnce();
     
-      if ( lhp_state > -0.1 && lhp_state < 0.1 ) {
+      				if ( lhp_state > -0.1 && lhp_state < 0.1 ) {
   
-        lhp_check = true;
-        ROS_INFO("LHipPitch position correct...");
+        				lhp_check = true;
+        				ROS_INFO("LHipPitch position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                 
-        ROS_INFO("\nLHipPitch position incorrect...");
-        ROS_INFO("LHipPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("LHipPitch position currently [ %d ]...", lhp_state );
-        ROS_INFO("Moving LHipPitch to the correct position...\n");
+       	 				ROS_INFO("\nLHipPitch position incorrect...");
+        				ROS_INFO("LHipPitch position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("LHipPitch position currently [ %d ]...", lhp_state );
+        				ROS_INFO("Moving LHipPitch to the correct position...\n");
  
-        lhp.joint_angles[0] = 0.0;
-        lhp.speed = 0.5;
-        pub_move.publish(lhp);
+        				lhp.joint_angles[0] = 0.0;
+        				lhp.speed = 0.5;
+        				pub_move.publish(lhp);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
  
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting right hip pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting right hip pitch to desired position    
+      				ros::spinOnce();
     
-      if ( rhp_state > -0.1 && rhp_state < 0.1 ) {
+      				if ( rhp_state > -0.1 && rhp_state < 0.1 ) {
   
-        rhp_check = true;
-        ROS_INFO("RHipPitch position correct...");
+        				rhp_check = true;
+        				ROS_INFO("RHipPitch position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                  
-        ROS_INFO("\nRHipPitch position incorrect...");
-        ROS_INFO("RHipPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("RHipPitch position currently [ %d ]...", rhp_state );
-        ROS_INFO("Moving RHipPitch to the correct position...\n");
+        				ROS_INFO("\nRHipPitch position incorrect...");
+        				ROS_INFO("RHipPitch position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("RHipPitch position currently [ %d ]...", rhp_state );
+        				ROS_INFO("Moving RHipPitch to the correct position...\n");
  
-        rhp.joint_angles[0] = 0.0;
-        rhp.speed = 0.5;
-        pub_move.publish(rhp);
+        				rhp.joint_angles[0] = 0.0;
+        				rhp.speed = 0.5;
+        				pub_move.publish(rhp);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
  
-      //Adjusting left hip roll to desired position    
-      ros::spinOnce();
+      				//Adjusting left hip roll to desired position    
+      				ros::spinOnce();
     
-      if ( lhr_state > -0.1 && lhr_state < 0.1 ) {
+      				if ( lhr_state > -0.1 && lhr_state < 0.1 ) {
   
-        lhr_check = true;
-        ROS_INFO("LHipRoll position correct...");
+        				lhr_check = true;
+        				ROS_INFO("LHipRoll position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                   
-        ROS_INFO("\nLHipRoll position incorrect...");
-        ROS_INFO("LHipRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("LHipRoll position currently [ %d ]...", lhr_state );
-        ROS_INFO("Moving LHipRoll to the correct position...\n");
+        				ROS_INFO("\nLHipRoll position incorrect...");
+        				ROS_INFO("LHipRoll position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("LHipRoll position currently [ %d ]...", lhr_state );
+        				ROS_INFO("Moving LHipRoll to the correct position...\n");
 
-        lhr.joint_angles[0] = 0.0;
-        lhr.speed = 0.5;
-        pub_move.publish(lhr);
+        				lhr.joint_angles[0] = 0.0;
+        				lhr.speed = 0.5;
+        				pub_move.publish(lhr);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting right hip roll to desired position    
-      ros::spinOnce();
+      				//Adjusting right hip roll to desired position    
+      				ros::spinOnce();
     
-      if ( rhr_state > -0.1 && rhr_state < 0.1 ) {
+      				if ( rhr_state > -0.1 && rhr_state < 0.1 ) {
   
-        rhr_check = true;
-        ROS_INFO("RHipRoll position correct...");
+        				rhr_check = true;
+        				ROS_INFO("RHipRoll position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                    
-        ROS_INFO("\nRHipRoll position incorrect...");
-        ROS_INFO("RHipRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("RHipRoll position currently [ %d ]...", rhr_state );
-        ROS_INFO("Moving RHipRoll to the correct position...\n");
+        				ROS_INFO("\nRHipRoll position incorrect...");
+        				ROS_INFO("RHipRoll position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("RHipRoll position currently [ %d ]...", rhr_state );
+        				ROS_INFO("Moving RHipRoll to the correct position...\n");
  
-        rhr.joint_angles[0] = 0.0;
-        rhr.speed = 0.5;
-        pub_move.publish(rhr);
+        				rhr.joint_angles[0] = 0.0;
+        				rhr.speed = 0.5;
+        				pub_move.publish(rhr);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting left knee pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting left knee pitch to desired position    
+      				ros::spinOnce();
     
-      if ( lkp_state > -0.1 && lkp_state < 0.1 ) {
+      				if ( lkp_state > -0.1 && lkp_state < 0.1 ) {
   
-        lkp_check = true;
-        ROS_INFO("LKneePitch position correct...");
+        				lkp_check = true;
+        				ROS_INFO("LKneePitch position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                    
-        ROS_INFO("\nLKneePitch position incorrect...");
-        ROS_INFO("LKneePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("LKneePitch position currently [ %d ]...", lkp_state );
-        ROS_INFO("Moving LKneePitch to the correct position...\n");
+        				ROS_INFO("\nLKneePitch position incorrect...");
+        				ROS_INFO("LKneePitch position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("LKneePitch position currently [ %d ]...", lkp_state );
+        				ROS_INFO("Moving LKneePitch to the correct position...\n");
  
-        lkp.joint_angles[0] = 0.0;
-        lkp.speed = 0.5;
-        pub_move.publish(lkp);
+        				lkp.joint_angles[0] = 0.0;
+        				lkp.speed = 0.5;
+        				pub_move.publish(lkp);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting right knee pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting right knee pitch to desired position    
+      				ros::spinOnce();
     
-      if ( rkp_state > -0.1 && rkp_state < 0.1 ) {
+      				if ( rkp_state > -0.1 && rkp_state < 0.1 ) {
   
-        rkp_check = true;
-        ROS_INFO("RKneePitch position correct...");
+        				rkp_check = true;
+        				ROS_INFO("RKneePitch position correct...");
   
-      }
+      				}
   
-      else {
+     	 			else {
                     
-        ROS_INFO("\nRKneePitch position incorrect...");
-        ROS_INFO("RKneePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("RKneePitch position currently [ %d ]...", rkp_state );
-        ROS_INFO("Moving RKneePitch to the correct position...\n");
+        				ROS_INFO("\nRKneePitch position incorrect...");
+        				ROS_INFO("RKneePitch position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("RKneePitch position currently [ %d ]...", rkp_state );
+        				ROS_INFO("Moving RKneePitch to the correct position...\n");
  
-        rkp.joint_angles[0] = 0.0;
-        rkp.speed = 0.5;
-        pub_move.publish(rkp);
+        				rkp.joint_angles[0] = 0.0;
+        				rkp.speed = 0.5;
+        				pub_move.publish(rkp);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
  
-      //Adjusting left ankle pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting left ankle pitch to desired position    
+      				ros::spinOnce();
     
-      if ( lap_state > -0.1 && lap_state < 0.1 ) {
+      				if ( lap_state > -0.1 && lap_state < 0.1 ) {
   
-        lap_check = true;
-        ROS_INFO("LAnklePitch position correct...");
+        				lap_check = true;
+        				ROS_INFO("LAnklePitch position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                      
-        ROS_INFO("\nLAnklePitch position incorrect...");
-        ROS_INFO("LAnklePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("LAnklePitch position currently [ %d ]...", lap_state );
-        ROS_INFO("Moving LAnklePitch to the correct position...\n");
+        				ROS_INFO("\nLAnklePitch position incorrect...");
+        				ROS_INFO("LAnklePitch position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("LAnklePitch position currently [ %d ]...", lap_state );
+        				ROS_INFO("Moving LAnklePitch to the correct position...\n");
 
-        lap.joint_angles[0] = 0.0;
-        lap.speed = 0.5;
-        pub_move.publish(lap);
+        				lap.joint_angles[0] = 0.0;
+        				lap.speed = 0.5;
+        				pub_move.publish(lap);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting right ankle pitch to desired position    
-      ros::spinOnce();
+      				//Adjusting right ankle pitch to desired position    
+      				ros::spinOnce();
     
-      if ( rap_state > -0.1 && rap_state < 0.1 ) {
+      				if ( rap_state > -0.1 && rap_state < 0.1 ) {
   
-        rap_check = true;
-        ROS_INFO("RAnklePitch position correct...");
+        				rap_check = true;
+        				ROS_INFO("RAnklePitch position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                       
-        ROS_INFO("\nRAnklePitch position incorrect...");
-        ROS_INFO("RAnklePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("RAnklePitch position currently [ %d ]...", rap_state );
-        ROS_INFO("Moving RAnklePitch to the correct position...\n");
+        				ROS_INFO("\nRAnklePitch position incorrect...");
+        				ROS_INFO("RAnklePitch position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("RAnklePitch position currently [ %d ]...", rap_state );
+        				ROS_INFO("Moving RAnklePitch to the correct position...\n");
  
-        rap.joint_angles[0] = 0.0;
-        rap.speed = 0.5;
-        pub_move.publish(rap);
+        				rap.joint_angles[0] = 0.0;
+        				rap.speed = 0.5;
+        				pub_move.publish(rap);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
   
-      //Adjusting left ankle roll to desired position    
-      ros::spinOnce();
+      				//Adjusting left ankle roll to desired position    
+      				ros::spinOnce();
     
-      if ( lar_state > -0.1 && lar_state < 0.1 ) {
+      				if ( lar_state > -0.1 && lar_state < 0.1 ) {
   
-        lar_check = true;
-        ROS_INFO("LAnkleRoll position correct...");
+        				lar_check = true;
+        				ROS_INFO("LAnkleRoll position correct...");
   
-      }
+     				}
   
-      else {
+     				else {
                        
-        ROS_INFO("\nLAnkleRoll position incorrect...");
-        ROS_INFO("LAnkleRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("LAnkleRoll position currently [ %d ]...", lar_state );
-        ROS_INFO("Moving LAnkleRoll to the correct position...\n");
+        				ROS_INFO("\nLAnkleRoll position incorrect...");
+        				ROS_INFO("LAnkleRoll position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("LAnkleRoll position currently [ %d ]...", lar_state );
+        				ROS_INFO("Moving LAnkleRoll to the correct position...\n");
 
-        lar.joint_angles[0] = 0.0;
-        lar.speed = 0.5;
-        pub_move.publish(lar);
+        				lar.joint_angles[0] = 0.0;
+        				lar.speed = 0.5;
+        				pub_move.publish(lar);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
-      /************************************************/
+      			/************************************************/
 
-      //Adjusting right ankle roll to desired position    
-      ros::spinOnce();
+      				//Adjusting right ankle roll to desired position    
+      				ros::spinOnce();
     
-      if ( rar_state > -0.1 && rar_state < 0.1 ) {
+      				if ( rar_state > -0.1 && rar_state < 0.1 ) {
   
-        rar_check = true;
-        ROS_INFO("RAnkleRoll position correct...");
+        				rar_check = true;
+        				ROS_INFO("RAnkleRoll position correct...");
   
-      }
+      				}
   
-      else {
+      				else {
                         
-        ROS_INFO("\nRAnkleRoll position incorrect...");
-        ROS_INFO("RAnkleRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        ROS_INFO("RAnkleRoll position currently [ %d ]...", rar_state );
-        ROS_INFO("Moving RAnkleRoll to the correct position...\n");
+        				ROS_INFO("\nRAnkleRoll position incorrect...");
+        				ROS_INFO("RAnkleRoll position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("RAnkleRoll position currently [ %d ]...", rar_state );
+        				ROS_INFO("Moving RAnkleRoll to the correct position...\n");
  
-        rar.joint_angles[0] = 0.0;
-        rar.speed = 0.5;
-        pub_move.publish(rar);
+        				rar.joint_angles[0] = 0.0;
+        				rar.speed = 0.5;
+        				pub_move.publish(rar);
   
-        ros::Duration(0.5).sleep();
+        				ros::Duration(0.5).sleep();
   
-      }
+      				}
   
 
-      /************************************************/
+     			/************************************************/
    
-      if ( hy_check && hp_check && lsp_check && rsp_check 
-                    && lsr_check && rsr_check && ley_check
-                    && rey_check && ler_check && rer_check
-                    && lwy_check && rwy_check && lh_check
-                    && rh_check && lhyp_check && rhyp_check
-                    && lhp_check && rhp_check && lhr_check
-                    && rhr_check && lkp_check && rkp_check
-                    && lap_check && rap_check && lar_check
-                    && rar_check ) {
+      			if ( hy_check && hp_check && lsp_check && rsp_check 
+                   		&& lsr_check && rsr_check && ley_check
+                    		&& rey_check && ler_check && rer_check
+                    		&& lwy_check && rwy_check && lh_check
+                    		&& rh_check && lhyp_check && rhyp_check
+                    		&& lhp_check && rhp_check && lhr_check
+                    		&& rhr_check && lkp_check && rkp_check
+                    		&& lap_check && rap_check && lar_check
+                    		&& rar_check ) {
         
-        ROS_INFO("Joint positions set!");
-        all_good = 1;
+        				ROS_INFO("Joint positions set!");
+        				all_good = 1;
   
-      }
+      			}	
   
-      else {
+      			else {
 
         ROS_INFO("Checking joints again...");
   
@@ -914,6 +915,7 @@ int main(int argc, char **argv) {
       ros::shutdown();
 
     }
+}
 
 
     /************************************************/
