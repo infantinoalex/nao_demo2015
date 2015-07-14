@@ -429,24 +429,24 @@ int main(int argc, char ** argv) {
     //narration.data = "Adjust arms.";
     pub_narration.publish(narration);
 
-    lsp.joint_angles[0] = 1.05;//1.0;
+    lsp.joint_angles[0] = 1.05;
     lsp.speed = 0.5;
     pub_move.publish(lsp);
 
-    lsr.joint_angles[0] = -0.25;//0.3;
+    lsr.joint_angles[0] = -0.25;
     lsr.speed = 0.5;
     pub_move.publish(lsr);
     
-    ler.joint_angles[0] = -0.15;//did not exist
+    ler.joint_angles[0] = -0.15;
     ler.speed = 0.5;
     pub_move.publish(ler);
     
 
-    rsp.joint_angles[0] = 2.0;//2.1;
+    rsp.joint_angles[0] = 2.0;
     rsp.speed = 0.5;
     pub_move.publish(rsp);
 
-    rsr.joint_angles[0] = -0.15;//-0.3;
+    rsr.joint_angles[0] = -0.15;
     rsr.speed = 0.5;
     pub_move.publish(rsr);
 
@@ -493,34 +493,6 @@ int main(int argc, char ** argv) {
     ros::Duration(3).sleep();
     
     /************************************************/
-    /*    
-    //narration.data = "Adjust arms.";
-    pub_narration.publish(narration);
-
-    lsp.joint_angles[0] = 1.05;
-    lsp.speed = 0.5;
-    pub_move.publish(lsp);
-
-    lsr.joint_angles[0] = -0.25;
-    lsr.speed = 0.5;
-    pub_move.publish(lsr);
-
-    ler.joint_angles[0] = -0.15;
-    ler.speed = 0.5;
-    pub_move.publish(ler);
-
-
-    rsp.joint_angles[0] = 2.0;
-    rsp.speed = 0.5;
-    pub_move.publish(rsp);
-
-    rsr.joint_angles[0] = -0.15;
-    rsr.speed = 0.5;
-    pub_move.publish(rsr);
-
-    ros::Duration(3).sleep();
-    */	
-    /************************************************/
    
     //narration.data = "Leg tuck position 3.";
     pub_narration.publish(narration);
@@ -553,7 +525,7 @@ int main(int argc, char ** argv) {
     ros::Duration(3).sleep();
     
     /************************************************/
-      
+    /*    
     //narration.data = "Fixing position 3.";
     pub_narration.publish(narration);
      		
@@ -607,7 +579,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(rar);
 
     ros::Duration(3).sleep();
-    
+    */
     /************************************************/
    /*  
     //narration.data = "Leg bent almost all the way.";
