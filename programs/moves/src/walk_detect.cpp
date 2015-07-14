@@ -122,17 +122,14 @@ int main(int argc, char ** argv){
 			// if bumper is hit, make the nao move backwards
 			else if((bumperp == 0 || bumperp == 1) && bumpers == 1){
 				ROS_INFO("BUMPER HIT: BACKING UP\n");
-				ros::spinOnce();
-				loop_rate.sleep();
 				move.publish(stop);
+				ros::Duration(3).sleep();
 				loop_rate.sleep();
 				direct.linear.x = -0.5;
-				direct.angular.z = 0;
+				direct.angular.z = 0.3;
 				move.publish(direct);
-				for(i = 0; i < 5; i++){
-					loop_rate.sleep();
-				}
 				loop_rate.sleep();
+				ros::Duration(2).sleep();
 				move.publish(stop);
 				ros::spinOnce();
 			}
