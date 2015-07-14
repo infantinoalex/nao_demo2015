@@ -94,7 +94,7 @@ int main(int argc, char ** argv){
 	
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(phy < -0.1 || phy > 0.1){ //!= -0.0031099319458007812){
+				if(phy < -0.1 || phy > 0.1){ 
 					ROS_INFO("HEAD YAW INCORRECT");
 					ROS_INFO("HEADYAW: %f", phy);
 					ROS_INFO("MOVING HEAD YAW TO STARTUP POSITION\n");
@@ -102,13 +102,11 @@ int main(int argc, char ** argv){
 					mhy.speed = 0.5;
 					pub.publish(mhy);
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					bhy = false;
 				}
 				else{
 					ROS_INFO("HEAD YAW IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					bhy = true;
 				}
 	
@@ -118,22 +116,20 @@ int main(int argc, char ** argv){
 	
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(php < -0.2 || php > 0.2){ //!= 0.06438612937927246){
+				if(php < -0.2 || php > 0.2){ 
 					ROS_INFO("HEAD PITCH INCORRECT");
 					ROS_INFO("HEADPITCH: %f", php);
-						ROS_INFO("MOVING HEAD PITCH TO STARTUP POSITION\n");
+					ROS_INFO("MOVING HEAD PITCH TO STARTUP POSITION\n");
 					mhp.joint_angles[0] = 0.06438612937927246;
 					mhp.speed = 0.5;
 					pub.publish(mhp);
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
-						bhp = false;
+					bhp = false;
 				}
 				else{
 					ROS_INFO("HEAD PITCH IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
-						bhp = true;
+					bhp = true;
 				}
 			
 				/* Checks to see if the LElbowRoll is in the correct startup position
@@ -142,7 +138,7 @@ int main(int argc, char ** argv){
 		
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(pler < -1.1 || pler > -.9){ //!= -1.0031940937042236){
+				if(pler < -1.1 || pler > -.9){ 
 					ROS_INFO("LEFT ELBOW ROLL INCORRECT");
 					ROS_INFO("LELBOWROLL: %f", pler);
 					ROS_INFO("MOVING LEFT ELBOW ROLL TO STARTUP POSITION\n");
@@ -150,13 +146,11 @@ int main(int argc, char ** argv){
 					mler.speed = 0.5;
 					pub.publish(mler);
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					bler = false;
 				}
 				else{
 					ROS_INFO("LEFT ELBOW ROLL IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					bler = true;
 				}
 			
@@ -166,7 +160,7 @@ int main(int argc, char ** argv){
 	
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(prer < .99 || prer > 1.1){ //!= 1.0446958541870117){
+				if(prer < .99 || prer > 1.1){ 
 					ROS_INFO("RIGHT ELBOW ROLL INCORRECT");
 					ROS_INFO("RELBOWROLL: %f", prer);
 					ROS_INFO("MOVING RIGHT ELBOW ROLL TO STARTUP POSITION\n");
@@ -174,13 +168,11 @@ int main(int argc, char ** argv){
 					mrer.speed = 0.5;
 					pub.publish(mrer);
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					brer = true;
 				}
 				else{
 					ROS_INFO("RIGHT ELBOW ROLL IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					brer = true;
 				}
 			
@@ -190,7 +182,7 @@ int main(int argc, char ** argv){
 	
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(pley < -0.9 || pley > -0.6){ //!= -0.751702070236206){
+				if(pley < -0.9 || pley > -0.6){ 
 					ROS_INFO("LEFT ELBOW YAW INCORRECT");
 					ROS_INFO("LELBOWYAW: %f", pley);
 					ROS_INFO("MOVING LEFT ELBOW YAW TO STARTUP POSITION\n");
@@ -198,13 +190,11 @@ int main(int argc, char ** argv){
 					mley.speed = 0.5;
 					pub.publish(mley);
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					bley = false;
 				}
 				else{
 					ROS_INFO("LEFT ELBOW YAW IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					bley = true;
 				}
 				
@@ -214,21 +204,19 @@ int main(int argc, char ** argv){
 		
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(prey < 0.7 || prey > 0.9){ //!= 0.7853660583496094){
+				if(prey < 0.7 || prey > 0.9){ 
 					ROS_INFO("RIGHT ELBOW YAW INCORRECT");
 					ROS_INFO("RELBOWYAW: %f", prey);
 					ROS_INFO("MOVING RIGHT ELBOW YAW TO STARTUP POSITION\n");
 					mrey.joint_angles[0] = 0.7853660583496094;
 					mrey.speed = 0.5;
 					pub.publish(mrey);
-					//ros::Duration(1).sleep();
 					loop_rate.sleep();
 					brey = false;
 				}
 				else{
 					ROS_INFO("RIGHT ELBOW YAW IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					brey = true;
 				}
 			
@@ -238,7 +226,7 @@ int main(int argc, char ** argv){
 	
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(plwy < 0 || plwy > 0.2){ //!= 0.11961007118225098){
+				if(plwy < 0 || plwy > 0.2){ 
 					ROS_INFO("LEFT WRIST YAW INCORRECT");
 					ROS_INFO("LWRISTYAW: %f", plwy);
 					ROS_INFO("MOVING LEFT WRIST YAW TO STARTUP POSITION\n");
@@ -246,13 +234,11 @@ int main(int argc, char ** argv){
 					mlwy.speed = 0.5;
 					pub.publish(mlwy);
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					blwy = false;
 				}
 				else{
 					ROS_INFO("LEFT WRIST YAW IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					blwy = true;
 				}
 			
@@ -262,7 +248,7 @@ int main(int argc, char ** argv){
 			
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(prwy < -0.2 || prwy > 0){ //!= -0.12582993507385254){
+				if(prwy < -0.2 || prwy > 0){ 
 					ROS_INFO("RIGHT WRIST YAW INCORRECT");
 					ROS_INFO("RWRISTYAW: %f", prwy);
 					ROS_INFO("MOVING RIGHT WRIST YAW TO STARTUP POSITION\n");
@@ -270,13 +256,11 @@ int main(int argc, char ** argv){
 					mrwy.speed = 0.5;
 					pub.publish(mrwy);
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					brwy = false;
 				}
 				else{
 					ROS_INFO("RIGHT WRIST YAW IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					brwy = true;
 				}			
 			
@@ -286,7 +270,7 @@ int main(int argc, char ** argv){
 			
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(prsr < -0.3 || prsr > -0.1){ //!= -0.16571402549743652){
+				if(prsr < -0.3 || prsr > -0.1){ 
 					ROS_INFO("RIGHT SHOULDER ROLL INCORRECT");
 					ROS_INFO("RSHOULDERROLL: %f", prsr);
 					ROS_INFO("MOVING RIGHT SHOULDER ROLL TO STARTUP POSITION\n");
@@ -294,13 +278,11 @@ int main(int argc, char ** argv){
 					mrsr.speed = 0.5;
 					pub.publish(mrsr);
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					brsr = false;
 				}
 				else{
 					ROS_INFO("RIGHT SHOULDER ROLL IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					brsr = true;
 				}
 			
@@ -310,7 +292,7 @@ int main(int argc, char ** argv){
 	
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(plsr < 0.09 || plsr > 0.2){ //!= 0.10120201110839844){
+				if(plsr < 0.09 || plsr > 0.2){ 
 					ROS_INFO("LEFT SHOULDER ROLL INCORRECT");
 					ROS_INFO("LSHOULDERROLL: %f", plsr);
 					ROS_INFO("MOVING LEFT SHOULDER ROLL TO STARTUP POSITION\n");
@@ -318,13 +300,11 @@ int main(int argc, char ** argv){
 					mlsr.speed = 0.5;
 					pub.publish(mlsr);
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					blsr = false;
 				}
 				else{
 					ROS_INFO("LEFT SHOULDER ROLL IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					blsr = true;
 				}
 			
@@ -334,7 +314,7 @@ int main(int argc, char ** argv){
 			
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(prsp < 1.3 || prsp > 1.5){ //!= 1.4496722221374512){
+				if(prsp < 1.3 || prsp > 1.5){ 
 					ROS_INFO("RIGHT SHOULDER PITCH INCCORECT");
 					ROS_INFO("RSHOULDERPITCH: %f", prsp);
 					ROS_INFO("MOVING RIGHT SHOULDER PITCH TO STARTUP POSITION\n");
@@ -342,13 +322,11 @@ int main(int argc, char ** argv){
 					mrsp.speed = 0.5;
 					pub.publish(mrsp);
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					brsp = false;
 				}
 				else{
 					ROS_INFO("RIGHT SHOULDER PITCH IS IN CORRECT STARTUP POSITION");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					brsp = true;
 				}
 			
@@ -358,21 +336,18 @@ int main(int argc, char ** argv){
 		
 				ros::spinOnce();
 				loop_rate.sleep();
-				if(plsp < 1.3 || plsp > 1.45){ //!= 1.3805580139160156){
+				if(plsp < 1.3 || plsp > 1.45){ 
 					ROS_INFO("LEFT SHOULDER PITCH INCORRECT");
 					ROS_INFO("LSHOULDERPITCH: %f", plsp);
 					ROS_INFO("MOVING LEFT SHOULDER PITCH TO STARTUP POSITION\n");
 					mlsp.joint_angles[0] = 1.3805580139160156;
 					mlsp.speed = 0.5;
 					pub.publish(mlsp);
-					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					blsp = false;
 				}
 				else{
 					ROS_INFO("LEFT SHOULDER PITCH IS IN CORRECT STARTUP POSTITION\n");
 					loop_rate.sleep();
-					//ros::Duration(1).sleep();
 					blsp = true;
 				}
 	
@@ -409,6 +384,5 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 		}
 	}
-
 	return 0;
 }
