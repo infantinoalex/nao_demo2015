@@ -882,54 +882,55 @@ int main(int argc, char **argv) {
 
      			/************************************************/
    
-      			if ( hy_check && hp_check && lsp_check && rsp_check 
-                   		&& lsr_check && rsr_check && ley_check
-                    		&& rey_check && ler_check && rer_check
-                    		&& lwy_check && rwy_check && lh_check
-                    		&& rh_check && lhyp_check && rhyp_check
-                    		&& lhp_check && rhp_check && lhr_check
-                    		&& rhr_check && lkp_check && rkp_check
-                    		&& lap_check && rap_check && lar_check
-                    		&& rar_check ) {
+      				if ( hy_check && hp_check && lsp_check && rsp_check 
+                   			&& lsr_check && rsr_check && ley_check
+                    			&& rey_check && ler_check && rer_check
+                    			&& lwy_check && rwy_check && lh_check
+                    			&& rh_check && lhyp_check && rhyp_check
+                    			&& lhp_check && rhp_check && lhr_check
+                    			&& rhr_check && lkp_check && rkp_check
+                    			&& lap_check && rap_check && lar_check
+                    			&& rar_check ) {
         
-        				ROS_INFO("Joint positions set!");
-        				all_good = 1;
+        					ROS_INFO("Joint positions set!");
+        					all_good = 1;
   
-      			}	
+      				}	
   
-      			else {
+      				else {
 
-        ROS_INFO("Checking joints again...");
+        				ROS_INFO("Checking joints again...");
   
-      }
+      				}
 
-    }
+    			}
 
-    else {
+   			else {
 
-      ROS_INFO("All done!");
+      				ROS_INFO("All done!");
 
-      narration.data = "Position set. Peace out... man.";
-      pub_narration.publish(narration);
+      				narration.data = "Position set. Peace out... man.";
+      				pub_narration.publish(narration);
 
-      ros::shutdown();
+				controlmsgs.nao_set_pose = false;
+				pub_contrl.publish(controlmsgs);
+				ROS_INFO("SET POSE COMPLETE\n");
+				loop_rate.sleep();
+				ros::spinOnce();
+    			}
+		}
+		else{
+			if(i == 0){
+				ROS_INFO("WAITING FOR STATEPUBLISHER\n");	
+			}	
+			i++;
+			ros::spinOnce();
+			loop_rate.sleep();
+		}
 
-    }
-}
+ 	}
 
 
-    /************************************************/
-
-    ros::Duration(2).sleep();
-
-    /************************************************/
-  
-    ros::spinOnce();
-    loop_rate.sleep();
-
-  }
-
-
-  return 0;
+ 	return 0;
 
 }
