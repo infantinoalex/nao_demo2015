@@ -98,6 +98,8 @@ int main(int argc, char ** argv){
 		ros::spinOnce();
 		loop_rate.sleep();
 		if(controlmsgs.walk_detect == true){
+			ros::spinOnce();
+			loop_rate.sleep();
 			i = 0;
 			if(firsttime){
 				words.data = "I can walk around freely without assistance. Watch me.";
@@ -118,7 +120,7 @@ int main(int argc, char ** argv){
 			}
 			
 			// if bumper is hit, make the nao move backwards
-			/*else if((bumperp == 0 || bumperp == 1) && bumpers == 1){
+			else if((bumperp == 0 || bumperp == 1) && bumpers == 1){
 				ROS_INFO("BUMPER HIT: BACKING UP\n");
 				ros::spinOnce();
 				loop_rate.sleep();
@@ -131,9 +133,10 @@ int main(int argc, char ** argv){
 					loop_rate.sleep();
 				}
 				loop_rate.sleep();
+				move.publish(stop);
 				ros::spinOnce();
 			}
-		*/
+
 			else{
 	
 				// if its clearn infront, the nao will move forward
