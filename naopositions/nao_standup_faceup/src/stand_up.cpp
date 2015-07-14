@@ -199,7 +199,7 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
 
-    //narration.data = "Adjust legs to help sit up.";
+    //narration.data = "Assume basic sitting position.";
     pub_narration.publish(narration);
 	
     lhyp.joint_angles[0] = 0.1;
@@ -255,7 +255,7 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
 
-    //narration.data = "Sit up a bit.";
+    //narration.data = "Sit forward a bit.";
     pub_narration.publish(narration);
 
     lhyp.joint_angles[0] = -0.5;
@@ -283,7 +283,7 @@ int main(int argc, char ** argv) {
      
     /************************************************/
 
-    //narration.data = "Straighten arms.";
+    //narration.data = "Adjust arms.";
     pub_narration.publish(narration);
 
     lsp.joint_angles[0] = 1.65;
@@ -353,7 +353,7 @@ int main(int argc, char ** argv) {
     
     /************************************************/
 
-    //narration.data = "Straighten arms.";
+    //narration.data = "Adjust arms.";
     pub_narration.publish(narration);
 
     lsp.joint_angles[0] = 1.9;
@@ -381,7 +381,7 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
 
-    //narration.data = "Do the running man.";
+    //narration.data = "Shift weight over left leg.";
     pub_narration.publish(narration);
 		
     lhyp.joint_angles[0] = -1.05;
@@ -425,7 +425,7 @@ int main(int argc, char ** argv) {
     
     /************************************************/
 
-    //narration.data = "Straighten arms.";
+    //narration.data = "Adjust arms.";
     pub_narration.publish(narration);
 
     lsp.joint_angles[0] = 1.0;
@@ -456,7 +456,7 @@ int main(int argc, char ** argv) {
     ros::Duration(3).sleep();
     	
     /************************************************/
-
+    /*
     //narration.data = "Tuck left leg under.";
     pub_narration.publish(narration);
      		
@@ -490,9 +490,9 @@ int main(int argc, char ** argv) {
     pub_move.publish(rkp);
     
     ros::Duration(1).sleep();
-    
+    */
     /************************************************/
-
+    /*
     //narration.data = "Adjust arms.";
     pub_narration.publish(narration);
 
@@ -514,7 +514,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(rey);
 
     ros::Duration(3).sleep();
-    	
+    */	
     /************************************************/
  
     ros::Duration(3).sleep();
