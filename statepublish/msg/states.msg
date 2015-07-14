@@ -4,4 +4,4 @@ bool wavenao
 bool walk_detect
 bool startup
 bool nao_set_pose
-
+bool demo

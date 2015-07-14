@@ -30,7 +30,7 @@ int main(int argc, char ** argv){
 	// variable declarations
 	std_msgs::String words;
 	nao_msgs::JointAnglesWithSpeed mhp, mhy, mler, mrer, mley, mrey, mlwy, mrwy, mrsr, mlsr, mrsp, mlsp, mlh, mrh;
-	int speed;
+	int speed, i = 0;
 
 	ROS_INFO("SETTING JOINT STATES\n");
 	mhp.joint_names.push_back("HeadPitch");
@@ -45,6 +45,84 @@ int main(int argc, char ** argv){
 	mrsr.joint_names.push_back("RShoulderRoll");
 	mlsp.joint_names.push_back("LShoulderPitch");
 	mrsp.joint_names.push_back("RShoulderPitch");
+	mlh.joint_names.push_back("LHand");
+	mrh.joint_names.push_back("RHand");
+	mhp.joint_angles.push_back(0);
+	mhy.joint_angles.push_back(0);
+	mler.joint_angles.push_back(0);
+	mrer.joint_angles.push_back(0);
+	mlwy.joint_angles.push_back(0);
+	mrwy.joint_angles.push_back(0);
+	mley.joint_angles.push_back(0);
+	mrey.joint_angles.push_back(0);
+	mlsr.joint_angles.push_back(0);
+	mrsr.joint_angles.push_back(0);
+	mlsp.joint_angles.push_back(0);
+	mrsp.joint_angles.push_back(0);
+	mrh.joint_angles.push_back(0);
+	mlh.joint_angles.push_back(0);
 
+	while(ros::ok()){
+		ros::spinOnce();
+		if(controlmsgs.demo == true){
+			i = 0;
+		
+			words.data = "Hello. My name is BLUE.";
+			talk.publish(words);
+			loop_rate.sleep();
+			
+			words.data = "I am a humanoid robot that is capable of many things.";
+			talk.publish(words);
+			loop_rate.sleep();
+
+			words.data = "For example, I can wave.";
+			talk.publish(words);
+			loop_rate.sleep();
+
+			words.data = "But waving is not the only thing I can do.";
+			talk.publish(words);
+			loop_rate.sleep();
+
+			words.data = "I can also do really simple math.";
+			talk.publish(words);
+			loop_rate.sleep();
+
+			words.data = "2 plus 2 equals 5.";
+			talk.publish(words);
+			loop_rate.sleep();
+		
+			words.data = "It is safe to say, I am practically a genious.";
+			talk.publish(words);
+			loop_rate.sleep();
+		
+			words.data = "What I am going to do for you today is very simple.";
+			talk.publish(words);
+			loop_rate.sleep();
+
+			words.data = "I am going to move completely on my own without any help from the losers who programmed me.";
+			talk.publish(words);
+			loop_rate.sleep();
+
+			words.data = "Impossible? Nope, not with the power of ROS.";
+			talk.publish(words);
+			loop_rate.sleep();
+	
+			words.data = "ROS enables me to communicate with all my sensors effortlessly.";
+			talk.publish(words);
+			loop_rate.sleep();
+	
+			words.data = "It is quite amazing.";
+			talk.publish(words);
+			loop_rate.sleep();
+		}
+		else{
+			if(i == 0){
+				ROS_INFO("WAITING FOR STATEPUBLISHER\n");
+			}
+			i++;
+			ros::spinOnce();
+			loop_rate.sleep();
+		}
+	}
 	return 0;
 }
