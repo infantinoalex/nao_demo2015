@@ -21,7 +21,7 @@ int main(int argc, char ** argv){
 	ros::Rate loop_rate(50);
 
 	// Subscribes to control msgs to see if the node needs to be executed
-	ros::Subscriber sub_1 = n.subscrive("/control_msgs", 100, controlcb);
+	ros::Subscriber sub_1 = n.subscribe("/control_msgs", 100, controlcb);
 
 	// publoshers to make the nao talk/move
 	ros::Publisher move = n.advertise<nao_msgs::JointAnglesWithSpeed>("/joint_angles", 100);
