@@ -122,13 +122,43 @@ int main(int argc, char ** argv){
 		}
 
 		// These values are found when the robot is squatting upright
-		// not sure what to do with it currently
+		// makes it so that the nao starts walking using its sonar
 		else if((lax <= 3 && lax >= 1) && (laz <= -9 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY SQUATTING\n");
-			ros::Duration(5).sleep();
 			words.data = "I am currently upright but in a squat position";
 			talk.publish(words);
-			ros::Duration(5).sleep();
+			ros::Duration(2).sleep();
+			ros::spinOnce();
+			if(onground){
+				ROS_INFO("ON GROUND\n");
+				words.data = "All good.";
+				talk.publish(words);
+				loop_rate.sleep();
+				ros::Duration(2).sleep();
+				ROS_INFO("STARTING TO WALK\n");
+				words.data = "I am going to start walking using my sonar.";
+				talk.publish(words);
+				ros::Duration(4).sleep();
+				controlstate.walk_detect = true;
+				control.publish(controlstate);
+				ros::spinOnce();
+				loop_rate.sleep();
+				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
+				while(controlstate.walk_detect == true){
+					ros::spinOnce();
+					loop_rate.sleep();
+				}
+				ROS_INFO("WALK COMPLETE\n");
+				words.data = "Walk complete.";
+				talk.publish(words);
+				loop_rate.sleep();
+			}
+			else{
+				ROS_INFO("NOT ON GROUND\n");
+				words.data = "Put me on the ground so I can walk please.";
+				talk.publish(words);
+				ros::Duration(2).sleep();
+			}
 		}
 
 		// These values are found when the robot is standing upright
@@ -137,16 +167,14 @@ int main(int argc, char ** argv){
 			ROS_INFO("CURRENTLY UPRIGHT\n");
 			words.data = "I am currently completely upright";
 			talk.publish(words);
-			ros::Duration(1).sleep();
+			ros::Duration(2).sleep();
+			ros::spinOnce();
 			if(onground){
 				ROS_INFO("ON GROUND\n");
-				words.data = "Fixing Upper Body.";
-				talk.publish(words);
-				loop_rate.sleep();
-				ros::spinOnce();
 				words.data = "All good.";
 				talk.publish(words);
 				loop_rate.sleep();
+				ros::Duration(2).sleep();
 				ROS_INFO("STARTING TO WALK\n");
 				words.data = "I am going to start walking using my sonar.";
 				talk.publish(words);
