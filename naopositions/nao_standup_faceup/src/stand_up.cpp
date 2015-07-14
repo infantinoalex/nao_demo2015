@@ -422,7 +422,7 @@ int main(int argc, char ** argv) {
     rap.speed = 0.2;
     pub_move.publish(rap);
 
-    ros::Duration(1).sleep();
+    ros::Duration(3).sleep();
     
     /************************************************/
 
@@ -486,7 +486,7 @@ int main(int argc, char ** argv) {
     lhyp.speed = 0.2;
     pub_move.publish(rhyp);
 
-    ros::Duration(1).sleep();
+    ros::Duration(3).sleep();
     
     /************************************************/
     
@@ -546,7 +546,7 @@ int main(int argc, char ** argv) {
     lhyp.speed = 0.2;
     pub_move.publish(rhyp);
 
-    ros::Duration(1).sleep();
+    ros::Duration(3).sleep();
     
     /************************************************/
      
@@ -564,7 +564,7 @@ int main(int argc, char ** argv) {
     ros::Duration(3).sleep();
     	
     /************************************************/
-      
+    /*  
     //narration.data = "Leg bent almost all the way.";
     pub_narration.publish(narration);
     		
@@ -593,8 +593,8 @@ int main(int argc, char ** argv) {
     lhyp.speed = 0.2;
     pub_move.publish(rhyp);
 
-    ros::Duration(1).sleep();
-    
+    ros::Duration(3).sleep();
+    */
     /************************************************/
     
     //narration.data = "Bend left leg more.";
@@ -741,7 +741,7 @@ int main(int argc, char ** argv) {
     rar.speed = 0.2;
     pub_move.publish(rar);
 
-    ros::Duration(1).sleep();
+    ros::Duration(3).sleep();
     
     /************************************************/
     
