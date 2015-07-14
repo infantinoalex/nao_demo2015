@@ -382,13 +382,6 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
 
-    narration.data = "Now I will call out a number each time I move my legs, so that I can weed out the unstable positions.";
-    pub_narration.publish(narration);
-    ros::Duration(7).sleep();
-
-    narration.data = "One";
-    pub_narration.publish(narration);
-
     //narration.data = "Shift weight over left leg.";
     pub_narration.publish(narration);
 		
@@ -465,9 +458,6 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
  
-    narration.data = "Two";
-    pub_narration.publish(narration);
-    
     //narration.data = "Tuck left leg under.";
     pub_narration.publish(narration);
     		
@@ -528,9 +518,6 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
    
-    narration.data = "Three";
-    pub_narration.publish(narration);
-
     //narration.data = "Bend left leg more.";
     pub_narration.publish(narration);
     		
@@ -578,9 +565,6 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
       
-    narration.data = "Four";
-    pub_narration.publish(narration);
-
     //narration.data = "Leg bent almost all the way.";
     pub_narration.publish(narration);
     		
@@ -641,9 +625,6 @@ int main(int argc, char ** argv) {
     	
     /************************************************/
     
-    narration.data = "Five";
-    pub_narration.publish(narration);
-
     //narration.data = "Bend left leg more.";
     pub_narration.publish(narration);
     		
@@ -687,10 +668,7 @@ int main(int argc, char ** argv) {
     ros::Duration(3).sleep();
     
     /************************************************/
-  
-    narration.data = "Six";
-    pub_narration.publish(narration);
-
+    /*  
     //narration.data = "Left leg completely bent.";
     pub_narration.publish(narration);
     		
@@ -720,7 +698,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(rhyp);
    		
     ros::Duration(1).sleep();
-    
+    */
     /************************************************/
     
     ros::Duration(3).sleep();
