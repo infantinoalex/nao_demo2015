@@ -549,7 +549,7 @@ int main(int argc, char ** argv) {
     ros::Duration(1).sleep();
     
     /************************************************/
-    
+     
     //narration.data = "Adjust arms.";
     pub_narration.publish(narration);
 
@@ -596,7 +596,7 @@ int main(int argc, char ** argv) {
     ros::Duration(1).sleep();
     
     /************************************************/
-    
+    /*
     //narration.data = "Adjust arms.";
     pub_narration.publish(narration);
 
@@ -622,7 +622,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(rsr);
 
     ros::Duration(3).sleep();
-    	
+    */	
     /************************************************/
     
     //narration.data = "Bend left leg more.";
@@ -668,7 +668,7 @@ int main(int argc, char ** argv) {
     ros::Duration(3).sleep();
     
     /************************************************/
-      
+       
     //narration.data = "Left leg completely bent.";
     pub_narration.publish(narration);
      		
@@ -718,6 +718,54 @@ int main(int argc, char ** argv) {
     pub_move.publish(rap);
 
     rar.joint_angles[0] = -0.047;
+    rar.speed = 0.2;
+    pub_move.publish(rar);
+
+    ros::Duration(1).sleep();
+    
+    /************************************************/
+     
+    //narration.data = "Shift weight.";
+    pub_narration.publish(narration);
+     		
+    lhyp.joint_angles[0] = -0.64;
+    lhyp.speed = 0.2;
+    pub_move.publish(lhyp);
+     		
+    lhr.joint_angles[0] = -0.17;
+    lhr.speed = 0.2;
+    pub_move.publish(lhr);
+   		
+    lhp.joint_angles[0] = -0.75;
+    lhp.speed = 0.2;
+    pub_move.publish(lhp);
+  		
+    lar.joint_angles[0] = -0.08;
+    lar.speed = 0.2;
+    pub_move.publish(lar);
+ 
+  		
+    rhyp.joint_angles[0] = -0.64;
+    rhyp.speed = 0.2;
+    pub_move.publish(rhyp);
+     		
+    rhr.joint_angles[0] = -0.16;
+    rhr.speed = 0.2;
+    pub_move.publish(rhr);
+   		
+    rhp.joint_angles[0] = -0.74;
+    rhp.speed = 0.2;
+    pub_move.publish(rhp);
+  		
+    rkp.joint_angles[0] = 0.52;
+    rkp.speed = 0.2;
+    pub_move.publish(rkp);
+
+    rap.joint_angles[0] = 0.68;
+    rap.speed = 0.2;
+    pub_move.publish(rap);
+
+    rar.joint_angles[0] = -0.17;
     rar.speed = 0.2;
     pub_move.publish(rar);
 
