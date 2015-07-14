@@ -107,6 +107,7 @@ include_directories(
 ## Declare a cpp executable
 add_executable(wavenao_node src/wavenao.cpp)
 add_executable(walk_detect src/walk_detect.cpp)
+add_executable(demo src/demo.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -117,6 +118,9 @@ target_link_libraries(wavenao_node
   ${catkin_LIBRARIES}
 )
 target_link_libraries(walk_detect
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(demo
   ${catkin_LIBRARIES}
 )
 
