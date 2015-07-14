@@ -33,18 +33,18 @@ int main(int argc, char ** argv){
 	int speed;
 
 	ROS_INFO("SETTING JOINT STATES\n");
-	mhp.joint_names.pushback("HeadPitch");
-	mhy.joint_names.pushback("HeadYaw");	
-	mler.joint_names.pushback("LElbowRoll");
-	mrer.joint_names.pushbacl("RElbowRoll");
-	mlwy.joint_names.pushback("LWristYaw");
-	mrwy.joint_names.pushback("RWristYaw");
-	mley.joint_names.pushback("LElbowYaw");
-	mrey.joint_names.pushback("RElbowYaw");
-	mlsr.joint_names.pushback("LShoulderRoll");
-	mrsr.joint_names.pushback("RShoulderRoll");
-	mlsp.joint_names.pushback("LShoulderPitch");
-	mrsp.joint_names.pushback("RShoulderPitch");
+	mhp.joint_names.push_back("HeadPitch");
+	mhy.joint_names.push_back("HeadYaw");	
+	mler.joint_names.push_back("LElbowRoll");
+	mrer.joint_names.push_bacl("RElbowRoll");
+	mlwy.joint_names.push_back("LWristYaw");
+	mrwy.joint_names.push_back("RWristYaw");
+	mley.joint_names.push_back("LElbowYaw");
+	mrey.joint_names.push_back("RElbowYaw");
+	mlsr.joint_names.push_back("LShoulderRoll");
+	mrsr.joint_names.push_back("RShoulderRoll");
+	mlsp.joint_names.push_back("LShoulderPitch");
+	mrsp.joint_names.push_back("RShoulderPitch");
 
 	return 0;
 }
