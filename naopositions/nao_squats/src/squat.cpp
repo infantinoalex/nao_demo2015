@@ -274,7 +274,7 @@ int main(int argc, char **argv) {
 				pub_move.publish(rsp);
 
 				lsr.joint_angles[0] = 1.35;
-				rsr.joint_angles[0] = 1.35;
+				rsr.joint_angles[0] = -1.35;
 				lsr.speed = 0.5;
 				rsr.speed = 0.5;
 				pub_move.publish(lsr);
@@ -580,7 +580,7 @@ int main(int argc, char **argv) {
       			}
   			*/
       			/************************************************/
-         		/*
+         		
     			//Adjusting hip pitches to desired positions    
      			ros::spinOnce();
    
@@ -623,7 +623,7 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			*/
+  			
       			/************************************************/
        			/*
     			//Adjusting hip rolls to desired positions    
