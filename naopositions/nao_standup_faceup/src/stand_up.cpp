@@ -242,7 +242,6 @@ int main(int argc, char ** argv) {
     /************************************************/
 
     //narration.data = "Move arms further behind back.";
-    //narration.data = "Straighten arms.";
     pub_narration.publish(narration);
 
     ler.joint_angles[0] = -0.95;
@@ -564,38 +563,6 @@ int main(int argc, char ** argv) {
 
     ros::Duration(3).sleep();
     
-    /************************************************/
-   /*  
-    //narration.data = "Leg bent almost all the way.";
-    pub_narration.publish(narration);
-    		
-    lhyp.joint_angles[0] = -1.15;
-    lhyp.speed = 0.2;
-    pub_move.publish(lhyp);
-    		
-    lhr.joint_angles[0] = 0.4;
-    lhr.speed = 0.2;
-    pub_move.publish(lhr);
-   		
-    lhp.joint_angles[0] = -1.0;
-    lhp.speed = 0.2;
-    pub_move.publish(lhp);
-
-    lap.joint_angles[0] = -0.2;
-    lap.speed = 0.2;
-    pub_move.publish(lap);
-
-    lar.joint_angles[0] = -0.25;
-    lar.speed = 0.2;
-    pub_move.publish(lar);
-
-    		
-    rhyp.joint_angles[0] = -1.15;
-    lhyp.speed = 0.2;
-    pub_move.publish(rhyp);
-
-    ros::Duration(3).sleep();
-    */
     /************************************************/
         
     //narration.data = "Leg tuck position 4.";
