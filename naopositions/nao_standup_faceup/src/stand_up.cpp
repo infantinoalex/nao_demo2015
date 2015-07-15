@@ -741,7 +741,22 @@ int main(int argc, char ** argv) {
     ros::Duration(3).sleep();
     
     /************************************************/
-   
+
+    //narration.data = "Cheating... step forward.";
+    pub_narration.publish(narration);
+
+    walk.linear.x = 1;
+    pub_walk.publish(walk);
+
+    ros::Duration(0.25).sleep();
+
+    walk.linear.x = 0;
+    pub_walk.publish(walk);
+
+    ros::Duration(1).sleep();
+    
+    /************************************************/
+
     ros::Duration(3).sleep();
 
     /************************************************/
