@@ -107,13 +107,7 @@ int main(int argc, char ** argv){
 		// This if statement gets the robot to stand up from its stomach
 		else if((lax <=10.5 && lax >= 9) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
-			words.data = "I am currently laying down on my stomach";
-			talk.publish(words);
-			ros::Duration(1).sleep();
 			client.call(bstiff);
-			words.data = "Going to start standing up now.";
-			talk.publish(words);
-			ros::Duration(1).sleep();
 			controlstate.nao_set_pose = true;
 			control.publish(controlstate);
 			loop_rate.sleep();
@@ -133,39 +127,45 @@ int main(int argc, char ** argv){
 				loop_rate.sleep();
 			}
 			ROS_INFO("STANDUP COMPLETE\n");
-			words.data = "Standup Completed.";
-			talk.publish(words);
-			ros::Duration(3).sleep();
+			loop_rate.sleep();
 		}
 
 		// These values are found when the robot is laying on its back
 		// This if statement gets the robot to stand up from its back
 		else if((lax <= -9 && lax >= -10.5) && (laz <= 1 && laz >= -1)){
-			ROS_INFO("CURRENTLY ON BACK\n");
-			ros::Duration(5).sleep();
-			words.data = "I am currently lying on my back";
-			talk.publish(words);
-			ros::Duration(5).sleep();
+			RROS_INFO("CURRENTLY ON BACK\n");
+			client.call(bstiff);
+			controlstate.nao_set_pose = true;
+			control.publish(controlstate);
+			loop_rate.sleep();
+			ros::spinOnce();
+			ROS_INFO("WAITING UNTIL SET POSE COMPLETE\n");
+			while(controlstate.nao_set_pose == true){
+				ros::spinOnce();
+				loop_rate.sleep();
+			}
+			controlstate.nao_standup_faceup = true;
+			control.publish(controlstate);
+			loop_rate.sleep();
+			ros::spinOnce();
+			ROS_INFO("WAITING UNTIL STANDUP COMPLETE\n");
+			while(controlstate.nao_standup_faceup == true){
+				ros::spinOnce();
+				loop_rate.sleep();
+			}
+			ROS_INFO("STANDUP COMPLETE\n");
+			loop_rate.sleep();
 		}
 
 		// These values are found when the robot is squatting upright
 		// makes it so that the nao starts walking using its sonar
 		else if((lax <= 3 && lax >= 1) && (laz <= -9 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY SQUATTING\n");
-			words.data = "I am currently upright but in a squat position";
-			talk.publish(words);
-			ros::Duration(2).sleep();
 			ros::spinOnce();
 			if(onground){
 				ROS_INFO("ON GROUND\n");
-				words.data = "All good.";
-				talk.publish(words);
 				loop_rate.sleep();
-				ros::Duration(2).sleep();
 				ROS_INFO("STARTING TO WALK\n");
-				words.data = "I am going to start walking using my sonar.";
-				talk.publish(words);
-				ros::Duration(4).sleep();
 				controlstate.walk_detect = true;
 				control.publish(controlstate);
 				ros::spinOnce();
@@ -176,15 +176,11 @@ int main(int argc, char ** argv){
 					loop_rate.sleep();
 				}
 				ROS_INFO("WALK COMPLETE\n");
-				words.data = "Walk complete.";
-				talk.publish(words);
 				loop_rate.sleep();
 			}
 			else{
 				ROS_INFO("NOT ON GROUND\n");
-				words.data = "Put me on the ground so I can walk please.";
-				talk.publish(words);
-				ros::Duration(2).sleep();
+				loop_rate.sleep();
 			}
 		}
 
@@ -192,20 +188,10 @@ int main(int argc, char ** argv){
 		// It gets the robot to start walking around using its sonar
 		else if((lax >= -1 && lax <= 1) && (laz <= -9 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY UPRIGHT\n");
-			words.data = "I am currently completely upright";
-			talk.publish(words);
-			ros::Duration(2).sleep();
 			ros::spinOnce();
 			if(onground){
 				ROS_INFO("ON GROUND\n");
-				words.data = "All good.";
-				talk.publish(words);
-				loop_rate.sleep();
-				ros::Duration(2).sleep();
 				ROS_INFO("STARTING TO WALK\n");
-				words.data = "I am going to start walking using my sonar.";
-				talk.publish(words);
-				ros::Duration(4).sleep();
 				controlstate.walk_detect = true;
 				control.publish(controlstate);
 				ros::spinOnce();
@@ -216,15 +202,11 @@ int main(int argc, char ** argv){
 					loop_rate.sleep();
 				}
 				ROS_INFO("WALK COMPLETE\n");
-				words.data = "Walk complete.";
-				talk.publish(words);
 				loop_rate.sleep();
 			}
 			else{
 				ROS_INFO("NOT ON GROUND\n");
-				words.data = "Put me on the ground so I can walk please.";
-				talk.publish(words);
-				ros::Duration(2).sleep();
+				loop_rate.sleep();
 			}
 		}
 
