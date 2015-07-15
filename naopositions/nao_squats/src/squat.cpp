@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
 		ros::spinOnce();
 		loop_rate.sleep();
 
-		if ( controlmsgs.nao_set_pose == true ) { 
+		if ( !controlmsgs.nao_set_pose ) { 
 
 			i = 0;
 
@@ -274,7 +274,7 @@ int main(int argc, char **argv) {
 				pub_move.publish(rsp);
 
 				lsr.joint_angles[0] = 1.35;
-				rsr.joint_angles[0] = 1.35;
+				rsr.joint_angles[0] = -1.35;
 				lsr.speed = 0.5;
 				rsr.speed = 0.5;
 				pub_move.publish(lsr);
