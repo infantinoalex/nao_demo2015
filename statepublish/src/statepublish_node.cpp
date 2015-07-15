@@ -77,7 +77,7 @@ int main(int argc, char ** argv){
 		ROS_INFO("FIGURING OUT POSITION\n");
 		loop_rate.sleep();
 		ros::Duration(2).sleep();
-		if(firsttime == true){
+		if(!firsttime){
 			ROS_INFO("RUNNING DEMO FIRST\n");
 			loop_rate.sleep();
 			client.call(bstiff);

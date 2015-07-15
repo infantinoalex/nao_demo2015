@@ -33,7 +33,7 @@ int main(int argc, char ** argv){
 	// variable declarations
 	std_msgs::String words;
 	nao_msgs::JointAnglesWithSpeed mhp, mhy, mler, mrer, mley, mrey, mlwy, mrwy, mrsr, mlsr, mrsp, mlsp, mlh, mrh;
-	int speed, i = 0;
+	int speed = 0.5, i = 0;
 
 	ROS_INFO("SETTING JOINT STATES\n");
 	mhp.joint_names.push_back("HeadPitch");
@@ -73,7 +73,14 @@ int main(int argc, char ** argv){
 			words.data = "Hello. My name is BLUE.";
 			talk.publish(words);
 			loop_rate.sleep();
+						
+			// starts to wave
+			mrwy.joint_angles[0] = 0.2009;
+			mrwy.speed = speed;
+			mrer.joint_angles[0] = 0.8314;
+			mrer.speed = speed;
 			
+	
 			words.data = "I am a humanoid robot that is capable of many things.";
 			talk.publish(words);
 			loop_rate.sleep();
