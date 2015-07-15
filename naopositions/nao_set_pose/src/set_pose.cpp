@@ -331,7 +331,7 @@ int main(int argc, char **argv) {
         				ROS_INFO("LShoulderRoll position currently [ %d ]...", lsr_state );
         				ROS_INFO("Moving LShoulderRoll to the correct position...\n");
  
-        				lsr.joint_angles[0] = 0.1;
+        				lsr.joint_angles[0] = 0.2;
         				lsr.speed = 0.5;
         				pub_move.publish(lsr);
   
@@ -358,7 +358,7 @@ int main(int argc, char **argv) {
 					ROS_INFO("RShoulderRoll position currently [ %d ]...", rsr_state );
         				ROS_INFO("Moving RShoulderRoll to the correct position...\n");
  
-        				rsr.joint_angles[0] = 0.1;
+        				rsr.joint_angles[0] = 0.2;
         				rsr.speed = 0.5;
         				pub_move.publish(rsr);
   

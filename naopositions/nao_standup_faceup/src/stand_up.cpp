@@ -183,6 +183,15 @@ int main(int argc, char ** argv) {
 
     ros::Duration(1).sleep();
 
+    ler.joint_angles[0] = -1.5;
+    rer.joint_angles[0] = 1.5; 
+    ler.speed = 0.5;
+    rer.speed = 0.5;
+    pub_move.publish(ler);
+    pub_move.publish(rer); 
+
+    ros::Duration(1).sleep();
+
     /************************************************/
 
     //narration.data = "Move arms further behind back.";
@@ -688,7 +697,51 @@ int main(int argc, char ** argv) {
     ros::Duration(3).sleep();
     
     /************************************************/
+        
+    //narration.data = "Leg tuck position 7.";
+    pub_narration.publish(narration);
+     		
+    lhyp.joint_angles[0] = -0.74;
+    lhyp.speed = 0.2;
+    pub_move.publish(lhyp);
+     		
+    lhr.joint_angles[0] = -0.01;
+    lhr.speed = 0.2;
+    pub_move.publish(lhr);
+   		
+    lhp.joint_angles[0] = -0.67;
+    lhp.speed = 0.2;
+    pub_move.publish(lhp);
+  		
+  		
+    rhyp.joint_angles[0] = -0.7;
+    rhyp.speed = 0.2;
+    pub_move.publish(rhyp);
+     		
+    rhr.joint_angles[0] = -0.148;
+    rhr.speed = 0.2;
+    pub_move.publish(rhr);
+   		
+    rhp.joint_angles[0] = -1.06;
+    rhp.speed = 0.2;
+    pub_move.publish(rhp);
+  		
+    rkp.joint_angles[0] = 0.95;
+    rkp.speed = 0.2;
+    pub_move.publish(rkp);
+
+    rap.joint_angles[0] = 0.48;
+    rap.speed = 0.2;
+    pub_move.publish(rap);
+
+    rar.joint_angles[0] = -0.07;
+    rar.speed = 0.2;
+    pub_move.publish(rar);
+
+    ros::Duration(3).sleep();
     
+    /************************************************/
+   
     ros::Duration(3).sleep();
 
     /************************************************/
