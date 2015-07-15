@@ -12,7 +12,7 @@ void controlcb(const custom_msgs::states States){
 
 int main(int argc, char ** argv) {
 
-  	ros::init(argc, argv, "standupfrombelly_node");
+  	ros::init(argc, argv, "standupfromback_node");
 	ros::NodeHandle node;
 
   	//All the publishers
@@ -22,7 +22,7 @@ int main(int argc, char ** argv) {
 	ros::Publisher pub_contrl = node.advertise<custom_msgs::states>("/control_msgs", 100);
 
 	// all the subscribers
-	ros::Subscribe sub = node.subscribe("/control_msgs", 100, controlcb);
+	ros::Subscriber sub = node.subscribe("/control_msgs", 100, controlcb);
 
   	//All the message declarations
   	std_msgs::String narration;
