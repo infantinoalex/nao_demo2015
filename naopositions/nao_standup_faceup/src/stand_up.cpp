@@ -493,7 +493,7 @@ int main(int argc, char ** argv) {
     ros::Duration(3).sleep();
     
     /************************************************/
-   
+    /*   
     //narration.data = "Leg tuck position 3.";
     pub_narration.publish(narration);
     		
@@ -523,7 +523,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(rhyp);
 
     ros::Duration(3).sleep();
-    
+    */
     /************************************************/
         
     //narration.data = "Fixing position 3.";
@@ -597,7 +597,7 @@ int main(int argc, char ** argv) {
     ros::Duration(3).sleep();
     */
     /************************************************/
-    /*    
+        
     //narration.data = "Leg tuck position 4.";
     pub_narration.publish(narration);
     		
@@ -639,7 +639,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(rar);
 
     ros::Duration(3).sleep();
-    */
+    
     /************************************************/
     /*   
     //narration.data = "Leg tuck position 5.";
