@@ -33,7 +33,7 @@ int main(int argc, char ** argv){
 	// variable declarations
 	std_msgs::String words;
 	nao_msgs::JointAnglesWithSpeed mhp, mhy, mler, mrer, mley, mrey, mlwy, mrwy, mrsr, mlsr, mrsp, mlsp, mlh, mrh;
-	int speed = 0.5, i = 0;
+	int speed = 0.5, i = 0, j;
 
 	ROS_INFO("SETTING JOINT STATES\n");
 	mhp.joint_names.push_back("HeadPitch");
@@ -79,7 +79,48 @@ int main(int argc, char ** argv){
 			mrwy.speed = speed;
 			mrer.joint_angles[0] = 0.8314;
 			mrer.speed = speed;
-			
+			mrey.joint_angles[0] = 0.0797;
+			mrey.speed = speed;
+			mrsr.joint_angles[0] = -1.0554;
+			mrsr.speed = speed;
+			mrsp.joint_angles[0] = -1.0568;
+			ros::Duration(0.5).sleep();
+
+			// waves
+			for(j = 0; j < 5; j++){
+				mrwy.joint_angles[0] = 0.1993;
+                      	  	mrwy.speed = speed;
+                        	mrer.joint_angles[0] = 1.5446;
+                        	mrer.speed = speed;
+                        	mrey.joint_angles[0] = 0.0659;
+                        	mrey.speed = speed;
+                        	mrsr.joint_angles[0] = -0.9879;
+                        	mrsr.speed = speed;
+                        	mrsp.joint_angles[0] = -1.2532;
+                        	ros::Duration(0.5).sleep();
+
+				mrwy.joint_angles[0] = 0.1993;
+                        	mrwy.speed = speed;
+                        	mrer.joint_angles[0] = 1.5446;
+                        	mrer.speed = speed;
+                        	mrey.joint_angles[0] = 0.0659;
+                        	mrey.speed = speed;
+                        	mrsr.joint_angles[0] = -1.2532;
+                        	mrsr.speed = speed;
+                        	mrsp.joint_angles[0] = -0.0818;
+                        	ros::Duration(0.5).sleep();
+			}
+			loop_rate.sleep();
+			mrwy.joint_angles[0] = 0.1978;
+                        mrwy.speed = speed;
+                        mrer.joint_angles[0] = 0.7118;
+                        mrer.speed = speed;
+                        mrey.joint_angles[0] = 0.0536;
+                        mrey.speed = speed;
+                        mrsr.joint_angles[0] = -0.0169;
+                        mrsr.speed = speed;
+                        mrsp.joint_angles[0] = -1.0769;
+                        ros::Duration(0.5).sleep();			
 	
 			words.data = "I am a humanoid robot that is capable of many things.";
 			talk.publish(words);
@@ -123,6 +164,11 @@ int main(int argc, char ** argv){
 	
 			words.data = "It is quite amazing.";
 			talk.publish(words);
+			loop_rate.sleep();
+	
+			ros::spinOnce();
+			controlmsgs.demo = false;
+			contrl.publish(controlmsgs);
 			loop_rate.sleep();
 		}
 		else{
