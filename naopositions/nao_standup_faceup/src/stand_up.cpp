@@ -241,6 +241,7 @@ int main(int argc, char ** argv) {
     
     /************************************************/
 
+    //narration.data = "Move arms further behind back.";
     //narration.data = "Straighten arms.";
     pub_narration.publish(narration);
 

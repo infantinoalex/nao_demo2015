@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(nao_et_pose
+project(nao_set_pose)
 
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED COMPONENTS
   nao_msgs
   roscpp
   std_msgs
+  custom_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -38,11 +39,6 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  nao_msgs
-  #std_msgs
-)
 
 
 ###################################
@@ -50,10 +46,10 @@ generate_messages(
 ###################################
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES nao_standup
-#  CATKIN_DEPENDS nao_msgs roscpp std_msgs
-#  DEPENDS system_lib
+  #INCLUDE_DIRS include
+  #LIBRARIES nao_standup
+  #CATKIN_DEPENDS nao_msgs roscpp std_msgs
+  #DEPENDS system_lib
 )
 
 
@@ -76,9 +72,8 @@ add_executable(set_pose src/set_pose.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(nao_standup_node nao_standup_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(set_pose ${catkin_LIBRARIES})
 
-
+add_dependencies(set_pose custom_msgs ${catkin_EXPORTED_TARGETS})

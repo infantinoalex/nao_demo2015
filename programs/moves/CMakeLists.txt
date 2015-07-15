@@ -8,8 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   nao_msgs
   roscpp
   std_msgs
-  sensor_msgs
-  geometry_msgs
+  custom_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -67,10 +66,6 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  nao_msgs#   std_msgs
-)
 
 ###################################
 ## catkin specific configuration ##
@@ -107,16 +102,23 @@ include_directories(
 ## Declare a cpp executable
 add_executable(wavenao_node src/wavenao.cpp)
 add_executable(walk_detect src/walk_detect.cpp)
+add_executable(demo src/demo.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(wavenao_node wavenao_generate_messages_cpp)
+
+add_dependencies(walk_detect custom_msgs ${catkin_EXPORTED_TARGETS})
+add_dependencies(demo custom_msgs ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(wavenao_node
   ${catkin_LIBRARIES}
 )
 target_link_libraries(walk_detect
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(demo
   ${catkin_LIBRARIES}
 )
 

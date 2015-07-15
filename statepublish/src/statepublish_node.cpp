@@ -2,17 +2,22 @@
 #include "std_msgs/Bool.h"
 #include "sensor_msgs/Imu.h"
 #include "std_msgs/String.h"
-//#include "custom_msgs/States.h"
+#include "custom_msgs/states.h"
+#include "std_srvs/Empty.h"
 
 // Global variables to store the imu sensor data
 float orix, oriy, oriz, oriw, avx, avy, avz, lax, lay, laz;
 
 // Global variables to store the state data for publishing + subscribing
-//int istate;
-//bool bstate;
+custom_msgs::states controlstate;
 
 // Global variable to store the bool of whether or not the nao's feet are on the ground
 bool onground = false;
+
+// STATEPUBLISH MSGS CALLBACK
+void statecb(const custom_msgs::states States){
+	controlstate = States;
+}
 
 // IMU subscriber call back, stores all the information obtained from the IMU
 void imucb(const sensor_msgs::Imu::ConstPtr& info){
@@ -43,6 +48,9 @@ int main(int argc, char ** argv){
 	
 	// publishes to speech so we can get verbal feedback
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
+
+	// publishes to custom topic to control everything
+	ros::Publisher control = n.advertise<custom_msgs::states>("/control_msgs", 100);
 	
 	// subscribes to imu to determine position of the nao's body
 	ros::Subscriber sub_1 = n.subscribe("/imu", 100, imucb);
@@ -50,51 +58,167 @@ int main(int argc, char ** argv){
 	// subscribes to foot_contact to determine if the nao has both feet on the ground 
 	ros::Subscriber sub_2 = n.subscribe("/foot_contact", 100, feetcb);
 
+	// subscribes to state publish cb
+	ros::Subscriber sub_3 = n.subscribe("/control_msgs", 100, statecb);
+
+	// service call to make body stiff
+	ros::ServiceClient client = n.serviceClient<std_srvs::Empty>("/body_stiffness/enable", 100);
+
 	ros::Rate loop_rate(50);
 
-	//custom_msgs::isit gotit;
 	std_msgs::String words;	
+	
+	std_srvs::Empty bstiff;
 		
 	while(ros::ok()){
 		ros::spinOnce();
-		loop_rate.sleep();
 		ROS_INFO("FIGURING OUT POSITION\n");
-		ros::Duration(5).sleep();
-		ros::spinOnce();
-		if((lax <=10.5 && lax >= 9.8) && (laz <= 1 && laz >= -1)){
+		loop_rate.sleep();
+		ros::Duration(2).sleep();
+
+		// These values are found when the robot is laying on its stomach
+		// This if statement gets the robot to stand up from its stomach
+		if((lax <=10.5 && lax >= 9) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
-			ros::Duration(5).sleep();
 			words.data = "I am currently laying down on my stomach";
 			talk.publish(words);
-			ros::Duration(5).sleep();
+			ros::Duration(1).sleep();
+			client.call(bstiff);
+			words.data = "Going to start standing up now.";
+			talk.publish(words);
+			ros::Duration(1).sleep();
+			controlstate.nao_set_pose = true;
+			control.publish(controlstate);
+			loop_rate.sleep();
+			ros::spinOnce();
+			ROS_INFO("WAITING UNTIL SET POSE COMPLETE\n");
+			while(controlstate.nao_set_pose == true){
+				ros::spinOnce();
+				loop_rate.sleep();
+			}
+			controlstate.nao_standup_facedown = true;
+			control.publish(controlstate);
+			loop_rate.sleep();
+			ros::spinOnce();
+			ROS_INFO("WAITING UNTIL STANDUP COMPLETE\n");
+			while(controlstate.nao_standup_facedown == true){
+				ros::spinOnce();
+				loop_rate.sleep();
+			}
+			ROS_INFO("STANDUP COMPLETE\n");
+			words.data = "Standup Completed.";
+			talk.publish(words);
+			ros::Duration(3).sleep();
 		}
-		else if((lax <= -9.1 && lax >= -9.9) && (laz <= 1 && laz >= 0)){
+
+		// These values are found when the robot is laying on its back
+		// This if statement gets the robot to stand up from its back
+		else if((lax <= -9 && lax >= -10.5) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON BACK\n");
 			ros::Duration(5).sleep();
 			words.data = "I am currently lying on my back";
 			talk.publish(words);
 			ros::Duration(5).sleep();
 		}
-		else if((lax <= 1.8 && lax >= 1) && (laz <= -9.5 && laz >= -10.2)){
+
+		// These values are found when the robot is squatting upright
+		// makes it so that the nao starts walking using its sonar
+		else if((lax <= 3 && lax >= 1) && (laz <= -9 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY SQUATTING\n");
-			ros::Duration(5).sleep();
 			words.data = "I am currently upright but in a squat position";
 			talk.publish(words);
-			ros::Duration(5).sleep();
+			ros::Duration(2).sleep();
+			ros::spinOnce();
+			if(onground){
+				ROS_INFO("ON GROUND\n");
+				words.data = "All good.";
+				talk.publish(words);
+				loop_rate.sleep();
+				ros::Duration(2).sleep();
+				ROS_INFO("STARTING TO WALK\n");
+				words.data = "I am going to start walking using my sonar.";
+				talk.publish(words);
+				ros::Duration(4).sleep();
+				controlstate.walk_detect = true;
+				control.publish(controlstate);
+				ros::spinOnce();
+				loop_rate.sleep();
+				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
+				while(controlstate.walk_detect == true){
+					ros::spinOnce();
+					loop_rate.sleep();
+				}
+				ROS_INFO("WALK COMPLETE\n");
+				words.data = "Walk complete.";
+				talk.publish(words);
+				loop_rate.sleep();
+			}
+			else{
+				ROS_INFO("NOT ON GROUND\n");
+				words.data = "Put me on the ground so I can walk please.";
+				talk.publish(words);
+				ros::Duration(2).sleep();
+			}
 		}
-		else if((lax >= 0 && lax <= 1) && (laz <= -9.8 && laz >= -10.2)){
+
+		// These values are found when the robot is standing upright
+		// It gets the robot to start walking around using its sonar
+		else if((lax >= -1 && lax <= 1) && (laz <= -9 && laz >= -10.5)){
 			ROS_INFO("CURRENTLY UPRIGHT\n");
-			ros::Duration(5).sleep();
 			words.data = "I am currently completely upright";
 			talk.publish(words);
-			ros::Duration(5).sleep();
+			ros::Duration(2).sleep();
+			ros::spinOnce();
+			if(onground){
+				ROS_INFO("ON GROUND\n");
+				words.data = "All good.";
+				talk.publish(words);
+				loop_rate.sleep();
+				ros::Duration(2).sleep();
+				ROS_INFO("STARTING TO WALK\n");
+				words.data = "I am going to start walking using my sonar.";
+				talk.publish(words);
+				ros::Duration(4).sleep();
+				controlstate.walk_detect = true;
+				control.publish(controlstate);
+				ros::spinOnce();
+				loop_rate.sleep();
+				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
+				while(controlstate.walk_detect == true){
+					ros::spinOnce();
+					loop_rate.sleep();
+				}
+				ROS_INFO("WALK COMPLETE\n");
+				words.data = "Walk complete.";
+				talk.publish(words);
+				loop_rate.sleep();
+			}
+			else{
+				ROS_INFO("NOT ON GROUND\n");
+				words.data = "Put me on the ground so I can walk please.";
+				talk.publish(words);
+				ros::Duration(2).sleep();
+			}
 		}
+
+		// This is if the program cannot determine what position the robot is in
+		// makes it assume a start up pose and go from there
 		else{
 			ROS_INFO("UNKNOWN POSITION\n");
-			ros::Duration(5).sleep();
-			words.data = "I am in an unknown position";
-			talk.publish(words);	
-			ros::Duration(5).sleep();
+			loop_rate.sleep();
+			client.call(bstiff);
+			controlstate.nao_set_pose = true;
+			control.publish(controlstate);
+			loop_rate.sleep();
+			ros::spinOnce();
+			ROS_INFO("WAITING UNTIL SET POSE COMPLETE\n");
+			while(controlstate.nao_set_pose == true){
+				ros::spinOnce();
+				loop_rate.sleep();
+				client.call(bstiff);
+			}
+			ROS_INFO("SET POSE COMPLETE");
+			ROS_INFO("DETERMINING POSITION\n");
 		}
 	}
 	return 0;
