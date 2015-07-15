@@ -67,12 +67,11 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
-		if(controlmsgs.demo == true){
+		//if(controlmsgs.demo == true){
 			i = 0;
 		
 			words.data = "Hello. My name is BLUE.";
 			talk.publish(words);
-			loop_rate.sleep();
 						
 			// starts to wave
 			mrwy.joint_angles[0] = 0.2009;
@@ -122,6 +121,7 @@ int main(int argc, char ** argv){
                         mrsp.joint_angles[0] = -1.0769;
                         ros::Duration(0.5).sleep();			
 	
+		/*
 			words.data = "I am a humanoid robot that is capable of many things.";
 			talk.publish(words);
 			loop_rate.sleep();
@@ -179,6 +179,7 @@ int main(int argc, char ** argv){
 			ros::spinOnce();
 			loop_rate.sleep();
 		}
+		*/
 	}
 	return 0;
 }
