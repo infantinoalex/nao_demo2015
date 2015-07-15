@@ -183,6 +183,15 @@ int main(int argc, char ** argv) {
 
     ros::Duration(1).sleep();
 
+    ler.joint_angles[0] = -1.5;
+    rer.joint_angles[0] = 1.5; 
+    ler.speed = 0.5;
+    rer.speed = 0.5;
+    pub_move.publish(ler);
+    pub_move.publish(rer); 
+
+    ros::Duration(1).sleep();
+
     /************************************************/
 
     //narration.data = "Move arms further behind back.";
