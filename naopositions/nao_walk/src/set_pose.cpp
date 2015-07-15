@@ -114,46 +114,53 @@ int main(int argc, char **argv) {
    
     /************************************************/
     
-    //narration.data = "Arms down.";
+    //narration.data = "Bend knees evenly.";
     pub_narration.publish(narration);
 
-    lsp.joint_angles[0] = 1.0;
-    rsp.joint_angles[0] = 1.0;
-    lsp.speed = 0.05;
-    rsp.speed = 0.05;
-    pub_move.publish(lsp);
-    pub_move.publish(rsp);
+    lhp.joint_angles[0] = -0.4;
+    rhp.joint_angles[0] = -0.4;
+    lhp.speed = 0.01;
+    rhp.speed = 0.01;
+    pub_move.publish(lkp);
+    pub_move.publish(rkp);
 
-    ros::Duration(5).sleep();
+    lkp.joint_angles[0] = 0.8;
+    rkp.joint_angles[0] = 0.8;
+    lkp.speed = 0.01;
+    rkp.speed = 0.01;
+    pub_move.publish(lhp);
+    pub_move.publish(rhp);
+
+    lap.joint_angles[0] = -0.4;
+    rap.joint_angles[0] = -0.4;
+    lap.speed = 0.01;
+    rap.speed = 0.01;
+    pub_move.publish(lap);
+    pub_move.publish(rap);
+
+    ros::Duration(7).sleep();
 
    /************************************************/
     
-    //narration.data = "Bend knees.";
+    //narration.data = "Adjust knee bend.";
     pub_narration.publish(narration);
 
     lhp.joint_angles[0] = -0.3;
     rhp.joint_angles[0] = -0.3;
-    lhp.speed = 0.05;
-    rhp.speed = 0.05;
-
-    lkp.joint_angles[0] = 0.8;
-    rkp.joint_angles[0] = 0.8;
-    lkp.speed = 0.05;
-    rkp.speed = 0.05;
+    lhp.speed = 0.01;
+    rhp.speed = 0.01;
+    pub_move.publish(lhp);
+    pub_move.publish(rhp);
 
     lap.joint_angles[0] = -0.5;
     rap.joint_angles[0] = -0.5;
-    lap.speed = 0.02;
-    rap.speed = 0.02;
-
-    pub_move.publish(lkp);
-    pub_move.publish(rkp);
-    pub_move.publish(lhp);
-    pub_move.publish(rhp);
+    lap.speed = 0.01;
+    rap.speed = 0.01;
     pub_move.publish(lap);
     pub_move.publish(rap);
 
-    ros::Duration(5).sleep();
+
+    ros::Duration(7).sleep();
 
    /************************************************/
   
