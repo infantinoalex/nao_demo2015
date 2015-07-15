@@ -936,8 +936,8 @@ int main(int argc, char **argv) {
 
       				ROS_INFO("All done!");
 
-      				narration.data = "Position set. Peace out... man.";
-      				pub_narration.publish(narration);
+      				//narration.data = "Position set. Peace out... man.";
+      				//pub_narration.publish(narration);
 
 				controlmsgs.nao_set_pose = false;
 				pub_contrl.publish(controlmsgs);
