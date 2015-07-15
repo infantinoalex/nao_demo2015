@@ -580,7 +580,7 @@ int main(int argc, char **argv) {
       			}
   			*/
       			/************************************************/
-         		/*
+         		
     			//Adjusting hip pitches to desired positions    
      			ros::spinOnce();
    
@@ -623,7 +623,7 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			*/
+  			
       			/************************************************/
        			/*
     			//Adjusting hip rolls to desired positions    
