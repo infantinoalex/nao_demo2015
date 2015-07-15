@@ -69,16 +69,43 @@ int main(int argc, char ** argv){
 	std_msgs::String words;	
 	
 	std_srvs::Empty bstiff;
+
+	bool firsttime = true;
 		
 	while(ros::ok()){
 		ros::spinOnce();
 		ROS_INFO("FIGURING OUT POSITION\n");
 		loop_rate.sleep();
 		ros::Duration(2).sleep();
-
+		if(firsttime == true){
+			ROS_INFO("RUNNING DEMO FIRST\n");
+			loop_rate.sleep();
+			client.call(bstiff);
+			controlstate.startup = true;
+			control.publish(controlstate);
+			loop_rate.sleep();
+			ros::spinOnce();
+			ROS_INFO("WAITING UNTIL STARTUP POSE COMPLETE\n");
+			while(controlstate.startup == true){
+				ros::spinOnce();
+				loop_rate.sleep();
+			}
+			ROS_INFO("RUNNING INTRO DEMO\n");
+			loop_rate.sleep();
+			controlstate.demo = true;
+			control.publish(controlstate);
+			loop_rate.sleep();
+			ros::spinOnce();
+			while(controlstate.demo == true){
+				ros::spinOnce();
+				loop_rate.sleep();
+			}
+			ROS_INFO("DEMO COMPLETE\n");
+			firsttime = false;
+		}
 		// These values are found when the robot is laying on its stomach
 		// This if statement gets the robot to stand up from its stomach
-		if((lax <=10.5 && lax >= 9) && (laz <= 1 && laz >= -1)){
+		else if((lax <=10.5 && lax >= 9) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
 			words.data = "I am currently laying down on my stomach";
 			talk.publish(words);
