@@ -266,22 +266,6 @@ int main(int argc, char **argv) {
 				
 				ROS_INFO("Moving both ShoulderPitches to the correct positions...\n");
 
-				lsp.joint_angles[0] = 0.0;
-				rsp.joint_angles[0] = 0.0;
-				lsp.speed = 0.5;
-				rsp.speed = 0.5;
-				pub_move.publish(lsp);
-				pub_move.publish(rsp);
-
-				lsr.joint_angles[0] = 1.35;
-				rsr.joint_angles[0] = -1.35;
-				lsr.speed = 0.5;
-				rsr.speed = 0.5;
-				pub_move.publish(lsr);
-				pub_move.publish(rsr);
- 
-				ros::Duration(0.5).sleep();
-
 				lsp.joint_angles[0] = 1.6;
 				rsp.joint_angles[0] = 1.6;
 				lsp.speed = 0.5;
@@ -289,13 +273,6 @@ int main(int argc, char **argv) {
 				pub_move.publish(lsp);
 				pub_move.publish(rsp);
  
-				lsr.joint_angles[0] = 0.0;
-				rsr.joint_angles[0] = 0.0;
-				lsr.speed = 0.5;
-				rsr.speed = 0.5;
-				pub_move.publish(lsr);
-				pub_move.publish(rsr);
-
         			ros::Duration(0.5).sleep();
   
       			}
@@ -568,8 +545,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipYawPitches to the correct positions...\n");
  
-        			lhyp.joint_angles[0] = 0.5;
-        			rhyp.joint_angles[0] = 0.5;
+        			lhyp.joint_angles[0] = 0.0;
+        			rhyp.joint_angles[0] = 0.0;
         			lhyp.speed = 0.01;
         			rhyp.speed = 0.01;
         			pub_move.publish(lhyp);
@@ -613,8 +590,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipPitches to the correct positions...\n");
  
-        			lhp.joint_angles[0] = 0.5;
-        			rhp.joint_angles[0] = 0.5;
+        			lhp.joint_angles[0] = 0.0;
+        			rhp.joint_angles[0] = 0.0;
         			lhp.speed = 0.01;
         			rhp.speed = 0.01;
         			pub_move.publish(lhp);
@@ -658,8 +635,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipRolls to the correct positions...\n");
  
-        			lhr.joint_angles[0] = 0.5;
-        			rhr.joint_angles[0] = 0.5;
+        			lhr.joint_angles[0] = 0.0;
+        			rhr.joint_angles[0] = 0.0;
         			lhr.speed = 0.01;
         			rhr.speed = 0.01;
         			pub_move.publish(lhr);
@@ -703,8 +680,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both KneePitches to the correct positions...\n");
  
-        			lkp.joint_angles[0] = 0.5;
-        			rkp.joint_angles[0] = 0.5;
+        			lkp.joint_angles[0] = 0.0;
+        			rkp.joint_angles[0] = 0.0;
         			lkp.speed = 0.01;
         			rkp.speed = 0.01;
         			pub_move.publish(lkp);
@@ -748,8 +725,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both AnklePitches to the correct positions...\n");
  
-        			lap.joint_angles[0] = 0.5;
-        			rap.joint_angles[0] = 0.5;
+        			lap.joint_angles[0] = 0.0;
+        			rap.joint_angles[0] = 0.0;
         			lap.speed = 0.01;
         			rap.speed = 0.01;
         			pub_move.publish(lap);
@@ -761,7 +738,7 @@ int main(int argc, char **argv) {
   			
       			/************************************************/
        			
-    			//Adjusting ankle pitches to desired positions    
+    			//Adjusting ankle rolls to desired positions    
      			ros::spinOnce();
    
       			if ( ( lar_state > -0.1 && lar_state < 0.1 ) && ( rar_state > -0.1 && rar_state < 0.1 ) ) {
@@ -769,7 +746,7 @@ int main(int argc, char **argv) {
        				lar_check = true;
        				rar_check = true;
 
-       				ROS_INFO("Both AnklePitch positions are correct...");
+       				ROS_INFO("Both AnkleRoll positions are correct...");
  
    			}	
  
@@ -777,24 +754,24 @@ int main(int argc, char **argv) {
                
 				if ( lar_state < -0.1 && lar_state > 0.1 ) {
 
-	        			ROS_INFO("\nLAnklePitch position incorrect...");
-        				ROS_INFO("LAnklePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LAnklePitch position currently [ %d ]...", lar_state );
+	        			ROS_INFO("\nLAnkleRoll position incorrect...");
+        				ROS_INFO("LAnkleRoll position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("LAnkleRoll position currently [ %d ]...", lar_state );
 
 				}					
              
 				if ( rar_state < -0.1 && rar_state > 0.1 ) {
 
-	        			ROS_INFO("\nRAnklePitch position incorrect...");
-        				ROS_INFO("RAnklePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RAnklePitch position currently [ %d ]...", rar_state );
+	        			ROS_INFO("\nRAnkleRoll position incorrect...");
+        				ROS_INFO("RAnkleRoll position should be between [ -0.1 ] - [ 0.1 ]...");
+        				ROS_INFO("RAnkleRoll position currently [ %d ]...", rar_state );
 
 				}					
 
-        			ROS_INFO("Moving both AnklePitches to the correct positions...\n");
+        			ROS_INFO("Moving both AnkleRolls to the correct positions...\n");
  
-        			lar.joint_angles[0] = 0.5;
-        			rar.joint_angles[0] = 0.5;
+        			lar.joint_angles[0] = 0.0;
+        			rar.joint_angles[0] = 0.0;
         			lar.speed = 0.01;
         			rar.speed = 0.01;
         			pub_move.publish(lar);
