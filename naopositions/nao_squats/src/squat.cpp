@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
 		ros::spinOnce();
 		loop_rate.sleep();
 
-		if ( controlmsgs.nao_set_pose == true ) { 
+		if ( !controlmsgs.nao_set_pose ) { 
 
 			i = 0;
 
