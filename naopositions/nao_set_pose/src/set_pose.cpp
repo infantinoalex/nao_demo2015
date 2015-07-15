@@ -235,10 +235,24 @@ int main(int argc, char **argv) {
         ROS_INFO("LShoulderPitch position currently [ %d ]...", lsp_state );
         ROS_INFO("Moving LShoulderPitch to the correct position...\n");
 
+        lsp.joint_angles[0] = 0.0;
+        lsp.speed = 0.5;
+        pub_move.publish(lsp);
+
+        lsr.joint_angles[0] = 1.35;
+        lsr.speed = 0.5;
+        pub_move.publish(lsr);
+  
+        ros::Duration(0.5).sleep();
+
         lsp.joint_angles[0] = 1.6;
         lsp.speed = 0.5;
         pub_move.publish(lsp);
-  
+ 
+        lsr.joint_angles[0] = 0.0;
+        lsr.speed = 0.5;
+        pub_move.publish(lsr);
+ 
         ros::Duration(0.5).sleep();
   
       }
@@ -262,12 +276,26 @@ int main(int argc, char **argv) {
         ROS_INFO("RShoulderPitch position currently [ %d ]...", rsp_state );
         ROS_INFO("Moving RShoulderPitch to the correct position...\n");
 
+        rsp.joint_angles[0] = 0.0;
+        rsp.speed = 0.5;
+        pub_move.publish(rsp);
+
+        rsr.joint_angles[0] = 1.35;
+        rsr.speed = 0.5;
+        pub_move.publish(rsr);
+  
+        ros::Duration(0.5).sleep();
+
         rsp.joint_angles[0] = 1.6;
         rsp.speed = 0.5;
         pub_move.publish(rsp);
-  
+ 
+        rsr.joint_angles[0] = 0.0;
+        rsr.speed = 0.5;
+        pub_move.publish(rsr);
+ 
         ros::Duration(0.5).sleep();
-  
+
       }
   
       /************************************************/
@@ -275,7 +303,7 @@ int main(int argc, char **argv) {
       //Adjusting left shoulder roll to desired position    
       ros::spinOnce();
     
-      if ( lsr_state > -0.3 && lsr_state < 0.3 ) {
+      if ( lsr_state > -0.3 && lsr_state < 0.2 ) {
   
         lsr_check = true;
         ROS_INFO("LShoulderRoll position correct...");
@@ -302,7 +330,7 @@ int main(int argc, char **argv) {
       //Adjusting right shoulder roll to desired position    
       ros::spinOnce();
     
-      if ( rsr_state > -0.3 && rsr_state < 0.3 ) {
+      if ( rsr_state > -0.3 && rsr_state < 0.2 ) {
   
         rsr_check = true;
         ROS_INFO("RShoulderRoll position correct...");
