@@ -734,7 +734,7 @@ int main(int argc, char ** argv) {
     rap.speed = 0.2;
     pub_move.publish(rap);
 
-    rar.joint_angles[0] = -0.07;
+    rar.joint_angles[0] = 0.1//-0.07;
     rar.speed = 0.2;
     pub_move.publish(rar);
 
