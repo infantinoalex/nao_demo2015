@@ -386,7 +386,7 @@ int main(int argc, char ** argv) {
     pub_move.publish(ler);
     pub_move.publish(rer); 
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     	
     /************************************************/
 
@@ -430,7 +430,7 @@ int main(int argc, char ** argv) {
     rap.speed = 0.2;
     pub_move.publish(rap);
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     
     /************************************************/
 
@@ -466,7 +466,7 @@ int main(int argc, char ** argv) {
     rer.speed = 0.5;
     pub_move.publish(rer);
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
      
     /************************************************/
  
@@ -498,7 +498,7 @@ int main(int argc, char ** argv) {
     lhyp.speed = 0.2;
     pub_move.publish(rhyp);
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     
     /************************************************/
         
@@ -538,7 +538,7 @@ int main(int argc, char ** argv) {
     rkp.speed = 0.2;
     pub_move.publish(rkp);
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     
     /************************************************/
         
@@ -590,7 +590,7 @@ int main(int argc, char ** argv) {
     lar.speed = 0.2;
     pub_move.publish(rar);
 
-    ros::Duration(3).sleep();
+    ros::Duration(2).sleep();
     
     /************************************************/
        
@@ -617,7 +617,7 @@ int main(int argc, char ** argv) {
     lap.speed = 0.2;
     pub_move.publish(lap);
 
-    lar.joint_angles[0] = -0.1;//-0.05;
+    lar.joint_angles[0] = -0.1;
     lar.speed = 0.2;
     pub_move.publish(lar);
  
@@ -646,7 +646,7 @@ int main(int argc, char ** argv) {
     rar.speed = 0.2;
     pub_move.publish(rar);
 
-    ros::Duration(3).sleep();
+    ros::Duration(2).sleep();
     
     /************************************************/
      
@@ -694,7 +694,7 @@ int main(int argc, char ** argv) {
     rar.speed = 0.2;
     pub_move.publish(rar);
 
-    ros::Duration(3).sleep();
+    ros::Duration(2).sleep();
     
     /************************************************/
         
@@ -734,11 +734,11 @@ int main(int argc, char ** argv) {
     rap.speed = 0.2;
     pub_move.publish(rap);
 
-    rar.joint_angles[0] = 0.1//-0.07;
+    rar.joint_angles[0] = 0.1;
     rar.speed = 0.2;
     pub_move.publish(rar);
 
-    ros::Duration(3).sleep();
+    ros::Duration(2).sleep();
     
     /************************************************/
 
