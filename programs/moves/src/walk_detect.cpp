@@ -8,7 +8,7 @@ Created by: Alexander Infantino
 #include "geometry_msgs/Twist.h"
 #include "std_msgs/Bool.h"
 #include "nao_msgs/Bumper.h"
-#include "statepublish/states.h"
+#include "custom_msgs/states.h"
 
 // Global variables to store sonar information
 float rsonarr, lsonarr;
@@ -20,7 +20,7 @@ bool onground = true;
 int bumperp, bumpers;
 
 // Global variable to store the data for statepublish
-statepublish::states controlmsgs;
+custom_msgs::states controlmsgs;
 
 // Left sonar callback function to update sonar data 
 void sonarleftcb(const sensor_msgs::Range::ConstPtr& LeftSonar){
@@ -44,7 +44,7 @@ void bumpercb(const nao_msgs::Bumper::ConstPtr& Bump){
 }
 
 // State callback to see if this node needs to run
-void controlcb(const statepublish::states States){
+void controlcb(const custom_msgs::states States){
 	controlmsgs = States;
 }
 
@@ -76,7 +76,7 @@ int main(int argc, char ** argv){
 	ros::Publisher move = n.advertise<geometry_msgs::Twist>("/cmd_vel", 100);
 
 	// publsher to contr_msgs to tell node to stop/go
-	ros::Publisher pub_contrl = n.advertise<statepublish::states>("control_msgs", 100);
+	ros::Publisher pub_contrl = n.advertise<custom_msgs::states>("control_msgs", 100);
 
 	// variable declarations
 	std_msgs::String words;

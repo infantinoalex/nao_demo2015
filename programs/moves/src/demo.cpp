@@ -1,13 +1,13 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "nao_msgs/JointAnglesWithSpeed.h"
-#include "statepublish/states.h"
+#include "custom_msgs/states.h"
 
 // Global variable to store the data for statepublish
-statepublish::states controlmsgs;
+custom_msgs::states controlmsgs;
 
 // State callback to see if this node needs to run
-void controlcb(const statepublish::states States){
+void controlcb(const  custom_msgs::states States){
 	controlmsgs = States;
 }
 
@@ -23,9 +23,12 @@ int main(int argc, char ** argv){
 	// Subscribes to control msgs to see if the node needs to be executed
 	ros::Subscriber sub_1 = n.subscribe("/control_msgs", 100, controlcb);
 
-	// publoshers to make the nao talk/move
+	// publishers to make the nao talk/move
 	ros::Publisher move = n.advertise<nao_msgs::JointAnglesWithSpeed>("/joint_angles", 100);
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
+
+	// publishes to custom_msgs
+	ros::Publisher pub = n.advertise<custom_msgs::states>("control_msgs", 100);
 
 	// variable declarations
 	std_msgs::String words;

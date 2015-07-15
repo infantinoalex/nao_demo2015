@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   nao_msgs
   roscpp
   std_msgs
+  custom_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -45,10 +46,10 @@ find_package(catkin REQUIRED COMPONENTS
 ###################################
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES nao_standup
-#  CATKIN_DEPENDS nao_msgs roscpp std_msgs
-#  DEPENDS system_lib
+  #INCLUDE_DIRS include
+  #LIBRARIES nao_standup
+  #CATKIN_DEPENDS nao_msgs roscpp std_msgs
+  #DEPENDS system_lib
 )
 
 
@@ -75,4 +76,4 @@ add_executable(set_pose src/set_pose.cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(set_pose ${catkin_LIBRARIES})
 
-
+add_dependencies(set_pose custom_msgs ${catkin_EXPORTED_TARGETS})

@@ -1,14 +1,13 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(programs)
+project(custom_msgs)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  nao_msgs
+  message_generation
   roscpp
   std_msgs
-  custom_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -45,11 +44,11 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
+add_message_files(
+  FILES
+  states.msg
 #   Message2.msg
-# )
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -66,6 +65,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -78,8 +81,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES wavenao
-#  CATKIN_DEPENDS nao_msgs roscpp std_msgs
+#  LIBRARIES custom_msgs
+#  CATKIN_DEPENDS message_generation roscpp std_msgs
 #  DEPENDS system_lib
 )
 
@@ -95,32 +98,21 @@ include_directories(
 )
 
 ## Declare a cpp library
-# add_library(wavenao
-#   src/${PROJECT_NAME}/wavenao.cpp
+# add_library(custom_msgs
+#   src/${PROJECT_NAME}/custom_msgs.cpp
 # )
 
 ## Declare a cpp executable
-add_executable(wavenao_node src/wavenao.cpp)
-add_executable(walk_detect src/walk_detect.cpp)
-add_executable(demo src/demo.cpp)
+# add_executable(custom_msgs_node src/custom_msgs_node.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(wavenao_node wavenao_generate_messages_cpp)
-
-add_dependencies(walk_detect custom_msgs ${catkin_EXPORTED_TARGETS})
-add_dependencies(demo custom_msgs ${catkin_EXPORTED_TARGETS})
+# add_dependencies(custom_msgs_node custom_msgs_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(wavenao_node
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(walk_detect
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(demo
-  ${catkin_LIBRARIES}
-)
+# target_link_libraries(custom_msgs_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -137,7 +129,7 @@ target_link_libraries(demo
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS wavenao wavenao_node
+# install(TARGETS custom_msgs custom_msgs_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -162,7 +154,7 @@ target_link_libraries(demo
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_wavenao.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_custom_msgs.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

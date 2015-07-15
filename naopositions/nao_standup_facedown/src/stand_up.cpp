@@ -3,11 +3,11 @@
 #include <geometry_msgs/Twist.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
 #include <sstream>
-#include "statepublish/states.h"
+#include "custom_msgs/states.h"
 
-statepublish::states controlmsgs;
+custom_msgs::states controlmsgs;
 
-void controlcb(const statepublish::states States){
+void controlcb(const custom_msgs::states States){
 	controlmsgs = States;
 }
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
 	ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
 	ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
 	ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
-  	ros::Publisher pub_contrl = node.advertise<statepublish::states>("/control_msgs", 100);
+  	ros::Publisher pub_contrl = node.advertise<custom_msgs::states>("/control_msgs", 100);
 
   	// subscriber
   	ros::Subscriber sub = node.subscribe("/control_msgs", 100, controlcb);

@@ -2,20 +2,20 @@
 #include "std_msgs/Bool.h"
 #include "sensor_msgs/Imu.h"
 #include "std_msgs/String.h"
-#include "statepublish/states.h"
+#include "custom_msgs/states.h"
 #include "std_srvs/Empty.h"
 
 // Global variables to store the imu sensor data
 float orix, oriy, oriz, oriw, avx, avy, avz, lax, lay, laz;
 
 // Global variables to store the state data for publishing + subscribing
-statepublish::states controlstate;
+custom_msgs::states controlstate;
 
 // Global variable to store the bool of whether or not the nao's feet are on the ground
 bool onground = false;
 
 // STATEPUBLISH MSGS CALLBACK
-void statecb(const statepublish::states States){
+void statecb(const custom_msgs::states States){
 	controlstate = States;
 }
 
@@ -50,7 +50,7 @@ int main(int argc, char ** argv){
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
 
 	// publishes to custom topic to control everything
-	ros::Publisher control = n.advertise<statepublish::states>("/control_msgs", 100);
+	ros::Publisher control = n.advertise<custom_msgs::states>("/control_msgs", 100);
 	
 	// subscribes to imu to determine position of the nao's body
 	ros::Subscriber sub_1 = n.subscribe("/imu", 100, imucb);

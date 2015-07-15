@@ -1,14 +1,14 @@
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
 #include "nao_msgs/JointAnglesWithSpeed.h"
-#include "statepublish/states.h"
+#include "custom_msgs/states.h"
 
-statepublish::states controlmsgs;
+custom_msgs::states controlmsgs;
 
 float php, phy, plap, plar, pler, pley, plh, plhp ,plhr, plhyp, plkp, plsp, plsr, plwy, prap, prar, prer, prey, prh, prhp, prhr, prhyp, prkp, prsp,
 	prsr, prwy;
 
-void controlcb(const statepublish::states States){
+void controlcb(const custom_msgs::states States){
 	controlmsgs = States;
 }
 
@@ -35,7 +35,7 @@ int main(int argc, char ** argv){
 	ros::Subscriber sub_1 = n.subscribe("/control_msgs", 100, controlcb);
 	ros::Subscriber sub = n.subscribe("/joint_states", 100, callback);
 	ros::Publisher pub = n.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
-	ros::Publisher pub_contrl = n.advertise<statepublish::states>("/control_msgs", 100);
+	ros::Publisher pub_contrl = n.advertise<custom_msgs::states>("/control_msgs", 100);
 
 	nao_msgs::JointAnglesWithSpeed mhp, mhy, mler, mrer, mley, mrey, mlwy, mrwy, mrsr, mlsr, mrsp, mlsp;
 

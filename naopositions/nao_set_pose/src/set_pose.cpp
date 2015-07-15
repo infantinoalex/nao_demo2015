@@ -3,9 +3,9 @@
 #include <std_msgs/String.h>
 #include <sensor_msgs/JointState.h>
 #include <sstream>
-#include <statepublish/states.h>
+#include <custom_msgs/states.h>
 
-statepublish::states controlmsgs;
+custom_msgs::states controlmsgs;
 
 float hy_state, hp_state, lsp_state, rsp_state,
 	lsr_state, rsr_state, ley_state, rey_state,
@@ -45,7 +45,7 @@ void callback(const sensor_msgs::JointState::ConstPtr& Joints){
 	
 }
 
-void controlcb(const statepublish::states States){
+void controlcb(const custom_msgs::states States){
 	controlmsgs = States;
 }
 
@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
   	//All the publishers
   	ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   	ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
-  	ros::Publisher pub_contrl = node.advertise<statepublish::states>("/control_msgs", 100);
+  	ros::Publisher pub_contrl = node.advertise<custom_msgs::states>("/control_msgs", 100);
 
   	//All the subscribers
   	ros::Subscriber sub_joints = node.subscribe("joint_states", 100, callback);

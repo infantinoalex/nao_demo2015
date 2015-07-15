@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   nao_msgs
   roscpp
   std_msgs
+  custom_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -45,10 +46,10 @@ find_package(catkin REQUIRED COMPONENTS
 ###################################
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES nao_standup
-#  CATKIN_DEPENDS nao_msgs roscpp std_msgs
-#  DEPENDS system_lib
+  #INCLUDE_DIRS include
+  #LIBRARIES nao_standup
+  #CATKIN_DEPENDS nao_msgs roscpp std_msgs
+  #DEPENDS system_lib
 )
 
 
@@ -67,17 +68,13 @@ include_directories(
 # )
 
 ## Declare a cpp executable
-add_executable(get_up src/get_up.cpp)
 add_executable(stand_up_fd src/stand_up.cpp)
-add_executable(fall_down src/fall_down.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(nao_standup_node nao_standup_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(get_up ${catkin_LIBRARIES})
 target_link_libraries(stand_up_fd ${catkin_LIBRARIES})
-target_link_libraries(fall_down ${catkin_LIBRARIES})
 
-
+add_dependencies(stand_up_fd custom_msgs ${catkin_EXPORTED_TARGETS})
