@@ -646,7 +646,7 @@ int main(int argc, char ** argv) {
     rar.speed = 0.2;
     pub_move.publish(rar);
 
-    ros::Duration(2).sleep();
+    ros::Duration(3).sleep();
     
     /************************************************/
      
@@ -694,7 +694,7 @@ int main(int argc, char ** argv) {
     rar.speed = 0.2;
     pub_move.publish(rar);
 
-    ros::Duration(2).sleep();
+    ros::Duration(3).sleep();
     
     /************************************************/
         
@@ -738,7 +738,7 @@ int main(int argc, char ** argv) {
     rar.speed = 0.2;
     pub_move.publish(rar);
 
-    ros::Duration(2).sleep();
+    ros::Duration(3).sleep();
     
     /************************************************/
 
