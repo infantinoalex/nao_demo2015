@@ -79,7 +79,6 @@ int main(int argc, char ** argv){
 		ros::Duration(2).sleep();
 		if(!firsttime){
 			ROS_INFO("RUNNING DEMO FIRST\n");
-			loop_rate.sleep();
 			client.call(bstiff);
 			controlstate.startup = true;
 			control.publish(controlstate);
@@ -91,7 +90,6 @@ int main(int argc, char ** argv){
 				loop_rate.sleep();
 			}
 			ROS_INFO("RUNNING INTRO DEMO\n");
-			loop_rate.sleep();
 			controlstate.demo = true;
 			control.publish(controlstate);
 			loop_rate.sleep();
@@ -102,6 +100,7 @@ int main(int argc, char ** argv){
 			}
 			ROS_INFO("DEMO COMPLETE\n");
 			firsttime = false;
+			loop_rate.sleep();
 		}
 		// These values are found when the robot is laying on its stomach
 		// This if statement gets the robot to stand up from its stomach
@@ -133,7 +132,7 @@ int main(int argc, char ** argv){
 		// These values are found when the robot is laying on its back
 		// This if statement gets the robot to stand up from its back
 		else if((lax <= -9 && lax >= -10.5) && (laz <= 1 && laz >= -1)){
-			RROS_INFO("CURRENTLY ON BACK\n");
+			ROS_INFO("CURRENTLY ON BACK\n");
 			client.call(bstiff);
 			controlstate.nao_set_pose = true;
 			control.publish(controlstate);
