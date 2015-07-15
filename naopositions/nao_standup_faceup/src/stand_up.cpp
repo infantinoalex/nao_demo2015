@@ -540,7 +540,7 @@ int main(int argc, char ** argv) {
     lhp.speed = 0.2;
     pub_move.publish(lhp);
   		
-    lap.joint_angles[0] = -0.20//-0.31;
+    lap.joint_angles[0] = -0.20;//-0.31;
     lap.speed = 0.2;
     pub_move.publish(lap);
   		
