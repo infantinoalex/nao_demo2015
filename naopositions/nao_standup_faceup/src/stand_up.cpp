@@ -608,7 +608,7 @@ int main(int argc, char ** argv) {
     lap.speed = 0.2;
     pub_move.publish(lap);
 
-    lar.joint_angles[0] = 0.1;//-0.05;
+    lar.joint_angles[0] = -0.1;//-0.05;
     lar.speed = 0.2;
     pub_move.publish(lar);
  
