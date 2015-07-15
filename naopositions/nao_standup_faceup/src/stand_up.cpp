@@ -540,11 +540,11 @@ int main(int argc, char ** argv) {
     lhp.speed = 0.2;
     pub_move.publish(lhp);
   		
-    lap.joint_angles[0] = -0.31;
+    lap.joint_angles[0] = -0.20//-0.31;
     lap.speed = 0.2;
     pub_move.publish(lap);
   		
-    lar.joint_angles[0] = -0.29;
+    lar.joint_angles[0] = -0.30;
     lar.speed = 0.2;
     pub_move.publish(lar);
  
