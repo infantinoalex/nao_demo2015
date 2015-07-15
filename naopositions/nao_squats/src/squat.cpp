@@ -535,7 +535,7 @@ int main(int argc, char **argv) {
 
  
       			/************************************************/
-         		/* 
+         		 
     			//Adjusting hip yaw pitches to desired positions    
      			ros::spinOnce();
    
@@ -578,7 +578,7 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			*/
+  			
       			/************************************************/
          		
     			//Adjusting hip pitches to desired positions    
@@ -625,7 +625,7 @@ int main(int argc, char **argv) {
       			}
   			
       			/************************************************/
-       			/*
+       			
     			//Adjusting hip rolls to desired positions    
      			ros::spinOnce();
    
@@ -668,9 +668,9 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			*/
+  			
       			/************************************************/
-          		/*
+          		
     			//Adjusting knee pitches to desired positions    
      			ros::spinOnce();
    
@@ -713,9 +713,9 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			*/
+  			
       			/************************************************/
-         		/*
+         		
     			//Adjusting ankle pitches to desired positions    
      			ros::spinOnce();
    
@@ -758,9 +758,9 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			*/
+  			
       			/************************************************/
-       			/*
+       			
     			//Adjusting ankle pitches to desired positions    
      			ros::spinOnce();
    
@@ -800,10 +800,10 @@ int main(int argc, char **argv) {
         			pub_move.publish(lar);
         			pub_move.publish(rar);
         			
- 				ros::Duration(2).sleep();
+ 				ros::Duration(200).sleep();
  
       			}
-  			*/
+  			
       			/************************************************/
    
       				if ( hy_check && hp_check && lsp_check && rsp_check 
