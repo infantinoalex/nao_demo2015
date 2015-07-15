@@ -85,6 +85,7 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
+		loop_rate.sleep();
 		if(controlmsgs.startup == true){
 			i = 0;
 			if(checkit){

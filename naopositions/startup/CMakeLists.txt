@@ -6,12 +6,14 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   custom_msgs
 )
+catkin_package(
+)
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 add_executable(startup_node src/startup.cpp)
+add_dependencies(startup_node custom_msgs ${catkin_EXPORTED_TARGETS})
 target_link_libraries(startup_node
   ${catkin_LIBRARIES}
 )
 
-add_dependencies(startup_node custom_msgs ${catkin_EXPORTED_TARGETS})

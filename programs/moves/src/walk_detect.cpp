@@ -188,6 +188,7 @@ int main(int argc, char ** argv){
 		else{
 			if(i == 0){
 				ROS_INFO("WAITING FOR STATEPUBLISHER\n");
+				firsttime = true;
 			}
 			i++;
 			ros::spinOnce();
