@@ -212,10 +212,10 @@ int main(int argc, char **argv) {
     			if ( !all_good ) {
    
       			/************************************************/
-			
-			narration.data = "I am now going to try to squat again.";
+
+			narration.data = "I am now going to try to stand up.";
     			pub_narration.publish(narration);
- 			
+ 
       			/************************************************/
          		 
     			//Adjusting hip yaw pitches to desired positions    
@@ -250,9 +250,9 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipYawPitches to the correct positions...\n");
 				 
-         			lhyp.speed = abs (lhyp_state) / 20 + 0.1;
+        			lhyp.speed = abs (lhyp_state) / 20 + 0.1;
         			rhyp.speed = abs (rhyp_state) / 20 + 0.1;
- 	      			lhyp.joint_angles[0] = 0.0;
+        			lhyp.joint_angles[0] = 0.0;
         			rhyp.joint_angles[0] = 0.0;
         			pub_move.publish(lhyp);
         			pub_move.publish(rhyp);
@@ -266,7 +266,7 @@ int main(int argc, char **argv) {
     			//Adjusting hip pitches to desired positions    
      			ros::spinOnce();
    
-      			if ( ( lhp_state > ( hp_squat - 0.1 ) && lhp_state < ( hp_squat + 0.1 ) ) && ( rhp_state > ( hp_squat - 0.1 ) && rhp_state < ( hp_squat + 0.1 ) ) ) {
+      			if ( ( lhp_state > -0.1 && lhp_state < 0.1 ) && ( rhp_state > -0.1 && rhp_state < 0.1 ) ) {
   
        				lhp_check = true;
        				rhp_check = true;
@@ -295,10 +295,10 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipPitches to the correct positions...\n");
  
-        			lhp.speed = abs ( hp_squat - lhp_state ) / 20 + 0.1;
-        			rhp.speed = abs ( hp_squat - rhp_state ) / 20 + 0.1;
-        			lhp.joint_angles[0] = hp_squat;
-        			rhp.joint_angles[0] = hp_squat;
+        			lhp.speed = abs (lhp_state) / 20 + 0.1;
+        			rhp.speed = abs (rhp_state) / 20 + 0.1;
+        			lhp.joint_angles[0] = 0.0;
+        			rhp.joint_angles[0] = 0.0;
         			pub_move.publish(lhp);
         			pub_move.publish(rhp);
         			
@@ -356,7 +356,7 @@ int main(int argc, char **argv) {
     			//Adjusting knee pitches to desired positions    
      			ros::spinOnce();
    
-      			if ( ( lkp_state > ( kp_squat - 0.1 ) && lkp_state < ( kp_squat + 0.1 ) ) && ( rkp_state > ( kp_squat - 0.1 ) && rkp_state < ( kp_squat + 0.1 ) ) ) {
+      			if ( ( lkp_state > -0.1 && lkp_state < 0.1 ) && ( rkp_state > -0.1 && rkp_state < 0.1 ) ) {
   
        				lkp_check = true;
        				rkp_check = true;
@@ -385,10 +385,10 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both KneePitches to the correct positions...\n");
  
-        			lkp.speed = abs ( kp_squat - lkp_state ) / 20 + 0.1;
-        			rkp.speed = abs ( kp_squat - rkp_state ) / 20 + 0.1;
-        			lkp.joint_angles[0] = kp_squat;
-        			rkp.joint_angles[0] = kp_squat;
+        			lkp.speed = abs (lkp_state) / 20 + 0.1;
+        			rkp.speed = abs (rkp_state) / 20 + 0.1;
+        			lkp.joint_angles[0] = 0.0;
+        			rkp.joint_angles[0] = 0.0;
         			pub_move.publish(lkp);
         			pub_move.publish(rkp);
         			
@@ -401,7 +401,7 @@ int main(int argc, char **argv) {
     			//Adjusting ankle pitches to desired positions    
      			ros::spinOnce();
    
-      			if ( ( lap_state > ( ap_squat - 0.1 ) && lap_state < ( ap_squat + 0.1 ) ) && ( rap_state > ( ap_squat - 0.1 ) && rap_state < ( ap_squat + 0.1 ) ) ) {
+      			if ( ( lap_state > -0.1 && lap_state < 0.1 ) && ( rap_state > -0.1 && rap_state < 0.1 ) ) {
   
        				lap_check = true;
        				rap_check = true;
@@ -430,10 +430,10 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both AnklePitches to the correct positions...\n");
  
-        			lap.speed = abs ( ap_squat - lap_state ) / 20 + 0.1;
-        			rap.speed = abs ( ap_squat - rap_state ) / 20 + 0.1;
-        			lap.joint_angles[0] = ap_squat;
-        			rap.joint_angles[0] = ap_squat;
+        			lap.speed = abs (lap_state) / 20 + 0.1;
+        			rap.speed = abs (rap_state) / 20 + 0.1;
+        			lap.joint_angles[0] = 0.0;
+        			rap.joint_angles[0] = 0.0;
         			pub_move.publish(lap);
         			pub_move.publish(rap);
         			
@@ -485,7 +485,7 @@ int main(int argc, char **argv) {
  				ros::Duration(0.5).sleep();
  
       			}
- 			
+ 
       			/************************************************/
    
       				if ( hy_check && hp_check && lsp_check && rsp_check 
