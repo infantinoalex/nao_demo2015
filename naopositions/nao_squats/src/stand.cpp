@@ -235,8 +235,8 @@ int main(int argc, char **argv) {
 					negate_r = 1;
 				}
 			 
-        			lhyp.speed = negate_l * lhyp_state / 20 + 0.05;
-        			rhyp.speed = negate_r * rhyp_state / 20 + 0.05;
+        			lhyp.speed = negate_l * lhyp_state / 20 + 0.1;
+        			rhyp.speed = negate_r * rhyp_state / 20 + 0.1;
         			lhyp.joint_angles[0] = 0.0;
         			rhyp.joint_angles[0] = 0.0;
         			pub_move.publish(lhyp);
@@ -294,8 +294,8 @@ int main(int argc, char **argv) {
 					negate_r = 1;
 				}
 
-        			lhp.speed = negate_l * lhp_state / 25 + 0.05;
-        			rhp.speed = negate_r * rhp_state / 25 + 0.05;
+        			lhp.speed = negate_l * lhp_state / 25 + 0.1;
+        			rhp.speed = negate_r * rhp_state / 25 + 0.1;
         			lhp.joint_angles[0] = 0.0;
         			rhp.joint_angles[0] = 0.0;
         			pub_move.publish(lhp);
@@ -353,8 +353,8 @@ int main(int argc, char **argv) {
 					negate_r = 1;
 				}
 
-        			lhr.speed = negate_l * lhr_state / 20 + 0.05;
-        			rhr.speed = negate_r * rhr_state / 20 + 0.05;
+        			lhr.speed = negate_l * lhr_state / 20 + 0.1;
+        			rhr.speed = negate_r * rhr_state / 20 + 0.1;
         			lhr.joint_angles[0] = 0.0;
         			rhr.joint_angles[0] = 0.0;
         			pub_move.publish(lhr);
@@ -366,15 +366,6 @@ int main(int argc, char **argv) {
           		
     			//Adjusting knee pitches to desired positions    
      			ros::spinOnce();
-   			/* 
-       			ROS_INFO("Left knee pitch is at [ %f ]", lkp_state);
-       			ROS_INFO("Therefore, it has to move at a speed of [ %f ]", lkp_state / 10);
-  
-       			ROS_INFO("Right knee pitch is at [ %f ]", rkp_state);
-       			ROS_INFO("Therefore, it has to move at a speed of [ %f ]", rkp_state / 10);
- 
-			ros::Duration(5).sleep();
-			*/
  
       			if ( ( lkp_state > -0.1 && lkp_state < 0.1 ) && ( rkp_state > -0.1 && rkp_state < 0.1 ) ) {
   
@@ -421,8 +412,8 @@ int main(int argc, char **argv) {
 					negate_r = 1;
 				}
 
-        			lkp.speed = negate_l * lkp_state / 20 + 0.05;
-        			rkp.speed = negate_r * rkp_state / 20 + 0.05;
+        			lkp.speed = negate_l * lkp_state / 20 + 0.1;
+        			rkp.speed = negate_r * rkp_state / 20 + 0.1;
         			lkp.joint_angles[0] = 0.0;
         			rkp.joint_angles[0] = 0.0;
         			pub_move.publish(lkp);
@@ -480,8 +471,8 @@ int main(int argc, char **argv) {
 					negate_r = 1;
 				}
 
-        			lap.speed = negate_l * lap_state / 20 + 0.05;
-        			rap.speed = negate_r * rap_state / 20 + 0.05;
+        			lap.speed = negate_l * lap_state / 20 + 0.1;
+        			rap.speed = negate_r * rap_state / 20 + 0.1;
         			lap.joint_angles[0] = 0.0;
         			rap.joint_angles[0] = 0.0;
         			pub_move.publish(lap);
@@ -539,8 +530,8 @@ int main(int argc, char **argv) {
 					negate_r = 1;
 				}
 
-        			lar.speed = negate_l * lar_state / 20 + 0.05;
-        			rar.speed = negate_r * rar_state / 20 + 0.05;
+        			lar.speed = negate_l * lar_state / 20 + 0.1;
+        			rar.speed = negate_r * rar_state / 20 + 0.1;
         			lar.joint_angles[0] = 0.0;
         			rar.joint_angles[0] = 0.0;
         			pub_move.publish(lar);
