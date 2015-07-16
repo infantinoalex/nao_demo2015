@@ -212,12 +212,7 @@ int main(int argc, char **argv) {
     			if ( !all_good ) {
    
       			/************************************************/
-
-			narration.data = "I am now going to try to stand up.";
-    			pub_narration.publish(narration);
- 
-      			/************************************************/
-         		 
+         		/* 
     			//Adjusting hip yaw pitches to desired positions    
      			ros::spinOnce();
    
@@ -260,9 +255,9 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			
+  			*/
       			/************************************************/
-         		
+         	        /*	
     			//Adjusting hip pitches to desired positions    
      			ros::spinOnce();
    
@@ -305,9 +300,9 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			
+  			*/
       			/************************************************/
-       			
+       			/*
     			//Adjusting hip rolls to desired positions    
      			ros::spinOnce();
    
@@ -350,12 +345,21 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			
+  			*/
       			/************************************************/
           		
     			//Adjusting knee pitches to desired positions    
      			ros::spinOnce();
-   
+    
+       			ROS_INFO("Left knee pitch is at [ %f ]", lkp_state);
+       			ROS_INFO("Therefore, it has to move at a speed of [ %f ]", abs (lkp_state) / 20 + 0.1);
+  
+       			ROS_INFO("Right knee pitch is at [ %f ]", rkp_state);
+       			ROS_INFO("Therefore, it has to move at a speed of [ %f ]", abs (rkp_state) / 20 + 0.1);
+ 
+			ros::Duration(5).sleep();
+
+ 
       			if ( ( lkp_state > -0.1 && lkp_state < 0.1 ) && ( rkp_state > -0.1 && rkp_state < 0.1 ) ) {
   
        				lkp_check = true;
@@ -395,9 +399,9 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			
+  		
       			/************************************************/
-         		
+         		/*
     			//Adjusting ankle pitches to desired positions    
      			ros::spinOnce();
    
@@ -440,9 +444,9 @@ int main(int argc, char **argv) {
  				ros::Duration(2).sleep();
  
       			}
-  			
+  			*/
       			/************************************************/
-       			
+       			/*
     			//Adjusting ankle rolls to desired positions    
      			ros::spinOnce();
    
@@ -485,7 +489,7 @@ int main(int argc, char **argv) {
  				ros::Duration(0.5).sleep();
  
       			}
- 
+ 			*/
       			/************************************************/
    
       				if ( hy_check && hp_check && lsp_check && rsp_check 
