@@ -270,8 +270,6 @@ int main(int argc, char **argv) {
         			pub_move.publish(lhyp);
         			pub_move.publish(rhyp);
         			
- 				ros::Duration(2).sleep();
- 
       			}
   			
       			/************************************************/
@@ -331,8 +329,6 @@ int main(int argc, char **argv) {
         			pub_move.publish(lhp);
         			pub_move.publish(rhp);
         			
- 				ros::Duration(2).sleep();
- 
       			}
   			
       			/************************************************/
@@ -392,8 +388,6 @@ int main(int argc, char **argv) {
         			pub_move.publish(lhr);
         			pub_move.publish(rhr);
         			
- 				ros::Duration(2).sleep();
- 
       			}
   			
       			/************************************************/
@@ -521,8 +515,6 @@ int main(int argc, char **argv) {
         			pub_move.publish(lap);
         			pub_move.publish(rap);
         			
- 				ros::Duration(2).sleep();
- 
       			}
   			
       			/************************************************/
@@ -582,8 +574,6 @@ int main(int argc, char **argv) {
         			pub_move.publish(lar);
         			pub_move.publish(rar);
         			
- 				ros::Duration(0.5).sleep();
- 
       			}
  			
       			/************************************************/
