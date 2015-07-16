@@ -352,10 +352,10 @@ int main(int argc, char **argv) {
      			ros::spinOnce();
     
        			ROS_INFO("Left knee pitch is at [ %f ]", lkp_state);
-       			ROS_INFO("Therefore, it has to move at a speed of [ %f ]", abs (lkp_state) / 20 + 0.1);
+       			ROS_INFO("Therefore, it has to move at a speed of [ %f ]", lkp_state / 10);
   
        			ROS_INFO("Right knee pitch is at [ %f ]", rkp_state);
-       			ROS_INFO("Therefore, it has to move at a speed of [ %f ]", abs (rkp_state) / 20 + 0.1);
+       			ROS_INFO("Therefore, it has to move at a speed of [ %f ]", rkp_state / 10);
  
 			ros::Duration(5).sleep();
 
