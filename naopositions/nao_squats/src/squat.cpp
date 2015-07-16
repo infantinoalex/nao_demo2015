@@ -578,8 +578,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipYawPitches to the correct positions...\n");
 				 
-        			lhyp.speed = abs (lhyp_state) / 20;
-        			rhyp.speed = abs (rhyp_state) / 20;
+        			lhyp.speed = abs (lhyp_state) / 20 + 0.1;
+        			rhyp.speed = abs (rhyp_state) / 20 + 0.1;
         			lhyp.joint_angles[0] = 0.0;
         			rhyp.joint_angles[0] = 0.0;
         			pub_move.publish(lhyp);
