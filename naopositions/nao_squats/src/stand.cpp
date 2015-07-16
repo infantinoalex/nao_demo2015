@@ -294,8 +294,8 @@ int main(int argc, char **argv) {
 					negate_r = 1;
 				}
 
-        			lhp.speed = negate_l * lhp_state / 30 + 0.1;
-        			rhp.speed = negate_r * rhp_state / 30 + 0.1;
+        			lhp.speed = negate_l * lhp_state / 50 + 0.1;
+        			rhp.speed = negate_r * rhp_state / 50 + 0.1;
         			lhp.joint_angles[0] = 0.0;
         			rhp.joint_angles[0] = 0.0;
         			pub_move.publish(lhp);
