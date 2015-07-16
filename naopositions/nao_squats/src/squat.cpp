@@ -3,6 +3,7 @@
 #include <std_msgs/String.h>
 #include <sensor_msgs/JointState.h>
 #include <sstream>
+#include <cmath>
 #include <custom_msgs/states.h>
 
 custom_msgs::states controlmsgs;
@@ -508,8 +509,8 @@ int main(int argc, char **argv) {
 
 
 
-
-
+			narration.data = "I am now going to try to stand up.";
+    			pub_narration.publish(narration);
  
       			/************************************************/
          		 
@@ -547,8 +548,8 @@ int main(int argc, char **argv) {
 				 
         			lhyp.joint_angles[0] = 0.0;
         			rhyp.joint_angles[0] = 0.0;
-        			lhyp.speed = lhyp_state / 20;
-        			rhyp.speed = rhyp_state / 20;
+        			lhyp.speed = abs(lhyp_state) / 20;
+        			rhyp.speed = abs(rhyp_state) / 20;
         			pub_move.publish(lhyp);
         			pub_move.publish(rhyp);
         			
@@ -592,8 +593,8 @@ int main(int argc, char **argv) {
  
         			lhp.joint_angles[0] = 0.0;
         			rhp.joint_angles[0] = 0.0;
-        			lhp.speed = lhp_state / 20;
-        			rhp.speed = rhp_state / 20;
+        			lhp.speed = abs(lhp_state) / 20;
+        			rhp.speed = abs(rhp_state) / 20;
         			pub_move.publish(lhp);
         			pub_move.publish(rhp);
         			
@@ -637,8 +638,8 @@ int main(int argc, char **argv) {
  
         			lhr.joint_angles[0] = 0.0;
         			rhr.joint_angles[0] = 0.0;
-        			lhr.speed = lhr_state / 20;
-        			rhr.speed = rhr_state / 20;
+        			lhr.speed = abs(lhr_state) / 20;
+        			rhr.speed = abs(rhr_state) / 20;
         			pub_move.publish(lhr);
         			pub_move.publish(rhr);
         			
@@ -682,8 +683,8 @@ int main(int argc, char **argv) {
  
         			lkp.joint_angles[0] = 0.0;
         			rkp.joint_angles[0] = 0.0;
-        			lkp.speed = lkp_state / 20;
-        			rkp.speed = rkp_state / 20;
+        			lkp.speed = abs(lkp_state) / 20;
+        			rkp.speed = abs(rkp_state) / 20;
         			pub_move.publish(lkp);
         			pub_move.publish(rkp);
         			
@@ -727,8 +728,8 @@ int main(int argc, char **argv) {
  
         			lap.joint_angles[0] = 0.0;
         			rap.joint_angles[0] = 0.0;
-        			lap.speed = lap_state / 20;
-        			rap.speed = rap_state / 20;
+        			lap.speed = abs(lap_state) / 20;
+        			rap.speed = abs(rap_state) / 20;
         			pub_move.publish(lap);
         			pub_move.publish(rap);
         			
@@ -772,15 +773,26 @@ int main(int argc, char **argv) {
  
         			lar.joint_angles[0] = 0.0;
         			rar.joint_angles[0] = 0.0;
-        			lar.speed = lar_state / 20;
-        			rar.speed = rar_state / 20;
+        			lar.speed = abs(lar_state) / 20;
+        			rar.speed = abs(rar_state) / 20;
         			pub_move.publish(lar);
         			pub_move.publish(rar);
         			
- 				ros::Duration(200).sleep();
+ 				ros::Duration(0.5).sleep();
  
       			}
-  			
+ 
+      			/************************************************/
+ 		
+
+
+
+
+ 			ros::Duration(60).sleep();
+	
+			narration.data = "All done.";
+    			pub_narration.publish(narration);
+
       			/************************************************/
    
       				if ( hy_check && hp_check && lsp_check && rsp_check 
