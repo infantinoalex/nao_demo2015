@@ -141,60 +141,32 @@ int main(int argc, char **argv) {
   	rar.joint_names.push_back("RAnkleRoll");
 	
   	//All joint angle statements
-  	hy.joint_angles.push_back(hy_state);
-  	hp.joint_angles.push_back(hp_state);
-  	lsp.joint_angles.push_back(lsp_state);
-  	rsp.joint_angles.push_back(rsp_state);
-  	lsr.joint_angles.push_back(lsr_state);
-  	rsr.joint_angles.push_back(rsr_state);
-  	ley.joint_angles.push_back(ley_state);
-  	rey.joint_angles.push_back(rey_state);
-  	ler.joint_angles.push_back(ler_state);
-  	rer.joint_angles.push_back(rer_state);
-  	lwy.joint_angles.push_back(lwy_state);
-  	rwy.joint_angles.push_back(rwy_state);
-  	lh.joint_angles.push_back(lh_state);
-  	rh.joint_angles.push_back(rh_state);
-  	lhyp.joint_angles.push_back(lhyp_state);
-  	rhyp.joint_angles.push_back(rhyp_state);
-  	lhp.joint_angles.push_back(lhp_state);
-  	rhp.joint_angles.push_back(rhp_state);
-  	lhr.joint_angles.push_back(lhr_state);
-  	rhr.joint_angles.push_back(rhr_state);
-  	lkp.joint_angles.push_back(lkp_state);
-  	rkp.joint_angles.push_back(rkp_state);
-  	lap.joint_angles.push_back(lap_state);
-  	rap.joint_angles.push_back(rap_state);
-  	lar.joint_angles.push_back(lar_state);
-  	rar.joint_angles.push_back(rar_state);
-
-	//Publish messages once
-        pub_move.publish(hy);
-        pub_move.publish(hp);
-        pub_move.publish(lsp);
-        pub_move.publish(rsp);
-        pub_move.publish(lsr);
-        pub_move.publish(rsr);
-        pub_move.publish(ley);
-        pub_move.publish(rey);
-        pub_move.publish(ler);
-        pub_move.publish(rer);
-        pub_move.publish(lwy);
-        pub_move.publish(rwy);
-        pub_move.publish(lh);
-        pub_move.publish(rh);
-        pub_move.publish(lhyp);
-        pub_move.publish(rhyp);
-        pub_move.publish(lhp);
-        pub_move.publish(rhp);
-        pub_move.publish(lhr);
-        pub_move.publish(rhr);
-        pub_move.publish(lkp);
-        pub_move.publish(rkp);
-        pub_move.publish(lap);
-        pub_move.publish(rap);
-        pub_move.publish(lar);
-        pub_move.publish(rar);
+  	hy.joint_angles.push_back(0);
+  	hp.joint_angles.push_back(0);
+  	lsp.joint_angles.push_back(0);
+  	rsp.joint_angles.push_back(0);
+  	lsr.joint_angles.push_back(0);
+  	rsr.joint_angles.push_back(0);
+  	ley.joint_angles.push_back(0);
+  	rey.joint_angles.push_back(0);
+  	ler.joint_angles.push_back(0);
+  	rer.joint_angles.push_back(0);
+  	lwy.joint_angles.push_back(0);
+  	rwy.joint_angles.push_back(0);
+  	lh.joint_angles.push_back(0);
+  	rh.joint_angles.push_back(0);
+  	lhyp.joint_angles.push_back(0);
+  	rhyp.joint_angles.push_back(0);
+  	lhp.joint_angles.push_back(0);
+  	rhp.joint_angles.push_back(0);
+  	lhr.joint_angles.push_back(0);
+  	rhr.joint_angles.push_back(0);
+  	lkp.joint_angles.push_back(0);
+  	rkp.joint_angles.push_back(0);
+  	lap.joint_angles.push_back(0);
+  	rap.joint_angles.push_back(0);
+  	lar.joint_angles.push_back(0);
+  	rar.joint_angles.push_back(0);
 
   	ros::Rate loop_rate(10); 
 
@@ -322,8 +294,8 @@ int main(int argc, char **argv) {
                                         negate_r = 1;
                                 }
 
-        			lhp.speed = negate_l * ( hp_squat - lhp_state ) / 30 + 0.01;
-        			rhp.speed = negate_r * ( hp_squat - rhp_state ) / 30 + 0.01;
+        			lhp.speed = negate_l * ( hp_squat - lhp_state ) / 25 + 0.01;
+        			rhp.speed = negate_r * ( hp_squat - rhp_state ) / 25 + 0.01;
         			lhp.joint_angles[0] = hp_squat;
         			rhp.joint_angles[0] = hp_squat;
         			pub_move.publish(lhp);
