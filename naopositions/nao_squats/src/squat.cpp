@@ -294,8 +294,8 @@ int main(int argc, char **argv) {
                                         negate_r = 1;
                                 }
 
-        			lhp.speed = negate_l * ( hp_squat - lhp_state ) / 35 + 0.1;
-        			rhp.speed = negate_r * ( hp_squat - rhp_state ) / 35 + 0.1;
+        			lhp.speed = /* negate_l * ( hp_squat - lhp_state ) / 45 + */ 0.1;
+        			rhp.speed = /* negate_r * ( hp_squat - rhp_state ) / 45 + */ 0.1;
         			lhp.joint_angles[0] = hp_squat;
         			rhp.joint_angles[0] = hp_squat;
         			pub_move.publish(lhp);
@@ -412,8 +412,8 @@ int main(int argc, char **argv) {
                                         negate_r = 1;
                                 }
 
-        			lkp.speed = negate_l * ( kp_squat - lkp_state ) / 20 + 0.1;
-        			rkp.speed = negate_r * ( kp_squat - rkp_state ) / 20 + 0.1;
+        			lkp.speed = /* negate_l * ( kp_squat - lkp_state ) / 20 + */ 0.2;
+        			rkp.speed = /* negate_r * ( kp_squat - rkp_state ) / 20 + */ 0.2;
         			lkp.joint_angles[0] = kp_squat;
         			rkp.joint_angles[0] = kp_squat;
         			pub_move.publish(lkp);
@@ -471,8 +471,8 @@ int main(int argc, char **argv) {
                                         negate_r = 1;
                                 }
 
-        			lap.speed = negate_l * ( ap_squat - lap_state ) / 20 + 0.1;
-        			rap.speed = negate_r * ( ap_squat - rap_state ) / 20 + 0.1;
+        			lap.speed = /* negate_l * ( ap_squat - lap_state ) / 20 + */ 0.1;
+        			rap.speed = /* negate_r * ( ap_squat - rap_state ) / 20 + */ 0.1;
         			lap.joint_angles[0] = ap_squat;
         			rap.joint_angles[0] = ap_squat;
         			pub_move.publish(lap);
