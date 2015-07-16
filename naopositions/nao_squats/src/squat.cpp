@@ -544,11 +544,11 @@ int main(int argc, char **argv) {
 				}					
 
         			ROS_INFO("Moving both HipYawPitches to the correct positions...\n");
- 
+				 
         			lhyp.joint_angles[0] = 0.0;
         			rhyp.joint_angles[0] = 0.0;
-        			lhyp.speed = 0.01;
-        			rhyp.speed = 0.01;
+        			lhyp.speed = lhyp_state / 20;
+        			rhyp.speed = rhyp_state / 20;
         			pub_move.publish(lhyp);
         			pub_move.publish(rhyp);
         			
@@ -592,8 +592,8 @@ int main(int argc, char **argv) {
  
         			lhp.joint_angles[0] = 0.0;
         			rhp.joint_angles[0] = 0.0;
-        			lhp.speed = 0.01;
-        			rhp.speed = 0.01;
+        			lhp.speed = lhp_state / 20;
+        			rhp.speed = rhp_state / 20;
         			pub_move.publish(lhp);
         			pub_move.publish(rhp);
         			
@@ -637,8 +637,8 @@ int main(int argc, char **argv) {
  
         			lhr.joint_angles[0] = 0.0;
         			rhr.joint_angles[0] = 0.0;
-        			lhr.speed = 0.01;
-        			rhr.speed = 0.01;
+        			lhr.speed = lhr_state / 20;
+        			rhr.speed = rhr_state / 20;
         			pub_move.publish(lhr);
         			pub_move.publish(rhr);
         			
@@ -682,8 +682,8 @@ int main(int argc, char **argv) {
  
         			lkp.joint_angles[0] = 0.0;
         			rkp.joint_angles[0] = 0.0;
-        			lkp.speed = 0.01;
-        			rkp.speed = 0.01;
+        			lkp.speed = lkp_state / 20;
+        			rkp.speed = rkp_state / 20;
         			pub_move.publish(lkp);
         			pub_move.publish(rkp);
         			
@@ -727,8 +727,8 @@ int main(int argc, char **argv) {
  
         			lap.joint_angles[0] = 0.0;
         			rap.joint_angles[0] = 0.0;
-        			lap.speed = 0.01;
-        			rap.speed = 0.01;
+        			lap.speed = lap_state / 20;
+        			rap.speed = rap_state / 20;
         			pub_move.publish(lap);
         			pub_move.publish(rap);
         			
@@ -772,8 +772,8 @@ int main(int argc, char **argv) {
  
         			lar.joint_angles[0] = 0.0;
         			rar.joint_angles[0] = 0.0;
-        			lar.speed = 0.01;
-        			rar.speed = 0.01;
+        			lar.speed = lar_state / 20;
+        			rar.speed = rar_state / 20;
         			pub_move.publish(lar);
         			pub_move.publish(rar);
         			
