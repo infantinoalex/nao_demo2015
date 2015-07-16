@@ -578,8 +578,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipYawPitches to the correct positions...\n");
 				 
-        			lhyp.speed = abs(lhyp_state) / 20;
-        			rhyp.speed = abs(rhyp_state) / 20;
+        			lhyp.speed = abs (lhyp_state) / 20;
+        			rhyp.speed = abs (rhyp_state) / 20;
         			lhyp.joint_angles[0] = 0.0;
         			rhyp.joint_angles[0] = 0.0;
         			pub_move.publish(lhyp);
@@ -623,8 +623,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipPitches to the correct positions...\n");
  
-        			lhp.speed = abs(lhp_state) / 20;
-        			rhp.speed = abs(rhp_state) / 20;
+        			lhp.speed = abs (lhp_state) / 20;
+        			rhp.speed = abs (rhp_state) / 20;
         			lhp.joint_angles[0] = 0.0;
         			rhp.joint_angles[0] = 0.0;
         			pub_move.publish(lhp);
@@ -668,8 +668,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipRolls to the correct positions...\n");
  
-        			lhr.speed = abs(lhr_state) / 20;
-        			rhr.speed = abs(rhr_state) / 20;
+        			lhr.speed = abs (lhr_state) / 20;
+        			rhr.speed = abs (rhr_state) / 20;
         			lhr.joint_angles[0] = 0.0;
         			rhr.joint_angles[0] = 0.0;
         			pub_move.publish(lhr);
@@ -713,8 +713,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both KneePitches to the correct positions...\n");
  
-        			lkp.speed = abs(lkp_state) / 20;
-        			rkp.speed = abs(rkp_state) / 20;
+        			lkp.speed = abs (lkp_state) / 20;
+        			rkp.speed = abs (rkp_state) / 20;
         			lkp.joint_angles[0] = 0.0;
         			rkp.joint_angles[0] = 0.0;
         			pub_move.publish(lkp);
@@ -758,8 +758,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both AnklePitches to the correct positions...\n");
  
-        			lap.speed = abs(lap_state) / 20;
-        			rap.speed = abs(rap_state) / 20;
+        			lap.speed = abs (lap_state) / 20;
+        			rap.speed = abs (rap_state) / 20;
         			lap.joint_angles[0] = 0.0;
         			rap.joint_angles[0] = 0.0;
         			pub_move.publish(lap);
@@ -803,8 +803,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both AnkleRolls to the correct positions...\n");
  
-        			lar.speed = abs(lar_state) / 20;
-        			rar.speed = abs(rar_state) / 20;
+        			lar.speed = abs (lar_state) / 20;
+        			rar.speed = abs (rar_state) / 20;
         			lar.joint_angles[0] = 0.0;
         			rar.joint_angles[0] = 0.0;
         			pub_move.publish(lar);
@@ -820,7 +820,7 @@ int main(int argc, char **argv) {
 
 
 
- 			ros::Duration(60).sleep();
+ 			ros::Duration(30).sleep();
 	
 			narration.data = "All done.";
     			pub_narration.publish(narration);
@@ -868,8 +868,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipYawPitches to the correct positions...\n");
 				 
-         			lhyp.speed = abs(lhyp_state) / 20;
-        			rhyp.speed = abs(rhyp_state) / 20;
+         			lhyp.speed = abs (lhyp_state) / 20;
+        			rhyp.speed = abs (rhyp_state) / 20;
  	      			lhyp.joint_angles[0] = 0.0;
         			rhyp.joint_angles[0] = 0.0;
         			pub_move.publish(lhyp);
@@ -913,8 +913,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipPitches to the correct positions...\n");
  
-        			lhp.speed = abs( hp_squat - lhp_state ) / 20;
-        			rhp.speed = abs( hp_squat - rhp_state ) / 20;
+        			lhp.speed = abs ( hp_squat - lhp_state ) / 20;
+        			rhp.speed = abs ( hp_squat - rhp_state ) / 20;
         			lhp.joint_angles[0] = hp_squat;
         			rhp.joint_angles[0] = hp_squat;
         			pub_move.publish(lhp);
@@ -958,8 +958,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipRolls to the correct positions...\n");
  
-        			lhr.speed = abs(lhr_state) / 20;
-        			rhr.speed = abs(rhr_state) / 20;
+        			lhr.speed = abs (lhr_state) / 20;
+        			rhr.speed = abs (rhr_state) / 20;
         			lhr.joint_angles[0] = 0.0;
         			rhr.joint_angles[0] = 0.0;
         			pub_move.publish(lhr);
@@ -1003,8 +1003,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both KneePitches to the correct positions...\n");
  
-        			lkp.speed = abs( kp_squat - lkp_state ) / 20;
-        			rkp.speed = abs( kp_squat - rkp_state ) / 20;
+        			lkp.speed = abs ( kp_squat - lkp_state ) / 20;
+        			rkp.speed = abs ( kp_squat - rkp_state ) / 20;
         			lkp.joint_angles[0] = kp_squat;
         			rkp.joint_angles[0] = kp_squat;
         			pub_move.publish(lkp);
@@ -1048,8 +1048,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both AnklePitches to the correct positions...\n");
  
-        			lap.speed = abs( ap_squat - lap_state ) / 20;
-        			rap.speed = abs( ap_squat - rap_state ) / 20;
+        			lap.speed = abs ( ap_squat - lap_state ) / 20;
+        			rap.speed = abs ( ap_squat - rap_state ) / 20;
         			lap.joint_angles[0] = ap_squat;
         			rap.joint_angles[0] = ap_squat;
         			pub_move.publish(lap);
@@ -1093,8 +1093,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both AnkleRolls to the correct positions...\n");
  
-        			lar.speed = abs(lar_state) / 20;
-        			rar.speed = abs(rar_state) / 20;
+        			lar.speed = abs (lar_state) / 20;
+        			rar.speed = abs (rar_state) / 20;
         			lar.joint_angles[0] = 0.0;
         			rar.joint_angles[0] = 0.0;
         			pub_move.publish(lar);
@@ -1110,7 +1110,7 @@ int main(int argc, char **argv) {
 
 
 
- 			ros::Duration(60).sleep();
+ 			ros::Duration(30).sleep();
 	
 			narration.data = "All done.";
     			pub_narration.publish(narration);
