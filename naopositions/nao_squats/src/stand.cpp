@@ -389,8 +389,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both KneePitches to the correct positions...\n");
  
-        			lkp.speed = abs (lkp_state) / 20 + 0.1;
-        			rkp.speed = abs (rkp_state) / 20 + 0.1;
+        			lkp.speed = lkp_state / 20 + 0.1;
+        			rkp.speed = rkp_state / 20 + 0.1;
         			lkp.joint_angles[0] = 0.0;
         			rkp.joint_angles[0] = 0.0;
         			pub_move.publish(lkp);
