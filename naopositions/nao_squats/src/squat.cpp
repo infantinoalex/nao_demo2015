@@ -215,11 +215,6 @@ int main(int argc, char **argv) {
    
       			/************************************************/
 			
-			narration.data = "I am now going to try to squat again.";
-    			pub_narration.publish(narration);
- 			
-      			/************************************************/
-         		 
     			//Adjusting hip yaw pitches to desired positions    
      			ros::spinOnce();
    
