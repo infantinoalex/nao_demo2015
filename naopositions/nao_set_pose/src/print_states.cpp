@@ -170,32 +170,32 @@ int main(int argc, char **argv) {
 
     		/************************************************/
     
-  		ROS_INFO("HeadYaw State: [ %.2f ]", hy_state);
-  		ROS_INFO("HeadPitch State: [ %.2f ]", hp_state);
-  		ROS_INFO("LShoulderPitch State: [ %.2f ]", lsp_state);
-  		ROS_INFO("RShoulderPitch State: [ %.2f ]", rsp_state);
-  		ROS_INFO("LShoulderRoll State: [ %.2f ]", lsr_state);
-  		ROS_INFO("RShoulderRoll State: [ %.2f ]", rsr_state);
-  		ROS_INFO("LElbowYaw State: [ %.2f ]", ley_state);
-  		ROS_INFO("RElbowYaw State: [ %.2f ]", rey_state);
-  		ROS_INFO("LElbowRoll State: [ %.2f ]", ler_state);
-  		ROS_INFO("RElbowRoll State: [ %.2f ]", rer_state);
-  		ROS_INFO("LWristYaw State: [ %.2f ]", lwy_state);
-  		ROS_INFO("RWristYaw State: [ %.2f ]", rwy_state);
-  		ROS_INFO("LHand State: [ %.2f ]", lh_state);
-  		ROS_INFO("RHand State: [ %.2f ]", rh_state);
-  		ROS_INFO("LHipYawPitch State: [ %.2f ]", lhyp_state);
-  		ROS_INFO("RHipYawPitch State: [ %.2f ]", rhyp_state);
-  		ROS_INFO("LHipPitch State: [ %.2f ]", lhp_state);
-  		ROS_INFO("RHipPitch State: [ %.2f ]", rhp_state);
-  		ROS_INFO("LHipRoll State: [ %.2f ]", lhr_state);
-  		ROS_INFO("RHipRoll State: [ %.2f ]", rhr_state);
-  		ROS_INFO("LKneePitch State: [ %.2f ]", lkp_state);
-  		ROS_INFO("RKneePitch State: [ %.2f ]", rkp_state);
-  		ROS_INFO("LAnklePitch State: [ %.2f ]", lap_state);
-  		ROS_INFO("RAnklePitch State: [ %.2f ]", rap_state);
-  		ROS_INFO("LAnkleRoll State: [ %.2f ]", lar_state);
-  		ROS_INFO("RAnkleRoll State: [ %.2f ]", rar_state);
+  		ROS_INFO("HeadYaw State: [ %.2f ]\t", hy_state);
+  		ROS_INFO("HeadPitch State: [ %.2f ]\n", hp_state);
+  		ROS_INFO("LShoulderPitch State: [ %.2f ]\t", lsp_state);
+  		ROS_INFO("RShoulderPitch State: [ %.2f ]\r", rsp_state);
+  		ROS_INFO("LShoulderRoll State: [ %.2f ]\t", lsr_state);
+  		ROS_INFO("RShoulderRoll State: [ %.2f ]\r", rsr_state);
+  		ROS_INFO("LElbowYaw State: [ %.2f ]\t", ley_state);
+  		ROS_INFO("RElbowYaw State: [ %.2f ]\r", rey_state);
+  		ROS_INFO("LElbowRoll State: [ %.2f ]\t", ler_state);
+  		ROS_INFO("RElbowRoll State: [ %.2f ]\r", rer_state);
+  		ROS_INFO("LWristYaw State: [ %.2f ]\t", lwy_state);
+  		ROS_INFO("RWristYaw State: [ %.2f ]\r", rwy_state);
+  		ROS_INFO("LHand State: [ %.2f ]\t", lh_state);
+  		ROS_INFO("RHand State: [ %.2f ]\r", rh_state);
+  		ROS_INFO("LHipYawPitch State: [ %.2f ]\t", lhyp_state);
+  		ROS_INFO("RHipYawPitch State: [ %.2f ]\r", rhyp_state);
+  		ROS_INFO("LHipPitch State: [ %.2f ]\t", lhp_state);
+  		ROS_INFO("RHipPitch State: [ %.2f ]\r", rhp_state);
+  		ROS_INFO("LHipRoll State: [ %.2f ]\t", lhr_state);
+  		ROS_INFO("RHipRoll State: [ %.2f ]\r", rhr_state);
+  		ROS_INFO("LKneePitch State: [ %.2f ]\t", lkp_state);
+  		ROS_INFO("RKneePitch State: [ %.2f ]\r", rkp_state);
+  		ROS_INFO("LAnklePitch State: [ %.2f ]\t", lap_state);
+  		ROS_INFO("RAnklePitch State: [ %.2f ]\r", rap_state);
+  		ROS_INFO("LAnkleRoll State: [ %.2f ]\t", lar_state);
+  		ROS_INFO("RAnkleRoll State: [ %.2f ]\r", rar_state);
 
   		/************************************************/
 
