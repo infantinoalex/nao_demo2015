@@ -205,7 +205,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLHipYawPitch position incorrect...");
         				ROS_INFO("LHipYawPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LHipYawPitch position currently [ %d ]...", lhyp_state );
+        				ROS_INFO("LHipYawPitch position currently [ %.2f ]...", lhyp_state );
 
 				}					
              
@@ -213,7 +213,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRHipYawPitch position incorrect...");
         				ROS_INFO("RHipYawPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RHipYawPitch position currently [ %d ]...", rhyp_state );
+        				ROS_INFO("RHipYawPitch position currently [ %.2f ]...", rhyp_state );
 
 				}					
 
@@ -264,7 +264,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLHipPitch position incorrect...");
         				ROS_INFO("LHipPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LHipPitch position currently [ %d ]...", lhp_state );
+        				ROS_INFO("LHipPitch position currently [ %.2f ]...", lhp_state );
 
 				}					
              
@@ -272,7 +272,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRHipPitch position incorrect...");
         				ROS_INFO("RHipPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RHipPitch position currently [ %d ]...", rhp_state );
+        				ROS_INFO("RHipPitch position currently [ %.2f ]...", rhp_state );
 
 				}					
 
@@ -307,7 +307,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLHipRoll position incorrect...");
         				ROS_INFO("LHipRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LHipRoll position currently [ %d ]...", lhr_state );
+        				ROS_INFO("LHipRoll position currently [ %.2f ]...", lhr_state );
 
 				}					
              
@@ -315,7 +315,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRHipRoll position incorrect...");
         				ROS_INFO("RHipRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RHipRoll position currently [ %d ]...", rhr_state );
+        				ROS_INFO("RHipRoll position currently [ %.2f ]...", rhr_state );
 
 				}					
 
@@ -366,7 +366,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLKneePitch position incorrect...");
         				ROS_INFO("LKneePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LKneePitch position currently [ %d ]...", lkp_state );
+        				ROS_INFO("LKneePitch position currently [ %.2f ]...", lkp_state );
 
 				}					
              
@@ -374,7 +374,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRKneePitch position incorrect...");
         				ROS_INFO("RKneePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RKneePitch position currently [ %d ]...", rkp_state );
+        				ROS_INFO("RKneePitch position currently [ %.2f ]...", rkp_state );
 
 				}					
 
@@ -409,7 +409,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLAnklePitch position incorrect...");
         				ROS_INFO("LAnklePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LAnklePitch position currently [ %d ]...", lap_state );
+        				ROS_INFO("LAnklePitch position currently [ %.2f ]...", lap_state );
 
 				}					
              
@@ -417,7 +417,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRAnklePitch position incorrect...");
         				ROS_INFO("RAnklePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RAnklePitch position currently [ %d ]...", rap_state );
+        				ROS_INFO("RAnklePitch position currently [ %.2f ]...", rap_state );
 
 				}					
 
@@ -452,7 +452,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLAnkleRoll position incorrect...");
         				ROS_INFO("LAnkleRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LAnkleRoll position currently [ %d ]...", lar_state );
+        				ROS_INFO("LAnkleRoll position currently [ %.2f ]...", lar_state );
 
 				}					
              
@@ -460,7 +460,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRAnkleRoll position incorrect...");
         				ROS_INFO("RAnkleRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RAnkleRoll position currently [ %d ]...", rar_state );
+        				ROS_INFO("RAnkleRoll position currently [ %.2f ]...", rar_state );
 
 				}					
 
