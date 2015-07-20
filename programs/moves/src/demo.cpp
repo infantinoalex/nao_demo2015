@@ -34,7 +34,7 @@ int main(int argc, char ** argv){
 	// variable declarations
 	std_msgs::String words;
 	nao_msgs::JointAnglesWithSpeed mhp, mhy, mler, mrer, mley, mrey, mlwy, mrwy, mrsr, mlsr, mrsp, mlsp, mlh, mrh;
-	int speed = 0.5, i = 0, j = 0;
+	int i = 0, j = 0;
 
 	ROS_INFO("SETTING JOINT STATES\n");
 	ros::spinOnce();
@@ -62,26 +62,10 @@ int main(int argc, char ** argv){
 	mrey.joint_angles.push_back(0);
 	mlsr.joint_angles.push_back(0);
 	mrsr.joint_angles.push_back(0);
-	mlsp.joint_angles.push_back(1.4);
-	mrsp.joint_angles.push_back(1.4);
+	mlsp.joint_angles.push_back(0);
+	mrsp.joint_angles.push_back(0);
 	mrh.joint_angles.push_back(0);
 	mlh.joint_angles.push_back(0);
-	mhp.speed = speed; 
-	mhy.speed = speed;
-	mler.speed = speed;
-	mrer.speed = speed;
-	mlwy.speed = speed;
-	mrwy.speed = speed;
-	mley.speed = speed;
-	mrey.speed = speed;
-	mlsr.speed = speed;
-	mrsr.speed = speed;
-	mlsp.speed = speed;
-	mrsp.speed = speed;
-	mrh.speed = speed;
-	mlh.speed = speed;
-	loop_rate.sleep();
-	ros::spinOnce();
 	ROS_INFO("JOINT STATES SET\n");
 
 	while(ros::ok()){
@@ -90,21 +74,27 @@ int main(int argc, char ** argv){
 			i = 0;
 							
 			ROS_INFO("WAVING\n");
-			loop_rate.sleep();
+			ros::Duration(2).sleep();
 		
 			// starts to wave
 			mrsr.joint_angles[0] = 0.3142;
                		mrsp.joint_angles[0] = -1.4;
                 	mrer.joint_angles[0] = 0.0349;
                 	mrwy.joint_angles[0] = 0;
+			mrh.joint_angles[0] = 1;
+			mlh.joint_angles[0] = 0;
                 	mrsr.speed = 0.7;
                 	mrsp.speed = 0.7;
                 	mrer.speed = 0.7;
                 	mrwy.speed = 0.7;
+			mrh.speed = 0.5;
+			mlh.speed = 0.5;
                 	move.publish(mrsr);
                 	move.publish(mrsp);
                 	move.publish(mrer);
                 	move.publish(mrwy);
+			move.publish(mrh);
+			move.publish(mlh);
 			ros::Duration(1).sleep();
 			
 			words.data = "Hello. My name is BLUE.";
