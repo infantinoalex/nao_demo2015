@@ -110,47 +110,41 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 		
 			// starts to wave
-			mrwy.joint_angles[0] = 0;
-			mrwy.speed = speed;
-			mrer.joint_angles[0] = 0.8;
-			mrer.speed = speed;
-			mrey.joint_angles[0] = 0;
-			mrey.speed = speed;
-			mrsr.joint_angles[0] = -1;
-			mrsr.speed = speed;
-			mrsp.joint_angles[0] = -1;
-			mrsp.speed = speed;
-			move.publish(mrwy);
-			move.publish(mrer);
-			move.publish(mrey);
-			move.publish(mrsr);
-			move.publish(mrsp);	
-			ros::Duration(0.5).sleep();
+			mrsr.joint_angles[0] = 0.3142;
+               		mrsp.joint_angles[0] = -1;
+                	mrer.joint_angles[0] = 0.0349;
+                	mrwy.joint_angles[0] = 0;
+                	mrsr.speed = 0.7;
+                	mrsp.speed = 0.7;
+                	mrer.speed = 0.7;
+                	mrwy.speed = 0.7;
+                	move.publish(mrsr);
+                	move.publish(mrsp);
+                	move.publish(mrer);
+                	move.publish(mrwy);
+			ros::Duration(0.25).sleep();
 
 			// waves
 			for(j = 0; j < 5; j++){
-                        	mrer.joint_angles[0] = 1.5;
-                        	mrer.speed = speed;
-                        	mrsp.joint_angles[0] = -1.2;
-				mrsp.speed = speed;
-	                        move.publish(mrer);
-                        	move.publish(mrsp);
+                        	mrsr.joint_angles[0] = -1;
+                        	mrer.joint_angles[0] = 0.7;
+                        	mrsr.speed = 0.5;
+                        	mrer.speed = 0.5;
+                        	move.publish(mrsr);
+                        	move.publish(mrer);
                         	ros::Duration(0.5).sleep();
 
-                        	mrer.joint_angles[0] = 1;
-                        	mrer.speed = speed;
+                        	mrsr.joint_angles[0] = 0.342;
+                        	mrer.joint_angles[0] = 0.349;
+                        	mrsr.speed = 0.5;
+                        	mrer.speed = 0.5;
+                        	move.publish(mrsr);
                         	move.publish(mrer);
                         	ros::Duration(0.5).sleep();
 			}
-			loop_rate.sleep();
-                        mrer.joint_angles[0] = 0.7;
-                        mrer.speed = speed;
-                        mrsp.joint_angles[0] = 1;
-			mrsp.speed = speed;
-                        move.publish(mrer);
-                        move.publish(mrsp);
-                        ros::Duration(0.5).sleep();			
-
+			mrsp.joint_angles[0] = 1.4;
+                	mrsp.speed = 0.5;
+                	move.publish(mrsp);
 			ROS_INFO("DONE WAVING\n");
 			loop_rate.sleep();
 	
