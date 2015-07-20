@@ -270,7 +270,7 @@ int main(int argc, char **argv) {
       			//Adjusting both shoulder pitches to their desired positions    
       			ros::spinOnce();
     
-      			if ( ( lsp_state > -0.1 && lsp_state < 0.1 ) && ( rsp_state > -0.1 && rsp_state < 0.1 ) ) {
+      			if ( ( lsp_state > 1.5 && lsp_state < 1.7 ) && ( rsp_state > 1.5 && rsp_state < 1.7 ) ) {
   
         			lsp_check = true;
         			rsp_check = true;
@@ -284,7 +284,7 @@ int main(int argc, char **argv) {
 				if ( lsp_state > 1.4 && lsp_state < 1.6 ) {
 				
        	 				ROS_INFO("\nLShoulderPitch position incorrect...");
-        				ROS_INFO("LShoulderPitch position should be between [ 1.4 ] - [ 1.6 ]...");
+        				ROS_INFO("LShoulderPitch position should be between [ 1.5 ] - [ 1.7 ]...");
         				ROS_INFO("LShoulderPitch position currently [ %d ]...", lsp_state );
 
 				}	
@@ -292,7 +292,7 @@ int main(int argc, char **argv) {
 				if ( rsp_state > 1.4 && rsp_state < 1.6 ) {
 				
        	 				ROS_INFO("\nRShoulderPitch position incorrect...");
-        				ROS_INFO("RShoulderPitch position should be between [ 1.4 ] - [ 1.6 ]...");
+        				ROS_INFO("RShoulderPitch position should be between [ 1.5 ] - [ 1.7 ]...");
         				ROS_INFO("RShoulderPitch position currently [ %d ]...", rsp_state );
 
 				}	
