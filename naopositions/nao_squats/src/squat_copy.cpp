@@ -212,8 +212,8 @@ int main(int argc, char **argv) {
     			//Standing
     			//Adjusting hip pitches to desired positions    
  				
-        		lhp.speed = hp_squat / 30;
-        		rhp.speed = hp_squat / 30;
+        		lhp.speed = hp_squat / 90;
+        		rhp.speed = hp_squat / 90;
         		lhp.joint_angles[0] = 0.0;
         		rhp.joint_angles[0] = 0.0;
         		pub_move.publish(lhp);
@@ -239,15 +239,15 @@ int main(int argc, char **argv) {
         			
       		/************************************************/
 
-			ros::Duration(3).sleep(); 
+			ros::Duration(5).sleep(); 
        			
       		/************************************************/
           		
     			//Halfway    
     			//Adjusting hip pitches to desired positions    
  				
-        		lhp.speed = hp_squat / 30;
-        		rhp.speed = hp_squat / 30;
+        		lhp.speed = hp_squat / 90;
+        		rhp.speed = hp_squat / 90;
         		lhp.joint_angles[0] = -1 * hp_squat / 2;
         		rhp.joint_angles[0] = -1 * hp_squat / 2;
         		pub_move.publish(lhp);
@@ -273,15 +273,15 @@ int main(int argc, char **argv) {
         			
       		/************************************************/
 
-			ros::Duration(3).sleep(); 
+			ros::Duration(5).sleep(); 
        			
       		/************************************************/
 
            	  	//Squatting	
     			//Adjusting hip pitches to desired positions    
  				
-        		lhp.speed = hp_squat / 30;
-        		rhp.speed = hp_squat / 30;
+        		lhp.speed = hp_squat / 90;
+        		rhp.speed = hp_squat / 90;
         		lhp.joint_angles[0] = -1 * hp_squat;
         		rhp.joint_angles[0] = -1 * hp_squat;
         		pub_move.publish(lhp);
@@ -307,15 +307,15 @@ int main(int argc, char **argv) {
         			
       		/************************************************/
 
-			ros::Duration(3).sleep(); 
+			ros::Duration(5).sleep(); 
        			
       		/************************************************/
           		
 			//Halfway
     			//Adjusting hip pitches to desired positions    
  				
-        		lhp.speed = hp_squat / 30;
-        		rhp.speed = hp_squat / 30;
+        		lhp.speed = hp_squat / 90;
+        		rhp.speed = hp_squat / 90;
         		lhp.joint_angles[0] = -1 * hp_squat / 2;
         		rhp.joint_angles[0] = -1 * hp_squat / 2;
         		pub_move.publish(lhp);
@@ -341,7 +341,7 @@ int main(int argc, char **argv) {
         			
       		/************************************************/
 
-			ros::Duration(3).sleep(); 
+			ros::Duration(5).sleep(); 
        			
       		/************************************************/
    
