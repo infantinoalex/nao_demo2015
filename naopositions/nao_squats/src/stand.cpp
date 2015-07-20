@@ -278,24 +278,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipPitches to the correct positions...\n");
  
-				if ( lhp_state < 0 ) {
-					negate_l = -1;
-				}
-				
-				else {
-					negate_l = 1;
-				}
-
-				if ( rhp_state < 0 ) {
-					negate_r = -1;
-				}
-				
-				else {
-					negate_r = 1;
-				}
-
-        			lhp.speed = negate_l * lhp_state / 10 + 0.1;
-        			rhp.speed = negate_r * rhp_state / 10 + 0.1;
+        			lhp.speed = 0.1;
+        			rhp.speed = 0.1;
         			lhp.joint_angles[0] = 0.0;
         			rhp.joint_angles[0] = 0.0;
         			pub_move.publish(lhp);
@@ -396,24 +380,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both KneePitches to the correct positions...\n");
  
-				if ( lkp_state < 0 ) {
-					negate_l = -1;
-				}
-				
-				else {
-					negate_l = 1;
-				}
-
-				if ( rkp_state < 0 ) {
-					negate_r = -1;
-				}
-				
-				else {
-					negate_r = 1;
-				}
-
-        			lkp.speed = negate_l * lkp_state / 10 + 0.1;
-        			rkp.speed = negate_r * rkp_state / 10 + 0.1;
+        			lkp.speed = 0.263;
+        			rkp.speed = 0.263;
         			lkp.joint_angles[0] = 0.0;
         			rkp.joint_angles[0] = 0.0;
         			pub_move.publish(lkp);
@@ -455,24 +423,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both AnklePitches to the correct positions...\n");
  
-				if ( lap_state < 0 ) {
-					negate_l = -1;
-				}
-				
-				else {
-					negate_l = 1;
-				}
-
-				if ( rap_state < 0 ) {
-					negate_r = -1;
-				}
-				
-				else {
-					negate_r = 1;
-				}
-
-        			lap.speed = negate_l * lap_state / 10 + 0.1;
-        			rap.speed = negate_r * rap_state / 10 + 0.1;
+        			lap.speed = 0.147;
+        			rap.speed = 0.147;
         			lap.joint_angles[0] = 0.0;
         			rap.joint_angles[0] = 0.0;
         			pub_move.publish(lap);

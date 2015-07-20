@@ -104,9 +104,9 @@ int main(int argc, char **argv) {
        		lkp_check = false, rkp_check = false, lap_check = false,
        		rap_check = false, lar_check = false, rar_check = false;
 
-	float 	hp_squat = -0.83 / 2,
-		kp_squat = 2.11 / 2,
-		ap_squat = -1.18 / 2;
+	float 	hp_squat = -0.415,
+		kp_squat = 1.055,
+		ap_squat = -0.59;
 
 	int i = 0;
 	int negate_l = 0;
@@ -187,65 +187,6 @@ int main(int argc, char **argv) {
    
       			/************************************************/
 			
-    			//Adjusting hip yaw pitches to desired positions    
-     			ros::spinOnce();
-   
-      			if ( ( lhyp_state > -0.1 && lhyp_state < 0.1 ) && ( rhyp_state > -0.1 && rhyp_state < 0.1 ) ) {
-  
-       				lhyp_check = true;
-       				rhyp_check = true;
-
-       				ROS_INFO("Both HipYawPitch positions are correct...");
- 
-   			}	
- 
-      			else {
-               
-				if ( lhyp_state < -0.1 && lhyp_state > 0.1 ) {
-
-	        			ROS_INFO("\nLHipYawPitch position incorrect...");
-        				ROS_INFO("LHipYawPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LHipYawPitch position currently [ %d ]...", lhyp_state );
-
-				}					
-             
-				if ( rhyp_state < -0.1 && rhyp_state > 0.1 ) {
-
-	        			ROS_INFO("\nRHipYawPitch position incorrect...");
-        				ROS_INFO("RHipYawPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RHipYawPitch position currently [ %d ]...", rhyp_state );
-
-				}					
-
-        			ROS_INFO("Moving both HipYawPitches to the correct positions...\n");
-				
-                                if ( lhyp_state < 0 ) {
-                                        negate_l = -1;
-                                }
-
-                                else {
-                                        negate_l = 1;
-                                }
-
-                                if ( rhyp_state < 0 ) {
-                                        negate_r = -1;
-                                }
-
-                                else {
-                                        negate_r = 1;
-                                }
-
-         			lhyp.speed = negate_l * lhyp_state / 10 + 0.1;
-        			rhyp.speed = negate_r * rhyp_state / 10 + 0.1;
- 	      			lhyp.joint_angles[0] = 0.0;
-        			rhyp.joint_angles[0] = 0.0;
-        			pub_move.publish(lhyp);
-        			pub_move.publish(rhyp);
-        			
-      			}
-  			
-      			/************************************************/
-         		
     			//Adjusting hip pitches to desired positions    
      			ros::spinOnce();
    
@@ -278,87 +219,12 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both HipPitches to the correct positions...\n");
  				
-                                if ( lhp_state < 0 ) {
-                                        negate_l = -1;
-                                }
-
-                                else {
-                                        negate_l = 1;
-                                }
-
-                                if ( rhp_state < 0 ) {
-                                        negate_r = -1;
-                                }
-
-                                else {
-                                        negate_r = 1;
-                                }
-
-        			lhp.speed = negate_l * ( hp_squat - lhp_state ) / 10 + 0.1;
-        			rhp.speed = negate_r * ( hp_squat - rhp_state ) / 10 + 0.1;
+        			lhp.speed = 0.1;
+        			rhp.speed = 0.1;
         			lhp.joint_angles[0] = hp_squat;
         			rhp.joint_angles[0] = hp_squat;
         			pub_move.publish(lhp);
         			pub_move.publish(rhp);
-        			
-      			}
-  			
-      			/************************************************/
-       			
-    			//Adjusting hip rolls to desired positions    
-     			ros::spinOnce();
-   
-      			if ( ( lhr_state > -0.1 && lhr_state < 0.1 ) && ( rhr_state > -0.1 && rhr_state < 0.1 ) ) {
-  
-       				lhr_check = true;
-       				rhr_check = true;
-
-       				ROS_INFO("Both HipRoll positions are correct...");
- 
-   			}	
- 
-      			else {
-               
-				if ( lhr_state < -0.1 && lhr_state > 0.1 ) {
-
-	        			ROS_INFO("\nLHipRoll position incorrect...");
-        				ROS_INFO("LHipRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LHipRoll position currently [ %d ]...", lhr_state );
-
-				}					
-             
-				if ( rhr_state < -0.1 && rhr_state > 0.1 ) {
-
-	        			ROS_INFO("\nRHipRoll position incorrect...");
-        				ROS_INFO("RHipRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RHipRoll position currently [ %d ]...", rhr_state );
-
-				}					
-
-        			ROS_INFO("Moving both HipRolls to the correct positions...\n");
- 				
-                                if ( lhr_state < 0 ) {
-                                        negate_l = -1;
-                                }
-
-                                else {
-                                        negate_l = 1;
-                                }
-
-                                if ( rhr_state < 0 ) {
-                                        negate_r = -1;
-                                }
-
-                                else {
-                                        negate_r = 1;
-                                }
-
-        			lhr.speed = negate_l * lhr_state / 20 + 0.1;
-        			rhr.speed = negate_r * rhr_state / 20 + 0.1;
-        			lhr.joint_angles[0] = 0.0;
-        			rhr.joint_angles[0] = 0.0;
-        			pub_move.publish(lhr);
-        			pub_move.publish(rhr);
         			
       			}
   			
@@ -396,24 +262,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both KneePitches to the correct positions...\n");
  				
-                                if ( lkp_state < 0 ) {
-                                        negate_l = -1;
-                                }
-
-                                else {
-                                        negate_l = 1;
-                                }
-
-                                if ( rkp_state < 0 ) {
-                                        negate_r = -1;
-                                }
-
-                                else {
-                                        negate_r = 1;
-                                }
-
-        			lkp.speed = negate_l * ( kp_squat - lkp_state ) / 10 + 0.1;
-        			rkp.speed = negate_r * ( kp_squat - rkp_state ) / 10 + 0.1;
+        			lkp.speed = 0.263;
+        			rkp.speed = 0.263;
         			lkp.joint_angles[0] = kp_squat;
         			rkp.joint_angles[0] = kp_squat;
         			pub_move.publish(lkp);
@@ -455,24 +305,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both AnklePitches to the correct positions...\n");
  				
-                                if ( lap_state < 0 ) {
-                                        negate_l = -1;
-                                }
-
-                                else {
-                                        negate_l = 1;
-                                }
-
-                                if ( rap_state < 0 ) {
-                                        negate_r = -1;
-                                }
-
-                                else {
-                                        negate_r = 1;
-                                }
-
-        			lap.speed = negate_l * ( ap_squat - lap_state ) / 10 + 0.1;
-        			rap.speed = negate_r * ( ap_squat - rap_state ) / 10 + 0.1;
+        			lap.speed = 0.147;
+        			rap.speed = 0.147;
         			lap.joint_angles[0] = ap_squat;
         			rap.joint_angles[0] = ap_squat;
         			pub_move.publish(lap);
