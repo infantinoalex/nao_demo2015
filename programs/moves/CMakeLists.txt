@@ -100,7 +100,7 @@ include_directories(
 # )
 
 ## Declare a cpp executable
-add_executable(wavenao_node src/wavenao.cpp)
+add_executable(mathp src/mathp.cpp)
 add_executable(walk_detect src/walk_detect.cpp)
 add_executable(demo src/demo.cpp)
 
@@ -112,7 +112,7 @@ add_dependencies(walk_detect custom_msgs ${catkin_EXPORTED_TARGETS})
 add_dependencies(demo custom_msgs ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(wavenao_node
+target_link_libraries(mathp
   ${catkin_LIBRARIES}
 )
 target_link_libraries(walk_detect
