@@ -106,7 +106,7 @@ int main(int argc, char **argv) {
 
 	int i = 0;
 
-	float 	hp_squat = 0.8,
+	float 	hp_squat = 0.7,
 		kp_squat = 2.1,
 		ap_squat = 1.2;
 
@@ -174,10 +174,6 @@ int main(int argc, char **argv) {
 		loop_rate.sleep();
 
     		/************************************************/
-    
-    			ros::Duration(3).sleep();
- 
-      		/************************************************/
 			
     			//Adjusting body    
     			//Adjusting hip yaw pitches to desired positions    
@@ -208,14 +204,18 @@ int main(int argc, char **argv) {
         		pub_move.publish(rar);
          			
       		/************************************************/
+
+			ros::Duration(3).sleep(); 
+       			
+      		/************************************************/
              		
     			//Standing
     			//Adjusting hip pitches to desired positions    
  				
         		lhp.speed = hp_squat / 90;
         		rhp.speed = hp_squat / 90;
-        		lhp.joint_angles[0] = 0.1;
-        		rhp.joint_angles[0] = 0.1;
+        		lhp.joint_angles[0] = 0.0;
+        		rhp.joint_angles[0] = 0.0;
         		pub_move.publish(lhp);
         		pub_move.publish(rhp);
         			
@@ -239,7 +239,7 @@ int main(int argc, char **argv) {
         			
       		/************************************************/
 
-			ros::Duration(5).sleep(); 
+			ros::Duration(6).sleep(); 
        			
       		/************************************************/
           		
@@ -273,7 +273,7 @@ int main(int argc, char **argv) {
         			
       		/************************************************/
 
-			ros::Duration(5).sleep(); 
+			ros::Duration(6).sleep(); 
        			
       		/************************************************/
 
@@ -307,7 +307,7 @@ int main(int argc, char **argv) {
         			
       		/************************************************/
 
-			ros::Duration(5).sleep(); 
+			ros::Duration(6).sleep(); 
        			
       		/************************************************/
           		
@@ -341,7 +341,7 @@ int main(int argc, char **argv) {
         			
       		/************************************************/
 
-			ros::Duration(5).sleep(); 
+			ros::Duration(6).sleep(); 
        			
       		/************************************************/
    
