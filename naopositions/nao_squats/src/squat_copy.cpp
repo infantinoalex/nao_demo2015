@@ -225,8 +225,8 @@ int main(int argc, char **argv) {
  				
         		lap.speed = 0.6 / 30;
         		rap.speed = 0.6 / 30;
-        		lap.joint_angles[0] = -0.6
-        		rap.joint_angles[0] = -0.6
+        		lap.joint_angles[0] = -0.6;
+        		rap.joint_angles[0] = -0.6;
         		
         		pub_move.publish(lhp);
         		pub_move.publish(rhp);
