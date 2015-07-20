@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
        		lkp_check = false, rkp_check = false, lap_check = false,
        		rap_check = false, lar_check = false, rar_check = false;
 
-	float 	hp_squat = -0.415,
+	float 	hp_squat = -0.375,
 		kp_squat = 1.055,
 		ap_squat = -0.59;
 
