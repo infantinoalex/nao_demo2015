@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
   	lar.joint_angles.push_back(0);
   	rar.joint_angles.push_back(0);
 
-  	ros::Rate loop_rate(10); 
+  	ros::Rate loop_rate(50); 
 
 	while ( ros::ok() ) {
 
