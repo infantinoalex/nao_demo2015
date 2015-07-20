@@ -95,7 +95,8 @@ int main(int argc, char ** argv){
                 	move.publish(mrwy);
 			move.publish(mrh);
 			move.publish(mlh);
-			ros::Duration(1).sleep();
+			//ros::Duration(1).sleep();
+			loop_rate.sleep();
 			
 			words.data = "Hello. My name is BLUE.";
 			talk.publish(words);
@@ -108,7 +109,8 @@ int main(int argc, char ** argv){
                         	mrer.speed = 0.5;
                         	move.publish(mrsr);
                         	move.publish(mrer);
-                        	ros::Duration(0.5).sleep();
+                        	//ros::Duration(0.5).sleep();
+				loop_rate.sleep();
 
                         	mrsr.joint_angles[0] = 0.342;
                         	mrer.joint_angles[0] = 0.349;
@@ -116,7 +118,8 @@ int main(int argc, char ** argv){
                         	mrer.speed = 0.5;
                         	move.publish(mrsr);
                         	move.publish(mrer);
-                        	ros::Duration(0.5).sleep();
+                        	//ros::Duration(0.5).sleep();
+				loop_rate.sleep();
 			}
 			mrsp.joint_angles[0] = 1.4;
                 	mrsp.speed = 0.5;
