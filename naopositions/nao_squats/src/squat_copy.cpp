@@ -178,8 +178,6 @@ int main(int argc, char **argv) {
         		rhp.speed = 0.35 / 90;
         		lhp.joint_angles[0] = -0.7;
         		rhp.joint_angles[0] = -0.7;
-        		pub_move.publish(lhp);
-        		pub_move.publish(rhp);
         			
     			//Adjusting knee pitches to desired positions    
  				
@@ -187,8 +185,6 @@ int main(int argc, char **argv) {
         		rkp.speed = 1.05 / 30;
         		lkp.joint_angles[0] = 2.1;
         		rkp.joint_angles[0] = 2.1;
-        		pub_move.publish(lkp);
-        		pub_move.publish(rkp);
         			
     			//Adjusting ankle pitches to desired positions    
  				
@@ -196,6 +192,11 @@ int main(int argc, char **argv) {
         		rap.speed = 0.6 / 30;
         		lap.joint_angles[0] = -1.2;
         		rap.joint_angles[0] = -1.2;
+
+        		pub_move.publish(lhp);
+        		pub_move.publish(rhp);
+        		pub_move.publish(lkp);
+        		pub_move.publish(rkp);
         		pub_move.publish(lap);
         		pub_move.publish(rap);
         			
@@ -212,8 +213,6 @@ int main(int argc, char **argv) {
         		rhp.speed = 0.35 / 90;
         		lhp.joint_angles[0] = -0.35;
         		rhp.joint_angles[0] = -0.35;
-        		pub_move.publish(lhp);
-        		pub_move.publish(rhp);
         			
     			//Adjusting knee pitches to desired positions    
  				
@@ -221,8 +220,6 @@ int main(int argc, char **argv) {
         		rkp.speed = 1.05 / 30;
         		lkp.joint_angles[0] = 1.05;
         		rkp.joint_angles[0] = 1.05;
-        		pub_move.publish(lkp);
-        		pub_move.publish(rkp);
         			
     			//Adjusting ankle pitches to desired positions    
  				
@@ -230,7 +227,12 @@ int main(int argc, char **argv) {
         		rap.speed = 0.6 / 30;
         		lap.joint_angles[0] = -0.6
         		rap.joint_angles[0] = -0.6
-        		pub_move.publish(lap);
+        		
+        		pub_move.publish(lhp);
+        		pub_move.publish(rhp);
+        		pub_move.publish(lkp);
+        		pub_move.publish(rkp);
+			pub_move.publish(lap);
         		pub_move.publish(rap);
         			
       		/************************************************/
@@ -246,8 +248,6 @@ int main(int argc, char **argv) {
         		rhp.speed = 0.35;
         		lhp.joint_angles[0] = 0.0;
         		rhp.joint_angles[0] = 0.0;
-        		pub_move.publish(lhp);
-        		pub_move.publish(rhp);
         			
     			//Adjusting knee pitches to desired positions    
  				
@@ -255,8 +255,6 @@ int main(int argc, char **argv) {
         		rkp.speed = 1.05;
         		lkp.joint_angles[0] = 0.0;
         		rkp.joint_angles[0] = 0.0;
-        		pub_move.publish(lkp);
-        		pub_move.publish(rkp);
         			
     			//Adjusting ankle pitches to desired positions    
  				
@@ -264,6 +262,11 @@ int main(int argc, char **argv) {
         		rap.speed = 0.6;
         		lap.joint_angles[0] = 0.0;
         		rap.joint_angles[0] = 0.0;
+
+        		pub_move.publish(lhp);
+        		pub_move.publish(rhp);
+        		pub_move.publish(lkp);
+        		pub_move.publish(rkp);
         		pub_move.publish(lap);
         		pub_move.publish(rap);
         			
@@ -280,8 +283,6 @@ int main(int argc, char **argv) {
         		rhp.speed = 0.35 / 90;
         		lhp.joint_angles[0] = -0.35;
         		rhp.joint_angles[0] = -0.35;
-        		pub_move.publish(lhp);
-        		pub_move.publish(rhp);
         			
     			//Adjusting knee pitches to desired positions    
  				
@@ -289,8 +290,6 @@ int main(int argc, char **argv) {
         		rkp.speed = 1.05 / 30;
         		lkp.joint_angles[0] = 1.05;
         		rkp.joint_angles[0] = 1.05;
-        		pub_move.publish(lkp);
-        		pub_move.publish(rkp);
         			
     			//Adjusting ankle pitches to desired positions    
  				
@@ -298,12 +297,17 @@ int main(int argc, char **argv) {
         		rap.speed = 0.6 / 30;
         		lap.joint_angles[0] = -0.6;
         		rap.joint_angles[0] = -0.6;
+
+        		pub_move.publish(lhp);
+        		pub_move.publish(rhp);
+        		pub_move.publish(lkp);
+        		pub_move.publish(rkp);
         		pub_move.publish(lap);
         		pub_move.publish(rap);
         			
       		/************************************************/
 
-			ros::Duration(10).sleep(); 
+			ros::Duration(6).sleep(); 
        			
       		/************************************************/
    
