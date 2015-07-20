@@ -380,8 +380,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both KneePitches to the correct positions...\n");
  				
-        			lkp.speed = 0.0263;
-        			rkp.speed = 0.0263;
+        			lkp.speed = 0.0263 * 4;
+        			rkp.speed = 0.0263 * 4;
         			lkp.joint_angles[0] = kp_squat;
         			rkp.joint_angles[0] = kp_squat;
         			pub_move.publish(lkp);
@@ -423,8 +423,8 @@ int main(int argc, char **argv) {
 
         			ROS_INFO("Moving both AnklePitches to the correct positions...\n");
  				
-        			lap.speed = 0.0147;
-        			rap.speed = 0.0147;
+        			lap.speed = 0.0147 * 4;
+        			rap.speed = 0.0147 * 4;
         			lap.joint_angles[0] = ap_squat;
         			rap.joint_angles[0] = ap_squat;
         			pub_move.publish(lap);
