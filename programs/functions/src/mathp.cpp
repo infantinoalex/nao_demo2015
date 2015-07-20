@@ -35,7 +35,8 @@ int main(int argc, char ** argv){
 				std::cout << "You entered " << val1 << " and " << val2 << "\n";
 				add = val1 + val2;
 				os3 << add;
-				std::cout << val1 << " + " << val2 << " = " << add << "\n";
+				ros::Duration(1).sleep();
+				std::cout << val1 << " + " << val2 << " = " << add << "\n\n";
 				words.data = os1.str();
 				talk.publish(words);
 				words.data = "plus";
@@ -66,7 +67,8 @@ int main(int argc, char ** argv){
 				std::cout << "You entered " << val1 << " and " << val2 << "\n";
 				sub = val1 - val2;
 				os3 << sub;
-				std::cout << val1 << " - " << val2 << " = " << sub << "\n";
+				ros::Duration(1).sleep();
+				std::cout << val1 << " - " << val2 << " = " << sub << "\n\n";
 				words.data = os1.str();
 				talk.publish(words);
 				words.data = "minus";
@@ -97,7 +99,8 @@ int main(int argc, char ** argv){
 				std::cout << "You entered " << val1 << " and " << val2 << "\n";
 				mult = val1 * val2;
 				os3 << mult;
-				std::cout << val1 << " * " << val2 << " = " << mult << "\n";
+				ros::Duration(1).sleep();
+				std::cout << val1 << " * " << val2 << " = " << mult << "\n\n";
 				words.data = os1.str();
 				talk.publish(words);
 				words.data = "times";
@@ -128,7 +131,8 @@ int main(int argc, char ** argv){
 				std::cout << "You entered " << val1 << " and " << val2 << "\n";
 				div = val1 / val2;
 				os3 << div;
-				std::cout << val1 << " / " << val2 << " = " << div << "\n";
+				ros::Duration(1).sleep();
+				std::cout << val1 << " / " << val2 << " = " << div << "\n\n";
 				words.data = os1.str();
 				talk.publish(words);
 				words.data = "divided by";
