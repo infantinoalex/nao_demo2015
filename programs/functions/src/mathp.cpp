@@ -14,12 +14,13 @@ int main(int argc, char ** argv){
 	
 	std::ostringstream os1, os2, os3;
 
-	int val1, val2, add, sub, mult, div, menu;
+	float val1, val2, add, sub, mult, div;
+	int  menu;
 
 	while(ros::ok()){
-		std::cout << "Please enter what type of math you would like me to computer\n";
-		std::cout << "1 for Addition\t\t2 for Subtraction\n3 for Multiplication\t4 for Division\n";
-		std::cout << "\t    5 to QUIT\n";
+		std::cout << "Please enter what type of math you would like me to compute:\n";
+		std::cout << "1: for Addition\t\t2: for Subtraction\n3: for Multiplication\t4: for Division\n";
+		std::cout << "\t       5: to QUIT\n";
 		std::cin >> menu;
 		std::cout << "\n\n";
 		switch(menu){
@@ -149,7 +150,7 @@ int main(int argc, char ** argv){
 
 			case 5:
 				std::cout << "Goodbye\n";
-				ros::Duration(5).sleep();
+				ros::Duration(2).sleep();
 				ros::shutdown();
 				break;	
 				
