@@ -145,7 +145,7 @@ int main(int argc, char ** argv){
 				os3.clear();
 				os3.str("");
 				break;
-			case:
+			default:
 				std::cout << "Please enter a number between 1 and 4\n";
 				break;
 		}
