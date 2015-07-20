@@ -71,16 +71,16 @@ include_directories(
 add_executable(squat src/squat.cpp)
 add_executable(mid_squat src/mid_squat.cpp)
 add_executable(stand src/stand.cpp)
-add_executable(set_pose src/set_pose.cpp)
+add_executable(set_po src/set_pose.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(squat ${catkin_LIBRARIES})
 target_link_libraries(mid_squat ${catkin_LIBRARIES})
 target_link_libraries(stand ${catkin_LIBRARIES})
-target_link_libraries(set_pose ${catkin_LIBRARIES})
+target_link_libraries(set_po ${catkin_LIBRARIES})
 
 ## Add dependencies 
 add_dependencies(squat custom_msgs ${catkin_EXPORTED_TARGETS})
 add_dependencies(mid_squat custom_msgs ${catkin_EXPORTED_TARGETS})
 add_dependencies(stand custom_msgs ${catkin_EXPORTED_TARGETS})
-add_dependencies(set_pose custom_msgs ${catkin_EXPORTED_TARGETS})
+add_dependencies(set_po custom_msgs ${catkin_EXPORTED_TARGETS})

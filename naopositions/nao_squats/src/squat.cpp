@@ -205,7 +205,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLHipYawPitch position incorrect...");
         				ROS_INFO("LHipYawPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LHipYawPitch position currently [ %d ]...", lhyp_state );
+        				ROS_INFO("LHipYawPitch position currently [ %.2f ]...", lhyp_state );
 
 				}					
              
@@ -213,7 +213,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRHipYawPitch position incorrect...");
         				ROS_INFO("RHipYawPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RHipYawPitch position currently [ %d ]...", rhyp_state );
+        				ROS_INFO("RHipYawPitch position currently [ %.2f ]...", rhyp_state );
 
 				}					
 
@@ -264,7 +264,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLHipPitch position incorrect...");
         				ROS_INFO("LHipPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LHipPitch position currently [ %d ]...", lhp_state );
+        				ROS_INFO("LHipPitch position currently [ %.2f ]...", lhp_state );
 
 				}					
              
@@ -272,7 +272,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRHipPitch position incorrect...");
         				ROS_INFO("RHipPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RHipPitch position currently [ %d ]...", rhp_state );
+        				ROS_INFO("RHipPitch position currently [ %.2f ]...", rhp_state );
 
 				}					
 
@@ -294,13 +294,10 @@ int main(int argc, char **argv) {
                                         negate_r = 1;
                                 }
 
-<<<<<<< HEAD
         			lhp.speed = /* negate_l * ( hp_squat - lhp_state ) / 45 + */ 0.1;
         			rhp.speed = /* negate_r * ( hp_squat - rhp_state ) / 45 + */ 0.1;
-=======
         			lhp.speed = negate_l * ( hp_squat - lhp_state ) / 10 + 0.1;
         			rhp.speed = negate_r * ( hp_squat - rhp_state ) / 10 + 0.1;
->>>>>>> 1b03752ca5c7c5c73b50b1ccb616ba8a9b9a386b
         			lhp.joint_angles[0] = hp_squat;
         			rhp.joint_angles[0] = hp_squat;
         			pub_move.publish(lhp);
@@ -328,7 +325,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLHipRoll position incorrect...");
         				ROS_INFO("LHipRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LHipRoll position currently [ %d ]...", lhr_state );
+        				ROS_INFO("LHipRoll position currently [ %.2f ]...", lhr_state );
 
 				}					
              
@@ -336,7 +333,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRHipRoll position incorrect...");
         				ROS_INFO("RHipRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RHipRoll position currently [ %d ]...", rhr_state );
+        				ROS_INFO("RHipRoll position currently [ %.2f ]...", rhr_state );
 
 				}					
 
@@ -387,7 +384,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLKneePitch position incorrect...");
         				ROS_INFO("LKneePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LKneePitch position currently [ %d ]...", lkp_state );
+        				ROS_INFO("LKneePitch position currently [ %.2f ]...", lkp_state );
 
 				}					
              
@@ -395,7 +392,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRKneePitch position incorrect...");
         				ROS_INFO("RKneePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RKneePitch position currently [ %d ]...", rkp_state );
+        				ROS_INFO("RKneePitch position currently [ %.2f ]...", rkp_state );
 
 				}					
 
@@ -417,13 +414,10 @@ int main(int argc, char **argv) {
                                         negate_r = 1;
                                 }
 
-<<<<<<< HEAD
         			lkp.speed = /* negate_l * ( kp_squat - lkp_state ) / 20 + */ 0.2;
         			rkp.speed = /* negate_r * ( kp_squat - rkp_state ) / 20 + */ 0.2;
-=======
         			lkp.speed = negate_l * ( kp_squat - lkp_state ) / 10 + 0.1;
         			rkp.speed = negate_r * ( kp_squat - rkp_state ) / 10 + 0.1;
->>>>>>> 1b03752ca5c7c5c73b50b1ccb616ba8a9b9a386b
         			lkp.joint_angles[0] = kp_squat;
         			rkp.joint_angles[0] = kp_squat;
         			pub_move.publish(lkp);
@@ -451,7 +445,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLAnklePitch position incorrect...");
         				ROS_INFO("LAnklePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LAnklePitch position currently [ %d ]...", lap_state );
+        				ROS_INFO("LAnklePitch position currently [ %.2f ]...", lap_state );
 
 				}					
              
@@ -459,7 +453,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRAnklePitch position incorrect...");
         				ROS_INFO("RAnklePitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RAnklePitch position currently [ %d ]...", rap_state );
+        				ROS_INFO("RAnklePitch position currently [ %.2f ]...", rap_state );
 
 				}					
 
@@ -481,13 +475,10 @@ int main(int argc, char **argv) {
                                         negate_r = 1;
                                 }
 
-<<<<<<< HEAD
         			lap.speed = /* negate_l * ( ap_squat - lap_state ) / 20 + */ 0.1;
         			rap.speed = /* negate_r * ( ap_squat - rap_state ) / 20 + */ 0.1;
-=======
         			lap.speed = negate_l * ( ap_squat - lap_state ) / 10 + 0.1;
         			rap.speed = negate_r * ( ap_squat - rap_state ) / 10 + 0.1;
->>>>>>> 1b03752ca5c7c5c73b50b1ccb616ba8a9b9a386b
         			lap.joint_angles[0] = ap_squat;
         			rap.joint_angles[0] = ap_squat;
         			pub_move.publish(lap);
@@ -515,7 +506,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLAnkleRoll position incorrect...");
         				ROS_INFO("LAnkleRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LAnkleRoll position currently [ %d ]...", lar_state );
+        				ROS_INFO("LAnkleRoll position currently [ %.2f ]...", lar_state );
 
 				}					
              
@@ -523,7 +514,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRAnkleRoll position incorrect...");
         				ROS_INFO("RAnkleRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RAnkleRoll position currently [ %d ]...", rar_state );
+        				ROS_INFO("RAnkleRoll position currently [ %.2f ]...", rar_state );
 
 				}					
 

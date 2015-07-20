@@ -227,7 +227,7 @@ int main(int argc, char **argv) {
   
         			ROS_INFO("\nHeadYaw position incorrect...");
         			ROS_INFO("HeadYaw position should be between [ -0.1 ] - [ 0.1 ]...");
-        			ROS_INFO("HeadYaw position currently [ %d ]...", hy_state );
+        			ROS_INFO("HeadYaw position currently [ %.2f ]...", hy_state );
        				ROS_INFO("Moving HeadYaw to the correct position...\n");
   
         			hy.joint_angles[0] = 0.0;
@@ -254,7 +254,7 @@ int main(int argc, char **argv) {
    
         			ROS_INFO("\nHeadPitch position incorrect...");
         			ROS_INFO("HeadPitch position should be between [ -0.1 ] - [ 0.1 ]...");
-        			ROS_INFO("HeadPitch position currently [ %d ]...", hp_state );
+        			ROS_INFO("HeadPitch position currently [ %.2f ]...", hp_state );
         			ROS_INFO("Moving HeadPitch to the correct position...\n");
   
         			hp.joint_angles[0] = 0.0;
@@ -285,7 +285,7 @@ int main(int argc, char **argv) {
 				
        	 				ROS_INFO("\nLShoulderPitch position incorrect...");
         				ROS_INFO("LShoulderPitch position should be between [ 1.5 ] - [ 1.7 ]...");
-        				ROS_INFO("LShoulderPitch position currently [ %d ]...", lsp_state );
+        				ROS_INFO("LShoulderPitch position currently [ %.2f ]...", lsp_state );
 
 				}	
             
@@ -293,7 +293,7 @@ int main(int argc, char **argv) {
 				
        	 				ROS_INFO("\nRShoulderPitch position incorrect...");
         				ROS_INFO("RShoulderPitch position should be between [ 1.5 ] - [ 1.7 ]...");
-        				ROS_INFO("RShoulderPitch position currently [ %d ]...", rsp_state );
+        				ROS_INFO("RShoulderPitch position currently [ %.2f ]...", rsp_state );
 
 				}	
 				
@@ -330,7 +330,7 @@ int main(int argc, char **argv) {
 				
        	 				ROS_INFO("\nLShoulderRoll position incorrect...");
         				ROS_INFO("LShoulderRoll position should be between [ 0.1 ] - [ 0.3 ]...");
-        				ROS_INFO("LShoulderRoll position currently [ %d ]...", lsr_state );
+        				ROS_INFO("LShoulderRoll position currently [ %.2f ]...", lsr_state );
 
 				}	
             
@@ -338,7 +338,7 @@ int main(int argc, char **argv) {
 				
        	 				ROS_INFO("\nRShoulderRoll position incorrect...");
         				ROS_INFO("RShoulderRoll position should be between [ 0.1 ] - [ 0.3 ]...");
-        				ROS_INFO("RShoulderRoll position currently [ %d ]...", rsr_state );
+        				ROS_INFO("RShoulderRoll position currently [ %.2f ]...", rsr_state );
 
 				}	
 				
@@ -375,7 +375,7 @@ int main(int argc, char **argv) {
 				
        	 				ROS_INFO("\nLElbowYaw position incorrect...");
         				ROS_INFO("LElbowYaw position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LElbowYaw position currently [ %d ]...", ley_state );
+        				ROS_INFO("LElbowYaw position currently [ %.2f ]...", ley_state );
 
 				}	
             
@@ -383,7 +383,7 @@ int main(int argc, char **argv) {
 				
        	 				ROS_INFO("\nRElbowYaw position incorrect...");
         				ROS_INFO("RElbowYaw position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RElbowYaw position currently [ %d ]...", rey_state );
+        				ROS_INFO("RElbowYaw position currently [ %.2f ]...", rey_state );
 
 				}	
 				
@@ -420,7 +420,7 @@ int main(int argc, char **argv) {
 				
        	 				ROS_INFO("\nLElbowRoll position incorrect...");
         				ROS_INFO("LElbowRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LElbowRoll position currently [ %d ]...", ler_state );
+        				ROS_INFO("LElbowRoll position currently [ %.2f ]...", ler_state );
 
 				}	
             
@@ -428,7 +428,7 @@ int main(int argc, char **argv) {
 				
        	 				ROS_INFO("\nRElbowRoll position incorrect...");
         				ROS_INFO("RElbowRoll position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RElbowRoll position currently [ %d ]...", rer_state );
+        				ROS_INFO("RElbowRoll position currently [ %.2f ]...", rer_state );
 
 				}	
 				
@@ -465,7 +465,7 @@ int main(int argc, char **argv) {
 				
        	 				ROS_INFO("\nLWristYaw position incorrect...");
         				ROS_INFO("LWristYaw position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("LWristYaw position currently [ %d ]...", lwy_state );
+        				ROS_INFO("LWristYaw position currently [ %.2f ]...", lwy_state );
 
 				}	
             
@@ -473,7 +473,7 @@ int main(int argc, char **argv) {
 				
        	 				ROS_INFO("\nRWristYaw position incorrect...");
         				ROS_INFO("RWristYaw position should be between [ -0.1 ] - [ 0.1 ]...");
-        				ROS_INFO("RWristYaw position currently [ %d ]...", rwy_state );
+        				ROS_INFO("RWristYaw position currently [ %.2f ]...", rwy_state );
 
 				}	
 				
@@ -510,7 +510,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nLHand position incorrect...");
         				ROS_INFO("LHand position should be between [ 0.4 ] - [ 0.6 ]...");
-        				ROS_INFO("LHand position currently [ %d ]...", lh_state );
+        				ROS_INFO("LHand position currently [ %.2f ]...", lh_state );
 
 				}					
              
@@ -518,7 +518,7 @@ int main(int argc, char **argv) {
 
 	        			ROS_INFO("\nRHand position incorrect...");
         				ROS_INFO("RHand position should be between [ 0.4 ] - [ 0.6 ]...");
-        				ROS_INFO("RHand position currently [ %d ]...", rh_state );
+        				ROS_INFO("RHand position currently [ %.2f ]...", rh_state );
 
 				}					
 
