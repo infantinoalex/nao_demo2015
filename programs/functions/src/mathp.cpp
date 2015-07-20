@@ -154,7 +154,7 @@ int main(int argc, char ** argv){
 				break;	
 				
 			default:
-				std::cout << "Please enter a number between 1 and 4\n";
+				std::cout << "\n\tPlease enter a number between 1 and 4\n\n";
 				break;
 		}
 	}		
