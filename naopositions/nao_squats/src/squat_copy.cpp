@@ -106,10 +106,6 @@ int main(int argc, char **argv) {
 
 	int i = 0;
 
-	float 	hp_squat = 0.7,
-		kp_squat = 2.1,
-		ap_squat = 1.2;
-
   	//All joint name statements
   	hy.joint_names.push_back("HeadYaw");
   	hp.joint_names.push_back("HeadPitch");
@@ -175,45 +171,79 @@ int main(int argc, char **argv) {
 
     		/************************************************/
 			
-    			//Adjusting body    
-    			//Adjusting hip yaw pitches to desired positions    
-
-         		lhyp.speed = 0.1;
-        		rhyp.speed = 0.1;
- 	 		lhyp.joint_angles[0] = 0.0;
-        		rhyp.joint_angles[0] = 0.0;
-        		pub_move.publish(lhyp);
-        		pub_move.publish(rhyp);
-        			
-    			//Adjusting hip rolls to desired positions    
-
-        		lhr.speed = 0.1;
-        		rhr.speed = 0.1;
-        		lhr.joint_angles[0] = 0.0;
-        		rhr.joint_angles[0] = 0.0;
-        		pub_move.publish(lhr);
-        		pub_move.publish(rhr);
-        			
-    			//Adjusting ankle rolls to desired positions    
-
-        		lar.speed = 0.1;
-        		rar.speed = 0.1;
-        		lar.joint_angles[0] = 0.0;
-        		rar.joint_angles[0] = 0.0;
-        		pub_move.publish(lar);
-        		pub_move.publish(rar);
-         			
-      		/************************************************/
-
-			ros::Duration(3).sleep(); 
-       			
-      		/************************************************/
-             		
-    			//Standing
+    			//Squatting
     			//Adjusting hip pitches to desired positions    
  				
-        		lhp.speed = hp_squat / 90;
-        		rhp.speed = hp_squat / 90;
+        		lhp.speed = 0.7 / 90;
+        		rhp.speed = 0.7 / 90;
+        		lhp.joint_angles[0] = -0.7;
+        		rhp.joint_angles[0] = -0.7;
+        		pub_move.publish(lhp);
+        		pub_move.publish(rhp);
+        			
+    			//Adjusting knee pitches to desired positions    
+ 				
+        		lkp.speed = 2.1 / 30;
+        		rkp.speed = 2.1 / 30;
+        		lkp.joint_angles[0] = 2.1;
+        		rkp.joint_angles[0] = 2.1;
+        		pub_move.publish(lkp);
+        		pub_move.publish(rkp);
+        			
+    			//Adjusting ankle pitches to desired positions    
+ 				
+        		lap.speed = 1.2 / 30;
+        		rap.speed = 1.2 / 30;
+        		lap.joint_angles[0] = -1.2;
+        		rap.joint_angles[0] = -1.2;
+        		pub_move.publish(lap);
+        		pub_move.publish(rap);
+        			
+      		/************************************************/
+
+			ros::Duration(10).sleep(); 
+       			
+      		/************************************************/
+          		
+    			//Halfway    
+    			//Adjusting hip pitches to desired positions    
+ 				
+        		lhp.speed = 0.35 / 90;
+        		rhp.speed = 0.35 / 90;
+        		lhp.joint_angles[0] = -0.35;
+        		rhp.joint_angles[0] = -0.35;
+        		pub_move.publish(lhp);
+        		pub_move.publish(rhp);
+        			
+    			//Adjusting knee pitches to desired positions    
+ 				
+        		lkp.speed = 1.05 / 30;
+        		rkp.speed = 1.05 / 30;
+        		lkp.joint_angles[0] = 1.05;
+        		rkp.joint_angles[0] = 1.05;
+        		pub_move.publish(lkp);
+        		pub_move.publish(rkp);
+        			
+    			//Adjusting ankle pitches to desired positions    
+ 				
+        		lap.speed = 0.6 / 30;
+        		rap.speed = 0.6 / 30;
+        		lap.joint_angles[0] = -0.6
+        		rap.joint_angles[0] = -0.6
+        		pub_move.publish(lap);
+        		pub_move.publish(rap);
+        			
+      		/************************************************/
+
+			ros::Duration(10).sleep(); 
+       			
+      		/************************************************/
+
+           	  	//Standing	
+    			//Adjusting hip pitches to desired positions    
+ 				
+        		lhp.speed = 0.0;
+        		rhp.speed = 0.0;
         		lhp.joint_angles[0] = 0.0;
         		rhp.joint_angles[0] = 0.0;
         		pub_move.publish(lhp);
@@ -221,8 +251,8 @@ int main(int argc, char **argv) {
         			
     			//Adjusting knee pitches to desired positions    
  				
-        		lkp.speed = kp_squat / 30;
-        		rkp.speed = kp_squat / 30;
+        		lkp.speed = 0.0;
+        		rkp.speed = 0.0;
         		lkp.joint_angles[0] = 0.0;
         		rkp.joint_angles[0] = 0.0;
         		pub_move.publish(lkp);
@@ -230,8 +260,8 @@ int main(int argc, char **argv) {
         			
     			//Adjusting ankle pitches to desired positions    
  				
-        		lap.speed = ap_squat / 30;
-        		rap.speed = ap_squat / 30;
+        		lap.speed = 0.0;
+        		rap.speed = 0.0;
         		lap.joint_angles[0] = 0.0;
         		rap.joint_angles[0] = 0.0;
         		pub_move.publish(lap);
@@ -239,109 +269,41 @@ int main(int argc, char **argv) {
         			
       		/************************************************/
 
-			ros::Duration(6).sleep(); 
-       			
-      		/************************************************/
-          		
-    			//Halfway    
-    			//Adjusting hip pitches to desired positions    
- 				
-        		lhp.speed = hp_squat / 90;
-        		rhp.speed = hp_squat / 90;
-        		lhp.joint_angles[0] = -1 * hp_squat / 2;
-        		rhp.joint_angles[0] = -1 * hp_squat / 2;
-        		pub_move.publish(lhp);
-        		pub_move.publish(rhp);
-        			
-    			//Adjusting knee pitches to desired positions    
- 				
-        		lkp.speed = kp_squat / 30;
-        		rkp.speed = kp_squat / 30;
-        		lkp.joint_angles[0] = kp_squat / 2;
-        		rkp.joint_angles[0] = kp_squat / 2;
-        		pub_move.publish(lkp);
-        		pub_move.publish(rkp);
-        			
-    			//Adjusting ankle pitches to desired positions    
- 				
-        		lap.speed = ap_squat / 30;
-        		rap.speed = ap_squat / 30;
-        		lap.joint_angles[0] = -1 * ap_squat / 2;
-        		rap.joint_angles[0] = -1 * ap_squat / 2;
-        		pub_move.publish(lap);
-        		pub_move.publish(rap);
-        			
-      		/************************************************/
-
-			ros::Duration(6).sleep(); 
-       			
-      		/************************************************/
-
-           	  	//Squatting	
-    			//Adjusting hip pitches to desired positions    
- 				
-        		lhp.speed = hp_squat / 90;
-        		rhp.speed = hp_squat / 90;
-        		lhp.joint_angles[0] = -1 * hp_squat;
-        		rhp.joint_angles[0] = -1 * hp_squat;
-        		pub_move.publish(lhp);
-        		pub_move.publish(rhp);
-        			
-    			//Adjusting knee pitches to desired positions    
- 				
-        		lkp.speed = kp_squat / 30;
-        		rkp.speed = kp_squat / 30;
-        		lkp.joint_angles[0] = kp_squat;
-        		rkp.joint_angles[0] = kp_squat;
-        		pub_move.publish(lkp);
-        		pub_move.publish(rkp);
-        			
-    			//Adjusting ankle pitches to desired positions    
- 				
-        		lap.speed = ap_squat / 30;
-        		rap.speed = ap_squat / 30;
-        		lap.joint_angles[0] = -1 * ap_squat;
-        		rap.joint_angles[0] = -1 * ap_squat;
-        		pub_move.publish(lap);
-        		pub_move.publish(rap);
-        			
-      		/************************************************/
-
-			ros::Duration(6).sleep(); 
+			ros::Duration(10).sleep(); 
        			
       		/************************************************/
           		
 			//Halfway
     			//Adjusting hip pitches to desired positions    
  				
-        		lhp.speed = hp_squat / 90;
-        		rhp.speed = hp_squat / 90;
-        		lhp.joint_angles[0] = -1 * hp_squat / 2;
-        		rhp.joint_angles[0] = -1 * hp_squat / 2;
+        		lhp.speed = 0.7 / 90;
+        		rhp.speed = 0.7 / 90;
+        		lhp.joint_angles[0] = -0.35;
+        		rhp.joint_angles[0] = -0.35;
         		pub_move.publish(lhp);
         		pub_move.publish(rhp);
         			
     			//Adjusting knee pitches to desired positions    
  				
-        		lkp.speed = kp_squat / 30;
-        		rkp.speed = kp_squat / 30;
-        		lkp.joint_angles[0] = kp_squat / 2;
-        		rkp.joint_angles[0] = kp_squat / 2;
+        		lkp.speed = 2.1 / 30;
+        		rkp.speed = 2.1 / 30;
+        		lkp.joint_angles[0] = 1.05;
+        		rkp.joint_angles[0] = 1.05;
         		pub_move.publish(lkp);
         		pub_move.publish(rkp);
         			
     			//Adjusting ankle pitches to desired positions    
  				
-        		lap.speed = ap_squat / 30;
-        		rap.speed = ap_squat / 30;
-        		lap.joint_angles[0] = -1 * ap_squat / 2;
-        		rap.joint_angles[0] = -1 * ap_squat / 2;
+        		lap.speed = 1.2 / 30;
+        		rap.speed = 1.2 / 30;
+        		lap.joint_angles[0] = -0.6;
+        		rap.joint_angles[0] = -0.6;
         		pub_move.publish(lap);
         		pub_move.publish(rap);
         			
       		/************************************************/
 
-			ros::Duration(6).sleep(); 
+			ros::Duration(10).sleep(); 
        			
       		/************************************************/
    
