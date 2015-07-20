@@ -34,7 +34,7 @@ int main(int argc, char ** argv){
 	// variable declarations
 	std_msgs::String words;
 	nao_msgs::JointAnglesWithSpeed mhp, mhy, mler, mrer, mley, mrey, mlwy, mrwy, mrsr, mlsr, mrsp, mlsp, mlh, mrh;
-	int speed = 0.5, i = 0, j;
+	int speed = 0.5, i = 0, j = 0;
 
 	ROS_INFO("SETTING JOINT STATES\n");
 	ros::spinOnce();
@@ -80,20 +80,6 @@ int main(int argc, char ** argv){
 	mrsp.speed = speed;
 	mrh.speed = speed;
 	mlh.speed = speed;
-	move.publish(mhp);
-        move.publish(mhy);
-        move.publish(mler);
-        move.publish(mlwy);
-        move.publish(mrwy);
-        move.publish(mley);
-        move.publish(mrey);
-        move.publish(mlsr);
-        move.publish(mlsp);
-        move.publish(mrsr);
-        move.publish(mrsp);
-        move.publish(mrer);
-	move.publish(mrh);
-	move.publish(mlh);
 	loop_rate.sleep();
 	ros::spinOnce();
 	ROS_INFO("JOINT STATES SET\n");
@@ -102,16 +88,13 @@ int main(int argc, char ** argv){
 		ros::spinOnce();
 		//if(controlmsgs.demo == true){
 			i = 0;
-		
-			words.data = "Hello. My name is BLUE.";
-			//talk.publish(words);
-				
+							
 			ROS_INFO("WAVING\n");
 			loop_rate.sleep();
 		
 			// starts to wave
 			mrsr.joint_angles[0] = 0.3142;
-               		mrsp.joint_angles[0] = -1;
+               		mrsp.joint_angles[0] = -1.4;
                 	mrer.joint_angles[0] = 0.0349;
                 	mrwy.joint_angles[0] = 0;
                 	mrsr.speed = 0.7;
@@ -122,7 +105,10 @@ int main(int argc, char ** argv){
                 	move.publish(mrsp);
                 	move.publish(mrer);
                 	move.publish(mrwy);
-			ros::Duration(0.25).sleep();
+			ros::Duration(1).sleep();
+			
+			words.data = "Hello. My name is BLUE.";
+			talk.publish(words);
 
 			// waves
 			for(j = 0; j < 5; j++){
@@ -147,6 +133,7 @@ int main(int argc, char ** argv){
                 	move.publish(mrsp);
 			ROS_INFO("DONE WAVING\n");
 			loop_rate.sleep();
+			ros::Duration(5).sleep();
 	
 		/*
 			words.data = "I am a humanoid robot that is capable of many things.";
