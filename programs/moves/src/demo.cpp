@@ -121,7 +121,7 @@ int main(int argc, char ** argv){
 			i = 0;
 		
 			words.data = "Hello. My name is BLUE.";
-			talk.publish(words);
+			//talk.publish(words);
 						
 			// starts to wave
 			mrwy.joint_angles[0] = 0.2009;
