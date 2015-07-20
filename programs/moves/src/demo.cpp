@@ -7,24 +7,6 @@
 // Global variable to store the data for statepublish
 custom_msgs::states controlmsgs;
 
-float php, phy, plap, plar, pler, pley, plh, plhp ,plhr, plhyp, plkp, plsp, plsr, plwy, prap, prar, prer, prey, prh, prhp, prhr, prhyp, prkp, prsp,
-        prsr, prwy;
-
-void callback(const sensor_msgs::JointState::ConstPtr& Joints){
-        phy = Joints->position[0];
-        php = Joints->position[1];
-        plsp = Joints->position[2];
-        plsr = Joints->position[3];
-        pley = Joints->position[4];
-        pler = Joints->position[5];
-        plwy = Joints->position[6];
-        prsp = Joints->position[20];
-        prsr = Joints->position[21];
-        prey = Joints->position[22];
-        prer = Joints->position[23];
-        prwy = Joints->position[24];
-}
-
 // State callback to see if this node needs to run
 void controlcb(const  custom_msgs::states States){
 	controlmsgs = States;
@@ -38,9 +20,7 @@ int main(int argc, char ** argv){
 	ros::init(argc, argv, "Demo");
 	ros::NodeHandle n;
 	ros::Rate loop_rate(50);
-
-	ros::Subscriber sub = n.subscribe("/joint_states", 100, callback);
-
+	
 	// Subscribes to control msgs to see if the node needs to be executed
 	ros::Subscriber sub_1 = n.subscribe("/control_msgs", 100, controlcb);
 
@@ -72,21 +52,21 @@ int main(int argc, char ** argv){
 	mrsp.joint_names.push_back("RShoulderPitch");
 	mlh.joint_names.push_back("LHand");
 	mrh.joint_names.push_back("RHand");
-	mhp.joint_angles.push_back(php);
-	mhy.joint_angles.push_back(phy);
-	mler.joint_angles.push_back(pler);
-	mrer.joint_angles.push_back(prer);
-	mlwy.joint_angles.push_back(plwy);
-	mrwy.joint_angles.push_back(prwy);
-	mley.joint_angles.push_back(pley);
-	mrey.joint_angles.push_back(prey);
-	mlsr.joint_angles.push_back(plsr);
-	mrsr.joint_angles.push_back(prsr);
-	mlsp.joint_angles.push_back(plsp);
-	mrsp.joint_angles.push_back(prsp);
+	mhp.joint_angles.push_back(0);
+	mhy.joint_angles.push_back(0);
+	mler.joint_angles.push_back(0);
+	mrer.joint_angles.push_back(0);
+	mlwy.joint_angles.push_back(0);
+	mrwy.joint_angles.push_back(0);
+	mley.joint_angles.push_back(0);
+	mrey.joint_angles.push_back(0);
+	mlsr.joint_angles.push_back(0);
+	mrsr.joint_angles.push_back(0);
+	mlsp.joint_angles.push_back(1.4);
+	mrsp.joint_angles.push_back(1.4);
 	mrh.joint_angles.push_back(0);
 	mlh.joint_angles.push_back(0);
-	mhp.speed = speed;
+	mhp.speed = speed; 
 	mhy.speed = speed;
 	mler.speed = speed;
 	mrer.speed = speed;
@@ -114,6 +94,9 @@ int main(int argc, char ** argv){
         move.publish(mrer);
 	move.publish(mrh);
 	move.publish(mlh);
+	loop_rate.sleep();
+	ros::spinOnce();
+	ROS_INFO("JOINT STATES SET\n");
 
 	while(ros::ok()){
 		ros::spinOnce();
@@ -122,17 +105,20 @@ int main(int argc, char ** argv){
 		
 			words.data = "Hello. My name is BLUE.";
 			//talk.publish(words);
-						
+				
+			ROS_INFO("WAVING\n");
+			loop_rate.sleep();
+		
 			// starts to wave
-			mrwy.joint_angles[0] = 0.2009;
+			mrwy.joint_angles[0] = 0;
 			mrwy.speed = speed;
-			mrer.joint_angles[0] = 0.8314;
+			mrer.joint_angles[0] = 0.8;
 			mrer.speed = speed;
-			mrey.joint_angles[0] = 0.0797;
+			mrey.joint_angles[0] = 0;
 			mrey.speed = speed;
-			mrsr.joint_angles[0] = -1.0554;
+			mrsr.joint_angles[0] = -1;
 			mrsr.speed = speed;
-			mrsp.joint_angles[0] = -1.0568;
+			mrsp.joint_angles[0] = -1;
 			mrsp.speed = speed;
 			move.publish(mrwy);
 			move.publish(mrer);
@@ -143,57 +129,30 @@ int main(int argc, char ** argv){
 
 			// waves
 			for(j = 0; j < 5; j++){
-				mrwy.joint_angles[0] = 0.1993;
-                      	  	mrwy.speed = speed;
-                        	mrer.joint_angles[0] = 1.5446;
+                        	mrer.joint_angles[0] = 1.5;
                         	mrer.speed = speed;
-                        	mrey.joint_angles[0] = 0.0659;
-                        	mrey.speed = speed;
-                        	mrsr.joint_angles[0] = -0.9879;
-                        	mrsr.speed = speed;
-                        	mrsp.joint_angles[0] = -1.2532;
+                        	mrsp.joint_angles[0] = -1.2;
 				mrsp.speed = speed;
-        	                move.publish(mrwy);
 	                        move.publish(mrer);
-                	        move.publish(mrey);
-                        	move.publish(mrsr);
                         	move.publish(mrsp);
                         	ros::Duration(0.5).sleep();
 
-				mrwy.joint_angles[0] = 0.1993;
-                        	mrwy.speed = speed;
-                        	mrer.joint_angles[0] = 1.5446;
+                        	mrer.joint_angles[0] = 1;
                         	mrer.speed = speed;
-                        	mrey.joint_angles[0] = 0.0659;
-                        	mrey.speed = speed;
-                        	mrsr.joint_angles[0] = -1.2532;
-                        	mrsr.speed = speed;
-                        	mrsp.joint_angles[0] = -0.0818;
-				mrsp.speed = speed;
-                 	       	move.publish(mrwy);
                         	move.publish(mrer);
-                        	move.publish(mrey);
-                        	move.publish(mrsr);
-                        	move.publish(mrsp);
                         	ros::Duration(0.5).sleep();
 			}
 			loop_rate.sleep();
-			mrwy.joint_angles[0] = 0.1978;
-                        mrwy.speed = speed;
-                        mrer.joint_angles[0] = 0.7118;
+                        mrer.joint_angles[0] = 0.7;
                         mrer.speed = speed;
-                        mrey.joint_angles[0] = 0.0536;
-                        mrey.speed = speed;
-                        mrsr.joint_angles[0] = -0.0169;
-                        mrsr.speed = speed;
-                        mrsp.joint_angles[0] = -1.0769;
+                        mrsp.joint_angles[0] = 1;
 			mrsp.speed = speed;
-                        move.publish(mrwy);
                         move.publish(mrer);
-                        move.publish(mrey);
-                        move.publish(mrsr);
                         move.publish(mrsp);
                         ros::Duration(0.5).sleep();			
+
+			ROS_INFO("DONE WAVING\n");
+			loop_rate.sleep();
 	
 		/*
 			words.data = "I am a humanoid robot that is capable of many things.";
