@@ -4,7 +4,7 @@
 #include <sstream>
 
 int main(int argc, char ** argv){
-	ros::init(argc, argv, "Mathmateical");
+	ros::init(argc, argv, "Mathmatical");
 	ros::NodeHandle n;
 	ros::Rate loop_rate(10);
 
@@ -19,6 +19,7 @@ int main(int argc, char ** argv){
 	while(ros::ok()){
 		std::cout << "Please enter what type of math you would like me to computer\n";
 		std::cout << "1 for Addition\t\t2 for Subtraction\n3 for Multiplication\t4 for Division\n";
+		std::cout << "\t    5 to QUIT\n";
 		std::cin >> menu;
 		std::cout << "\n\n";
 		switch(menu){
@@ -145,6 +146,13 @@ int main(int argc, char ** argv){
 				os3.clear();
 				os3.str("");
 				break;
+
+			case 5:
+				std::cout << "Goodbye\n";
+				ros::Duration(5).sleep();
+				ros::shutdown();
+				break;	
+				
 			default:
 				std::cout << "Please enter a number between 1 and 4\n";
 				break;
