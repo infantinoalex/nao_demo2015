@@ -69,11 +69,15 @@ include_directories(
 
 ## Declare a cpp executable
 add_executable(set_pose src/set_pose.cpp)
+add_executable(echo src/print_states.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(set_pose ${catkin_LIBRARIES})
+target_link_libraries(echo ${catkin_LIBRARIES})
 
 add_dependencies(set_pose custom_msgs ${catkin_EXPORTED_TARGETS})
+add_dependencies(echo custom_msgs ${catkin_EXPORTED_TARGETS})
+
