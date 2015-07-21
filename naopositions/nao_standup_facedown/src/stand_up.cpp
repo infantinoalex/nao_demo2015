@@ -580,10 +580,10 @@ int main(int argc, char **argv) {
     			pub_move.publish(lhr);
     			pub_move.publish(rhr);
 			
-    			lhp.joint_angles[0] = -0.7;
-    			rhp.joint_angles[0] = -0.7;
-    			lhp.speed = 0.149;
-    			rhp.speed = 0.149;
+    			lhp.joint_angles[0] = -1.0;
+    			rhp.joint_angles[0] = -1.0;
+    			lhp.speed = 0.0945;
+    			rhp.speed = 0.0945;
     			pub_move.publish(lhp);
     			pub_move.publish(rhp);
 
