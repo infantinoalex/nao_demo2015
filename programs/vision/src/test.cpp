@@ -46,7 +46,7 @@ public:
 
     // Draw an example circle on the video stream
     if (cv_ptr->image.rows > 60 && cv_ptr->image.cols > 60)
-      cv::circle(cv_ptr->image, cv::Point(50, 50), 10, CV_RGB(255,0,0));
+      cv::circle(cv_ptr->image, cv::Point(100, 100), 10, CV_RGB(255,0,0));
 
     // Update GUI Window
     cv::imshow(OPENCV_WINDOW, cv_ptr->image);
@@ -61,6 +61,10 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "image_converter");
   ImageConverter ic;
-  ros::spin();
+  ros::Rate loop_rate(50);
+  while(ros::ok()){
+  	ros::spinOnce();
+	loop_rate.sleep();
+  }
   return 0;
 }
