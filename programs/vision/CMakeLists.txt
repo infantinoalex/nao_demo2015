@@ -106,6 +106,7 @@ include_directories(
 
 ## Declare a cpp executable
 add_executable(test_node src/test.cpp)
+add_executable(facedetect_node src/facedetect.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -115,7 +116,9 @@ add_executable(test_node src/test.cpp)
 target_link_libraries(test_node
   ${catkin_LIBRARIES}
 )
-
+target_link_libraries(facedetect_node
+  ${catkin_LIBRARIES}
+)
 #############
 ## Install ##
 #############
