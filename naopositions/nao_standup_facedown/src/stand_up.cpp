@@ -562,7 +562,49 @@ int main(int argc, char **argv) {
     			ros::Duration(1.5).sleep();
     
    		/************************************************/
-			/*  
+	
+    			//narration.data = "Move to squat position.";
+    			pub_narration.publish(narration);
+			
+    			lhyp.joint_angles[0] = 0.0;
+    			rhyp.joint_angles[0] = 0.0;
+    			lhyp.speed = 0.25;
+    			rhyp.speed = 0.25;
+    			pub_move.publish(lhyp);
+    			pub_move.publish(rhyp);
+			
+    			lhr.joint_angles[0] = 0.0875;
+    			rhr.joint_angles[0] = 0.0875;
+    			lhr.speed = 0.5;
+    			rhr.speed = 0.5;
+    			pub_move.publish(lhr);
+    			pub_move.publish(rhr);
+			
+    			lhp.joint_angles[0] = -0.7;
+    			rhp.joint_angles[0] = -0.7;
+    			lhp.speed = 0.205;
+    			rhp.speed = 0.205;
+    			pub_move.publish(lhp);
+    			pub_move.publish(rhp);
+
+    			lap.joint_angles[0] = -1.2;
+    			rap.joint_angles[0] = -1.2;
+    			lap.speed = 0.184;
+    			rap.speed = 0.184;
+    			pub_move.publish(lap);
+    			pub_move.publish(rap);
+			
+    			lar.joint_angles[0] = 0.0;
+    			rar.joint_angles[0] = 0.0;
+    			lar.speed = 0.017;
+    			rar.speed = 0.017;
+    			pub_move.publish(lar);
+    			pub_move.publish(rar);
+			
+    			ros::Duration(5).sleep();
+	
+   		/************************************************/
+		/*  
     			//narration.data = "Cheating... step forward.";
     			pub_narration.publish(narration);
 
