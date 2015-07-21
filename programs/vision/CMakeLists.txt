@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+find_package( OpenCV REQUIRED )
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -97,6 +98,7 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_LIBRARIES}
 )
 
 ## Declare a cpp library
@@ -106,18 +108,20 @@ include_directories(
 
 ## Declare a cpp executable
 add_executable(test_node src/test.cpp)
-add_executable(facedetect_node src/facedetect.cpp)
-
+add_executable(facemainnode src/facemain.cpp)
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(vision_node vision_generate_messages_cpp)
-
+ add_dependencies(facemainnode ${catkin_EXPORTED_TARGETS})
+ add_dependencies(facemainnode facedetector.cpp)
+ add_dependencies(facemainnode facedetector.h)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(test_node
   ${catkin_LIBRARIES}
 )
-target_link_libraries(facedetect_node
+target_link_libraries(facemainnode
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBRARIES}
 )
 #############
 ## Install ##

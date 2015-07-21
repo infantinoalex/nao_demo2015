@@ -16,18 +16,34 @@ int main(int argc, char ** argv){
 
 	float val1, val2, add, sub, mult, div;
 	int  menu;
+	bool first = true;
 
 	while(ros::ok()){
-		std::cout << "Please enter what type of math you would like me to compute:\n";
+		ros::spinOnce();
+		loop_rate.sleep();
+		if((menu <= 5 && menu >= 1) || first == true){
+			words.data = "Please select which operation you would like me to compute.";
+			talk.publish(words);
+			first = false;
+		}
+		std::cout << "Please enter what operation you would like me to compute:\n";
 		std::cout << "1: for Addition\t\t2: for Subtraction\n3: for Multiplication\t4: for Division\n";
 		std::cout << "\t       5: to QUIT\n";
 		std::cin >> menu;
 		std::cout << "\n\n";
 		switch(menu){
 			case 1:
+				words.data = "You have selected addition.";
+				talk.publish(words);
+				ros::Duration(2).sleep();
+				words.data = "Please enter the first number you would like to add.";
+				talk.publish(words);
 				std::cout << "Please enter the first number you'd like me to add:\n";
 				std::cin >> val1;
 				os1 << val1;
+				ros::Duration(2).sleep();
+				words.data = "Please enter the second number you would like me to add.";
+				talk.publish(words);
 				std::cout << "Please enter the second number you'd like me to add:\n";
 				std::cin >> val2;
 				os2 << val2;
@@ -47,7 +63,7 @@ int main(int argc, char ** argv){
 				talk.publish(words);
 				words.data = os3.str();
 				talk.publish(words);
-				ros::Duration(2).sleep();
+				ros::Duration(5).sleep();
 				os1.clear();
 				os1.str("");
 				os2.clear();
@@ -57,9 +73,17 @@ int main(int argc, char ** argv){
 				break;
 
 			case 2:
+				words.data = "You have selected subtraction.";
+				talk.publish(words);
+				ros::Duration(2).sleep();
+				words.data = "Please enter the first number you would like to subtract.";
+				talk.publish(words);
 				std::cout << "Please enter the first number you'd like me to subtract:\n";
 				std::cin >> val1;
 				os1 << val1;
+				ros::Duration(2).sleep();
+				words.data = "Please enter the second number you would like to subtract.";
+				talk.publish(words);
 				std::cout << "Please enter the second number you'd like me to subtract:\n";
 				std::cin >> val2;
 				os2 << val2;
@@ -79,7 +103,7 @@ int main(int argc, char ** argv){
 				talk.publish(words);
 				words.data = os3.str();
 				talk.publish(words);
-				ros::Duration(2).sleep();
+				ros::Duration(5).sleep();
 				os1.clear();
 				os1.str("");
 				os2.clear();
@@ -89,9 +113,17 @@ int main(int argc, char ** argv){
 				break;
 
 			case 3:
+				words.data = "You have selected multiplication.";
+				talk.publish(words);
+				ros::Duration(2).sleep();
+				words.data = "Please enter the first number you would like to multiply.";
+				talk.publish(words);
 				std::cout << "Please enter the first number you'd like me to multiply:\n";
 				std::cin >> val1;
 				os1 << val1;
+				ros::Duration(2).sleep();
+				words.data = "Please enter the second number you would like to multiply.";
+				talk.publish(words);
 				std::cout << "Please enter the second number you'd like me to multiply:\n";
 				std::cin >> val2;
 				os2 << val2;
@@ -111,7 +143,7 @@ int main(int argc, char ** argv){
 				talk.publish(words);
 				words.data = os3.str();
 				talk.publish(words);
-				ros::Duration(2).sleep();
+				ros::Duration(5).sleep();
 				os1.clear();
 				os1.str("");
 				os2.clear();
@@ -121,9 +153,17 @@ int main(int argc, char ** argv){
 				break;
 
 			case 4:
+				words.data = "You have selected division.";
+				talk.publish(words);
+				ros::Duration(2).sleep();
+				words.data = "Please enter the first number you would like to divide.";
+				talk.publish(words);
 				std::cout << "Please enter the first number you'd like me to divide:\n";
 				std::cin >> val1;
 				os1 << val1;
+				ros::Duration(2).sleep();
+				words.data = "Please enter the second number you would like to divide.";
+				talk.publish(words);
 				std::cout << "Please enter the second number you'd like me to divide:\n";
 				std::cin >> val2;
 				os2 << val2;
@@ -143,7 +183,7 @@ int main(int argc, char ** argv){
 				talk.publish(words);
 				words.data = os3.str();
 				talk.publish(words);
-				ros::Duration(2).sleep();
+				ros::Duration(5).sleep();
 				os1.clear();
 				os1.str("");
 				os2.clear();
@@ -153,6 +193,8 @@ int main(int argc, char ** argv){
 				break;
 
 			case 5:
+				words.data = "Thank you for using this math program. Goodbye.";
+				talk.publish(words);
 				std::cout << "Goodbye\n";
 				ros::Duration(2).sleep();
 				ros::shutdown();
