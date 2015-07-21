@@ -582,8 +582,8 @@ int main(int argc, char **argv) {
 			
     			lhp.joint_angles[0] = -0.7;
     			rhp.joint_angles[0] = -0.7;
-    			lhp.speed = 0.01;//0.205;
-    			rhp.speed = 0.01;//0.205;
+    			lhp.speed = 0.05;//0.205;
+    			rhp.speed = 0.05;//0.205;
     			pub_move.publish(lhp);
     			pub_move.publish(rhp);
 
