@@ -13,6 +13,8 @@ int main(int argc, char **argv) {
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
 
+  int i = 0;
+
   //All the message declarations
   std_msgs::String narration;
   nao_msgs::JointAnglesWithSpeed hy;
@@ -155,7 +157,7 @@ int main(int argc, char **argv) {
     //narration.data = "hula arms.";
     pub_narration.publish(narration);
 
-    lsp.joint_angles[0] = 1.9;
+    lsp.joint_angles[0] = 1.1;
     lsp.speed = 0.5;
     pub_move.publish(lsp);
 
@@ -172,15 +174,15 @@ int main(int argc, char **argv) {
     pub_move.publish(ler);
 
 
-    rsp.joint_angles[0] = 1.9;
+    rsp.joint_angles[0] = 1.1;
     rsp.speed = 0.5;
     pub_move.publish(rsp);
 
-    rsr.joint_angles[0] = -0.40;
+    rsr.joint_angles[0] = -0.55;
     rsr.speed = 0.5;
     pub_move.publish(rsr);
 
-    rey.joint_angles[0] = -0.5;
+    rey.joint_angles[0] = -0.21;
     rey.speed = 0.5;
     pub_move.publish(rey);
 
@@ -192,36 +194,42 @@ int main(int argc, char **argv) {
 
     /************************************************/
 
-    narration.data = "I can do the hula.  Watch me! Aloha!";
-    pub_narration.publish(narration);
-
     while (1) { 
+
+      if ( i % 5 == 0 ) {
+
+        narration.data = "I can do the hula.  Watch me! Aloha!";
+        pub_narration.publish(narration);
+
+      }
+
+      i++;
 
       /************************************************/
     
       //narration.data = "Lean right.";
       pub_narration.publish(narration);
 
-      lhr.joint_angles[0] = 0.5;
-      lar.joint_angles[0] = -0.5;
-      lhr.speed = 0.3;
-      lar.speed = 0.3;
+      lhr.joint_angles[0] = 0.4;
+      lar.joint_angles[0] = -0.4;
+      lhr.speed = 0.5;
+      lar.speed = 0.5;
       pub_move.publish(lhr);
       pub_move.publish(lar);
 
-      rhr.joint_angles[0] = -0.1;
-      rar.joint_angles[0] = 0.1;
-      rhr.speed = 0.3;
-      rar.speed = 0.3;
+      rhr.joint_angles[0] = 0.1;
+      rar.joint_angles[0] = -0.1;
+      rhr.speed = 0.5;
+      rar.speed = 0.5;
       pub_move.publish(rhr);
       pub_move.publish(rar);
   
       lsr.joint_angles[0] = 0.0;
-      lsr.speed = 0.3;
+      lsr.speed = 0.5;
       pub_move.publish(lsr);
 
       rsr.joint_angles[0] = -0.2;
-      rsr.speed = 0.3;
+      rsr.speed = 0.5;
       pub_move.publish(rsr);
 
       /************************************************/
@@ -233,26 +241,26 @@ int main(int argc, char **argv) {
       //narration.data = "Lean left.";
       pub_narration.publish(narration);
   
-      lhr.joint_angles[0] = 0.1;
-      lar.joint_angles[0] = -0.1;
-      lhr.speed = 0.3;
-      lar.speed = 0.3;
+      lhr.joint_angles[0] = -0.1;
+      lar.joint_angles[0] = 0.1;
+      lhr.speed = 0.5;
+      lar.speed = 0.5;
       pub_move.publish(lhr);
       pub_move.publish(lar);
 
-      rhr.joint_angles[0] = -0.5;
-      rar.joint_angles[0] = 0.5;
-      rhr.speed = 0.3;
-      rar.speed = 0.3;
+      rhr.joint_angles[0] = -0.4;
+      rar.joint_angles[0] = 0.4;
+      rhr.speed = 0.5;
+      rar.speed = 0.5;
       pub_move.publish(rhr);
       pub_move.publish(rar);
    
       lsr.joint_angles[0] = -0.25;
-      lsr.speed = 0.3;
+      lsr.speed = 0.5;
       pub_move.publish(lsr);
 
       rsr.joint_angles[0] = -0.45;
-      rsr.speed = 0.3;
+      rsr.speed = 0.5;
       pub_move.publish(rsr);
   
       /************************************************/
