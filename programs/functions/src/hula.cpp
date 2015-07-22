@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
 
 
     /************************************************/
-
+    /*
     //narration.data = "Bend knees.";
     pub_narration.publish(narration);
 
@@ -130,9 +130,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rap);
 
     ros::Duration(1).sleep();
-
+    */
     /************************************************/
-
+    /*
     //narration.data = "Open hips.";
     pub_narration.publish(narration);
 
@@ -149,9 +149,9 @@ int main(int argc, char **argv) {
     rar.speed = 0.1;
     pub_move.publish(lar);
     pub_move.publish(rar);
-
+    */
     /************************************************/
-
+    /*
     //narration.data = "hula arms.";
     pub_narration.publish(narration);
 
@@ -189,7 +189,7 @@ int main(int argc, char **argv) {
     pub_move.publish(rer);
 
     ros::Duration(1).sleep();
-
+    */
     /************************************************/
 
     while (1) { 
