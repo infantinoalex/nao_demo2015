@@ -3,6 +3,7 @@
 #include <sensor_msgs/Image.h>
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/image_encodings.h>
+#include "nao_msgs/JointAnglesWithSpeed.h"
 
 #include "opencv2/objdetect/objdetect.hpp"
 #include "opencv2/highgui/highgui.hpp"
@@ -21,7 +22,8 @@ class FaceDetector
 private:
     ros::NodeHandle n;
     ros::Subscriber raw_image;
-    
+    ros::Publisher move_pub;
+
     //For initial face detection 
     cv::CascadeClassifier face_cascade;
     cv::RNG rng;

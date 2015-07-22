@@ -1,12 +1,15 @@
 /* All credit goes to chris munroe for this program */
-
 #include "facedetect.h"
 
 FaceDetector::FaceDetector() 
 {
     raw_image = n.subscribe<sensor_msgs::Image>("/nao_robot/camera/top/camera/image_raw", 1, &FaceDetector::head_camera_processing, this);
-    
-    if( !face_cascade.load("/haarcascade_frontalface_alt.xml") )
+    move_pub = n.advertise<nao_msgs::JointAnglesWithSpeed>("/joint_angles", 100);
+    nao_msgs::JointAnglesWithSpeed hy;
+    hy.joint_names.push_back("HeadYaw");
+    hy.joint_angles.push_back(0); 
+   
+    if( !face_cascade.load("haarcascade_frontalface_alt.xml") )
     { 
         printf("--(!)Error loading face cascade\n"); 
     }
@@ -52,6 +55,27 @@ void FaceDetector::detectAndDisplay(cv::Mat frame)
     int best_index = findBestIndex(frame);
 
     tickFaceCount(best_index, confirmed_faces.size(), frame); 
+
+    int fromCenter = 1000; 
+    if(confirmed_faces.size()){
+        fromCenter = consistent_rects[best_index].rect.x - consistent_rects[best_index].rect.width/2 - frame.cols/2; 
+        if(fromCenter > 50){
+            nao_msgs::JointAnglesWithSpeed hy;
+            hy.joint_names.push_back("HeadYaw");
+            hy.joint_angles.push_back(-0.2);
+	    hy.speed = 0.5;	
+	    hy.relative = 0;
+    	    move_pub.publish(hy);
+	}
+	else(fromCenter < -50){
+	    nao_msgs::JointAnglesWithSpeed hy;
+            hy.joint_names.push_back("HeadYaw");
+            hy.joint_angles.push_back(-0.2);
+	    hy.speed = 0.5;	
+	    hy.relative = 0;
+    	    move_pub.publish(hy);
+        }
+    } 
 
     cv::imshow("Test", frame);
     cv::waitKey(10);
