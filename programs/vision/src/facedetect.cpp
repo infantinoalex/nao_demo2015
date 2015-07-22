@@ -59,16 +59,8 @@ void FaceDetector::detectAndDisplay(cv::Mat frame)
     int fromCenter = 1000; 
     if(confirmed_faces.size()){
         fromCenter = consistent_rects[best_index].rect.x - consistent_rects[best_index].rect.width/2 - frame.cols/2; 
-        if(fromCenter > 50){
+        if(fromCenter > 25 || fromCenter < - 25){
             nao_msgs::JointAnglesWithSpeed hy;
-            hy.joint_names.push_back("HeadYaw");
-            hy.joint_angles.push_back(-0.2);
-	    hy.speed = 0.5;	
-	    hy.relative = 0;
-    	    move_pub.publish(hy);
-	}
-	else(fromCenter < -50){
-	    nao_msgs::JointAnglesWithSpeed hy;
             hy.joint_names.push_back("HeadYaw");
             hy.joint_angles.push_back(-0.2);
 	    hy.speed = 0.5;	
