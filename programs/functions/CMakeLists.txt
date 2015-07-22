@@ -104,8 +104,9 @@ add_executable(mathp src/mathp.cpp)
 add_executable(walk_detect src/walk_detect.cpp)
 add_executable(demo src/demo.cpp)
 add_executable(hula src/hula.cpp)
-
+add_executable(rollercoaster src/rollercoaster.cpp)
 ## Add cmake target dependencies of the executable/library
+
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(wavenao_node wavenao_generate_messages_cpp)
 
@@ -118,7 +119,7 @@ target_link_libraries(mathp ${catkin_LIBRARIES})
 target_link_libraries(walk_detect ${catkin_LIBRARIES})
 target_link_libraries(demo ${catkin_LIBRARIES})
 target_link_libraries(hula ${catkin_LIBRARIES})
-
+target_link_libraries(rollercoaster ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############
