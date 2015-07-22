@@ -13,8 +13,6 @@ int main(int argc, char **argv) {
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
 
-  int i = 0;
-
   //All the message declarations
   std_msgs::String narration;
   nao_msgs::JointAnglesWithSpeed hy;
@@ -196,18 +194,6 @@ int main(int argc, char **argv) {
 
     while (1) { 
 
-      ROS_INFO(" [ %d ]\n", i);
-
-      if ( i % 5 == 0 ) {
-
-        narration.data = "I can do the hula.  Watch me! Aloha!";
-        pub_narration.publish(narration);
-
-      }
-
-      i++;
-      
-
       /************************************************/
     
       //narration.data = "Lean right.";
@@ -269,6 +255,317 @@ int main(int argc, char **argv) {
       /************************************************/
   
       ros::Duration(1).sleep();
+   
+      /************************************************/
+
+      narration.data = "Aloha ē, aloha ē";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "ʻAnoʻai ke aloha ē";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Aloha ē, aloha ē";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "ʻAnoʻai ke aloha ē";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "There’s no place I’d rather be";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Than on my surfboard out at sea";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Lingering in the ocean blue";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "And if I had one wish come true";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "I’d surf 'til the sun sets beyond the horizon";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "ʻĀwikiwiki mai lohilohi";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Lawe mai i ko papa heʻe nalu";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Flyin' by on the Hawaiian roller coaster ride";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "ʻĀwikiwiki mai lohilohi";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Lawe mai i ko papa heʻe nalu";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Piʻi nā nalu lā lahalaha";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "ʻO ka moana hānupanupa";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Lalala i ka lā hanahana";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Me ke kai hoene i ka puʻe one";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Hele, hele mai kākou ē";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Flyin' by on the Hawaiian roller coaster ride";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "There’s no place I’d rather be";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Than on my surfboard out at sea";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Lingering in the ocean blue";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "And if I had one wish come true";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "I’d surf 'til the sun sets beyond the horizon";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "ʻĀwikiwiki mai lohilohi";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Lawe mai i ko papa heʻe nalu";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Flyin' by on the Hawaiian roller coaster ride";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "Hang loose, hang ten, howzit, shake a shaka";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "No worry, no fear, ain't no biggie braddah";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Cuttin' in, cuttin' up, cuttin' back, cuttin' out";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Frontside, backside, goofy footed, wipe out";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "Let's get jumpin', surf's up and pumpin'";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Coastin' with the motion of the ocean";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Whirlpools swirling, cascading, twirling";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Hawaiian roller coaster ride";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "ʻĀwikiwiki mai lohilohi";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Lawe mai i ko papa heʻe nalu";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Flyin' by on the Hawaiian roller coaster ride";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+
+      narration.data = "Aloha ē, aloha ē";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "ʻAnoʻai ke aloha ē";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Aloha ē, aloha ē";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "ʻAnoʻai ke aloha ē";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "Hawaiian roller coaster ride";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "There’s no place I’d rather be";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Than on my surfboard out at sea";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Lingering in the ocean blue";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "And if I had one wish come true";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "I’d surf 'til the sun sets beyond the horizon";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "ʻĀwikiwiki mai lohilohi";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Lawe mai i ko papa heʻe nalu";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Flyin' by on the Hawaiian roller coaster ride";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "ʻĀwikiwiki mai lohilohi";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Lawe mai i ko papa heʻe nalu";
+      pub_narration.publish(narration);
+
+      ros::Duration(2).sleep();
+
+      narration.data = "Flyin' by on the Hawaiian roller coaster ride";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
+
+
+
+      narration.data = "Hawaiian roller coaster ride";
+      pub_narration.publish(narration);
+
+      ros::Duration(4).sleep();
    
       /************************************************/
 
