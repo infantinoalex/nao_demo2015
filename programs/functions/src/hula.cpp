@@ -201,24 +201,24 @@ int main(int argc, char **argv) {
 
       lhr.joint_angles[0] = 0.4;
       lar.joint_angles[0] = -0.4;
-      lhr.speed = 0.5;
-      lar.speed = 0.5;
+      lhr.speed = 0.2;
+      lar.speed = 0.2;
       pub_move.publish(lhr);
       pub_move.publish(lar);
 
       rhr.joint_angles[0] = 0.1;
       rar.joint_angles[0] = -0.1;
-      rhr.speed = 0.5;
-      rar.speed = 0.5;
+      rhr.speed = 0.2;
+      rar.speed = 0.2;
       pub_move.publish(rhr);
       pub_move.publish(rar);
   
       lsr.joint_angles[0] = 0.0;
-      lsr.speed = 0.5;
+      lsr.speed = 0.2;
       pub_move.publish(lsr);
 
       rsr.joint_angles[0] = -0.2;
-      rsr.speed = 0.5;
+      rsr.speed = 0.2;
       pub_move.publish(rsr);
 
       /************************************************/
@@ -232,24 +232,24 @@ int main(int argc, char **argv) {
   
       lhr.joint_angles[0] = -0.1;
       lar.joint_angles[0] = 0.1;
-      lhr.speed = 0.5;
-      lar.speed = 0.5;
+      lhr.speed = 0.2;
+      lar.speed = 0.2;
       pub_move.publish(lhr);
       pub_move.publish(lar);
 
       rhr.joint_angles[0] = -0.4;
       rar.joint_angles[0] = 0.4;
-      rhr.speed = 0.5;
-      rar.speed = 0.5;
+      rhr.speed = 0.2;
+      rar.speed = 0.2;
       pub_move.publish(rhr);
       pub_move.publish(rar);
    
       lsr.joint_angles[0] = -0.25;
-      lsr.speed = 0.5;
+      lsr.speed = 0.2;
       pub_move.publish(lsr);
 
       rsr.joint_angles[0] = -0.45;
-      rsr.speed = 0.5;
+      rsr.speed = 0.2;
       pub_move.publish(rsr);
   
       /************************************************/
@@ -257,7 +257,7 @@ int main(int argc, char **argv) {
       ros::Duration(1).sleep();
    
       /************************************************/
-
+      /*
       narration.data = "Aloha ē, aloha ē";
       pub_narration.publish(narration);
 
@@ -566,7 +566,7 @@ int main(int argc, char **argv) {
       pub_narration.publish(narration);
 
       ros::Duration(4).sleep();
-   
+      */
       /************************************************/
 
     }
