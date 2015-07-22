@@ -190,9 +190,11 @@ int main(int argc, char **argv) {
 
     ros::Duration(1).sleep();
 
+    bool run = true;
+
     /************************************************/
 
-    while (1) { 
+    while (run = true) { 
 
       /************************************************/
     
