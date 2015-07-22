@@ -196,6 +196,8 @@ int main(int argc, char **argv) {
 
     while (1) { 
 
+      ROS_INFO(" [ %d ]\n", i);
+
       if ( i % 5 == 0 ) {
 
         narration.data = "I can do the hula.  Watch me! Aloha!";
@@ -204,6 +206,7 @@ int main(int argc, char **argv) {
       }
 
       i++;
+      
 
       /************************************************/
     
