@@ -123,17 +123,17 @@ int main(int argc, char **argv) {
 
     ros::spinOnce();
 
-    if ( button_number == 3 && button_state == 0 ) {
-
+    if ( button_number == 2 && button_state == 0 ) {
+      /*
       ros::spinOnce();
   
       lh.joint_angles[0] = 0.0;
       lh.speed = 0.5;
       pub_move.publish(lh);
-
+      */
      
       /************************************************/
-      /*
+     
       //narration.data = "Stand up.";
       pub_narration.publish(narration);
   
@@ -146,9 +146,9 @@ int main(int argc, char **argv) {
       pub_walk.publish(walk);
   
       ros::Duration(1).sleep();
-      */
+      
       /************************************************/
-      /*
+      
       //narration.data = "Extend arm to grab knife.";
       pub_narration.publish(narration);
   
@@ -174,9 +174,9 @@ int main(int argc, char **argv) {
       pub_narration.publish(narration);
   
       ros::Duration(5).sleep();
-      */
+      
       /************************************************/
-      /*
+      
       ros::spinOnce();
   
       while ( button_number == 1 && button_state == 0 ) {
@@ -193,9 +193,9 @@ int main(int argc, char **argv) {
       pub_narration.publish(narration);
  
       ros::Duration(3).sleep();
-      */
+      
       /************************************************/
-      /*
+      
       //narration.data = "Arranging arms.";
       pub_narration.publish(narration);
 
@@ -239,7 +239,7 @@ int main(int argc, char **argv) {
       ros::Duration(1).sleep();
   
       bool run = true;
-      */ 
+       
       /************************************************/
       /*
       std_msgs::Bool sing;
@@ -332,7 +332,7 @@ int main(int argc, char **argv) {
 
     ros::spinOnce();
 
-    else if ( button_number == 3 && button_state == 1 ) {
+    else if ( button_number == 2 && button_state == 1 ) {
 
       lh.joint_angles[0] = 1.0;
       lh.speed = 0.5;
