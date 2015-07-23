@@ -158,7 +158,7 @@ int main(int argc, char ** argv){
                                 mler.speed = 0.1;
                                 mley.joint_angles[0] = 0.7;
                                 mley.speed = 0.1;
-				mhp.joint_angles[0] = 0.4;
+				mhp.joint_angles[0] = -0.4;
                                 mhp.speed = 0.1;
                                 move.publish(mhp);
                                 move.publish(mlsp);
@@ -187,7 +187,7 @@ int main(int argc, char ** argv){
                                 mler.speed = 0.1;
                                 mley.joint_angles[0] = 0;
                                 mley.speed = 0.1;
-				mhp.joint_angles[0] = 0;
+				mhp.joint_angles[0] = 0.2;
                                 mhp.speed = 0.1;
                                 move.publish(mhp);
                                 move.publish(mlsp);
@@ -233,7 +233,7 @@ int main(int argc, char ** argv){
                                 mler.speed = 0.1;
                                 mley.joint_angles[0] = 0.7;
                                 mley.speed = 0.1;
-				mhp.joint_angles[0] = 0.4;
+				mhp.joint_angles[0] = -0.4;
                                 mhp.speed = 0.1;
                                 move.publish(mhp);
                                 move.publish(mlsp);
@@ -262,7 +262,7 @@ int main(int argc, char ** argv){
                                 mler.speed = 0.1;
                                 mley.joint_angles[0] = 0;
                                 mley.speed = 0.1;
-				mhp.joint_angles[0] = 0;
+				mhp.joint_angles[0] = 0.2;
                                 mhp.speed = 0.1;
                                 move.publish(mhp);
                                 move.publish(mlsp);
@@ -308,7 +308,7 @@ int main(int argc, char ** argv){
                                 mler.speed = 0.1;
                                 mley.joint_angles[0] = 0.7;
                                 mley.speed = 0.1;
-				mhp.joint_angles[0] = 0.4;
+				mhp.joint_angles[0] = -0.4;
                                 mhp.speed = 0.1;
                                 move.publish(mhp);
                                 move.publish(mlsp);
@@ -337,7 +337,7 @@ int main(int argc, char ** argv){
                                 mler.speed = 0.1;
                                 mley.joint_angles[0] = 0;
                                 mley.speed = 0.1;
-				mhp.joint_angles[0] = 0;
+				mhp.joint_angles[0] = 0.2;
                                 mhp.speed = 0.1;
                                 move.publish(mhp);
                                 move.publish(mlsp);
@@ -383,7 +383,7 @@ int main(int argc, char ** argv){
                                 mler.speed = 0.1;
                                 mley.joint_angles[0] = 0.7;
                                 mley.speed = 0.1;
-				mhp.joint_angles[0] = 0.4;
+				mhp.joint_angles[0] = -0.4;
                                 mhp.speed = 0.1;
                                 move.publish(mhp);
                                 move.publish(mlsp);
@@ -412,7 +412,7 @@ int main(int argc, char ** argv){
                                 mler.speed = 0.1;
                                 mley.joint_angles[0] = 0;
                                 mley.speed = 0.1;
-				mhp.joint_angles[0] = 0;
+				mhp.joint_angles[0] = 0.2;
                                 mhp.speed = 0.1;
                                 move.publish(mhp);
                                 move.publish(mlsp);
