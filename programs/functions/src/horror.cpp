@@ -217,11 +217,19 @@ int main(int argc, char **argv) {
       while (run = true) {
         
         /************************************************/
+        
+        //narration.data = "Stand up.";
+        pub_narration.publish(narration);
+  
+        walk.linear.x = 1;
+        pub_walk.publish(walk);
+  
+        /************************************************/
 
         //narration.data = "Arranging arms.";
         pub_narration.publish(narration);
 
-        lsp.joint_angles[0] = -1.3;
+        lsp.joint_angles[0] = -1.0;
         lsp.speed = 0.5;
         pub_move.publish(lsp);
   
@@ -233,7 +241,7 @@ int main(int argc, char **argv) {
         ley.speed = 0.5;
         pub_move.publish(ley);
   
-        ler.joint_angles[0] = -0.8;
+        ler.joint_angles[0] = -0.5;
         ler.speed = 0.5;
         pub_move.publish(ler);
   
