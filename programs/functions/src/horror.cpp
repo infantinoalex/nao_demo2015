@@ -122,7 +122,7 @@ int main(int argc, char **argv) {
   while (ros::ok()) {
 
     ros::spinOnce();
-
+    /*
     if ( button_number == 1 && button_state == 1 ) {
       
       ros::spinOnce();
@@ -133,9 +133,7 @@ int main(int argc, char **argv) {
 
     }      
  
-    ros::spinOnce();
-
-    else if ( button_number == 3 && button_state == 1 ) {
+    else */if ( button_number == 3 && button_state == 1 ) {
 
       lh.joint_angles[0] = 1.0; //open
       lh.speed = 0.5;
@@ -197,9 +195,17 @@ int main(int argc, char **argv) {
         ros::spinOnce();
   
       }
+ 
+      if ( button_number == 1 && button_state == 1 ) {
   
-      narration.data = "Thank you!.";
-      pub_narration.publish(narration);
+        lh.joint_angles[0] = 0.0;
+        lh.speed = 0.5;
+        pub_move.publish(lh);
+ 
+        narration.data = "Thank you!.";
+        pub_narration.publish(narration);
+
+      }
  
       ros::Duration(3).sleep();
       
