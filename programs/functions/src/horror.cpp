@@ -1,5 +1,6 @@
 #include <ros/ros.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
+#include <geometry_msgs/Twist.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Bool.h>
 #include <sstream>
@@ -13,10 +14,12 @@ int main(int argc, char **argv) {
   //All the publishers
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
+  ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
   ros::Publisher pub_sing_command = node.advertise<std_msgs::Bool>("horror", 100);
 
   //All the message declarations
   std_msgs::String narration;
+  geometry_msg::Twist walk
   nao_msgs::JointAnglesWithSpeed hy;
   nao_msgs::JointAnglesWithSpeed hp;
   nao_msgs::JointAnglesWithSpeed lsp;
@@ -106,54 +109,55 @@ int main(int argc, char **argv) {
 
     /************************************************/
 
-    //narration.data = "Bend knees.";
+    //narration.data = "Stand up.";
     pub_narration.publish(narration);
 
-    lhp.joint_angles[0] = -0.2;
-    rhp.joint_angles[0] = -0.2;
-    lhp.speed = 0.01;
-    rhp.speed = 0.01;
-    pub_move.publish(lhp);
-    pub_move.publish(rhp);
+    walk.linear.x = 1;
+    pub_walk.publish(walk);
 
-    lkp.joint_angles[0] = 0.4;
-    rkp.joint_angles[0] = 0.4;
-    lkp.speed = 0.02;
-    rkp.speed = 0.02;
-    pub_move.publish(lkp);
-    pub_move.publish(rkp);
+    ros::Duration(1).sleep();
 
-    lap.joint_angles[0] = -0.2;
-    rap.joint_angles[0] = -0.2;
-    lap.speed = 0.01;
-    rap.speed = 0.01;
-    pub_move.publish(lap);
-    pub_move.publish(rap);
+    walk.linear.x = 0;
+    pub_walk.publish(walk);
 
     ros::Duration(1).sleep();
 
     /************************************************/
 
-    //narration.data = "Open hips.";
+    //narration.data = "extend arm to grab knife.";
     pub_narration.publish(narration);
 
-    lhr.joint_angles[0] = 0.1;
-    rhr.joint_angles[0] = -0.1;
-    lhr.speed = 0.1;
-    rhr.speed = 0.1;
-    pub_move.publish(lhr);
-    pub_move.publish(rhr);
+    lsp.joint_angles[0] = 0.0;
+    lsp.speed = 0.5;
+    pub_move.publish(lsp);
 
-    lar.joint_angles[0] = -0.1;
-    rar.joint_angles[0] = 0.1;
-    lar.speed = 0.1;
-    rar.speed = 0.1;
-    pub_move.publish(lar);
-    pub_move.publish(rar);
+    ley.joint_angles[0] = 1.0;
+    ley.speed = 0.5;
+    pub_move.publish(ley);
+
+    lh.joint_angles[0] = 1.0;
+    lh.speed = 0.5;
+    pub_move.publish(lh);
+
+    ros::Duration(1).sleep();
 
     /************************************************/
 
-    //narration.data = "hula arms.";
+    narration.data = "Put the knife in my hand so I can grab it please!";
+    pub_narration.publish(narration);
+
+    lh.joint_angles[0] = 0.0;
+    lh.speed = 0.5;
+    pub_move.publish(lh);
+
+    narration.data = "Thank you!.";
+    pub_narration.publish(narration);
+
+    ros::Duration(3).sleep();
+
+    /************************************************/
+    /*
+    //narration.data = "Arranging arms.";
     pub_narration.publish(narration);
 
     lsp.joint_angles[0] = 1.1;
@@ -196,17 +200,17 @@ int main(int argc, char **argv) {
     ros::Duration(1).sleep();
 
     bool run = true;
-
+    */
     /************************************************/
-
+    /*
     std_msgs::Bool sing;
     sing.data = run;
     pub_sing_command.publish(sing);
 
     while (run = true) { 
-
+    */
       /************************************************/
-    
+      /*
       //narration.data = "Lean right.";
       pub_narration.publish(narration);
 
@@ -239,13 +243,13 @@ int main(int argc, char **argv) {
       rer.joint_angles[0] = -1.40;
       rer.speed = 0.5;
       pub_move.publish(rer);
-
+      */
       /************************************************/
-
+      /*
       ros::Duration(1).sleep();
- 
+      */
       /************************************************/
-
+      /*
       //narration.data = "Lean left.";
       pub_narration.publish(narration);
   
@@ -278,11 +282,11 @@ int main(int argc, char **argv) {
       rer.joint_angles[0] = -1.65;
       rer.speed = 0.5;
       pub_move.publish(rer);
- 
+      */
       /************************************************/
-  
+      /*
       ros::Duration(1).sleep();
-   
+      */
       /************************************************/
 
     }
