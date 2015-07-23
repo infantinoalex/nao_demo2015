@@ -193,24 +193,24 @@ int main(int argc, char **argv) {
       while ( button_number == 1 && button_state == 0 ) {
   
         ros::spinOnce();
-        loop_rate.sleep();
+        //loop_rate.sleep();
   
-        if ( button_number == 1 && button_state == 1 ) {
-  
-          lh.joint_angles[0] = 0.0;
-          lh.speed = 0.5;
-          pub_move.publish(lh);
- 
-          narration.data = "Thank you!.";
-          pub_narration.publish(narration);
- 
-          ros::spinOnce();
-          loop_rate.sleep();
-
-        }
- 
       }
+  
+      if ( button_number == 1 && button_state == 1 ) {
+  
+        lh.joint_angles[0] = 0.0;
+        lh.speed = 0.5;
+        pub_move.publish(lh);
  
+        narration.data = "Thank you!.";
+        pub_narration.publish(narration);
+ 
+        ros::spinOnce();
+        loop_rate.sleep();
+
+      }
+
       ros::Duration(3).sleep();
       
       /************************************************/
