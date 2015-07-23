@@ -259,18 +259,14 @@ int main(int argc, char **argv) {
       bool run = true;
       
       /************************************************/
-<<<<<<< HEAD
       /*
       std_msgs::Bool sing;
       sing.data = run;
       pub_sing_command.publish(sing);
       while (run = true) { 
       */
-=======
-      
       while (run = true) {} 
       
->>>>>>> eea28937afecbdf32ca1c448234fe44a1f358a98
       /************************************************/
       /*
       //narration.data = "Lean right.";
