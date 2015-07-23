@@ -149,7 +149,7 @@ int main(int argc, char **argv) {
     else {
     */
       /************************************************/
-      /* 
+       
       //narration.data = "Stand up.";
       pub_narration.publish(narration);
   
@@ -162,7 +162,7 @@ int main(int argc, char **argv) {
       pub_walk.publish(walk);
   
       ros::Duration(1).sleep();
-      */
+      
       /************************************************/
       
       //narration.data = "Extend arm to grab knife.";
@@ -186,7 +186,7 @@ int main(int argc, char **argv) {
   
       ros::Duration(1).sleep();
   
-      narration.data = "Please!";
+      narration.data = "Put the knife in my hand please!";
       pub_narration.publish(narration);
   
       ros::Duration(5).sleep();
@@ -209,18 +209,18 @@ int main(int argc, char **argv) {
         lh.speed = 0.5;
         pub_move.publish(lh);
  
-        narration.data = "Thank you!.";
-        pub_narration.publish(narration);
- 
         ros::spinOnce();
         loop_rate.sleep();
 
       }
+ 
+      narration.data = "Thank you!.";
+      pub_narration.publish(narration);
 
       ros::Duration(3).sleep();
       
       /************************************************/
-      /*      
+            
       //narration.data = "Arranging arms.";
       pub_narration.publish(narration);
 
@@ -264,15 +264,11 @@ int main(int argc, char **argv) {
       ros::Duration(1).sleep();
   
       bool run = true;
-      */
+      
       /************************************************/
-      /*
-      std_msgs::Bool sing;
-      sing.data = run;
-      pub_sing_command.publish(sing);
-
-      while (run = true) { 
-      */
+      
+      while (run = true) {} 
+      
       /************************************************/
       /*
       //narration.data = "Lean right.";
