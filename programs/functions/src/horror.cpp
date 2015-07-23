@@ -193,7 +193,7 @@ int main(int argc, char **argv) {
       while ( button_number == 1 && button_state == 0 ) {
   
         ros::spinOnce();
-        //loop_rate.sleep();
+        loop_rate.sleep();
   
       }
   
@@ -202,19 +202,19 @@ int main(int argc, char **argv) {
         lh.joint_angles[0] = 0.0;
         lh.speed = 0.5;
         pub_move.publish(lh);
-  
-        narration.data = "Thank you!.";
-        pub_narration.publish(narration);
 
         ros::spinOnce();
         loop_rate.sleep();
 
       }
+  
+      narration.data = "Thank you!.";
+      pub_narration.publish(narration);
 
       ros::Duration(3).sleep();
       
       /************************************************/
-            
+      /*      
       //narration.data = "Arranging arms.";
       pub_narration.publish(narration);
       lsp.joint_angles[0] = -1.6;
@@ -257,16 +257,19 @@ int main(int argc, char **argv) {
       ros::Duration(1).sleep();
   
       bool run = true;
-      
+      */
       /************************************************/
       /*
+<<<<<<< HEAD
       std_msgs::Bool sing;
       sing.data = run;
       pub_sing_command.publish(sing);
       while (run = true) { 
       */
+=======
+>>>>>>> e86bf80579addcf26f371ff0ca89350f89c02b07
       while (run = true) {} 
-      
+      */
       /************************************************/
       /*
       //narration.data = "Lean right.";
