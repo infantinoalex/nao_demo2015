@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
 
   //All the message declarations
   std_msgs::String narration;
-  geometry_msg::Twist walk
+  geometry_msgs::Twist walk;
   nao_msgs::JointAnglesWithSpeed hy;
   nao_msgs::JointAnglesWithSpeed hp;
   nao_msgs::JointAnglesWithSpeed lsp;
@@ -288,8 +288,6 @@ int main(int argc, char **argv) {
       ros::Duration(1).sleep();
       */
       /************************************************/
-
-    }
 
     ros::spinOnce();
     loop_rate.sleep();
