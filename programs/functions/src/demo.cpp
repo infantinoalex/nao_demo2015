@@ -78,7 +78,7 @@ int main(int argc, char ** argv){
 		
 			// starts to wave
 			mrsr.joint_angles[0] = 0.3142;
-               		mrsp.joint_angles[0] = -1.4;
+               		mrsp.joint_angles[0] = -1;
                 	mrer.joint_angles[0] = 0.0349;
                 	mrwy.joint_angles[0] = 0;
 			mrh.joint_angles[0] = 1;
@@ -109,8 +109,7 @@ int main(int argc, char ** argv){
                         	mrer.speed = 0.5;
                         	move.publish(mrsr);
                         	move.publish(mrer);
-                        	//ros::Duration(0.5).sleep();
-				loop_rate.sleep();
+                        	ros::Duration(0.5).sleep();
 
                         	mrsr.joint_angles[0] = 0.342;
                         	mrer.joint_angles[0] = 0.349;
@@ -118,8 +117,7 @@ int main(int argc, char ** argv){
                         	mrer.speed = 0.5;
                         	move.publish(mrsr);
                         	move.publish(mrer);
-                        	//ros::Duration(0.5).sleep();
-				loop_rate.sleep();
+                        	ros::Duration(0.5).sleep();
 			}
 			mrsp.joint_angles[0] = 1.4;
                 	mrsp.speed = 0.5;
@@ -136,27 +134,63 @@ int main(int argc, char ** argv){
 			// moves hands
 			for(j = 0; j < 6; j++){
 				mrsp.joint_angles[0] = 0.7;
-				mrsp.speed = 0.4;
+				mrsp.speed = 0.1;
+				mrsr.joint_angles[0] = -1;
+				mrsr.speed = 0.1;
 				mrer.joint_angles[0] = 0.5;
-				mrer.speed = 0.4;
-				mrey.joint_angles[0] = 0.7;
-				mrey.speed = 0.4;
+				mrer.speed = 0.1;
+				mrey.joint_angles[0] = -0.7;
+				mrey.speed = 0.1;
 				move.publish(mrsp);
+				move.publish(mrsr);
 				move.publish(mrer);
 				move.publish(mrey);
+				mlsp.joint_angles[0] = 0.7;
+                                mlsp.speed = 0.1;
+                                mlsr.joint_angles[0] = -1;
+                                mlsr.speed = 0.1;
+                                mler.joint_angles[0] = 0.5;
+                                mler.speed = 0.1;
+                                mley.joint_angles[0] = -0.7;
+                                mley.speed = 0.1;
+                                move.publish(mlsp);
+                                move.publish(mlsr);
+                                move.publish(mler);
+                                move.publish(mley);
 				ros::Duration(0.5).sleep();
 	
 				mrsp.joint_angles[0] = 0;
-				mrsp.speed = 0.4;
+				mrsp.speed = 0.1;
+				mrsr.joint_angles[0] = -0.5;
+				mrsr.speed = 0.1;
 				mrer.joint_angles[0] = 0;
-				mrer.speed = 0.4;
+				mrer.speed = 0.1;
 				mrey.joint_angles[0] = 0;
-				mrey.speed = 0.4;
+				mrey.speed = 0.1;
 				move.publish(mrsp);
+				move.publish(mrsr);
 				move.publish(mrer);
 				move.publish(mrey);
+				mlsp.joint_angles[0] = 0;
+                                mlsp.speed = 0.1;
+                                mlsr.joint_angles[0] = -0.5;
+                                mlsr.speed = 0.1;
+                                mler.joint_angles[0] = 0;
+                                mler.speed = 0.1;
+                                mley.joint_angles[0] = 0;
+                                mley.speed = 0.1;
+                                move.publish(mlsp);
+                                move.publish(mlsr);
+                                move.publish(mler);
+                                move.publish(mley);
 				ros::Duration(0.5).sleep();
 			}
+		
+			mrsp.joint_angles[0] = 1.4;
+                        mrsp.speed = 0.5;
+                        move.publish(mrsp);
+                        loop_rate.sleep();
+                        ros::Duration(5).sleep();
 
 		/*
 			words.data = "I am a humanoid robot that is capable of many things.";
