@@ -99,7 +99,7 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 			
 			words.data = "Hello. My name is BLUE. And today I will be teaching you how to dance the hula at a luau.";
-			talk.publish(words);
+			//talk.publish(words);
 
 			// waves
 			for(j = 0; j < 5; j++){
@@ -127,15 +127,15 @@ int main(int argc, char ** argv){
 			ros::Duration(2).sleep();
 
 			words.data = "The first thing you are going to need for a luaua is a nice skirt to fit the Hawaiian theme.";
-			talk.publish(words);
+			//talk.publish(words);
 
 			ROS_INFO("MOVING HANDS WHILE TALKING\n");
 
 			// moves hands
 			for(j = 0; j < 6; j++){
-				mrsp.joint_angles[0] = 0.7;
+				mrsp.joint_angles[0] = 1;
 				mrsp.speed = 0.1;
-				mrsr.joint_angles[0] = -1;
+				mrsr.joint_angles[0] = -0.4;
 				mrsr.speed = 0.1;
 				mrer.joint_angles[0] = 0.5;
 				mrer.speed = 0.1;
@@ -147,7 +147,7 @@ int main(int argc, char ** argv){
 				move.publish(mrey);
 				mlsp.joint_angles[0] = 0.7;
                                 mlsp.speed = 0.1;
-                                mlsr.joint_angles[0] = 1;
+                                mlsr.joint_angles[0] = 0.4;
                                 mlsr.speed = 0.1;
                                 mler.joint_angles[0] = 0.5;
                                 mler.speed = 0.1;
@@ -159,9 +159,9 @@ int main(int argc, char ** argv){
                                 move.publish(mley);
 				ros::Duration(0.5).sleep();
 	
-				mrsp.joint_angles[0] = 0;
+				mrsp.joint_angles[0] = 1;
 				mrsp.speed = 0.1;
-				mrsr.joint_angles[0] = -0.5;
+				mrsr.joint_angles[0] = 0;
 				mrsr.speed = 0.1;
 				mrer.joint_angles[0] = 0;
 				mrer.speed = 0.1;
@@ -173,7 +173,7 @@ int main(int argc, char ** argv){
 				move.publish(mrey);
 				mlsp.joint_angles[0] = 0;
                                 mlsp.speed = 0.1;
-                                mlsr.joint_angles[0] = -0.5;
+                                mlsr.joint_angles[0] = 0;
                                 mlsr.speed = 0.1;
                                 mler.joint_angles[0] = 0;
                                 mler.speed = 0.1;
@@ -188,7 +188,10 @@ int main(int argc, char ** argv){
 		
 			mrsp.joint_angles[0] = 1.4;
                         mrsp.speed = 0.5;
+			mlsp.joint_angles[0] = 1.4;
+			mlsp.speed = 0.5;
                         move.publish(mrsp);
+			move.publish(mlsp);
                         loop_rate.sleep();
                         ros::Duration(5).sleep();
 
