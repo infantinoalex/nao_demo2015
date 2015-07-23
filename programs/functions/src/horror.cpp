@@ -133,8 +133,6 @@ int main(int argc, char **argv) {
 
     }      
  
-    ros::spinOnce();
-
     else if ( button_number == 3 && button_state == 1 ) {
 
       lh.joint_angles[0] = 1.0; //open
@@ -337,14 +335,6 @@ int main(int argc, char **argv) {
       */
       /************************************************/
 
-    ros::spinOnce();
-}
-    else if ( button_number == 2 && button_state == 1 ) {
-
-      lh.joint_angles[0] = 1.0;
-      lh.speed = 0.5;
-      pub_move.publish(lh);
- 
     }
 
     ros::spinOnce();
