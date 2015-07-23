@@ -123,7 +123,7 @@ int main(int argc, char **argv) {
     ros::Duration(1).sleep();
 
     /************************************************/
-
+    /*
     //narration.data = "Bend knees.";
     pub_narration.publish(narration);
 
@@ -149,9 +149,9 @@ int main(int argc, char **argv) {
     pub_move.publish(rap);
 
     ros::Duration(1).sleep();
-
+    */
     /************************************************/
-
+    /*
     //narration.data = "Open hips.";
     pub_narration.publish(narration);
 
@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
     rar.speed = 0.1;
     pub_move.publish(lar);
     pub_move.publish(rar);
-
+    */
     /************************************************/
 
     //narration.data = "hula arms.";
@@ -252,8 +252,8 @@ int main(int argc, char **argv) {
       rsr.speed = 0.2;
       pub_move.publish(rsr);
 
-      ler.joint_angles[0] = -1.30;
-      rer.joint_angles[0] = -1.30;
+      ler.joint_angles[0] = -1.35;
+      rer.joint_angles[0] = -1.35;
       ler.speed = 0.5;
       rer.speed = 0.5;
       pub_move.publish(ler);
@@ -290,8 +290,8 @@ int main(int argc, char **argv) {
       rsr.speed = 0.2;
       pub_move.publish(rsr);
  
-      ler.joint_angles[0] = -1.75;
-      rer.joint_angles[0] = -1.75;
+      ler.joint_angles[0] = -1.70;
+      rer.joint_angles[0] = -1.70;
       ler.speed = 0.5;
       rer.speed = 0.5;
       pub_move.publish(ler);
