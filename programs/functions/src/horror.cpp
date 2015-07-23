@@ -204,7 +204,7 @@ int main(int argc, char **argv) {
       ros::Duration(3).sleep();
       
       /************************************************/
-      
+      /*      
       //narration.data = "Arranging arms.";
       pub_narration.publish(narration);
 
@@ -248,7 +248,7 @@ int main(int argc, char **argv) {
       ros::Duration(1).sleep();
   
       bool run = true;
-       
+      */
       /************************************************/
       /*
       std_msgs::Bool sing;
