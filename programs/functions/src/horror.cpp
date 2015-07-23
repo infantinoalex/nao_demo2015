@@ -199,14 +199,14 @@ int main(int argc, char **argv) {
         lh.joint_angles[0] = 0.0;
         lh.speed = 0.5;
         pub_move.publish(lh);
+  
+        narration.data = "Thank you!.";
+        pub_narration.publish(narration);
 
         ros::spinOnce();
         loop_rate.sleep();
 
       }
-  
-      narration.data = "Thank you!.";
-      pub_narration.publish(narration);
  
       bool run = true;
 
@@ -221,7 +221,7 @@ int main(int argc, char **argv) {
         //narration.data = "Arranging arms.";
         pub_narration.publish(narration);
 
-        lsp.joint_angles[0] = -1.4;
+        lsp.joint_angles[0] = -1.0;
         lsp.speed = 0.5;
         pub_move.publish(lsp);
   
@@ -262,7 +262,7 @@ int main(int argc, char **argv) {
        
         /************************************************/
  
-        lsp.joint_angles[0] = -1.8;
+        lsp.joint_angles[0] = -1.6;
         lsp.speed = 0.5;
         pub_move.publish(lsp);
      
