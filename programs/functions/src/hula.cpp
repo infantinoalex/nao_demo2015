@@ -209,7 +209,7 @@ int main(int argc, char **argv) {
 
     ros::Duration(1).sleep();
 
-    rwy.joint_angles[0] = 1.0;
+    rwy.joint_angles[0] = 1.5;
     rwy.speed = 0.5;
     pub_move.publish(rwy);
 
@@ -253,11 +253,11 @@ int main(int argc, char **argv) {
       pub_move.publish(rsr);
 
       ler.joint_angles[0] = -1.35;
-      rer.joint_angles[0] = -1.35;
+      //rer.joint_angles[0] = -1.35;
       ler.speed = 0.5;
-      rer.speed = 0.5;
+      //rer.speed = 0.5;
       pub_move.publish(ler);
-      pub_move.publish(rer);
+      //pub_move.publish(rer);
 
       /************************************************/
 
@@ -291,11 +291,11 @@ int main(int argc, char **argv) {
       pub_move.publish(rsr);
  
       ler.joint_angles[0] = -1.70;
-      rer.joint_angles[0] = -1.70;
+      //rer.joint_angles[0] = -1.70;
       ler.speed = 0.5;
-      rer.speed = 0.5;
+      //rer.speed = 0.5;
       pub_move.publish(ler);
-      pub_move.publish(rer);
+      //pub_move.publish(rer);
  
       /************************************************/
   
