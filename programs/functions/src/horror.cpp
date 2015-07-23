@@ -329,7 +329,7 @@ int main(int argc, char **argv) {
       /************************************************/
 
     ros::spinOnce();
-
+}
     else if ( button_number == 2 && button_state == 1 ) {
 
       lh.joint_angles[0] = 1.0;
