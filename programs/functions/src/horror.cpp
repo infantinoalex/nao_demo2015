@@ -1,9 +1,20 @@
 #include <ros/ros.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
+#include <nao_msgs/TactileTouch.h>
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Bool.h>
 #include <sstream>
+
+int button_number, button_state;
+
+void callback( const nao_msgs::TactileTouch::ConstPtr& button ) {
+
+  button_number = button->button;
+  button_state = button->state;
+
+}
+
 
 
 int main(int argc, char **argv) {
@@ -16,6 +27,9 @@ int main(int argc, char **argv) {
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
   ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
   ros::Publisher pub_sing_command = node.advertise<std_msgs::Bool>("horror", 100);
+
+  //All the subscribers
+  ros::Subscriber sub_head_sensors = node.subscribe("tactile_touch", 100, callback);
 
   //All the message declarations
   std_msgs::String narration;
@@ -107,114 +121,133 @@ int main(int argc, char **argv) {
   ros::Rate loop_rate(15); 
   while (ros::ok()) {
 
-    /************************************************/
+    ros::spinOnce();
 
-    //narration.data = "Stand up.";
-    pub_narration.publish(narration);
+    if ( button_number == 3 && button_state == 0 ) {
 
-    walk.linear.x = 1;
-    pub_walk.publish(walk);
+      ros::spinOnce();
+  
+      lh.joint_angles[0] = 0.0;
+      lh.speed = 0.5;
+      pub_move.publish(lh);
 
-    ros::Duration(1).sleep();
+     
+      /************************************************/
+      /*
+      //narration.data = "Stand up.";
+      pub_narration.publish(narration);
+  
+      walk.linear.x = 1;
+      pub_walk.publish(walk);
+  
+      ros::Duration(1).sleep();
+  
+      walk.linear.x = 0;
+      pub_walk.publish(walk);
+  
+      ros::Duration(1).sleep();
+      */
+      /************************************************/
+      /*
+      //narration.data = "Extend arm to grab knife.";
+      pub_narration.publish(narration);
+  
+      lsp.joint_angles[0] = 0.0;
+      lsp.speed = 0.5;
+      pub_move.publish(lsp);
+  
+      ley.joint_angles[0] = -1.5;
+      ley.speed = 0.5;
+      pub_move.publish(ley);
+  
+      lwy.joint_angles[0] = -1.5;
+      lwy.speed = 0.5;
+      pub_move.publish(lwy);
+  
+      lh.joint_angles[0] = 1.0;
+      lh.speed = 0.5;
+      pub_move.publish(lh);
+  
+      ros::Duration(1).sleep();
+  
+      narration.data = "Put the knife in my hand so I can grab it please!";
+      pub_narration.publish(narration);
+  
+      ros::Duration(5).sleep();
+      */
+      /************************************************/
+      /*
+      ros::spinOnce();
+  
+      while ( button_number == 1 && button_state == 0 ) {
+  
+        ros::spinOnce();
+  
+      }
 
-    walk.linear.x = 0;
-    pub_walk.publish(walk);
+      lh.joint_angles[0] = 0.0;
+      lh.speed = 0.5;
+      pub_move.publish(lh);
+  
+      narration.data = "Thank you!.";
+      pub_narration.publish(narration);
+ 
+      ros::Duration(3).sleep();
+      */
+      /************************************************/
+      /*
+      //narration.data = "Arranging arms.";
+      pub_narration.publish(narration);
 
-    ros::Duration(1).sleep();
+      lsp.joint_angles[0] = -1.6;
+      lsp.speed = 0.5;
+      pub_move.publish(lsp);
+  
+      lsr.joint_angles[0] = 0.30;
+      lsr.speed = 0.5;
+      pub_move.publish(lsr);
+  
+      ley.joint_angles[0] = -0.5;
+      ley.speed = 0.5;
+      pub_move.publish(ley);
+  
+      ler.joint_angles[0] = -0.5;
+      ler.speed = 0.5;
+      pub_move.publish(ler);
+  
+  
+      rsp.joint_angles[0] = 1.8;
+      rsp.speed = 0.5;
+      pub_move.publish(rsp);
+  
+      rsr.joint_angles[0] = 0.0;
+      rsr.speed = 0.5;
+      pub_move.publish(rsr);
+  
+      rey.joint_angles[0] = 2.0;
+      rey.speed = 0.5;
+      pub_move.publish(rey);
+  
+      rer.joint_angles[0] = 1.5;
+      rer.speed = 0.5;
+      pub_move.publish(rer);
+  
+      rh.joint_angles[0] = 0.0;
+      rh.speed = 1.0;
+      pub_move.publish(rh);
+  
+      ros::Duration(1).sleep();
+  
+      bool run = true;
+      */ 
+      /************************************************/
+      /*
+      std_msgs::Bool sing;
+      sing.data = run;
+      pub_sing_command.publish(sing);
 
-    /************************************************/
-
-    //narration.data = "Extend arm to grab knife.";
-    pub_narration.publish(narration);
-
-    lsp.joint_angles[0] = 0.0;
-    lsp.speed = 0.5;
-    pub_move.publish(lsp);
-
-    ley.joint_angles[0] = -1.5;
-    ley.speed = 0.5;
-    pub_move.publish(ley);
-
-    lwy.joint_angles[0] = -1.5;
-    lwy.speed = 0.5;
-    pub_move.publish(lwy);
-
-    lh.joint_angles[0] = 1.0;
-    lh.speed = 0.5;
-    pub_move.publish(lh);
-
-    ros::Duration(1).sleep();
-
-    /************************************************/
-
-    narration.data = "Put the knife in my hand so I can grab it please!";
-    pub_narration.publish(narration);
-
-    ros::Duration(5).sleep();
-
-    lh.joint_angles[0] = 0.0;
-    lh.speed = 0.5;
-    pub_move.publish(lh);
-
-    narration.data = "Thank you!.";
-    pub_narration.publish(narration);
-
-    ros::Duration(3).sleep();
-
-    /************************************************/
-    
-    //narration.data = "Arranging arms.";
-    pub_narration.publish(narration);
-
-    lsp.joint_angles[0] = -1.6;
-    lsp.speed = 0.5;
-    pub_move.publish(lsp);
-
-    lsr.joint_angles[0] = 0.30;
-    lsr.speed = 0.5;
-    pub_move.publish(lsr);
-
-    ley.joint_angles[0] = -0.5;
-    ley.speed = 0.5;
-    pub_move.publish(ley);
-
-    ler.joint_angles[0] = -0.5;
-    ler.speed = 0.5;
-    pub_move.publish(ler);
-
-
-    rsp.joint_angles[0] = 1.8;
-    rsp.speed = 0.5;
-    pub_move.publish(rsp);
-
-    rsr.joint_angles[0] = 0.0;
-    rsr.speed = 0.5;
-    pub_move.publish(rsr);
-
-    rey.joint_angles[0] = 2.0;
-    rey.speed = 0.5;
-    pub_move.publish(rey);
-
-    rer.joint_angles[0] = 1.5;
-    rer.speed = 0.5;
-    pub_move.publish(rer);
-
-    rh.joint_angles[0] = 1.0;
-    rh.speed = 1.0;
-    pub_move.publish(rh);
-
-    ros::Duration(1).sleep();
-
-    bool run = true;
-    
-    /************************************************/
-    /*
-    std_msgs::Bool sing;
-    sing.data = run;
-    pub_sing_command.publish(sing);
-
-    while (run = true) { 
-    */
+      while (run = true) { 
+      */
       /************************************************/
       /*
       //narration.data = "Lean right.";
@@ -294,6 +327,16 @@ int main(int argc, char **argv) {
       ros::Duration(1).sleep();
       */
       /************************************************/
+
+    ros::spinOnce();
+
+    else if ( button_number == 3 && button_state == 1 ) {
+
+      lh.joint_angles[0] = 1.0;
+      lh.speed = 0.5;
+      pub_move.publish(lh);
+ 
+    }
 
     ros::spinOnce();
     loop_rate.sleep();
