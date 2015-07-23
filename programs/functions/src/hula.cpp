@@ -13,10 +13,12 @@ int main(int argc, char **argv) {
   //All the publishers
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
+  ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
   ros::Publisher pub_sing_command = node.advertise<std_msgs::Bool>("hula_dance", 100);
 
   //All the message declarations
   std_msgs::String narration;
+  geometry_msgs::Twist walk;
   nao_msgs::JointAnglesWithSpeed hy;
   nao_msgs::JointAnglesWithSpeed hp;
   nao_msgs::JointAnglesWithSpeed lsp;
