@@ -133,11 +133,8 @@ int main(int argc, char **argv) {
 
     }      
  
-<<<<<<< HEAD
     else if ( button_number == 3 && button_state == 1 ) {
-=======
     else */if ( button_number == 3 && button_state == 1 ) {
->>>>>>> 6c7bcfc436bf10303be5746b5d528d5543630d14
 
       lh.joint_angles[0] = 1.0; //open
       lh.speed = 0.5;
