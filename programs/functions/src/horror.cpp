@@ -7,13 +7,13 @@
 
 int main(int argc, char **argv) {
 
-  ros::init(argc, argv, "hula_dance");
+  ros::init(argc, argv, "horror");
   ros::NodeHandle node;
 
   //All the publishers
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
-  ros::Publisher pub_sing_command = node.advertise<std_msgs::Bool>("hula_dance", 100);
+  ros::Publisher pub_sing_command = node.advertise<std_msgs::Bool>("horror", 100);
 
   //All the message declarations
   std_msgs::String narration;
@@ -106,21 +106,6 @@ int main(int argc, char **argv) {
 
     /************************************************/
 
-    //narration.data = "Stand up to do the hula.";
-    pub_narration.publish(narration);
-
-    walk.linear.x = 1;
-    pub_walk.publish(walk);
-
-    ros::Duration(1).sleep();
-
-    walk.linear.x = 0;
-    pub_walk.publish(walk);
-
-    ros::Duration(1).sleep();
-
-    /************************************************/
-
     //narration.data = "Bend knees.";
     pub_narration.publish(narration);
 
@@ -204,9 +189,7 @@ int main(int argc, char **argv) {
     rer.speed = 0.5;
     pub_move.publish(rer);
 
-    ros::Duration(1).sleep();
-
-    rwy.joint_angles[0] = 1.0;
+    rwy.joint_angles[0] = 0.5;
     rwy.speed = 0.5;
     pub_move.publish(rwy);
 
@@ -241,19 +224,20 @@ int main(int argc, char **argv) {
       pub_move.publish(rhr);
       pub_move.publish(rar);
   
-      lsr.joint_angles[0] = 0.4;
+      lsr.joint_angles[0] = 0.0;
       lsr.speed = 0.2;
       pub_move.publish(lsr);
 
-      rsr.joint_angles[0] = 0.2;
+      rsr.joint_angles[0] = -0.2;
       rsr.speed = 0.2;
       pub_move.publish(rsr);
 
-      ler.joint_angles[0] = -1.30;
-      rer.joint_angles[0] = -1.30;
+      ler.joint_angles[0] = -1.40;
       ler.speed = 0.5;
-      rer.speed = 0.5;
       pub_move.publish(ler);
+
+      rer.joint_angles[0] = -1.40;
+      rer.speed = 0.5;
       pub_move.publish(rer);
 
       /************************************************/
@@ -279,19 +263,20 @@ int main(int argc, char **argv) {
       pub_move.publish(rhr);
       pub_move.publish(rar);
    
-      lsr.joint_angles[0] = -0.2;
+      lsr.joint_angles[0] = -0.25;
       lsr.speed = 0.2;
       pub_move.publish(lsr);
 
-      rsr.joint_angles[0] = -0.4;
+      rsr.joint_angles[0] = -0.45;
       rsr.speed = 0.2;
       pub_move.publish(rsr);
  
-      ler.joint_angles[0] = -1.75;
-      rer.joint_angles[0] = -1.75;
+      ler.joint_angles[0] = -1.65;
       ler.speed = 0.5;
-      rer.speed = 0.5;
       pub_move.publish(ler);
+
+      rer.joint_angles[0] = -1.65;
+      rer.speed = 0.5;
       pub_move.publish(rer);
  
       /************************************************/
