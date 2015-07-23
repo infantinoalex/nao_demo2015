@@ -124,14 +124,14 @@ int main(int argc, char **argv) {
 
     /************************************************/
 
-    //narration.data = "extend arm to grab knife.";
+    //narration.data = "eExtend arm to grab knife.";
     pub_narration.publish(narration);
 
     lsp.joint_angles[0] = 0.0;
     lsp.speed = 0.5;
     pub_move.publish(lsp);
 
-    ley.joint_angles[0] = 1.0;
+    ley.joint_angles[0] = -1.0;
     ley.speed = 0.5;
     pub_move.publish(ley);
 
@@ -139,7 +139,7 @@ int main(int argc, char **argv) {
     lh.speed = 0.5;
     pub_move.publish(lh);
 
-    ros::Duration(1).sleep();
+    ros::Duration(5).sleep();
 
     /************************************************/
 
@@ -156,51 +156,51 @@ int main(int argc, char **argv) {
     ros::Duration(3).sleep();
 
     /************************************************/
-    /*
+    
     //narration.data = "Arranging arms.";
     pub_narration.publish(narration);
 
-    lsp.joint_angles[0] = 1.1;
+    lsp.joint_angles[0] = -1.6;
     lsp.speed = 0.5;
     pub_move.publish(lsp);
 
-    lsr.joint_angles[0] = -0.25;
+    lsr.joint_angles[0] = 0.30;
     lsr.speed = 0.5;
     pub_move.publish(lsr);
 
-    ley.joint_angles[0] = -2.1;
+    ley.joint_angles[0] = -0.5;
     ley.speed = 0.5;
     pub_move.publish(ley);
 
-    ler.joint_angles[0] = -1.55;
+    ler.joint_angles[0] = -0.5;
     ler.speed = 0.5;
     pub_move.publish(ler);
 
 
-    rsp.joint_angles[0] = 1.1;
+    rsp.joint_angles[0] = 0.2;
     rsp.speed = 0.5;
     pub_move.publish(rsp);
 
-    rsr.joint_angles[0] = -0.55;
+    rsr.joint_angles[0] = 0.0;
     rsr.speed = 0.5;
     pub_move.publish(rsr);
 
-    rey.joint_angles[0] = -0.21;
+    rey.joint_angles[0] = 2.0;
     rey.speed = 0.5;
     pub_move.publish(rey);
 
-    rer.joint_angles[0] = 1.55;
+    rer.joint_angles[0] = 1.5;
     rer.speed = 0.5;
     pub_move.publish(rer);
 
-    rwy.joint_angles[0] = 0.5;
-    rwy.speed = 0.5;
-    pub_move.publish(rwy);
+    rh.joint_angles[0] = 1.0;
+    rh.speed = 1.0;
+    pub_move.publish(rh);
 
     ros::Duration(1).sleep();
 
     bool run = true;
-    */
+    
     /************************************************/
     /*
     std_msgs::Bool sing;
