@@ -124,7 +124,7 @@ int main(int argc, char **argv) {
 
     /************************************************/
 
-    //narration.data = "eExtend arm to grab knife.";
+    //narration.data = "Extend arm to grab knife.";
     pub_narration.publish(narration);
 
     lsp.joint_angles[0] = 0.0;
@@ -135,16 +135,22 @@ int main(int argc, char **argv) {
     ley.speed = 0.5;
     pub_move.publish(ley);
 
+    lwy.joint_angles[0] = -1.0;
+    lwy.speed = 0.5;
+    pub_move.publish(lwy);
+
     lh.joint_angles[0] = 1.0;
     lh.speed = 0.5;
     pub_move.publish(lh);
 
-    ros::Duration(5).sleep();
+    ros::Duration(1).sleep();
 
     /************************************************/
 
     narration.data = "Put the knife in my hand so I can grab it please!";
     pub_narration.publish(narration);
+
+    ros::Duration(5).sleep();
 
     lh.joint_angles[0] = 0.0;
     lh.speed = 0.5;
