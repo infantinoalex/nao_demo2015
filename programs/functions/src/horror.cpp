@@ -338,7 +338,6 @@ int main(int argc, char **argv) {
       /************************************************/
 
     ros::spinOnce();
-<<<<<<< HEAD
 }
     else if ( button_number == 2 && button_state == 1 ) {
 
@@ -349,8 +348,6 @@ int main(int argc, char **argv) {
     }
 
     ros::spinOnce();
-=======
->>>>>>> 460f21072c1292907ded2334ab477fe8a133e1bc
     loop_rate.sleep();
 
   }
