@@ -217,6 +217,14 @@ int main(int argc, char **argv) {
       while (run = true) {
         
         /************************************************/
+        
+        //narration.data = "Stand up.";
+        pub_narration.publish(narration);
+  
+        walk.linear.x = 1;
+        pub_walk.publish(walk);
+  
+        /************************************************/
 
         //narration.data = "Arranging arms.";
         pub_narration.publish(narration);
