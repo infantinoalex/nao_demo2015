@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
 
   //All the message declarations
   std_msgs::String narration;
-  geometry_msgs::Twist walk
+  geometry_msgs::Twist walk;
   nao_msgs::JointAnglesWithSpeed hy;
   nao_msgs::JointAnglesWithSpeed hp;
   nao_msgs::JointAnglesWithSpeed lsp;
