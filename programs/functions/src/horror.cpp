@@ -131,11 +131,11 @@ int main(int argc, char **argv) {
     lsp.speed = 0.5;
     pub_move.publish(lsp);
 
-    ley.joint_angles[0] = -1.0;
+    ley.joint_angles[0] = -1.5;
     ley.speed = 0.5;
     pub_move.publish(ley);
 
-    lwy.joint_angles[0] = -1.0;
+    lwy.joint_angles[0] = -1.5;
     lwy.speed = 0.5;
     pub_move.publish(lwy);
 
