@@ -266,9 +266,7 @@ int main(int argc, char **argv) {
       pub_sing_command.publish(sing);
       while (run = true) { 
       */
-=======
->>>>>>> e86bf80579addcf26f371ff0ca89350f89c02b07
-      while (run = true) {} 
+      /*while (run = true) {} 
       */
       /************************************************/
       /*
