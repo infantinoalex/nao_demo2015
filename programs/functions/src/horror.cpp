@@ -123,10 +123,21 @@ int main(int argc, char **argv) {
 
     ros::spinOnce();
     loop_rate.sleep();
- 
-    if ( button_number == 3 && button_state == 1 ) {
+    /*
+    if ( button_number == 1 && button_state == 1 ) {
 
-      lh.joint_angles[0] = 0.5; //open
+      lh.joint_angles[0] = 0.0; //close
+      lh.speed = 0.5;
+      pub_move.publish(lh);
+ 
+      ros::spinOnce();
+      loop_rate.sleep();
+
+    }
+
+    else if( button_number == 3 && button_state == 1 ) {
+
+      lh.joint_angles[0] = 1.0; //open
       lh.speed = 0.5;
       pub_move.publish(lh);
  
@@ -136,7 +147,7 @@ int main(int argc, char **argv) {
     }
 
     else {
-    
+    */
       /************************************************/
       /* 
       //narration.data = "Stand up.";
@@ -175,7 +186,7 @@ int main(int argc, char **argv) {
   
       ros::Duration(1).sleep();
   
-      narration.data = "Put the knife in my hand so I can grab it please!";
+      narration.data = "Please!";
       pub_narration.publish(narration);
   
       ros::Duration(5).sleep();
@@ -190,20 +201,20 @@ int main(int argc, char **argv) {
         ros::spinOnce();
         loop_rate.sleep();
   
-      }
- 
-      if ( button_number == 1 && button_state == 1 ) {
+        if ( button_number == 1 && button_state == 1 ) {
   
-        lh.joint_angles[0] = 0.0;
-        lh.speed = 0.5;
-        pub_move.publish(lh);
+          lh.joint_angles[0] = 0.0;
+          lh.speed = 0.5;
+          pub_move.publish(lh);
  
-        narration.data = "Thank you!.";
-        pub_narration.publish(narration);
+          narration.data = "Thank you!.";
+          pub_narration.publish(narration);
  
-        ros::spinOnce();
-        loop_rate.sleep();
+          ros::spinOnce();
+          loop_rate.sleep();
 
+        }
+ 
       }
  
       ros::Duration(3).sleep();
@@ -342,7 +353,7 @@ int main(int argc, char **argv) {
       */
       /************************************************/
 
-    }
+    //}
 
     ros::spinOnce();
     loop_rate.sleep();
