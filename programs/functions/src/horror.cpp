@@ -183,7 +183,7 @@ int main(int argc, char **argv) {
     pub_move.publish(ler);
 
 
-    rsp.joint_angles[0] = 0.2;
+    rsp.joint_angles[0] = 1.8;
     rsp.speed = 0.5;
     pub_move.publish(rsp);
 
