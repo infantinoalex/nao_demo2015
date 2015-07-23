@@ -124,7 +124,7 @@ int main(int argc, char ** argv){
                 	move.publish(mrsp);
 			ROS_INFO("DONE WAVING\n");
 			loop_rate.sleep();
-			ros::Duration(5).sleep();
+			ros::Duration(2).sleep();
 
 			words.data = "The first thing you are going to need for a luaua is a nice skirt to fit the Hawaiian theme.";
 			talk.publish(words);
@@ -147,7 +147,7 @@ int main(int argc, char ** argv){
 				move.publish(mrey);
 				mlsp.joint_angles[0] = 0.7;
                                 mlsp.speed = 0.1;
-                                mlsr.joint_angles[0] = -1;
+                                mlsr.joint_angles[0] = 1;
                                 mlsr.speed = 0.1;
                                 mler.joint_angles[0] = 0.5;
                                 mler.speed = 0.1;
