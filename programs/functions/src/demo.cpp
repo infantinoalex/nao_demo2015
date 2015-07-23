@@ -138,7 +138,7 @@ int main(int argc, char ** argv){
 
 			// moves hands
 			for(j = 0; j < 6; j++){
-				mrsp.joint_angles[0] = 1.3;
+				mrsp.joint_angles[0] = 1;
 				mrsp.speed = 0.1;
 				mrsr.joint_angles[0] = -0.2;
 				mrsr.speed = 0.1;
@@ -150,7 +150,7 @@ int main(int argc, char ** argv){
 				move.publish(mrsr);
 				move.publish(mrer);
 				move.publish(mrey);
-				mlsp.joint_angles[0] = 1.3;
+				mlsp.joint_angles[0] = 1;
                                 mlsp.speed = 0.1;
                                 mlsr.joint_angles[0] = 0.2;
                                 mlsr.speed = 0.1;
@@ -213,7 +213,7 @@ int main(int argc, char ** argv){
 
 			// moves hands
 			for(j = 0; j < 6; j++){
-				mrsp.joint_angles[0] = 1.3;
+				mrsp.joint_angles[0] = 1;
 				mrsp.speed = 0.1;
 				mrsr.joint_angles[0] = -0.2;
 				mrsr.speed = 0.1;
@@ -225,7 +225,7 @@ int main(int argc, char ** argv){
 				move.publish(mrsr);
 				move.publish(mrer);
 				move.publish(mrey);
-				mlsp.joint_angles[0] = 1.3;
+				mlsp.joint_angles[0] = 1;
                                 mlsp.speed = 0.1;
                                 mlsr.joint_angles[0] = 0.2;
                                 mlsr.speed = 0.1;
@@ -288,7 +288,7 @@ int main(int argc, char ** argv){
 
 			// moves hands
 			for(j = 0; j < 6; j++){
-				mrsp.joint_angles[0] = 1.3;
+				mrsp.joint_angles[0] = 1;
 				mrsp.speed = 0.1;
 				mrsr.joint_angles[0] = -0.2;
 				mrsr.speed = 0.1;
@@ -300,7 +300,7 @@ int main(int argc, char ** argv){
 				move.publish(mrsr);
 				move.publish(mrer);
 				move.publish(mrey);
-				mlsp.joint_angles[0] = 1.3;
+				mlsp.joint_angles[0] = 1;
                                 mlsp.speed = 0.1;
                                 mlsr.joint_angles[0] = 0.2;
                                 mlsr.speed = 0.1;
@@ -363,7 +363,7 @@ int main(int argc, char ** argv){
 
 			// moves hands
 			for(j = 0; j < 6; j++){
-				mrsp.joint_angles[0] = 1.3;
+				mrsp.joint_angles[0] = 1;
 				mrsp.speed = 0.1;
 				mrsr.joint_angles[0] = -0.2;
 				mrsr.speed = 0.1;
@@ -375,7 +375,7 @@ int main(int argc, char ** argv){
 				move.publish(mrsr);
 				move.publish(mrer);
 				move.publish(mrey);
-				mlsp.joint_angles[0] = 1.3;
+				mlsp.joint_angles[0] = 1;
                                 mlsp.speed = 0.1;
                                 mlsr.joint_angles[0] = 0.2;
                                 mlsr.speed = 0.1;
