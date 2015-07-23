@@ -98,7 +98,7 @@ int main(int argc, char ** argv){
 			//ros::Duration(1).sleep();
 			loop_rate.sleep();
 			
-			words.data = "Hello. My name is BLUE.";
+			words.data = "Hello. My name is BLUE. And today I will be teaching you how to dance the hula at a luau.";
 			talk.publish(words);
 
 			// waves
@@ -127,52 +127,42 @@ int main(int argc, char ** argv){
 			ROS_INFO("DONE WAVING\n");
 			loop_rate.sleep();
 			ros::Duration(5).sleep();
+
+			words.data = "The first thing you are going to need for a luaua is a nice skirt to fit the Hawaiian theme.";
+			talk.publish(words);
+
+			ROS_INFO("MOVING HANDS WHILE TALKING\n");
+
+			// moves hands
+			for(j = 0; j < 6; j++){
+				mrsp.joint_angles[0] = 0.7;
+				mrsp.speed = 0.4;
+				mrer.joint_angles[0] = 0.5;
+				mrer.speed = 0.4;
+				mrey.joint_angles[0] = 0.7;
+				mrey.speed = 0.4;
+				move.publish(mrsp);
+				move.publish(mrer);
+				move.publish(mrey);
+				ros::Duration(0.5).sleep();
 	
+				mrsp.joint_angles[0] = 0;
+				mrsp.speed = 0.4;
+				mrer.joint_angles[0] = 0;
+				mrer.speed = 0.4;
+				mrey.joint_angles[0] = 0;
+				mrey.speed = 0.4;
+				move.publish(mrsp);
+				move.publish(mrer);
+				move.publish(mrey);
+				ros::Duration(0.5).sleep();
+			}
+
 		/*
 			words.data = "I am a humanoid robot that is capable of many things.";
 			talk.publish(words);
 			loop_rate.sleep();
 
-			words.data = "For example, I can wave.";
-			talk.publish(words);
-			loop_rate.sleep();
-
-			words.data = "But waving is not the only thing I can do.";
-			talk.publish(words);
-			loop_rate.sleep();
-
-			words.data = "I can also do really simple math.";
-			talk.publish(words);
-			loop_rate.sleep();
-
-			words.data = "2 plus 2 equals 5.";
-			talk.publish(words);
-			loop_rate.sleep();
-		
-			words.data = "It is safe to say, I am practically a genious.";
-			talk.publish(words);
-			loop_rate.sleep();
-		
-			words.data = "What I am going to do for you today is very simple.";
-			talk.publish(words);
-			loop_rate.sleep();
-
-			words.data = "I am going to move completely on my own without any help from the losers who programmed me.";
-			talk.publish(words);
-			loop_rate.sleep();
-
-			words.data = "Impossible? Nope, not with the power of ROS.";
-			talk.publish(words);
-			loop_rate.sleep();
-	
-			words.data = "ROS enables me to communicate with all my sensors effortlessly.";
-			talk.publish(words);
-			loop_rate.sleep();
-	
-			words.data = "It is quite amazing.";
-			talk.publish(words);
-			loop_rate.sleep();
-	
 			ros::spinOnce();
 			controlmsgs.demo = false;
 			contrl.publish(controlmsgs);

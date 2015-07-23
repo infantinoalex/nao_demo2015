@@ -561,8 +561,10 @@ int main(int argc, char **argv) {
 
     			ros::Duration(1.5).sleep();
     
+			
+
    		/************************************************/
-	
+	/*
     			//narration.data = "Move to squat position.";
     			pub_narration.publish(narration);
 			
@@ -603,8 +605,9 @@ int main(int argc, char **argv) {
 			
     			ros::Duration(5).sleep();
 	
+	*/
    		/************************************************/
-		/*  
+		
     			//narration.data = "Cheating... step forward.";
     			pub_narration.publish(narration);
 
@@ -616,15 +619,15 @@ int main(int argc, char **argv) {
     			walk.linear.x = 0;
     			pub_walk.publish(walk);
 
-    			ros::Duration(1).sleep();
-    			*/
+    			ros::Duration(3).sleep();
+    			
    		/************************************************/
 
     			//ros::Duration(3).sleep();
     			//ros::shutdown();
 
    		/************************************************/
-  
+ 	 
     			ros::spinOnce();
     			loop_rate.sleep();
 	

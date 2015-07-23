@@ -241,11 +241,11 @@ int main(int argc, char **argv) {
       pub_move.publish(rhr);
       pub_move.publish(rar);
   
-      lsr.joint_angles[0] = 0.0;
+      lsr.joint_angles[0] = 0.4;
       lsr.speed = 0.2;
       pub_move.publish(lsr);
 
-      rsr.joint_angles[0] = -0.2;
+      rsr.joint_angles[0] = 0.2;
       rsr.speed = 0.2;
       pub_move.publish(rsr);
 
@@ -279,11 +279,11 @@ int main(int argc, char **argv) {
       pub_move.publish(rhr);
       pub_move.publish(rar);
    
-      lsr.joint_angles[0] = -0.25;
+      lsr.joint_angles[0] = -0.2;
       lsr.speed = 0.2;
       pub_move.publish(lsr);
 
-      rsr.joint_angles[0] = -0.45;
+      rsr.joint_angles[0] = -0.4;
       rsr.speed = 0.2;
       pub_move.publish(rsr);
  
