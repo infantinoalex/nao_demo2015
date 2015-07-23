@@ -79,7 +79,7 @@ int main(int argc, char ** argv){
 	ros::Publisher pub_contrl = n.advertise<custom_msgs::states>("control_msgs", 100);
 
 	// variable declarations
-	std_msgs::String words;
+	std_msgs::String words; //file_path;
 	geometry_msgs::Twist direct, stop;
 	int i = 0; 
 	bool firsttime = true;
@@ -188,6 +188,8 @@ int main(int argc, char ** argv){
 			if(i == 0){
 				ROS_INFO("WAITING FOR STATEPUBLISHER\n");
 				firsttime = true;
+				//sun.request.file_path.data = "/music/nothing.ogg";
+                                //client.call(sun);
 			}
 			i++;
 			ros::spinOnce();

@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   custom_msgs
+  nao_interaction_msgs
 )
 
 ## System dependencies are found with CMake's conventions

@@ -4,6 +4,7 @@
 #include "std_msgs/String.h"
 #include "custom_msgs/states.h"
 #include "std_srvs/Empty.h"
+#include "nao_interaction_msgs/AudioPlayback.h"
 
 // Global variables to store the imu sensor data
 float orix, oriy, oriz, oriw, avx, avy, avz, lax, lay, laz;
@@ -63,6 +64,10 @@ int main(int argc, char ** argv){
 
 	// service call to make body stiff
 	ros::ServiceClient client = n.serviceClient<std_srvs::Empty>("/body_stiffness/enable", 100);
+
+	ros::ServiceClient client1 = n.serviceClient<nao_interaction_msgs::AudioPlayback>("/nao_audio/play_file");
+
+        nao_interaction_msgs::AudioPlayback sun;
 
 	ros::Rate loop_rate(50);
 
@@ -170,6 +175,8 @@ int main(int argc, char ** argv){
 				ros::spinOnce();
 				loop_rate.sleep();
 				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
+				//sun.request.file_path.data = "/music/wos.ogg";
+                                //client1.call(sun);
 				while(controlstate.walk_detect == true){
 					ros::spinOnce();
 					loop_rate.sleep();
@@ -185,7 +192,7 @@ int main(int argc, char ** argv){
 
 		// These values are found when the robot is standing upright
 		// It gets the robot to start walking around using its sonar
-		else if((lax >= -1 && lax <= 1) && (laz <= -9 && laz >= -10.5)){
+		else if((lax >= -2 && lax <= 2) && (laz <= -9 && laz >= -11)){
 			ROS_INFO("CURRENTLY UPRIGHT\n");
 			ros::spinOnce();
 			if(onground){
@@ -196,6 +203,8 @@ int main(int argc, char ** argv){
 				ros::spinOnce();
 				loop_rate.sleep();
 				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
+				//sun.request.file_path.data = "/music/wos.ogg";
+                                //client1.call(sun);
 				while(controlstate.walk_detect == true){
 					ros::spinOnce();
 					loop_rate.sleep();
