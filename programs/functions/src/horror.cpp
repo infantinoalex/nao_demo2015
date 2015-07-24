@@ -16,8 +16,6 @@ void callback( const nao_msgs::TactileTouch::ConstPtr& button ) {
 
 }
 
-
-
 int main(int argc, char **argv) {
 
   ros::init(argc, argv, "horror");
@@ -36,9 +34,7 @@ int main(int argc, char **argv) {
   //All the message declarations
   std_msgs::String narration;
   geometry_msgs::Twist walk;
-
   nao_msgs::FadeRGB leds;
-
   nao_msgs::JointAnglesWithSpeed hy;
   nao_msgs::JointAnglesWithSpeed hp;
   nao_msgs::JointAnglesWithSpeed lsp;
@@ -65,6 +61,9 @@ int main(int argc, char **argv) {
   nao_msgs::JointAnglesWithSpeed rap;
   nao_msgs::JointAnglesWithSpeed lar;
   nao_msgs::JointAnglesWithSpeed rar;
+
+  int i = 0;
+
 
   //All joint name statements
   hy.joint_names.push_back("HeadYaw");
@@ -212,76 +211,107 @@ int main(int argc, char **argv) {
         loop_rate.sleep();
 
       }
- 
-      bool run = true;
 
       ros::Duration(3).sleep();
       
       /************************************************/
-            
-      while (run = true) {
           
-        narration.data = "Prepare to die!.";
-        pub_narration.publish(narration);
- 
-        ros::Duration(3).sleep();
-      
-        /************************************************/
-         
-        //narration.data = "Turn Red.";
-        pub_narration.publish(narration);
+      //narration.data = "Turn Red.";
+      pub_narration.publish(narration);
   
+      leds.led_name = "AllLeds";
+      leds.color.r = 100.0;
+      leds.color.g = 0.0;
+      leds.color.b = 0.0;
+      leds.fade_duration.sec = 1;
+      pub_eye_color.publish(leds);
+       
+      /************************************************/
+
+      //narration.data = "Arranging arms.";
+      pub_narration.publish(narration);
+
+      lsp.joint_angles[0] = -1.6;
+      lsp.speed = 0.5;
+      pub_move.publish(lsp);
+
+      lsr.joint_angles[0] = 0.30;
+      lsr.speed = 0.5;
+      pub_move.publish(lsr);
+
+      ley.joint_angles[0] = -0.5;
+      ley.speed = 0.5;
+      pub_move.publish(ley);
+
+      ler.joint_angles[0] = -0.5;
+      ler.speed = 0.5;
+      pub_move.publish(ler);
+
+
+      rsp.joint_angles[0] = 1.8;
+      rsp.speed = 0.5;
+      pub_move.publish(rsp);
+
+      rsr.joint_angles[0] = 0.0;
+      rsr.speed = 0.5;
+      pub_move.publish(rsr);
+
+      rey.joint_angles[0] = 2.0;
+      rey.speed = 0.5;
+      pub_move.publish(rey);
+
+      rer.joint_angles[0] = 1.5;
+      rer.speed = 0.5;
+      pub_move.publish(rer);
+
+      rh.joint_angles[0] = 0.0;
+      rh.speed = 1.0;
+      pub_move.publish(rh);
+
+      ros::Duration(1).sleep();
+        
+      /************************************************/
+ 
+      //narration.data = "Walk.";
+      pub_narration.publish(narration);
+  
+<<<<<<< HEAD
         leds.led_name = "AllLeds";
         leds.color.r = 100.0;
         leds.color.g = 0.0;
         leds.color.b = 0.0;
         leds.fade_duration.sec = 1;
         pub_eye_color.publish(leds);
+=======
+      walk.linear.x = 1;
+      pub_walk.publish(walk);
+>>>>>>> 285192728f716d1d5945d7b281b6b705964c440e
   
         /************************************************/
+       
+      bool run = true;
 
-        //narration.data = "Arranging arms.";
-        pub_narration.publish(narration);
+      while (run = true) {
+       
+        /************************************************/
+       
+        if ( i % 5 == 0 ) {         
 
+          narration.data = "Prepare to die!.";
+          pub_narration.publish(narration);
+ 
+        }
+     
+        i++;
+ 
+        /************************************************/
+  
         lsp.joint_angles[0] = -1.0;
         lsp.speed = 0.5;
         pub_move.publish(lsp);
-  
-        lsr.joint_angles[0] = 0.30;
-        lsr.speed = 0.5;
-        pub_move.publish(lsr);
-  
-        ley.joint_angles[0] = -0.5;
-        ley.speed = 0.5;
-        pub_move.publish(ley);
-  
-        ler.joint_angles[0] = -0.5;
-        ler.speed = 0.5;
-        pub_move.publish(ler);
-  
-  
-        rsp.joint_angles[0] = 1.8;
-        rsp.speed = 0.5;
-        pub_move.publish(rsp);
-  
-        rsr.joint_angles[0] = 0.0;
-        rsr.speed = 0.5;
-        pub_move.publish(rsr);
-  
-        rey.joint_angles[0] = 2.0;
-        rey.speed = 0.5;
-        pub_move.publish(rey);
-  
-        rer.joint_angles[0] = 1.5;
-        rer.speed = 0.5;
-        pub_move.publish(rer);
-  
-        rh.joint_angles[0] = 0.0;
-        rh.speed = 1.0;
-        pub_move.publish(rh);
-  
+     
         ros::Duration(1).sleep();
-       
+      
         /************************************************/
  
         lsp.joint_angles[0] = -1.6;
@@ -290,14 +320,6 @@ int main(int argc, char **argv) {
      
         ros::Duration(1).sleep();
       
-        /************************************************/
-       
-        //narration.data = "Stand up.";
-        pub_narration.publish(narration);
-  
-        walk.linear.x = 1;
-        pub_walk.publish(walk);
-  
         /************************************************/
 
     }
