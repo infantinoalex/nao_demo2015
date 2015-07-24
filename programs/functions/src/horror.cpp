@@ -190,27 +190,13 @@ int main(int argc, char **argv) {
  
       ros::spinOnce();
       loop_rate.sleep();
-      /* 
-      while ( button_number == 1 && button_state == 0 ) {
+       
+      lh.joint_angles[0] = 0.0;
+      lh.speed = 0.5;
+      pub_move.publish(lh);
   
-        ros::spinOnce();
-        loop_rate.sleep();
-  
-      }
-      
-      if ( button_number == 1 && button_state == 1 ) {
-      */
-        lh.joint_angles[0] = 0.0;
-        lh.speed = 0.5;
-        pub_move.publish(lh);
-  
-        narration.data = "Thank you!";
-        pub_narration.publish(narration);
-
-      //ros::spinOnce();
-      //loop_rate.sleep();
-
-      //}
+      narration.data = "Thank you!";
+      pub_narration.publish(narration);
 
       ros::Duration(3).sleep();
       
@@ -230,47 +216,52 @@ int main(int argc, char **argv) {
 
       //narration.data = "Arranging arms.";
       pub_narration.publish(narration);
-
+  
       lsp.joint_angles[0] = -1.6;
-      lsp.speed = 0.5;
+      lsp.speed = 0.1;
       pub_move.publish(lsp);
 
       lsr.joint_angles[0] = 0.30;
-      lsr.speed = 0.5;
+      lsr.speed = 0.1;
       pub_move.publish(lsr);
 
       ley.joint_angles[0] = -0.5;
-      ley.speed = 0.5;
+      ley.speed = 0.1;
       pub_move.publish(ley);
 
       ler.joint_angles[0] = -0.5;
-      ler.speed = 0.5;
+      ler.speed = 0.1;
       pub_move.publish(ler);
+  
+      lwy.joint_angles[0] = -1.5;
+      lwy.speed = 0.1;
+      pub_move.publish(lwy);
 
 
       rsp.joint_angles[0] = 1.8;
-      rsp.speed = 0.5;
+      rsp.speed = 0.1;
       pub_move.publish(rsp);
-
+  
       rsr.joint_angles[0] = 0.0;
-      rsr.speed = 0.5;
+      rsr.speed = 0.1;
       pub_move.publish(rsr);
-
+  
       rey.joint_angles[0] = 2.0;
-      rey.speed = 0.5;
+      rey.speed = 0.1;
       pub_move.publish(rey);
-
+  
       rer.joint_angles[0] = 1.5;
-      rer.speed = 0.5;
+      rer.speed = 0.1;
       pub_move.publish(rer);
-
+  
       rh.joint_angles[0] = 0.0;
-      rh.speed = 1.0;
+      rh.speed = 0.1;
       pub_move.publish(rh);
-
+  
       ros::Duration(1).sleep();
-        
+          
       /************************************************/
+<<<<<<< HEAD
       //narration.data = "Walk.";
       pub_narration.publish(narration);
   
@@ -284,6 +275,9 @@ int main(int argc, char **argv) {
         pub_walk.publish(walk);
   
         /************************************************/
+=======
+      
+>>>>>>> 4a8e9556a1ca1a29fa21b799329744c914081386
       bool run = true;
 
       while (run = true) {
@@ -300,17 +294,54 @@ int main(int argc, char **argv) {
         i++;
  
         /************************************************/
-  
-        lsp.joint_angles[0] = -1.0;
-        lsp.speed = 0.5;
+ 
+        lsp.joint_angles[0] = -1.6;
+        lsp.speed = 0.1;
         pub_move.publish(lsp);
-     
+
+        lsr.joint_angles[0] = 0.30;
+        lsr.speed = 0.1;
+        pub_move.publish(lsr);
+
+        ley.joint_angles[0] = -0.5;
+        ley.speed = 0.1;
+        pub_move.publish(ley);
+
+        ler.joint_angles[0] = -0.5;
+        ler.speed = 0.1;
+        pub_move.publish(ler);
+   
+        lwy.joint_angles[0] = -1.5;
+        lwy.speed = 0.1;
+        pub_move.publish(lwy);
+
+
+        rsp.joint_angles[0] = 1.8;
+        rsp.speed = 0.1;
+        pub_move.publish(rsp);
+  
+        rsr.joint_angles[0] = 0.0;
+        rsr.speed = 0.1;
+        pub_move.publish(rsr);
+  
+        rey.joint_angles[0] = 2.0;
+        rey.speed = 0.1;
+        pub_move.publish(rey);
+  
+        rer.joint_angles[0] = 1.5;
+        rer.speed = 0.1;
+        pub_move.publish(rer);
+  
+        rh.joint_angles[0] = 0.0;
+        rh.speed = 0.1;
+        pub_move.publish(rh);
+  
         ros::Duration(1).sleep();
-      
+          
         /************************************************/
  
         lsp.joint_angles[0] = -1.6;
-        lsp.speed = 0.5;
+        lsp.speed = 0.3;
         pub_move.publish(lsp);
      
         ros::Duration(1).sleep();
@@ -323,7 +354,7 @@ int main(int argc, char **argv) {
         walk.linear.x = 1;
         pub_walk.publish(walk);
       
-        ros::Duration(2).sleep();
+        ros::Duration(5).sleep();
 
         walk.linear.x = 0;
         pub_walk.publish(walk);
