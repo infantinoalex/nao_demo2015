@@ -8,11 +8,11 @@ int main(int argc, char ** argv){
 	
 	ros::Publisher led = n.advertise<nao_msgs::FadeRGB>("/fade_rgb", 100);
 
-	ros::ServiceClient client = n.serviceClient<nao_interaction_msgs::AudioPlayback>("/nao_audio/play_file");
+	//ros::ServiceClient client = n.serviceClient<nao_interaction_msgs::AudioPlayback>("/nao_audio/play_file");
 
 	nao_msgs::FadeRGB chest, face, ears, feet, all, head;
 
-	nao_interaction_msgs::AudioPlayback dance;
+	//nao_interaction_msgs::AudioPlayback dance;
 
 	ros::Rate loop_rate(50);
 
@@ -28,7 +28,7 @@ int main(int argc, char ** argv){
 	while(ros::ok()){
 		ros::spinOnce();
 		if(firsttime){
-			//dance.request.file_path.data = "/music/dance.ogg";
+			//dance.request.file_path.data = "/music/das.ogg";
 			//client.call(dance);
 			firsttime = false;
 		}
@@ -36,13 +36,13 @@ int main(int argc, char ** argv){
 		all.color.r = 0;
 		all.color.g = 0;
 		all.color.b = 0;
-		all.fade_duration.sec = 0.5;
+		all.fade_duration.sec = 0.1;
 		led.publish(all);
-		ros::Duration(0.5).sleep();
-		
+		ros::Duration(0.25).sleep();
+
 		all.color.b = 99;
 		led.publish(all);
-		ros::Duration(0.5).sleep();
+		ros::Duration(0.25).sleep();
 	}		
 	
 	return 0;
