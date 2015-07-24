@@ -156,7 +156,7 @@ int main(int argc, char **argv) {
       walk.linear.x = 0;
       pub_walk.publish(walk);
   
-      ros::Duration(1).sleep();
+      ros::Duration(3).sleep();
       
       /************************************************/
       
@@ -179,7 +179,7 @@ int main(int argc, char **argv) {
       lh.speed = 0.5;
       pub_move.publish(lh);
   
-      ros::Duration(1).sleep();
+      ros::Duration(2).sleep();
   
       narration.data = "Put the knife in my hand please!";
       pub_narration.publish(narration);
@@ -188,9 +188,6 @@ int main(int argc, char **argv) {
       
       /************************************************/
  
-      ros::spinOnce();
-      loop_rate.sleep();
-       
       lh.joint_angles[0] = 0.0;
       lh.speed = 0.5;
       pub_move.publish(lh);
@@ -258,7 +255,7 @@ int main(int argc, char **argv) {
       rh.speed = 0.1;
       pub_move.publish(rh);
   
-      ros::Duration(1).sleep();
+      ros::Duration(5).sleep();
           
       /************************************************/
       
@@ -320,7 +317,7 @@ int main(int argc, char **argv) {
         rh.speed = 0.1;
         pub_move.publish(rh);
   
-        ros::Duration(1).sleep();
+        ros::Duration(5).sleep();
           
         /************************************************/
  
@@ -328,7 +325,7 @@ int main(int argc, char **argv) {
         lsp.speed = 0.3;
         pub_move.publish(lsp);
      
-        ros::Duration(1).sleep();
+        ros::Duration(2).sleep();
       
         /************************************************/
  
@@ -342,7 +339,9 @@ int main(int argc, char **argv) {
 
         walk.linear.x = 0;
         pub_walk.publish(walk);
-      
+       
+        ros::Duration(2).sleep();
+     
         /************************************************/
 
     }
