@@ -147,11 +147,14 @@ int main(int argc, char **argv) {
       pub_walk.publish(walk);
   
       ros::Duration(1).sleep();
+<<<<<<< HEAD
       
       /************************************************/
       
       //narration.data = "Stand up.";
       //pub_narration.publish(narration);
+=======
+>>>>>>> fc8d44548d6f17c776b2da6fde94afda3049302a
   
       walk.linear.x = 1;
       pub_walk.publish(walk);
@@ -164,7 +167,19 @@ int main(int argc, char **argv) {
       ros::Duration(3).sleep();
       
       /************************************************/
-   
+           
+      //narration.data = "Reset eye color.";
+      //pub_narration.publish(narration);
+  
+      leds.led_name = "AllLeds";
+      leds.color.r = 0.0;
+      leds.color.g = 0.0;
+      leds.color.b = 100.0;
+      leds.fade_duration.sec = 1;
+      pub_eye_color.publish(leds);
+       
+      /************************************************/
+
       //narration.data = "Look forward.";
       //pub_narration.publish(narration);
 
@@ -199,13 +214,16 @@ int main(int argc, char **argv) {
   
       ros::Duration(1).sleep();
   
-      narration.data = "Put the knife in my hand please!";
+      narration.data = "Put the knife in my hand please!  I promise I will be careful.";
       pub_narration.publish(narration);
   
       ros::Duration(5).sleep();
       
       /************************************************/
- 
+      
+      //narration.data = "Grab knife.";
+      //pub_narration.publish(narration);
+
       lh.joint_angles[0] = 0.0;
       lh.speed = 0.5;
       pub_move.publish(lh);
@@ -213,7 +231,7 @@ int main(int argc, char **argv) {
       narration.data = "Thank you!";
       pub_narration.publish(narration);
  
-      ros::Duration(3).sleep();
+      ros::Duration(2).sleep();
       
       /************************************************/
           
@@ -228,6 +246,7 @@ int main(int argc, char **argv) {
       pub_eye_color.publish(leds);
        
       /************************************************/
+<<<<<<< HEAD
 
       //narration.data = "Arranging arms.";
       //pub_narration.publish(narration);
@@ -383,12 +402,16 @@ int main(int argc, char **argv) {
         pub_walk.publish(walk);
   
         /************************************************/
+=======
+    
+>>>>>>> fc8d44548d6f17c776b2da6fde94afda3049302a
       bool run = true;
 
       while (run == true) {
        
         /************************************************/
        
+<<<<<<< HEAD
        // if ( i % 5 == 0 ) {         
 
           narration.data = "Prepare to die!.";
@@ -416,6 +439,11 @@ int main(int argc, char **argv) {
        
         ros::Duration(2).sleep();
      
+=======
+        narration.data = "Prepare to die!.";
+        pub_narration.publish(narration);
+ 
+>>>>>>> fc8d44548d6f17c776b2da6fde94afda3049302a
         /************************************************/
  
         //narration.data = "Raise knife.";
@@ -425,7 +453,7 @@ int main(int argc, char **argv) {
         lsp.speed = 0.1;
         pub_move.publish(lsp);
   
-       lsr.joint_angles[0] = 0.25;
+        lsr.joint_angles[0] = 0.25;
         lsr.speed = 0.1;
         pub_move.publish(lsr);
 
@@ -477,7 +505,7 @@ int main(int argc, char **argv) {
         hp.speed = 0.1;
         pub_move.publish(hp);
  
-        ros::Duration(3).sleep();
+        ros::Duration(2).sleep();
    
         /************************************************/
    
@@ -487,7 +515,7 @@ int main(int argc, char **argv) {
         //play.request.file_path.data = "/music/evil_laugh.wav";
         //client.call(dance);
   
-        ros::Duration(3).sleep();
+        ros::Duration(2).sleep();
  
         /************************************************/
    
@@ -552,6 +580,21 @@ int main(int argc, char **argv) {
   
         ros::Duration(2).sleep();
 
+        /************************************************/
+ 
+        //narration.data = "Walk.";
+        //pub_narration.publish(narration);
+
+        walk.linear.x = 0.3;
+        pub_walk.publish(walk);
+      
+        ros::Duration(4).sleep();
+
+        walk.linear.x = 0;
+        pub_walk.publish(walk);
+       
+        ros::Duration(2).sleep();
+     
         /************************************************/
 
     }
