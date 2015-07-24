@@ -287,7 +287,7 @@ int main(int argc, char **argv) {
         i++;
  
         /************************************************/
- 
+
         lsp.joint_angles[0] = -1.6;
         lsp.speed = 0.1;
         pub_move.publish(lsp);
@@ -333,12 +333,49 @@ int main(int argc, char **argv) {
           
         /************************************************/
  
-        lsp.joint_angles[0] = -1.6;
+        lsp.joint_angles[0] = 1.6;
         lsp.speed = 0.3;
         pub_move.publish(lsp);
-     
-        ros::Duration(2).sleep();
-      
+
+        lsr.joint_angles[0] = 0.0;
+        lsr.speed = 0.3;
+        pub_move.publish(lsr);
+
+        ley.joint_angles[0] = 0.0;
+        ley.speed = 0.3;
+        pub_move.publish(ley);
+
+        ler.joint_angles[0] = 0.0;
+        ler.speed = 0.3;
+        pub_move.publish(ler);
+   
+        lwy.joint_angles[0] = 0.0;
+        lwy.speed = 0.3;
+        pub_move.publish(lwy);
+
+
+        rsp.joint_angles[0] = 0.0;
+        rsp.speed = 0.3;
+        pub_move.publish(rsp);
+  
+        rsr.joint_angles[0] = 0.0;
+        rsr.speed = 0.3;
+        pub_move.publish(rsr);
+  
+        rey.joint_angles[0] = 0.0;
+        rey.speed = 0.3;
+        pub_move.publish(rey);
+  
+        rer.joint_angles[0] = 0.0;
+        rer.speed = 0.3;
+        pub_move.publish(rer);
+  
+        rh.joint_angles[0] = 0.0;
+        rh.speed = 0.3;
+        pub_move.publish(rh);
+  
+        ros::Duration(5).sleep();
+
         /************************************************/
  
         //narration.data = "Walk.";
@@ -347,7 +384,7 @@ int main(int argc, char **argv) {
         walk.linear.x = 0.5;
         pub_walk.publish(walk);
       
-        ros::Duration(5).sleep();
+        ros::Duration(4).sleep();
 
         walk.linear.x = 0;
         pub_walk.publish(walk);
