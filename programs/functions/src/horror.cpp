@@ -282,7 +282,7 @@ int main(int argc, char **argv) {
         rh.speed = 0.1;
         pub_move.publish(rh);
   
-        ros::Duration(6).sleep();
+        ros::Duration(4).sleep();
             
         /************************************************/
     
@@ -297,8 +297,6 @@ int main(int argc, char **argv) {
         hp.speed = 0.1;
         pub_move.publish(hp);
  
-        ros::Duration(1).sleep();
-   
         /************************************************/
            
         //narration.data = "Turn Red.";
