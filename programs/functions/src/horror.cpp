@@ -395,9 +395,6 @@ int main(int argc, char **argv) {
         pub_walk.publish(walk);
   
         /************************************************/
-      bool run = true;
-
-      while (run == true) {
        
         /************************************************/
        
@@ -409,7 +406,7 @@ int main(int argc, char **argv) {
         walk.linear.x = 0.3;
         pub_walk.publish(walk);
       
-        ros::Duration(4).sleep();
+        ros::Duration(8).sleep();
 
         walk.linear.x = 0;
         pub_walk.publish(walk);
@@ -429,7 +426,7 @@ int main(int argc, char **argv) {
         //pub_narration.publish(narration);
   
         lsp.joint_angles[0] = -1.0;
-        lsp.speed = 0.1;
+        lsp.speed = 0.4;
         pub_move.publish(lsp);
   
         lsr.joint_angles[0] = 0.25;
@@ -469,7 +466,7 @@ int main(int argc, char **argv) {
         rh.speed = 0.1;
         pub_move.publish(rh);
   
-        ros::Duration(4).sleep();
+        ros::Duration(1).sleep();
             
         /************************************************/
     
@@ -504,7 +501,7 @@ int main(int argc, char **argv) {
         play.request.file_path.data = "/music/evil_laugh.wav";
         client.call(play);
   
-        ros::Duration(2).sleep();
+        ros::Duration(1).sleep();
  
         /************************************************/
    
@@ -522,12 +519,9 @@ int main(int argc, char **argv) {
         ros::Duration(1).sleep();
         
         /************************************************/
-  
-        narration.data = "So long.";
-        pub_narration.publish(narration);
-
+  	
         lsp.joint_angles[0] = 1.6;
-        lsp.speed = 0.5;
+        lsp.speed = 0.9;
         pub_move.publish(lsp);
 
         lsr.joint_angles[0] = 0.0;
@@ -542,7 +536,7 @@ int main(int argc, char **argv) {
         ler.speed = 0.5;
         pub_move.publish(ler);
    
-        lwy.joint_angles[0] = 0.0;
+        lwy.joint_angles[0] = -1.5;
         lwy.speed = 0.5;
         pub_move.publish(lwy);
 
@@ -567,30 +561,34 @@ int main(int argc, char **argv) {
         rh.speed = 0.5;
         pub_move.publish(rh);
   
-        ros::Duration(2).sleep();
+        ros::Duration(0.5).sleep();
+	
+	play.request.file_path.data = "/music/knife_sound.ogg";
+        client.call(play);
+	
+	ros::Duration(1).sleep();
+
+	narration.data = "So long.";
+        pub_narration.publish(narration);
 
         /************************************************/
  
+	ros::shutdown();
+
         //narration.data = "Walk.";
         //pub_narration.publish(narration);
 
-        walk.linear.x = 0.3;
-        pub_walk.publish(walk);
+        //walk.linear.x = 0.3;
+        //pub_walk.publish(walk);
       
-        ros::Duration(4).sleep();
+        //ros::Duration(4).sleep();
 
-        walk.linear.x = 0;
-        pub_walk.publish(walk);
+        //walk.linear.x = 0;
+        //pub_walk.publish(walk);
        
-        ros::Duration(2).sleep();
+        //ros::Duration(2).sleep();
      
         /************************************************/
-
-    }
-
-    ros::spinOnce();
-    loop_rate.sleep();
-
   }
 
 
