@@ -275,17 +275,14 @@ int main(int argc, char **argv) {
       //narration.data = "Walk.";
       pub_narration.publish(narration);
   
-<<<<<<< HEAD
         leds.led_name = "AllLeds";
         leds.color.r = 100.0;
         leds.color.g = 0.0;
         leds.color.b = 0.0;
         leds.fade_duration.sec = 1;
         pub_eye_color.publish(leds);
-=======
-      walk.linear.x = 1;
-      pub_walk.publish(walk);
->>>>>>> 285192728f716d1d5945d7b281b6b705964c440e
+        walk.linear.x = 1;
+        pub_walk.publish(walk);
   
         /************************************************/
        
