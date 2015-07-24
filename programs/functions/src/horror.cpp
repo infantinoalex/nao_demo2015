@@ -271,14 +271,6 @@ int main(int argc, char **argv) {
       ros::Duration(1).sleep();
         
       /************************************************/
- 
-      //narration.data = "Walk.";
-      pub_narration.publish(narration);
-  
-      walk.linear.x = 1;
-      pub_walk.publish(walk);
-  
-        /************************************************/
        
       bool run = true;
 
@@ -311,6 +303,21 @@ int main(int argc, char **argv) {
      
         ros::Duration(1).sleep();
       
+        /************************************************/
+ 
+        //narration.data = "Walk.";
+        pub_narration.publish(narration);
+
+        walk.linear.x = 1;
+        pub_walk.publish(walk);
+      
+        ros::Duration(2).sleep();
+
+        walk.linear.x = 0;
+        pub_walk.publish(walk);
+      
+        ros::Duration(2).sleep();
+ 
         /************************************************/
 
     }
