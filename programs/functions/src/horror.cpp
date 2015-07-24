@@ -147,14 +147,11 @@ int main(int argc, char **argv) {
       pub_walk.publish(walk);
   
       ros::Duration(1).sleep();
-<<<<<<< HEAD
       
       /************************************************/
       
       //narration.data = "Stand up.";
       //pub_narration.publish(narration);
-=======
->>>>>>> fc8d44548d6f17c776b2da6fde94afda3049302a
   
       walk.linear.x = 1;
       pub_walk.publish(walk);
@@ -176,7 +173,6 @@ int main(int argc, char **argv) {
       leds.color.g = 0.0;
       leds.color.b = 100.0;
       leds.fade_duration.sec = 1;
-      pub_eye_color.publish(leds);
        
       /************************************************/
 
@@ -243,11 +239,8 @@ int main(int argc, char **argv) {
       leds.color.g = 0.0;
       leds.color.b = 0.0;
       leds.fade_duration.sec = 1;
-      pub_eye_color.publish(leds);
        
       /************************************************/
-<<<<<<< HEAD
-
       //narration.data = "Arranging arms.";
       //pub_narration.publish(narration);
   
@@ -314,6 +307,7 @@ int main(int argc, char **argv) {
       //narration.data = "Evil laugh.";
       //pub_narration.publish(narration);
    
+	pub_eye_color.publish(leds);
       play.request.file_path.data = "/music/evil_laugh.wav";
       client.call(play);
   
@@ -343,7 +337,7 @@ int main(int argc, char **argv) {
       lsp.speed = 0.1;
    
       //narration.data = "Lower knife.";
-      pub_narration.publish(narration);
+      //pub_narration.publish(narration);
 
       lsp.joint_angles[0] = 1.6;
       lsp.speed = 0.5;
@@ -402,28 +396,12 @@ int main(int argc, char **argv) {
         pub_walk.publish(walk);
   
         /************************************************/
-=======
-    
->>>>>>> fc8d44548d6f17c776b2da6fde94afda3049302a
       bool run = true;
 
       while (run == true) {
        
         /************************************************/
        
-<<<<<<< HEAD
-       // if ( i % 5 == 0 ) {         
-
-          narration.data = "Prepare to die!.";
-          pub_narration.publish(narration);
-	  ros::Duration(1).sleep();
-	  play.request.file_path.data = "/music/evil_laugh.wav";
-    	  client.call(play);
- 
-       // }
-     
-        i++;
- 
         /************************************************/
  
         //narration.data = "Walk.";
@@ -439,11 +417,13 @@ int main(int argc, char **argv) {
        
         ros::Duration(2).sleep();
      
-=======
         narration.data = "Prepare to die!.";
         pub_narration.publish(narration);
+	ros::Duration(1).sleep();
+	//play.request.file_path.data = "/music/evil_laugh.wav";
+    	//client.call(play);
  
->>>>>>> fc8d44548d6f17c776b2da6fde94afda3049302a
+
         /************************************************/
  
         //narration.data = "Raise knife.";
@@ -512,8 +492,8 @@ int main(int argc, char **argv) {
         //narration.data = "Evil laugh.";
         //pub_narration.publish(narration);
      
-        //play.request.file_path.data = "/music/evil_laugh.wav";
-        //client.call(dance);
+        play.request.file_path.data = "/music/evil_laugh.wav";
+        client.call(play);
   
         ros::Duration(2).sleep();
  
