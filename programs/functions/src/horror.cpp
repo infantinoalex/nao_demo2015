@@ -227,7 +227,7 @@ int main(int argc, char **argv) {
       narration.data = "You fool!  I am secretly evil.  Now I am armed to destroy you!";
       pub_narration.publish(narration);
  
-      ros::Duration(4).sleep();
+      ros::Duration(3).sleep();
       
       /************************************************/
       //narration.data = "Turn Red.";
@@ -284,7 +284,7 @@ int main(int argc, char **argv) {
       rh.speed = 0.1;
       pub_move.publish(rh);
   
-      ros::Duration(5).sleep();
+      ros::Duration(3).sleep();
           
       /************************************************/
    
@@ -299,7 +299,7 @@ int main(int argc, char **argv) {
       hp.speed = 0.1;
       pub_move.publish(hp);
  
-      ros::Duration(3).sleep();
+      ros::Duration(2).sleep();
    
       /************************************************/
    
@@ -310,7 +310,7 @@ int main(int argc, char **argv) {
       play.request.file_path.data = "/music/evil_laugh.wav";
       client.call(play);
   
-      ros::Duration(3).sleep();
+      ros::Duration(2).sleep();
  
       /************************************************/
   
@@ -354,9 +354,9 @@ int main(int argc, char **argv) {
       ler.speed = 0.5;
       pub_move.publish(ler);
    
-      lwy.joint_angles[0] = -1.5;
-      lwy.speed = 0.5;
-      pub_move.publish(lwy);
+      //lwy.joint_angles[0] = -1.5;
+      //lwy.speed = 0.5;
+      //pub_move.publish(lwy);
 
 
       rsp.joint_angles[0] = 1.6;
@@ -561,8 +561,6 @@ int main(int argc, char **argv) {
         rh.speed = 0.5;
         pub_move.publish(rh);
   
-        ros::Duration(0.5).sleep();
-	
 	play.request.file_path.data = "/music/knife_sound.ogg";
         client.call(play);
 	
