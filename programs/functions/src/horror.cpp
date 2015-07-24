@@ -230,47 +230,6 @@ int main(int argc, char **argv) {
 
       //narration.data = "Arranging arms.";
       pub_narration.publish(narration);
-
-      lsp.joint_angles[0] = -1.6;
-      lsp.speed = 0.5;
-      pub_move.publish(lsp);
-
-      lsr.joint_angles[0] = 0.30;
-      lsr.speed = 0.5;
-      pub_move.publish(lsr);
-
-      ley.joint_angles[0] = -0.5;
-      ley.speed = 0.5;
-      pub_move.publish(ley);
-
-      ler.joint_angles[0] = -0.5;
-      ler.speed = 0.5;
-      pub_move.publish(ler);
-
-
-      rsp.joint_angles[0] = 1.8;
-      rsp.speed = 0.5;
-      pub_move.publish(rsp);
-
-      rsr.joint_angles[0] = 0.0;
-      rsr.speed = 0.5;
-      pub_move.publish(rsr);
-
-      rey.joint_angles[0] = 2.0;
-      rey.speed = 0.5;
-      pub_move.publish(rey);
-
-      rer.joint_angles[0] = 1.5;
-      rer.speed = 0.5;
-      pub_move.publish(rer);
-
-      rh.joint_angles[0] = 0.0;
-      rh.speed = 1.0;
-      pub_move.publish(rh);
-
-      ros::Duration(1).sleep();
-        
-      /************************************************/
        
       bool run = true;
 
@@ -288,17 +247,50 @@ int main(int argc, char **argv) {
         i++;
  
         /************************************************/
-  
-        lsp.joint_angles[0] = -1.0;
-        lsp.speed = 0.5;
+ 
+        lsp.joint_angles[0] = -1.6;
+        lsp.speed = 0.3;
         pub_move.publish(lsp);
-     
+
+        lsr.joint_angles[0] = 0.30;
+        lsr.speed = 0.3;
+        pub_move.publish(lsr);
+
+        ley.joint_angles[0] = -0.5;
+        ley.speed = 0.3;
+        pub_move.publish(ley);
+
+        ler.joint_angles[0] = -0.5;
+        ler.speed = 0.3;
+        pub_move.publish(ler);
+
+
+        rsp.joint_angles[0] = 1.8;
+        rsp.speed = 0.3;
+        pub_move.publish(rsp);
+  
+        rsr.joint_angles[0] = 0.0;
+        rsr.speed = 0.3;
+        pub_move.publish(rsr);
+  
+        rey.joint_angles[0] = 2.0;
+        rey.speed = 0.3;
+        pub_move.publish(rey);
+  
+        rer.joint_angles[0] = 1.5;
+        rer.speed = 0.3;
+        pub_move.publish(rer);
+  
+        rh.joint_angles[0] = 0.0;
+        rh.speed = 1.0;
+        pub_move.publish(rh);
+  
         ros::Duration(1).sleep();
-      
+          
         /************************************************/
  
         lsp.joint_angles[0] = -1.6;
-        lsp.speed = 0.5;
+        lsp.speed = 0.3;
         pub_move.publish(lsp);
      
         ros::Duration(1).sleep();
