@@ -1,4 +1,4 @@
-include <ros/ros.h>
+#include <ros/ros.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
 #include <nao_msgs/TactileTouch.h>
 #include <nao_msgs/FadeRGB.h>
@@ -354,16 +354,12 @@ int main(int argc, char **argv) {
       ler.speed = 0.5;
       pub_move.publish(ler);
    
-<<<<<<< HEAD
       //lwy.joint_angles[0] = -1.5;
       //lwy.speed = 0.5;
       //pub_move.publish(lwy);
-=======
       lwy.joint_angles[0] = -0.5;
       lwy.speed = 0.5;
       pub_move.publish(lwy);
->>>>>>> 9adc40833a66d8d8a8e86c3bd9c899e285bd5c15
-
 
       rsp.joint_angles[0] = 1.6;
       rsp.speed = 0.5;
@@ -566,7 +562,9 @@ int main(int argc, char **argv) {
         rh.joint_angles[0] = 0.0;
         rh.speed = 0.5;
         pub_move.publish(rh);
-  
+
+	ros::Duration(0.25).sleep(); 
+ 
 	play.request.file_path.data = "/music/knife_sound.ogg";
         client.call(play);
 	
