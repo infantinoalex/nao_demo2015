@@ -372,7 +372,7 @@ int main(int argc, char **argv) {
         walk.linear.x = 0.5;
         pub_walk.publish(walk);
       
-        ros::Duration(5).sleep();
+        ros::Duration(4).sleep();
 
         walk.linear.x = 0;
         pub_walk.publish(walk);
