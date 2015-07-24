@@ -409,7 +409,7 @@ int main(int argc, char **argv) {
         walk.linear.x = 0.3;
         pub_walk.publish(walk);
       
-        ros::Duration(4).sleep();
+        ros::Duration(8).sleep();
 
         walk.linear.x = 0;
         pub_walk.publish(walk);
@@ -469,7 +469,7 @@ int main(int argc, char **argv) {
         rh.speed = 0.1;
         pub_move.publish(rh);
   
-        ros::Duration(4).sleep();
+        ros::Duration(1).sleep();
             
         /************************************************/
     
@@ -504,7 +504,7 @@ int main(int argc, char **argv) {
         play.request.file_path.data = "/music/evil_laugh.wav";
         client.call(play);
   
-        ros::Duration(2).sleep();
+        ros::Duration(0.5).sleep();
  
         /************************************************/
    
@@ -519,7 +519,7 @@ int main(int argc, char **argv) {
         hp.speed = 0.3;
         pub_move.publish(hp);
  
-        ros::Duration(1).sleep();
+        ros::Duration(0.5).sleep();
         
         /************************************************/
   
@@ -567,22 +567,29 @@ int main(int argc, char **argv) {
         rh.speed = 0.5;
         pub_move.publish(rh);
   
-        ros::Duration(2).sleep();
+        ros::Duration(0.5).sleep();
+
+	play.request.file_path.data = "/music/knife_sound.ogg";
+        client.call(play);
+
+	ros::Duration(1).sleep();
 
         /************************************************/
  
+	ros::shutdown();
+
         //narration.data = "Walk.";
         //pub_narration.publish(narration);
 
-        walk.linear.x = 0.3;
-        pub_walk.publish(walk);
+        //walk.linear.x = 0.3;
+        //pub_walk.publish(walk);
       
-        ros::Duration(4).sleep();
+        //ros::Duration(4).sleep();
 
-        walk.linear.x = 0;
-        pub_walk.publish(walk);
+        //walk.linear.x = 0;
+        //pub_walk.publish(walk);
        
-        ros::Duration(2).sleep();
+        //ros::Duration(2).sleep();
      
         /************************************************/
 
