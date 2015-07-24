@@ -190,16 +190,16 @@ int main(int argc, char **argv) {
  
       ros::spinOnce();
       loop_rate.sleep();
-     
+      /* 
       while ( button_number == 1 && button_state == 0 ) {
   
         ros::spinOnce();
         loop_rate.sleep();
   
       }
-  
+      
       if ( button_number == 1 && button_state == 1 ) {
-  
+      */
         lh.joint_angles[0] = 0.0;
         lh.speed = 0.5;
         pub_move.publish(lh);
@@ -207,10 +207,10 @@ int main(int argc, char **argv) {
         narration.data = "Thank you!";
         pub_narration.publish(narration);
 
-        ros::spinOnce();
-        loop_rate.sleep();
+      //ros::spinOnce();
+      //loop_rate.sleep();
 
-      }
+      //}
 
       ros::Duration(3).sleep();
       
@@ -316,8 +316,6 @@ int main(int argc, char **argv) {
         walk.linear.x = 0;
         pub_walk.publish(walk);
       
-        ros::Duration(2).sleep();
- 
         /************************************************/
 
     }
