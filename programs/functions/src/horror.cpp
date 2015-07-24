@@ -348,7 +348,7 @@ int main(int argc, char **argv) {
         //narration.data = "Walk.";
         pub_narration.publish(narration);
 
-        walk.linear.x = 1;
+        walk.linear.x = 0.5;
         pub_walk.publish(walk);
       
         ros::Duration(5).sleep();
