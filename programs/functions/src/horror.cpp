@@ -275,6 +275,24 @@ int main(int argc, char **argv) {
         i++;
  
         /************************************************/
+ 
+        //narration.data = "Walk.";
+        pub_narration.publish(narration);
+
+        walk.linear.x = 0.3;
+        pub_walk.publish(walk);
+      
+        ros::Duration(4).sleep();
+
+        walk.linear.x = 0;
+        pub_walk.publish(walk);
+       
+        ros::Duration(2).sleep();
+     
+        /************************************************/
+ 
+        //narration.data = "Raise knife.";
+        pub_narration.publish(narration);
 
         lsp.joint_angles[0] = -1.6;
         lsp.speed = 0.1;
@@ -322,63 +340,48 @@ int main(int argc, char **argv) {
         /************************************************/
  
         lsp.joint_angles[0] = 1.6;
-        lsp.speed = 0.3;
+        lsp.speed = 0.5;
         pub_move.publish(lsp);
 
         lsr.joint_angles[0] = 0.0;
-        lsr.speed = 0.3;
+        lsr.speed = 0.5;
         pub_move.publish(lsr);
 
         ley.joint_angles[0] = 0.0;
-        ley.speed = 0.3;
+        ley.speed = 0.5;
         pub_move.publish(ley);
 
         ler.joint_angles[0] = 0.0;
-        ler.speed = 0.3;
+        ler.speed = 0.5;
         pub_move.publish(ler);
    
         lwy.joint_angles[0] = 0.0;
-        lwy.speed = 0.3;
+        lwy.speed = 0.5;
         pub_move.publish(lwy);
 
 
-        rsp.joint_angles[0] = 0.0;
-        rsp.speed = 0.3;
+        rsp.joint_angles[0] = 1.6;
+        rsp.speed = 0.5;
         pub_move.publish(rsp);
   
         rsr.joint_angles[0] = 0.0;
-        rsr.speed = 0.3;
+        rsr.speed = 0.5;
         pub_move.publish(rsr);
   
         rey.joint_angles[0] = 0.0;
-        rey.speed = 0.3;
+        rey.speed = 0.5;
         pub_move.publish(rey);
   
         rer.joint_angles[0] = 0.0;
-        rer.speed = 0.3;
+        rer.speed = 0.5;
         pub_move.publish(rer);
   
         rh.joint_angles[0] = 0.0;
-        rh.speed = 0.3;
+        rh.speed = 0.5;
         pub_move.publish(rh);
   
-        ros::Duration(5).sleep();
-
-        /************************************************/
- 
-        //narration.data = "Walk.";
-        pub_narration.publish(narration);
-
-        walk.linear.x = 0.5;
-        pub_walk.publish(walk);
-      
-        ros::Duration(4).sleep();
-
-        walk.linear.x = 0;
-        pub_walk.publish(walk);
-       
         ros::Duration(2).sleep();
-     
+
         /************************************************/
 
     }
