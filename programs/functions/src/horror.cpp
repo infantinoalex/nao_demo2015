@@ -235,7 +235,7 @@ int main(int argc, char **argv) {
         leds.color.r = 100.0;
         leds.color.g = 0.0;
         leds.color.b = 0.0;
-        leds.fade_duration.secs = 1;
+        leds.fade_duration.sec = 1;
         pub_eye_color.publish(leds);
   
         /************************************************/
