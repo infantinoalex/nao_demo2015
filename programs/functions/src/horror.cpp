@@ -1,4 +1,4 @@
-#include <ros/ros.h>
+include <ros/ros.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
 #include <nao_msgs/TactileTouch.h>
 #include <nao_msgs/FadeRGB.h>
@@ -354,7 +354,7 @@ int main(int argc, char **argv) {
       ler.speed = 0.5;
       pub_move.publish(ler);
    
-      lwy.joint_angles[0] = -1.5;
+      lwy.joint_angles[0] = -0.5;
       lwy.speed = 0.5;
       pub_move.publish(lwy);
 
@@ -441,7 +441,7 @@ int main(int argc, char **argv) {
         ler.speed = 0.1;
         pub_move.publish(ler);
   
-        lwy.joint_angles[0] = -1.5;
+        lwy.joint_angles[0] = -0.5;
         lwy.speed = 0.1;
         pub_move.publish(lwy);
 
@@ -536,7 +536,7 @@ int main(int argc, char **argv) {
         ler.speed = 0.5;
         pub_move.publish(ler);
    
-        lwy.joint_angles[0] = -1.5;
+        lwy.joint_angles[0] = -0.5;
         lwy.speed = 0.5;
         pub_move.publish(lwy);
 
