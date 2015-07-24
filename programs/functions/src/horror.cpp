@@ -147,6 +147,11 @@ int main(int argc, char **argv) {
       pub_walk.publish(walk);
   
       ros::Duration(1).sleep();
+      
+      /************************************************/
+      
+      //narration.data = "Stand up.";
+      //pub_narration.publish(narration);
   
       walk.linear.x = 1;
       pub_walk.publish(walk);
@@ -168,7 +173,6 @@ int main(int argc, char **argv) {
       leds.color.g = 0.0;
       leds.color.b = 100.0;
       leds.fade_duration.sec = 1;
-      pub_eye_color.publish(leds);
        
       /************************************************/
 
@@ -226,16 +230,199 @@ int main(int argc, char **argv) {
       ros::Duration(4).sleep();
       
       /************************************************/
-    
+      //narration.data = "Turn Red.";
+      //pub_narration.publish(narration);
+  
+      leds.led_name = "AllLeds";
+      leds.color.r = 100.0;
+      leds.color.g = 0.0;
+      leds.color.b = 0.0;
+      leds.fade_duration.sec = 1;
+       
+      /************************************************/
+      //narration.data = "Arranging arms.";
+      //pub_narration.publish(narration);
+  
+      lsp.joint_angles[0] = -1.0;
+      lsp.speed = 0.1;
+      pub_move.publish(lsp);
+
+      lsr.joint_angles[0] = 0.25;
+      lsr.speed = 0.1;
+      pub_move.publish(lsr);
+
+      ley.joint_angles[0] = -0.55;
+      ley.speed = 0.1;
+      pub_move.publish(ley);
+
+      ler.joint_angles[0] = -0.75;
+      ler.speed = 0.1;
+      pub_move.publish(ler);
+  
+      lwy.joint_angles[0] = -1.5;
+      lwy.speed = 0.1;
+      pub_move.publish(lwy);
+
+
+      rsp.joint_angles[0] = 1.8;
+      rsp.speed = 0.1;
+      pub_move.publish(rsp);
+  
+      rsr.joint_angles[0] = 0.0;
+      rsr.speed = 0.1;
+      pub_move.publish(rsr);
+  
+      rey.joint_angles[0] = 2.0;
+      rey.speed = 0.1;
+      pub_move.publish(rey);
+  
+      rer.joint_angles[0] = 1.5;
+      rer.speed = 0.1;
+      pub_move.publish(rer);
+  
+      rh.joint_angles[0] = 0.0;
+      rh.speed = 0.1;
+      pub_move.publish(rh);
+  
+      ros::Duration(5).sleep();
+          
+      /************************************************/
+   
+      //narration.data = "Look at hand.";
+      //pub_narration.publish(narration);
+
+      hy.joint_angles[0] = 0.55;
+      hy.speed = 0.1;
+      pub_move.publish(hy);
+
+      hp.joint_angles[0] = -0.65;
+      hp.speed = 0.1;
+      pub_move.publish(hp);
+ 
+      ros::Duration(3).sleep();
+   
+      /************************************************/
+   
+      //narration.data = "Evil laugh.";
+      //pub_narration.publish(narration);
+   
+	pub_eye_color.publish(leds);
+      play.request.file_path.data = "/music/evil_laugh.wav";
+      client.call(play);
+  
+      ros::Duration(3).sleep();
+ 
+      /************************************************/
+  
+      //narration.data = "Look forward.";
+      //pub_narration.publish(narration);
+
+      hy.joint_angles[0] = 0.0;
+      hy.speed = 0.3;
+      pub_move.publish(hy);
+
+      hp.joint_angles[0] = 0.0;
+      hp.speed = 0.3;
+      pub_move.publish(hp);
+ 
+      ros::Duration(1).sleep();
+        
+      /************************************************/
+
+      //narration.data = "Arranging arms.";
+      //pub_narration.publish(narration);
+  
+      lsp.joint_angles[0] = -1.0;
+      lsp.speed = 0.1;
+   
+      //narration.data = "Lower knife.";
+      //pub_narration.publish(narration);
+
+      lsp.joint_angles[0] = 1.6;
+      lsp.speed = 0.5;
+      pub_move.publish(lsp);
+
+      lsr.joint_angles[0] = 0.0;
+      lsr.speed = 0.5;
+      pub_move.publish(lsr);
+
+      ley.joint_angles[0] = 0.0;
+      ley.speed = 0.5;
+      pub_move.publish(ley);
+
+      ler.joint_angles[0] = 0.0;
+      ler.speed = 0.5;
+      pub_move.publish(ler);
+   
+      lwy.joint_angles[0] = -1.5;
+      lwy.speed = 0.5;
+      pub_move.publish(lwy);
+
+
+      rsp.joint_angles[0] = 1.6;
+      rsp.speed = 0.5;
+      pub_move.publish(rsp);
+
+      rsr.joint_angles[0] = 0.0;
+      rsr.speed = 0.5;
+      pub_move.publish(rsr);
+  
+      rey.joint_angles[0] = 0.0;
+      rey.speed = 0.5;
+      pub_move.publish(rey);
+  
+      rer.joint_angles[0] = 0.0;
+      rer.speed = 0.5;
+      pub_move.publish(rer);
+  
+      rh.joint_angles[0] = 0.0;
+      rh.speed = 0.5;
+      pub_move.publish(rh);
+  
+      ros::Duration(2).sleep();
+
+      /************************************************/
+      //narration.data = "Walk.";
+      //pub_narration.publish(narration);
+  
+        leds.led_name = "AllLeds";
+        leds.color.r = 100.0;
+        leds.color.g = 0.0;
+        leds.color.b = 0.0;
+        leds.fade_duration.sec = 1;
+        pub_eye_color.publish(leds);
+        walk.linear.x = 1;
+        pub_walk.publish(walk);
+  
+        /************************************************/
       bool run = true;
 
       while (run == true) {
        
         /************************************************/
        
+        /************************************************/
+ 
+        //narration.data = "Walk.";
+        //pub_narration.publish(narration);
+
+        walk.linear.x = 0.3;
+        pub_walk.publish(walk);
+      
+        ros::Duration(4).sleep();
+
+        walk.linear.x = 0;
+        pub_walk.publish(walk);
+       
+        ros::Duration(2).sleep();
+     
         narration.data = "Prepare to die!.";
         pub_narration.publish(narration);
+	ros::Duration(1).sleep();
+	//play.request.file_path.data = "/music/evil_laugh.wav";
+    	//client.call(play);
  
+
         /************************************************/
  
         //narration.data = "Raise knife.";
@@ -315,14 +502,14 @@ int main(int argc, char **argv) {
         //pub_narration.publish(narration);
      
         play.request.file_path.data = "/music/evil_laugh.wav";
-        client.call(dance);
+        client.call(play);
   
         ros::Duration(2).sleep();
  
         /************************************************/
    
         //narration.data = "Look forward.";
-        pub_narration.publish(narration);
+        //pub_narration.publish(narration);
 
         hy.joint_angles[0] = 0.0;
         hy.speed = 0.3;
@@ -336,7 +523,7 @@ int main(int argc, char **argv) {
         
         /************************************************/
   
-        //narration.data = "Lower knife.";
+        narration.data = "So long.";
         pub_narration.publish(narration);
 
         lsp.joint_angles[0] = 1.6;

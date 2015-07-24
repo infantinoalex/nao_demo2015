@@ -5,6 +5,7 @@
 #include "custom_msgs/states.h"
 #include "std_srvs/Empty.h"
 #include "nao_interaction_msgs/AudioPlayback.h"
+#include "nao_msgs/FadeRGB.h"
 
 // Global variables to store the imu sensor data
 float orix, oriy, oriz, oriw, avx, avy, avz, lax, lay, laz;
@@ -53,6 +54,9 @@ int main(int argc, char ** argv){
 	// publishes to custom topic to control everything
 	ros::Publisher control = n.advertise<custom_msgs::states>("/control_msgs", 100);
 	
+	// Publisher LED colors
+	ros::Publisher led = n.advertise<nao_msgs::FadeRGB>("/fade_rgb", 100);
+
 	// subscribes to imu to determine position of the nao's body
 	ros::Subscriber sub_1 = n.subscribe("/imu", 100, imucb);
 
@@ -69,6 +73,8 @@ int main(int argc, char ** argv){
 
         nao_interaction_msgs::AudioPlayback sun;
 
+	nao_msgs::FadeRGB all;
+
 	ros::Rate loop_rate(50);
 
 	std_msgs::String words;	
@@ -77,6 +83,9 @@ int main(int argc, char ** argv){
 
 	bool firsttime = true;
 		
+	all.led_name = "AllLeds";
+	all.fade_duration.sec = 0.1;
+
 	while(ros::ok()){
 		ros::spinOnce();
 		ROS_INFO("FIGURING OUT POSITION\n");
@@ -111,6 +120,10 @@ int main(int argc, char ** argv){
 		// This if statement gets the robot to stand up from its stomach
 		else if((lax <=10.5 && lax >= 9) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON STOMACH\n");
+			all.color.b = 0;
+			all.color.r = 100;
+			all.color.g = 0;
+			led.publish(all);
 			client.call(bstiff);
 			controlstate.nao_set_pose = true;
 			control.publish(controlstate);
@@ -126,6 +139,10 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 			ros::spinOnce();
 			ROS_INFO("WAITING UNTIL STANDUP COMPLETE\n");
+			all.color.g = 100;
+			all.color.r = 0;
+			all.color.b = 0;
+			led.publish(all);
 			while(controlstate.nao_standup_facedown == true){
 				ros::spinOnce();
 				loop_rate.sleep();
@@ -138,6 +155,10 @@ int main(int argc, char ** argv){
 		// This if statement gets the robot to stand up from its back
 		else if((lax <= -9 && lax >= -10.5) && (laz <= 1 && laz >= -1)){
 			ROS_INFO("CURRENTLY ON BACK\n");
+			all.color.b = 0;
+                        all.color.r = 100;
+                        all.color.g = 0;
+                        led.publish(all);
 			client.call(bstiff);
 			controlstate.nao_set_pose = true;
 			control.publish(controlstate);
@@ -153,6 +174,10 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 			ros::spinOnce();
 			ROS_INFO("WAITING UNTIL STANDUP COMPLETE\n");
+			all.color.b = 0;
+                        all.color.r = 0;
+                        all.color.g = 100;
+                        led.publish(all);
 			while(controlstate.nao_standup_faceup == true){
 				ros::spinOnce();
 				loop_rate.sleep();
@@ -170,22 +195,34 @@ int main(int argc, char ** argv){
 				ROS_INFO("ON GROUND\n");
 				loop_rate.sleep();
 				ROS_INFO("STARTING TO WALK\n");
+				all.color.b = 100;
+	                        all.color.r = 0;
+        	                all.color.g = 0;
+                	        led.publish(all);
 				controlstate.walk_detect = true;
 				control.publish(controlstate);
 				ros::spinOnce();
 				loop_rate.sleep();
 				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
-				//sun.request.file_path.data = "/music/wos.ogg";
-                                //client1.call(sun);
+				sun.request.file_path.data = "/music/wos.ogg";
+				ros::service::call("/nao_audio/play_file", sun);
 				while(controlstate.walk_detect == true){
 					ros::spinOnce();
 					loop_rate.sleep();
 				}
 				ROS_INFO("WALK COMPLETE\n");
+				all.color.b = 0;
+                 	        all.color.r = 100;
+                 	        all.color.g = 0;
+                        	led.publish(all);
 				loop_rate.sleep();
 			}
 			else{
 				ROS_INFO("NOT ON GROUND\n");
+				all.color.b = 0;
+        	                all.color.r = 100;
+	                        all.color.g = 0;
+                	        led.publish(all);
 				loop_rate.sleep();
 			}
 		}
@@ -198,22 +235,36 @@ int main(int argc, char ** argv){
 			if(onground){
 				ROS_INFO("ON GROUND\n");
 				ROS_INFO("STARTING TO WALK\n");
+				all.color.b = 100;
+                        	all.color.r = 0;
+                	        all.color.g = 0;
+        	                led.publish(all);
 				controlstate.walk_detect = true;
 				control.publish(controlstate);
 				ros::spinOnce();
 				loop_rate.sleep();
 				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
-				//sun.request.file_path.data = "/music/wos.ogg";
-                                //client1.call(sun);
+				sun.request.file_path.data = "/music/wos.ogg";
+                                ros::service::call("/nao_audio/play_file", sun);
 				while(controlstate.walk_detect == true){
 					ros::spinOnce();
 					loop_rate.sleep();
 				}
 				ROS_INFO("WALK COMPLETE\n");
+				all.color.b = 0;
+                	        all.color.r = 100;
+        	                all.color.g = 0;
+	                        led.publish(all);
+
 				loop_rate.sleep();
 			}
 			else{
 				ROS_INFO("NOT ON GROUND\n");
+				all.color.b = 0;
+	                        all.color.r = 100;
+        	                all.color.g = 0;
+                	        led.publish(all);
+
 				loop_rate.sleep();
 			}
 		}
@@ -222,6 +273,10 @@ int main(int argc, char ** argv){
 		// makes it assume a start up pose and go from there
 		else{
 			ROS_INFO("UNKNOWN POSITION\n");
+			all.color.b = 0;
+                        all.color.r = 100;
+                        all.color.g = 0;
+                        led.publish(all);
 			loop_rate.sleep();
 			client.call(bstiff);
 			controlstate.nao_set_pose = true;
