@@ -2,7 +2,7 @@
 #include <nao_msgs/JointAnglesWithSpeed.h>
 #include <nao_msgs/TactileTouch.h>
 #include <nao_msgs/FadeRGB.h>
-#include <nao_nteraction_msgs/AudioPlayback.h>
+#include <nao_interaction_msgs/AudioPlayback.h>
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Bool.h>
@@ -221,7 +221,7 @@ int main(int argc, char **argv) {
       /************************************************/
           
       //narration.data = "Turn Red.";
-      pub_narration.publish(narration);
+      //pub_narration.publish(narration);
   
       leds.led_name = "AllLeds";
       leds.color.r = 100.0;
@@ -233,7 +233,7 @@ int main(int argc, char **argv) {
       /************************************************/
   
       //narration.data = "Look at hand.";
-      pub_narration.publish(narration);
+      //pub_narration.publish(narration);
 
       hy.joint_angles[0] = 0.55;
       hy.speed = 0.01;
@@ -248,9 +248,9 @@ int main(int argc, char **argv) {
       /************************************************/
    
       //narration.data = "Evil laugh.";
-      pub_narration.publish(narration);
+      //pub_narration.publish(narration);
    
-      dance.request.file_path.data = "/music/evil_laugh.wav";
+      play.request.file_path.data = "/music/evil_laugh.wav";
       client.call(dance);
   
       ros::Duration(3).sleep();
@@ -258,7 +258,7 @@ int main(int argc, char **argv) {
       /************************************************/
   
       //narration.data = "Look forward.";
-      pub_narration.publish(narration);
+      //pub_narration.publish(narration);
 
       hy.joint_angles[0] = 0.0;
       hy.speed = 0.3;
@@ -273,7 +273,7 @@ int main(int argc, char **argv) {
       /************************************************/
 
       //narration.data = "Arranging arms.";
-      pub_narration.publish(narration);
+      //pub_narration.publish(narration);
   
       lsp.joint_angles[0] = -1.0;
       lsp.speed = 0.1;
