@@ -107,6 +107,7 @@ add_executable(demo src/demo.cpp)
 add_executable(hula src/hula.cpp)
 add_executable(sing src/hula.cpp)
 add_executable(horror src/horror.cpp)
+add_executable(lam src/lights_music.cpp)
 ## Add cmake target dependencies of the executable/library
 
 ## as an example, message headers may need to be generated before nodes
@@ -125,6 +126,7 @@ target_link_libraries(demo ${catkin_LIBRARIES})
 target_link_libraries(hula ${catkin_LIBRARIES})
 target_link_libraries(sing ${catkin_LIBRARIES})
 target_link_libraries(horror ${catkin_LIBRARIES})
+target_link_libraries(lam ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############
