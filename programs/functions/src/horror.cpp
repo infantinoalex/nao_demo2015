@@ -2,7 +2,7 @@
 #include <nao_msgs/JointAnglesWithSpeed.h>
 #include <nao_msgs/TactileTouch.h>
 #include <nao_msgs/FadeRGB.h>
-#include <nao_nteraction_msgs/AudioPlayback.h>
+#include <nao_interaction_msgs/AudioPlayback.h>
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Bool.h>

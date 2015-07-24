@@ -205,8 +205,8 @@ int main(int argc, char ** argv){
 				ros::spinOnce();
 				loop_rate.sleep();
 				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
-				//sun.request.file_path.data = "/music/wos.ogg";
-                                //client1.call(sun);
+				sun.request.file_path.data = "/music/wos.ogg";
+                                client1.call(sun);
 				while(controlstate.walk_detect == true){
 					ros::spinOnce();
 					loop_rate.sleep();
@@ -245,8 +245,8 @@ int main(int argc, char ** argv){
 				ros::spinOnce();
 				loop_rate.sleep();
 				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
-				//sun.request.file_path.data = "/music/wos.ogg";
-                                //client1.call(sun);
+				sun.request.file_path.data = "/music/wos.ogg";
+                                client1.call(sun);
 				while(controlstate.walk_detect == true){
 					ros::spinOnce();
 					loop_rate.sleep();

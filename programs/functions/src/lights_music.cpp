@@ -12,7 +12,7 @@ int main(int argc, char ** argv){
 
 	nao_msgs::FadeRGB chest, face, ears, feet, all, head;
 
-	//nao_interaction_msgs::AudioPlayback dance;
+	nao_interaction_msgs::AudioPlayback dance;
 
 	ros::Rate loop_rate(50);
 
@@ -28,9 +28,12 @@ int main(int argc, char ** argv){
 	while(ros::ok()){
 		ros::spinOnce();
 		if(firsttime){
-			//dance.request.file_path.data = "/music/das.ogg";
-			//client.call(dance);
-			firsttime = false;
+			dance.request.file_path.data = "/music/das.ogg";
+			if(ros::service::call("/nao_audio/play_file", dance)){
+				//dance.request.file_path.data = "/music/das.ogg";
+				//client.call(dance);
+				firsttime = false;
+			}
 		}
 
 		all.color.g = 99;
