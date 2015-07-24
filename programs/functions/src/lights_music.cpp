@@ -33,16 +33,16 @@ int main(int argc, char ** argv){
 			firsttime = false;
 		}
 
-		all.color.r = 0;
-		all.color.g = 0;
+		all.color.g = 99;
 		all.color.b = 0;
 		all.fade_duration.sec = 0.1;
 		led.publish(all);
-		ros::Duration(0.25).sleep();
+		ros::Duration(0.5).sleep();
 
+		all.color.g = 0;
 		all.color.b = 99;
 		led.publish(all);
-		ros::Duration(0.25).sleep();
+		ros::Duration(0.5).sleep();
 	}		
 	
 	return 0;
