@@ -271,8 +271,6 @@ int main(int argc, char **argv) {
       ros::Duration(1).sleep();
         
       /************************************************/
-<<<<<<< HEAD
- 
       //narration.data = "Walk.";
       pub_narration.publish(narration);
   
@@ -286,9 +284,6 @@ int main(int argc, char **argv) {
         pub_walk.publish(walk);
   
         /************************************************/
-=======
->>>>>>> 9c2b8251de3f542c5e85ac2a5882894fe61e1323
-       
       bool run = true;
 
       while (run = true) {
