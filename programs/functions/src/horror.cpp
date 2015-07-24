@@ -230,8 +230,6 @@ int main(int argc, char **argv) {
       ros::Duration(4).sleep();
       
       /************************************************/
-<<<<<<< HEAD
-          
       //narration.data = "Turn Red.";
       //pub_narration.publish(narration);
   
@@ -397,9 +395,6 @@ int main(int argc, char **argv) {
         pub_walk.publish(walk);
   
         /************************************************/
-=======
-    
->>>>>>> 8d60a0ec7ef3394afab8d2ea42beeebbf44f518b
       bool run = true;
 
       while (run == true) {
@@ -530,8 +525,8 @@ int main(int argc, char **argv) {
         
         /************************************************/
   
-        //narration.data = "Lower knife.";
-        //pub_narration.publish(narration);
+        narration.data = "So long.";
+        pub_narration.publish(narration);
 
         lsp.joint_angles[0] = 1.6;
         lsp.speed = 0.5;
