@@ -199,14 +199,13 @@ int main(int argc, char ** argv){
 	                        all.color.r = 0;
         	                all.color.g = 0;
                 	        led.publish(all);
-
 				controlstate.walk_detect = true;
 				control.publish(controlstate);
 				ros::spinOnce();
 				loop_rate.sleep();
 				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
 				sun.request.file_path.data = "/music/wos.ogg";
-                                client1.call(sun);
+				ros::service::call("/nao_audio/play_file", sun);
 				while(controlstate.walk_detect == true){
 					ros::spinOnce();
 					loop_rate.sleep();
@@ -246,7 +245,7 @@ int main(int argc, char ** argv){
 				loop_rate.sleep();
 				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
 				sun.request.file_path.data = "/music/wos.ogg";
-                                client1.call(sun);
+                                ros::service::call("/nao_audio/play_file", sun);
 				while(controlstate.walk_detect == true){
 					ros::spinOnce();
 					loop_rate.sleep();

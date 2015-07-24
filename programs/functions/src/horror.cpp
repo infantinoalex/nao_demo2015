@@ -296,11 +296,7 @@ int main(int argc, char **argv) {
       //pub_narration.publish(narration);
    
       play.request.file_path.data = "/music/evil_laugh.wav";
-<<<<<<< HEAD
       client.call(play);
-=======
-      client.call(dance);
->>>>>>> 96b4b0deeaa07c788a45a20367608888facd3ed6
   
       ros::Duration(3).sleep();
  
@@ -320,21 +316,18 @@ int main(int argc, char **argv) {
       ros::Duration(1).sleep();
         
       /************************************************/
-<<<<<<< HEAD
 
       //narration.data = "Arranging arms.";
       //pub_narration.publish(narration);
   
       lsp.joint_angles[0] = -1.0;
       lsp.speed = 0.1;
-=======
    
       //narration.data = "Lower knife.";
       pub_narration.publish(narration);
 
       lsp.joint_angles[0] = 1.6;
       lsp.speed = 0.5;
->>>>>>> 96b4b0deeaa07c788a45a20367608888facd3ed6
       pub_move.publish(lsp);
 
       lsr.joint_angles[0] = 0.0;
@@ -377,7 +370,6 @@ int main(int argc, char **argv) {
       ros::Duration(2).sleep();
 
       /************************************************/
-<<<<<<< HEAD
       //narration.data = "Walk.";
       //pub_narration.publish(narration);
   
@@ -391,9 +383,6 @@ int main(int argc, char **argv) {
         pub_walk.publish(walk);
   
         /************************************************/
-=======
-    
->>>>>>> 96b4b0deeaa07c788a45a20367608888facd3ed6
       bool run = true;
 
       while (run == true) {
@@ -495,8 +484,8 @@ int main(int argc, char **argv) {
         //narration.data = "Evil laugh.";
         //pub_narration.publish(narration);
      
-        play.request.file_path.data = "/music/evil_laugh.wav";
-        client.call(dance);
+        //play.request.file_path.data = "/music/evil_laugh.wav";
+        //client.call(dance);
   
         ros::Duration(3).sleep();
  
