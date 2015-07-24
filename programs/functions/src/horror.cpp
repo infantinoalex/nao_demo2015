@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
 #include <nao_msgs/TactileTouch.h>
+#include <nao_msgs/FadeRGB.h>
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Bool.h>
@@ -27,6 +28,7 @@ int main(int argc, char **argv) {
   ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
   ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
   ros::Publisher pub_sing_command = node.advertise<std_msgs::Bool>("horror", 100);
+  ros::Publisher pub_eye_color = node.advertise<nao_msgs::FadeRGB>("fade_rgb", 100);
 
   //All the subscribers
   ros::Subscriber sub_head_sensors = node.subscribe("tactile_touch", 100, callback);
@@ -34,6 +36,9 @@ int main(int argc, char **argv) {
   //All the message declarations
   std_msgs::String narration;
   geometry_msgs::Twist walk;
+
+  nao_msgs::FadeRGB leds;
+
   nao_msgs::JointAnglesWithSpeed hy;
   nao_msgs::JointAnglesWithSpeed hp;
   nao_msgs::JointAnglesWithSpeed lsp;
@@ -200,7 +205,7 @@ int main(int argc, char **argv) {
         lh.speed = 0.5;
         pub_move.publish(lh);
   
-        narration.data = "Thank you!.";
+        narration.data = "Thank you!";
         pub_narration.publish(narration);
 
         ros::spinOnce();
@@ -215,14 +220,23 @@ int main(int argc, char **argv) {
       /************************************************/
             
       while (run = true) {
-        
+          
+        narration.data = "Prepare to die!.";
+        pub_narration.publish(narration);
+ 
+        ros::Duration(3).sleep();
+      
         /************************************************/
-        
-        //narration.data = "Stand up.";
+         
+        //narration.data = "Turn Red.";
         pub_narration.publish(narration);
   
-        walk.linear.x = 1;
-        pub_walk.publish(walk);
+        leds.led_name = "AllLeds";
+        leds.color.r = 100.0;
+        leds.color.g = 0.0;
+        leds.color.b = 0.0;
+        leds.fade_duration.secs = 1;
+        pub_eye_color.publish(leds);
   
         /************************************************/
 
@@ -276,6 +290,14 @@ int main(int argc, char **argv) {
      
         ros::Duration(1).sleep();
       
+        /************************************************/
+       
+        //narration.data = "Stand up.";
+        pub_narration.publish(narration);
+  
+        walk.linear.x = 1;
+        pub_walk.publish(walk);
+  
         /************************************************/
 
     }
