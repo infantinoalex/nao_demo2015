@@ -220,23 +220,11 @@ int main(int argc, char **argv) {
       lh.speed = 0.5;
       pub_move.publish(lh);
    
-      narration.data = "Thank you!";
+      narration.data = "You fool!  I am secretly evil.  Now I am armed to destroy you!";
       pub_narration.publish(narration);
  
-      ros::Duration(2).sleep();
+      ros::Duration(4).sleep();
       
-      /************************************************/
-          
-      //narration.data = "Turn Red.";
-      //pub_narration.publish(narration);
-  
-      leds.led_name = "AllLeds";
-      leds.color.r = 100.0;
-      leds.color.g = 0.0;
-      leds.color.b = 0.0;
-      leds.fade_duration.sec = 1;
-      pub_eye_color.publish(leds);
-       
       /************************************************/
     
       bool run = true;
@@ -309,10 +297,22 @@ int main(int argc, char **argv) {
         hp.speed = 0.1;
         pub_move.publish(hp);
  
-        ros::Duration(2).sleep();
+        ros::Duration(1).sleep();
    
         /************************************************/
-   
+           
+        //narration.data = "Turn Red.";
+        //pub_narration.publish(narration);
+  
+        leds.led_name = "AllLeds";
+        leds.color.r = 100.0;
+        leds.color.g = 0.0;
+        leds.color.b = 0.0;
+        leds.fade_duration.sec = 1;
+        pub_eye_color.publish(leds);
+       
+        /************************************************/
+  
         //narration.data = "Evil laugh.";
         //pub_narration.publish(narration);
      
@@ -357,7 +357,7 @@ int main(int argc, char **argv) {
         ler.speed = 0.5;
         pub_move.publish(ler);
    
-        lwy.joint_angles[0] = -1.5;
+        lwy.joint_angles[0] = 0.0;
         lwy.speed = 0.5;
         pub_move.publish(lwy);
 
