@@ -86,7 +86,7 @@ int main(int argc, char ** argv){
 	while(ros::ok()){
 		ros::spinOnce();
 		loop_rate.sleep();
-		if(controlmsgs.startup == true){
+		if(!controlmsgs.startup){
 			i = 0;
 			if(checkit){
 				/* If the HeadYaw position is not between the desired state, it will move it there

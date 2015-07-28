@@ -105,11 +105,9 @@ add_executable(mathp src/mathp.cpp)
 add_executable(walk_detect src/walk_detect.cpp)
 add_executable(demo src/demo.cpp)
 add_executable(hula src/hula.cpp)
-<<<<<<< HEAD
-=======
 add_executable(sing src/hula.cpp)
-add_executable(rollercoaster src/rollercoaster.cpp)
->>>>>>> e618fd3bd6ab76690ef6c830ffd14714a76db26d
+add_executable(horror src/horror.cpp)
+add_executable(lam src/lights_music.cpp)
 ## Add cmake target dependencies of the executable/library
 
 ## as an example, message headers may need to be generated before nodes
@@ -119,17 +117,16 @@ add_dependencies(walk_detect custom_msgs ${catkin_EXPORTED_TARGETS})
 add_dependencies(demo custom_msgs ${catkin_EXPORTED_TARGETS})
 add_dependencies(sing custom_msgs ${catkin_EXPORTED_TARGETS})
 add_dependencies(hula custom_msgs ${catkin_EXPORTED_TARGETS})
+add_dependencies(horror custom_msgs ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(mathp ${catkin_LIBRARIES})
 target_link_libraries(walk_detect ${catkin_LIBRARIES})
 target_link_libraries(demo ${catkin_LIBRARIES})
 target_link_libraries(hula ${catkin_LIBRARIES})
-<<<<<<< HEAD
-=======
 target_link_libraries(sing ${catkin_LIBRARIES})
-target_link_libraries(rollercoaster ${catkin_LIBRARIES})
->>>>>>> e618fd3bd6ab76690ef6c830ffd14714a76db26d
+target_link_libraries(horror ${catkin_LIBRARIES})
+target_link_libraries(lam ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############

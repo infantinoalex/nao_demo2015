@@ -78,7 +78,7 @@ int main(int argc, char ** argv){
 		
 			// starts to wave
 			mrsr.joint_angles[0] = 0.3142;
-               		mrsp.joint_angles[0] = -1.4;
+               		mrsp.joint_angles[0] = -1;
                 	mrer.joint_angles[0] = 0.0349;
                 	mrwy.joint_angles[0] = 0;
 			mrh.joint_angles[0] = 1;
@@ -99,7 +99,7 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 			
 			words.data = "Hello. My name is BLUE. And today I will be teaching you how to dance the hula at a luau.";
-			talk.publish(words);
+			//talk.publish(words);
 
 			// waves
 			for(j = 0; j < 5; j++){
@@ -109,8 +109,7 @@ int main(int argc, char ** argv){
                         	mrer.speed = 0.5;
                         	move.publish(mrsr);
                         	move.publish(mrer);
-                        	//ros::Duration(0.5).sleep();
-				loop_rate.sleep();
+                        	ros::Duration(0.5).sleep();
 
                         	mrsr.joint_angles[0] = 0.342;
                         	mrer.joint_angles[0] = 0.349;
@@ -118,45 +117,319 @@ int main(int argc, char ** argv){
                         	mrer.speed = 0.5;
                         	move.publish(mrsr);
                         	move.publish(mrer);
-                        	//ros::Duration(0.5).sleep();
-				loop_rate.sleep();
+                        	ros::Duration(0.5).sleep();
 			}
 			mrsp.joint_angles[0] = 1.4;
                 	mrsp.speed = 0.5;
                 	move.publish(mrsp);
 			ROS_INFO("DONE WAVING\n");
 			loop_rate.sleep();
-			ros::Duration(5).sleep();
+			ros::Duration(2).sleep();
 
 			words.data = "The first thing you are going to need for a luaua is a nice skirt to fit the Hawaiian theme.";
-			talk.publish(words);
+			//talk.publish(words);
+
+                        ros::Duration(5).sleep();
+
+			words.data = "Now we need to be in a tropical setting. Just let me use my magical robot powers to get us there.";
+			//talk.publish(words);
 
 			ROS_INFO("MOVING HANDS WHILE TALKING\n");
 
 			// moves hands
 			for(j = 0; j < 6; j++){
-				mrsp.joint_angles[0] = 0.7;
-				mrsp.speed = 0.4;
+				mrsp.joint_angles[0] = 1;
+				mrsp.speed = 0.1;
+				mrsr.joint_angles[0] = -0.2;
+				mrsr.speed = 0.1;
 				mrer.joint_angles[0] = 0.5;
-				mrer.speed = 0.4;
-				mrey.joint_angles[0] = 0.7;
-				mrey.speed = 0.4;
+				mrer.speed = 0.1;
+				mrey.joint_angles[0] = -0.7;
+				mrey.speed = 0.1;
 				move.publish(mrsp);
+				move.publish(mrsr);
 				move.publish(mrer);
 				move.publish(mrey);
+				mlsp.joint_angles[0] = 1;
+                                mlsp.speed = 0.1;
+                                mlsr.joint_angles[0] = 0.2;
+                                mlsr.speed = 0.1;
+                                mler.joint_angles[0] = 0.5;
+                                mler.speed = 0.1;
+                                mley.joint_angles[0] = 0.7;
+                                mley.speed = 0.1;
+				mhp.joint_angles[0] = -0.4;
+                                mhp.speed = 0.1;
+                                move.publish(mhp);
+                                move.publish(mlsp);
+                                move.publish(mlsr);
+                                move.publish(mler);
+                                move.publish(mley);
 				ros::Duration(0.5).sleep();
 	
-				mrsp.joint_angles[0] = 0;
-				mrsp.speed = 0.4;
+				mrsp.joint_angles[0] = 1.4;
+				mrsp.speed = 0.1;
+				mrsr.joint_angles[0] = 0;
+				mrsr.speed = 0.1;
 				mrer.joint_angles[0] = 0;
-				mrer.speed = 0.4;
+				mrer.speed = 0.1;
 				mrey.joint_angles[0] = 0;
-				mrey.speed = 0.4;
+				mrey.speed = 0.1;
 				move.publish(mrsp);
+				move.publish(mrsr);
 				move.publish(mrer);
 				move.publish(mrey);
+				mlsp.joint_angles[0] = 1.4;
+                                mlsp.speed = 0.1;
+                                mlsr.joint_angles[0] = 0;
+                                mlsr.speed = 0.1;
+                                mler.joint_angles[0] = 0;
+                                mler.speed = 0.1;
+                                mley.joint_angles[0] = 0;
+                                mley.speed = 0.1;
+				mhp.joint_angles[0] = 0.2;
+                                mhp.speed = 0.1;
+                                move.publish(mhp);
+                                move.publish(mlsp);
+                                move.publish(mlsr);
+                                move.publish(mler);
+                                move.publish(mley);
 				ros::Duration(0.5).sleep();
 			}
+		
+			mrsp.joint_angles[0] = 1.4;
+                        mrsp.speed = 0.5;
+			mlsp.joint_angles[0] = 1.4;
+			mlsp.speed = 0.5;
+                        move.publish(mrsp);
+			move.publish(mlsp);
+                        loop_rate.sleep();
+                        ros::Duration(2).sleep();
+
+			words.data = "1...2...3...Poof. We made it.";
+			//talk.publish(words);
+
+			ROS_INFO("MOVING HANDS WHILE TALKING\n");
+
+			// moves hands
+			for(j = 0; j < 6; j++){
+				mrsp.joint_angles[0] = 1;
+				mrsp.speed = 0.1;
+				mrsr.joint_angles[0] = -0.2;
+				mrsr.speed = 0.1;
+				mrer.joint_angles[0] = 0.5;
+				mrer.speed = 0.1;
+				mrey.joint_angles[0] = -0.7;
+				mrey.speed = 0.1;
+				move.publish(mrsp);
+				move.publish(mrsr);
+				move.publish(mrer);
+				move.publish(mrey);
+				mlsp.joint_angles[0] = 1;
+                                mlsp.speed = 0.1;
+                                mlsr.joint_angles[0] = 0.2;
+                                mlsr.speed = 0.1;
+                                mler.joint_angles[0] = 0.5;
+                                mler.speed = 0.1;
+                                mley.joint_angles[0] = 0.7;
+                                mley.speed = 0.1;
+				mhp.joint_angles[0] = -0.4;
+                                mhp.speed = 0.1;
+                                move.publish(mhp);
+                                move.publish(mlsp);
+                                move.publish(mlsr);
+                                move.publish(mler);
+                                move.publish(mley);
+				ros::Duration(0.5).sleep();
+	
+				mrsp.joint_angles[0] = 1.4;
+				mrsp.speed = 0.1;
+				mrsr.joint_angles[0] = 0;
+				mrsr.speed = 0.1;
+				mrer.joint_angles[0] = 0;
+				mrer.speed = 0.1;
+				mrey.joint_angles[0] = 0;
+				mrey.speed = 0.1;
+				move.publish(mrsp);
+				move.publish(mrsr);
+				move.publish(mrer);
+				move.publish(mrey);
+				mlsp.joint_angles[0] = 1.4;
+                                mlsp.speed = 0.1;
+                                mlsr.joint_angles[0] = 0;
+                                mlsr.speed = 0.1;
+                                mler.joint_angles[0] = 0;
+                                mler.speed = 0.1;
+                                mley.joint_angles[0] = 0;
+                                mley.speed = 0.1;
+				mhp.joint_angles[0] = 0.2;
+                                mhp.speed = 0.1;
+                                move.publish(mhp);
+                                move.publish(mlsp);
+                                move.publish(mlsr);
+                                move.publish(mler);
+                                move.publish(mley);
+				ros::Duration(0.5).sleep();
+			}
+		
+			mrsp.joint_angles[0] = 1.4;
+                        mrsp.speed = 0.5;
+			mlsp.joint_angles[0] = 1.4;
+			mlsp.speed = 0.5;
+                        move.publish(mrsp);
+			move.publish(mlsp);
+                        loop_rate.sleep();
+                        ros::Duration(2).sleep();
+
+			words.data = "Lastly we just need some good music for a Luau... Like this.";
+			//talk.publish(words);
+
+			ROS_INFO("MOVING HANDS WHILE TALKING\n");
+
+			// moves hands
+			for(j = 0; j < 6; j++){
+				mrsp.joint_angles[0] = 1;
+				mrsp.speed = 0.1;
+				mrsr.joint_angles[0] = -0.2;
+				mrsr.speed = 0.1;
+				mrer.joint_angles[0] = 0.5;
+				mrer.speed = 0.1;
+				mrey.joint_angles[0] = -0.7;
+				mrey.speed = 0.1;
+				move.publish(mrsp);
+				move.publish(mrsr);
+				move.publish(mrer);
+				move.publish(mrey);
+				mlsp.joint_angles[0] = 1;
+                                mlsp.speed = 0.1;
+                                mlsr.joint_angles[0] = 0.2;
+                                mlsr.speed = 0.1;
+                                mler.joint_angles[0] = 0.5;
+                                mler.speed = 0.1;
+                                mley.joint_angles[0] = 0.7;
+                                mley.speed = 0.1;
+				mhp.joint_angles[0] = -0.4;
+                                mhp.speed = 0.1;
+                                move.publish(mhp);
+                                move.publish(mlsp);
+                                move.publish(mlsr);
+                                move.publish(mler);
+                                move.publish(mley);
+				ros::Duration(0.5).sleep();
+	
+				mrsp.joint_angles[0] = 1.4;
+				mrsp.speed = 0.1;
+				mrsr.joint_angles[0] = 0;
+				mrsr.speed = 0.1;
+				mrer.joint_angles[0] = 0;
+				mrer.speed = 0.1;
+				mrey.joint_angles[0] = 0;
+				mrey.speed = 0.1;
+				move.publish(mrsp);
+				move.publish(mrsr);
+				move.publish(mrer);
+				move.publish(mrey);
+				mlsp.joint_angles[0] = 1.4;
+                                mlsp.speed = 0.1;
+                                mlsr.joint_angles[0] = 0;
+                                mlsr.speed = 0.1;
+                                mler.joint_angles[0] = 0;
+                                mler.speed = 0.1;
+                                mley.joint_angles[0] = 0;
+                                mley.speed = 0.1;
+				mhp.joint_angles[0] = 0.2;
+                                mhp.speed = 0.1;
+                                move.publish(mhp);
+                                move.publish(mlsp);
+                                move.publish(mlsr);
+                                move.publish(mler);
+                                move.publish(mley);
+				ros::Duration(0.5).sleep();
+			}
+		
+			mrsp.joint_angles[0] = 1.4;
+                        mrsp.speed = 0.5;
+			mlsp.joint_angles[0] = 1.4;
+			mlsp.speed = 0.5;
+                        move.publish(mrsp);
+			move.publish(mlsp);
+                        loop_rate.sleep();
+                        ros::Duration(2).sleep();
+
+			words.data = "Now we can start our dancing.";
+			//talk.publish(words);
+
+			ROS_INFO("MOVING HANDS WHILE TALKING\n");
+
+			// moves hands
+			for(j = 0; j < 6; j++){
+				mrsp.joint_angles[0] = 1;
+				mrsp.speed = 0.1;
+				mrsr.joint_angles[0] = -0.2;
+				mrsr.speed = 0.1;
+				mrer.joint_angles[0] = 0.5;
+				mrer.speed = 0.1;
+				mrey.joint_angles[0] = -0.7;
+				mrey.speed = 0.1;
+				move.publish(mrsp);
+				move.publish(mrsr);
+				move.publish(mrer);
+				move.publish(mrey);
+				mlsp.joint_angles[0] = 1;
+                                mlsp.speed = 0.1;
+                                mlsr.joint_angles[0] = 0.2;
+                                mlsr.speed = 0.1;
+                                mler.joint_angles[0] = 0.5;
+                                mler.speed = 0.1;
+                                mley.joint_angles[0] = 0.7;
+                                mley.speed = 0.1;
+				mhp.joint_angles[0] = -0.4;
+                                mhp.speed = 0.1;
+                                move.publish(mhp);
+                                move.publish(mlsp);
+                                move.publish(mlsr);
+                                move.publish(mler);
+                                move.publish(mley);
+				ros::Duration(0.5).sleep();
+	
+				mrsp.joint_angles[0] = 1.4;
+				mrsp.speed = 0.1;
+				mrsr.joint_angles[0] = 0;
+				mrsr.speed = 0.1;
+				mrer.joint_angles[0] = 0;
+				mrer.speed = 0.1;
+				mrey.joint_angles[0] = 0;
+				mrey.speed = 0.1;
+				move.publish(mrsp);
+				move.publish(mrsr);
+				move.publish(mrer);
+				move.publish(mrey);
+				mlsp.joint_angles[0] = 1.4;
+                                mlsp.speed = 0.1;
+                                mlsr.joint_angles[0] = 0;
+                                mlsr.speed = 0.1;
+                                mler.joint_angles[0] = 0;
+                                mler.speed = 0.1;
+                                mley.joint_angles[0] = 0;
+                                mley.speed = 0.1;
+				mhp.joint_angles[0] = 0.2;
+                                mhp.speed = 0.1;
+                                move.publish(mhp);
+                                move.publish(mlsp);
+                                move.publish(mlsr);
+                                move.publish(mler);
+                                move.publish(mley);
+				ros::Duration(0.5).sleep();
+			}
+		
+			mrsp.joint_angles[0] = 1.4;
+                        mrsp.speed = 0.5;
+			mlsp.joint_angles[0] = 1.4;
+			mlsp.speed = 0.5;
+                        move.publish(mrsp);
+			move.publish(mlsp);
+                        loop_rate.sleep();
+                        ros::Duration(2).sleep();
 
 		/*
 			words.data = "I am a humanoid robot that is capable of many things.";

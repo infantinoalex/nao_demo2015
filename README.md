@@ -17,3 +17,8 @@ Victoria Albanese
 
 # WIP
 Last Updated July 7, 2015
+
+# WOW THIS CODE IS CRAP
+Yes, we are aware that most of our code could be condensed and organized much better, but we are still newbies
+in the computer science field. This stuff will come with time, and hopefully the code will look much 
+better in the future.
