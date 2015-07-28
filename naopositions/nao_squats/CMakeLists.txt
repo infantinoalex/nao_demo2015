@@ -72,11 +72,7 @@ add_executable(squat src/squat.cpp)
 add_executable(squat_copy src/squat_copy.cpp)
 add_executable(mid_squat src/mid_squat.cpp)
 add_executable(stand src/stand.cpp)
-<<<<<<< HEAD
 add_executable(fall_back src/fall_backwards.cpp)
-=======
-add_executable(fall_back src/fall_backward.cpp)
->>>>>>> 79640afd11213483d26b39ceed5e9bb8eb7e06cc
 add_executable(fall_front src/fall_forward.cpp)
 
 ## Specify libraries to link a library or executable target against

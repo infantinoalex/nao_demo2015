@@ -70,6 +70,7 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
+		loop_rate.sleep();
 		//if(controlmsgs.demo == true){
 			i = 0;
 							
@@ -95,11 +96,12 @@ int main(int argc, char ** argv){
                 	move.publish(mrwy);
 			move.publish(mrh);
 			move.publish(mlh);
-			//ros::Duration(1).sleep();
-			loop_rate.sleep();
+			ros::Duration(1).sleep();
+			//loop_rate.sleep();
 			
+			ros::spinOnce();
 			words.data = "Hello. My name is BLUE. And today I will be teaching you how to dance the hula at a luau.";
-			//talk.publish(words);
+			talk.publish(words);
 
 			// waves
 			for(j = 0; j < 5; j++){
@@ -127,12 +129,12 @@ int main(int argc, char ** argv){
 			ros::Duration(2).sleep();
 
 			words.data = "The first thing you are going to need for a luaua is a nice skirt to fit the Hawaiian theme.";
-			//talk.publish(words);
+			talk.publish(words);
 
-                        ros::Duration(5).sleep();
+                        ros::Duration(15).sleep();
 
 			words.data = "Now we need to be in a tropical setting. Just let me use my magical robot powers to get us there.";
-			//talk.publish(words);
+			talk.publish(words);
 
 			ROS_INFO("MOVING HANDS WHILE TALKING\n");
 
@@ -207,7 +209,7 @@ int main(int argc, char ** argv){
                         ros::Duration(2).sleep();
 
 			words.data = "1...2...3...Poof. We made it.";
-			//talk.publish(words);
+			talk.publish(words);
 
 			ROS_INFO("MOVING HANDS WHILE TALKING\n");
 
@@ -281,8 +283,8 @@ int main(int argc, char ** argv){
                         loop_rate.sleep();
                         ros::Duration(2).sleep();
 
-			words.data = "Lastly we just need some good music for a Luau... Like this.";
-			//talk.publish(words);
+			words.data = "Lastly we just need some good music for a Luau....... Like this.";
+			talk.publish(words);
 
 			ROS_INFO("MOVING HANDS WHILE TALKING\n");
 
@@ -357,12 +359,12 @@ int main(int argc, char ** argv){
                         ros::Duration(2).sleep();
 
 			words.data = "Now we can start our dancing.";
-			//talk.publish(words);
+			talk.publish(words);
 
 			ROS_INFO("MOVING HANDS WHILE TALKING\n");
 
 			// moves hands
-			for(j = 0; j < 6; j++){
+			for(j = 0; j < 3; j++){
 				mrsp.joint_angles[0] = 1;
 				mrsp.speed = 0.1;
 				mrsr.joint_angles[0] = -0.2;
@@ -450,6 +452,7 @@ int main(int argc, char ** argv){
 			loop_rate.sleep();
 		}
 		*/
+		ros::shutdown();
 	}
 	return 0;
 }
