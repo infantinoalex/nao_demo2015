@@ -190,13 +190,13 @@ int main(int argc, char **argv) {
  		*/
     		/************************************************/
 			
-    		//Stradling as much as possible
-    		//Adjusting hip and ankle rolls to desired positions    
+    		//Arms back
+    		//Adjusting shoulder pitches and rolls to desired positions    
  				
         	lsp.speed = 0.5;
         	rsp.speed = 0.5;
-        	lsp.joint_angles[0] = 2.0;
-        	rsp.joint_angles[0] = 2.0;
+        	lsp.joint_angles[0] = 2.1;
+        	rsp.joint_angles[0] = 2.1;
         	pub_move.publish(lsp);
         	pub_move.publish(rsp);
         			
@@ -208,12 +208,12 @@ int main(int argc, char **argv) {
         	pub_move.publish(rar);
  
     		/************************************************/
-		/*		
+				
     		//Squatting
     		//Adjusting hip pitches to desired positions    
  				
-        	lhp.speed = 0.35 / 90;
-        	rhp.speed = 0.35 / 90;
+        	lhp.speed = 0.3;
+        	rhp.speed = 0.3;
         	lhp.joint_angles[0] = -0.7;
         	rhp.joint_angles[0] = -0.7;
         	pub_move.publish(lhp);
@@ -221,8 +221,8 @@ int main(int argc, char **argv) {
         			
     		//Adjusting knee pitches to desired positions    
  				
-        	lkp.speed = 1.05 / 30;
-        	rkp.speed = 1.05 / 30;
+        	lkp.speed = 0.3;
+        	rkp.speed = 0.3;
         	lkp.joint_angles[0] = 2.1;
         	rkp.joint_angles[0] = 2.1;
         	pub_move.publish(lkp);
@@ -230,13 +230,13 @@ int main(int argc, char **argv) {
         			
     		//Adjusting ankle pitches to desired positions    
  				
-        	lap.speed = 0.6 / 30;
-        	rap.speed = 0.6 / 30;
+        	lap.speed = 0.3;
+        	rap.speed = 0.3;
         	lap.joint_angles[0] = -1.2;
         	rap.joint_angles[0] = -1.2;
         	pub_move.publish(lap);
         	pub_move.publish(rap);
-        	*/		
+        			
       		/************************************************/
 
 		ros::Duration(6).sleep(); 
