@@ -170,7 +170,7 @@ int main(int argc, char **argv) {
 		loop_rate.sleep();
 
     		/************************************************/
-					
+		/*			
     		//Stradling as much as possible
     		//Adjusting hip and ankle rolls to desired positions    
  				
@@ -187,10 +187,10 @@ int main(int argc, char **argv) {
         	rar.joint_angles[0] = 0.4;
         	pub_move.publish(lar);
         	pub_move.publish(rar);
- 		
+ 		*/
     		/************************************************/
 	
-		ros::Duration(3).sleep(); 
+		//ros::Duration(3).sleep(); 
        			
       		/************************************************/
 		
