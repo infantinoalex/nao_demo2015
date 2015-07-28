@@ -174,15 +174,15 @@ int main(int argc, char **argv) {
     		//Stradling as much as possible
     		//Adjusting hip and ankle rolls to desired positions    
  				
-        	lhr.speed = 0.2;
-        	rhr.speed = 0.2;
+        	lhr.speed = 0.5;
+        	rhr.speed = 0.5;
         	lhr.joint_angles[0] = 0.8;
         	rhr.joint_angles[0] = -0.8;
         	pub_move.publish(lhr);
         	pub_move.publish(rhr);
         			
-        	lar.speed = 0.1;
-        	rar.speed = 0.1;
+        	lar.speed = 0.25;
+        	rar.speed = 0.25;
         	lar.joint_angles[0] = -0.4;
         	rar.joint_angles[0] = 0.4;
         	pub_move.publish(lar);
