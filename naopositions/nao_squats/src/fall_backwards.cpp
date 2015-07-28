@@ -193,7 +193,26 @@ int main(int argc, char **argv) {
 		//ros::Duration(3).sleep(); 
        			
       		/************************************************/
-		
+			
+    		//Arms back
+    		//Adjusting shoulder pitches and rolls to desired positions    
+ 				
+        	lsp.speed = 0.5;
+        	rsp.speed = 0.5;
+        	lsp.joint_angles[0] = 2.1;
+        	rsp.joint_angles[0] = 2.1;
+        	pub_move.publish(lsp);
+        	pub_move.publish(rsp);
+        			
+        	lar.speed = 0.5;
+        	rar.speed = 0.5;
+        	lar.joint_angles[0] = -0.3;
+        	rar.joint_angles[0] = 0.3;
+        	pub_move.publish(lar);
+        	pub_move.publish(rar);
+ 
+    		/************************************************/
+	
     		//Arms back
     		//Adjusting shoulder pitches and rolls to desired positions    
  				
