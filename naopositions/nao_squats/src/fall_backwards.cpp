@@ -229,8 +229,8 @@ int main(int argc, char **argv) {
         			
     		//Adjusting knee pitches to desired positions    
  				
-        	lkp.speed = 0.1;
-        	rkp.speed = 0.1;
+        	lkp.speed = 0.2;
+        	rkp.speed = 0.2;
         	lkp.joint_angles[0] = 2.1;
         	rkp.joint_angles[0] = 2.1;
         	pub_move.publish(lkp);
