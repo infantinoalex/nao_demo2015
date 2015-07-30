@@ -108,6 +108,8 @@ add_executable(hula src/hula.cpp)
 add_executable(sing src/hula.cpp)
 add_executable(horror src/horror.cpp)
 add_executable(lam src/lights_music.cpp)
+add_executable(wave src/wavenao.cpp)
+add_executable(quiz src/quiz.cpp)
 ## Add cmake target dependencies of the executable/library
 
 ## as an example, message headers may need to be generated before nodes
@@ -127,6 +129,8 @@ target_link_libraries(hula ${catkin_LIBRARIES})
 target_link_libraries(sing ${catkin_LIBRARIES})
 target_link_libraries(horror ${catkin_LIBRARIES})
 target_link_libraries(lam ${catkin_LIBRARIES})
+target_link_libraries(wave ${catkin_LIBRARIES})
+target_link_libraries(quiz ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############
