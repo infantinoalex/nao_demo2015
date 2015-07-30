@@ -9,6 +9,7 @@ Created by: Alexander Infantino
 #include "std_msgs/Bool.h"
 #include "nao_msgs/Bumper.h"
 #include "custom_msgs/states.h"
+#include "nao_interaction_msgs/AudioPlayback.h"
 
 // Global variables to store sonar information
 float rsonarr, lsonarr;
@@ -78,6 +79,10 @@ int main(int argc, char ** argv){
 	// publsher to contr_msgs to tell node to stop/go
 	ros::Publisher pub_contrl = n.advertise<custom_msgs::states>("control_msgs", 100);
 
+        ros::ServiceClient client1 = n.serviceClient<nao_interaction_msgs::AudioPlayback>("/nao_audio/play_file");
+
+        nao_interaction_msgs::AudioPlayback sun;
+
 	// variable declarations
 	std_msgs::String words; //file_path;
 	geometry_msgs::Twist direct, stop;
@@ -105,6 +110,8 @@ int main(int argc, char ** argv){
 				words.data = "I can walk around freely without assistance. Watch me.";
 				talk.publish(words);
 				ros::Duration(5).sleep();		
+				sun.request.file_path.data = "/music/doit.ogg";
+                                ros::service::call("/nao_audio/play_file", sun);
 				firsttime = false;
 			}
 	
@@ -112,6 +119,8 @@ int main(int argc, char ** argv){
 			else if(!onground){
 				ROS_INFO("ROBOT IS NOT ON GROUND");
 				loop_rate.sleep();
+				sun.request.file_path.data = "/music/dontit.ogg";
+                                ros::service::call("/nao_audio/play_file", sun);
 				controlmsgs.walk_detect = false;
 				pub_contrl.publish(controlmsgs);
 				ROS_INFO("STOPPING\n");
