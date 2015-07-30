@@ -70,7 +70,7 @@ int main(int argc, char ** argv){
 			else if(buttonn == 1 && buttonp == 1){
 				ROS_INFO("TOUCHING FRONT SENSOR\n");
 				loop_rate.sleep();
-				talk.data = "EEEEK Get your hands off my front button";
+				talk.data = "OW Get your hands off my front button!";
 				pub.publish(talk);
 				mrsp.joint_angles[0] = -1.4;
 				mlsp.joint_angles[0] = -1.4;
@@ -86,7 +86,7 @@ int main(int argc, char ** argv){
 				if(buttonn == 1 && buttonp == 1){
 					ROS_INFO("STILL TOUCHING IT\n");
 					loop_rate.sleep();
-					talk.data = "Did you not hear me the first time";
+					talk.data = "Did you not hear me the first time?";
 					pub.publish(talk);
 					ros::Duration(1).sleep();
 					talk.data = "Get your hands off me";
@@ -96,12 +96,12 @@ int main(int argc, char ** argv){
 				}
 				ros::Duration(2).sleep();
 				if(buttonn == 1 && buttonp == 0){
-					talk.data = "Oh why thank you now dont do that again";
+					talk.data = "Oh why thank you now dont do that again.";
 					pub.publish(talk);
 					ros::Duration(4).sleep();
 				}
 				else{
-					talk.data = "Oh my just take your hands off of me please";
+					talk.data = "Oh my just take your hands off of me please!";
 					pub.publish(talk);
 					ros::Duration(2).sleep();
 				}
@@ -109,7 +109,7 @@ int main(int argc, char ** argv){
 			else if(buttonn == 2 && buttonp == 1){
 				ROS_INFO("TOUCHING MIDDLE SENSOR\n");
 				loop_rate.sleep();
-				talk.data = "AAH Get your hands off my middle button";
+				talk.data = "AAH Get your hands off my middle button!";
 				pub.publish(talk);
 				mrsp.joint_angles[0] = -1.4;
 				mlsp.joint_angles[0] = -1.4;
@@ -125,7 +125,7 @@ int main(int argc, char ** argv){
 				if(buttonn == 2 && buttonp == 1){
 					ROS_INFO("STILL TOUCHING IT\n");
 					loop_rate.sleep();
-					talk.data = "Did you not hear me the first time";
+					talk.data = "Did you not hear me the first time?";
 					pub.publish(talk);
 					ros::Duration(1).sleep();
 					talk.data = "Get your hands off me";
