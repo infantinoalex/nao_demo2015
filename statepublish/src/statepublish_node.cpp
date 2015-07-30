@@ -101,6 +101,7 @@ int main(int argc, char ** argv){
 			ROS_INFO("WAITING UNTIL STARTUP POSE COMPLETE\n");
 			while(controlstate.startup == true){
 				ros::spinOnce();
+				client.call(bstiff);
 				loop_rate.sleep();
 			}
 			ROS_INFO("RUNNING INTRO DEMO\n");
@@ -110,6 +111,7 @@ int main(int argc, char ** argv){
 			ros::spinOnce();
 			while(controlstate.demo == true){
 				ros::spinOnce();
+				client.call(bstiff);
 				loop_rate.sleep();
 			}
 			ROS_INFO("DEMO COMPLETE\n");
@@ -132,6 +134,7 @@ int main(int argc, char ** argv){
 			ROS_INFO("WAITING UNTIL SET POSE COMPLETE\n");
 			while(controlstate.nao_set_pose == true){
 				ros::spinOnce();
+				client.call(bstiff);
 				loop_rate.sleep();
 			}
 			controlstate.nao_standup_facedown = true;
@@ -145,6 +148,7 @@ int main(int argc, char ** argv){
 			led.publish(all);
 			while(controlstate.nao_standup_facedown == true){
 				ros::spinOnce();
+				client.call(bstiff);
 				loop_rate.sleep();
 			}
 			ROS_INFO("STANDUP COMPLETE\n");
@@ -167,6 +171,7 @@ int main(int argc, char ** argv){
 			ROS_INFO("WAITING UNTIL SET POSE COMPLETE\n");
 			while(controlstate.nao_set_pose == true){
 				ros::spinOnce();
+				client.call(bstiff);
 				loop_rate.sleep();
 			}
 			controlstate.nao_standup_faceup = true;
@@ -180,6 +185,7 @@ int main(int argc, char ** argv){
                         led.publish(all);
 			while(controlstate.nao_standup_faceup == true){
 				ros::spinOnce();
+				client.call(bstiff);
 				loop_rate.sleep();
 			}
 			ROS_INFO("STANDUP COMPLETE\n");
@@ -204,8 +210,8 @@ int main(int argc, char ** argv){
 				ros::spinOnce();
 				loop_rate.sleep();
 				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
-				sun.request.file_path.data = "/music/wos.ogg";
-				ros::service::call("/nao_audio/play_file", sun);
+				//sun.request.file_path.data = "/music/doit.ogg";
+				//ros::service::call("/nao_audio/play_file", sun);
 				while(controlstate.walk_detect == true){
 					ros::spinOnce();
 					loop_rate.sleep();
@@ -244,8 +250,8 @@ int main(int argc, char ** argv){
 				ros::spinOnce();
 				loop_rate.sleep();
 				ROS_INFO("WAITING UNTIL WALK DETECT COMPLETE\n");
-				sun.request.file_path.data = "/music/wos.ogg";
-                                ros::service::call("/nao_audio/play_file", sun);
+				//sun.request.file_path.data = "/music/doit.ogg";
+                                //ros::service::call("/nao_audio/play_file", sun);
 				while(controlstate.walk_detect == true){
 					ros::spinOnce();
 					loop_rate.sleep();
