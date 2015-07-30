@@ -1,3 +1,9 @@
+# CHANGES
+Need to change the statepublihser to call services instead of publishing messages 
+to make the code more fluid and better to understand. Right now the publisher
+publishes a message as true and then waits for another node to publish it as false instead of
+just waiting for a service to return
+
 # What's With All The Commits?
 The reason as to why there are so many commits is that my partner, Victoria, could not connect
 to the NAO or build on her computer, so it needed to all be done on mine. To do this,

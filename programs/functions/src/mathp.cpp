@@ -126,7 +126,7 @@ int main(int argc, char ** argv){
 				os3.clear();
 				os3.str("");
 				if(first2){
-                                        words.data = "Holy moly sweet mother of guacamole that was too easy. Please give me something harder!";
+                                        words.data = "Are you purposefully making this easy?";
                                         talk.publish(words);
                                         first2 = false;
                                         ros::Duration(5).sleep();
@@ -172,7 +172,7 @@ int main(int argc, char ** argv){
 				os3.clear();
 				os3.str("");
 				if(first2){
-                                        words.data = "Holy moly sweet mother of guacamole that was too easy. Please give me something harder!";
+                                        words.data = "Hahaha that was way too easy!";
                                         talk.publish(words);
                                         first2 = false;
                                         ros::Duration(5).sleep();
@@ -224,7 +224,7 @@ int main(int argc, char ** argv){
 				os3.clear();
 				os3.str("");
 				if(first2){
-                                        words.data = "Holy moly sweet mother of guacamole that was too easy. Please give me something harder!";
+                                        words.data = "I've taken some advanced math classes so this stuff you are giving me is a walk in the park.";
                                         talk.publish(words);
                                         first2 = false;
                                         ros::Duration(5).sleep();
