@@ -215,18 +215,19 @@ int main(int argc, char ** argv){
 		// This code will loop through the binary search tree until leaf == NULL //
 		do{
 			do{
-				
 				// code to ask question both verbally and through the terminal //
 				if(check){
-					words.data = "Are you Human?";
-					talk.publish(words);
+					// Asks the question based on the data in the current node //
+					// words.data = 
 					line();
-					std::cout << "Question: Are you Human?\n";
+					// Prints out the question based on the data in the current node //
+					//std::cout << 
 					menu();
 					check = false;
 				}
 				ros::spinOnce();
 				loop_rate.sleep();
+
 				if(buttonn == 1 && buttonp == 1){
 					std::cout << "\n\nRead: YES\n\n";
 					// if answer is yes, got to the left //
@@ -234,6 +235,7 @@ int main(int argc, char ** argv){
 					movefrwd = 1;
 					ros::spinOnce();
 				}
+
 				else if(buttonn == 2 && buttonp == 1){
 					std::cout << "\n\nRead: REPEAT\n\n";
 					words.data = "Repeating the question.";
@@ -244,6 +246,7 @@ int main(int argc, char ** argv){
 					movefrwd = 0;
 					ros::spinOnce();
 				}
+
 				else if(buttonn == 3 && buttonp == 1){
 					std::cout << "\n\nRead: NO\n\n";
 					// if answer is no, go to the right //
@@ -251,7 +254,9 @@ int main(int argc, char ** argv){
 					movefrwd = 1;
 					ros::spinOnce();
 				}
+
 			}while(!movefrwd);
+
 			check = true;
                         movefrwd = 0;
 			
@@ -260,7 +265,7 @@ int main(int argc, char ** argv){
                         	std::cout << "\n\t\t\tNEXT QUESTION\n";
 			// } //	
 
-		}(while leaf->right != NULL && leaf->left != NULL);
+		}while(1);//(while leaf->right != NULL && leaf->left != NULL);
 	}
 
 	return 0;
