@@ -1,0 +1,7 @@
+<launch>
+	<node name="stand_up_fd" pkg="nao_standup_facedown" type="stand_up_fd" />
+	<node name="stand_up_fu" pkg="nao_standup_faceup" type="stand_up_fu" />
+	<node name="set_pose" pkg="nao_set_pose" type="set_pose" />
+	<node name="walk_detect" pkg="functions" type="walk_detect" />
+	<node name="statepublish_node" pkg="statepublish" type="statepublish_node" />
+</launch>
