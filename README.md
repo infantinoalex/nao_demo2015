@@ -21,15 +21,8 @@ This should launch the walk_detector, set_pose, stand_up_fd, stand_up_fu, and st
 8. The NAO should now be trying to walk, get up, etc... if everything worked properly.
 
 9. There are other various programs that were written for the NAO. They can all be found on this repository. For example, if you want the NAO to do some math, type:
-<<<<<<< HEAD
 '''rosrun functions mathp'''
-To find the other programs, just look through the src files/CMakelists to find the package and node names.
-=======
-
-	rosrun functions mathp
-
-   To find the other programs, just look through the src files/CMakelists to find the package name (name of the folder with a CMakeList file and a src folder in it) and node names (name of the .c file in the package src file), running each with the pattern "rosrun (package name) (node name)".
->>>>>>> a2485a0a3d0e638906e4b4fe3cfbf9d7d256141a
+To find the other programs, just look through the src files/CMakelists to find the package name (name of the folder with a CMakeList file and a src folder in it) and node names (name of the .c file in the package src file), running each with the pattern "rosrun (package name) (node name)".
 
 # CHANGES TO MAKE
 Need to change the statepublihser to call services instead of publishing messages 
