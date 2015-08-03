@@ -1,4 +1,30 @@
-# CHANGES
+# HOW TO RUN
+
+1. Make sure you have the correct packages installed for the NAO to work with ROS. They can be found in the tutorial here: http://wiki.ros.org/nao/Tutorials/Installation
+
+2. The package that contains the correct nodes to launch are found in nao_bringup. If you are unsure if you have the correct package installed, you can type: roscd nao_bringup which shouldbring you there. In this package there should be a launch file called nao.launch. This is what you will be launching when you want to use the NAO with ROS.
+
+3. Once you are sure you have the correct package and launch file, make sure that the workspace is sourced. If you are unsure of how to go about this, the process of how to source workspaces can be found here: http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment
+
+4. To launch correctly, you must know what the NAO's IP address is. To retrieve it, double tap the chest button. The NAO should say something along the lines of "Hello, my name is Blue. My internet address is 10.0.3.16". This is just an example as the internet address could have changed since this tutorial was written.
+
+5. Now that you have the launch file and the IP address, you can go a head and start up the nodes. To launch the file, you must type in:
+NAO_IP=10.0.3.16 roslaunch nao_bringup nao.launch
+This will launch every node that is needed to get the demo working.
+
+6. To launch the demo, make sure that the workspace where the demo is located is sourced, much like you did in step 2, but with the demo package now. 
+
+7. Once everything is sourced, you can launch the launch file. The launch file can be found in the statepublisher package. To launch it type:
+roslaunch statepublisher states.launch
+This should launch the walk_detector, set_pose, stand_up_fd, stand_up_fu, and statepublish_node nodes.
+
+8. The NAO should now be trying to walk, get up, etc... if everything worked properly.
+
+9. There are other various programs that were written for the NAO. They can all be found on this repository. For example, if you want the NAO to do some math, type:
+rosrun functions mathp
+To find the other programs, just look through the src files/CMakelists to find the package and node names.
+
+# CHANGES TO MAKE
 Need to change the statepublihser to call services instead of publishing messages 
 to make the code more fluid and better to understand. Right now the publisher
 publishes a message as true and then waits for another node to publish it as false instead of
