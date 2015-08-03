@@ -260,12 +260,12 @@ int main(int argc, char ** argv){
 			check = true;
                         movefrwd = 0;
 			
-			// if ((leaf->right != NULL && lead->left != NULL) || !correct){ //
+			// if ((leaf->right != NULL && lead->left != NULL) || !correct || incorrect){ //
 				line();
                         	std::cout << "\n\t\t\tNEXT QUESTION\n";
 			// } //	
 
-		}while(1);//(while leaf->right != NULL && leaf->left != NULL);
+		}while(1);//(while leaf->right != NULL && leaf->left != NULL || !correct || incorrect);
 	}
 
 	return 0;
