@@ -26,9 +26,9 @@
 
 9. There are other various programs that were written for the NAO. They can all be found on this repository. For example, if you want the NAO to do some math, type:
 
-rosrun functions mathp
+	rosrun functions mathp
 
-To find the other programs, just look through the src files/CMakelists to find the package and node names.
+   To find the other programs, just look through the src files/CMakelists to find the package and node names.
 
 # CHANGES TO MAKE
 Need to change the statepublihser to call services instead of publishing messages 
