@@ -9,19 +9,25 @@
 4. To launch correctly, you must know what the NAO's IP address is. To retrieve it, double tap the chest button. The NAO should say something along the lines of "Hello, my name is Blue. My internet address is 10.0.3.16". This is just an example as the internet address could have changed since this tutorial was written.
 
 5. Now that you have the launch file and the IP address, you can go a head and start up the nodes. To launch the file, you must type in:
+
 NAO_IP=10.0.3.16 roslaunch nao_bringup nao.launch
+
 This will launch every node that is needed to get the demo working.
 
 6. To launch the demo, make sure that the workspace where the demo is located is sourced, much like you did in step 2, but with the demo package now. 
 
 7. Once everything is sourced, you can launch the launch file. The launch file can be found in the statepublisher package. To launch it type:
+
 roslaunch statepublisher states.launch
+
 This should launch the walk_detector, set_pose, stand_up_fd, stand_up_fu, and statepublish_node nodes.
 
 8. The NAO should now be trying to walk, get up, etc... if everything worked properly.
 
 9. There are other various programs that were written for the NAO. They can all be found on this repository. For example, if you want the NAO to do some math, type:
+
 rosrun functions mathp
+
 To find the other programs, just look through the src files/CMakelists to find the package and node names.
 
 # CHANGES TO MAKE
