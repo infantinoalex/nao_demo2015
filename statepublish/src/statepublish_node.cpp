@@ -91,32 +91,14 @@ int main(int argc, char ** argv){
 		ROS_INFO("FIGURING OUT POSITION\n");
 		loop_rate.sleep();
 		ros::Duration(2).sleep();
-		if(!firsttime){
-			ROS_INFO("RUNNING DEMO FIRST\n");
-			client.call(bstiff);
-			controlstate.startup = true;
-			control.publish(controlstate);
-			loop_rate.sleep();
-			ros::spinOnce();
-			ROS_INFO("WAITING UNTIL STARTUP POSE COMPLETE\n");
-			while(controlstate.startup == true){
-				ros::spinOnce();
-				client.call(bstiff);
-				loop_rate.sleep();
-			}
-			ROS_INFO("RUNNING INTRO DEMO\n");
-			controlstate.demo = true;
-			control.publish(controlstate);
-			loop_rate.sleep();
-			ros::spinOnce();
-			while(controlstate.demo == true){
-				ros::spinOnce();
-				client.call(bstiff);
-				loop_rate.sleep();
-			}
-			ROS_INFO("DEMO COMPLETE\n");
+		if(firsttime){
+			words.data = "State Publisher is up and running!";
+			talk.publish(words);
+			ros::Duration(2).sleep();
+			words.data = "Here I go.";
+			talk.publish(words);
+			ros::Duration(2).sleep();
 			firsttime = false;
-			loop_rate.sleep();
 		}
 		// These values are found when the robot is laying on its stomach
 		// This if statement gets the robot to stand up from its stomach
