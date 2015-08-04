@@ -1,0 +1,5 @@
+<launch>
+        <node name="music" pkg="sound" type="music" />
+        <node name="time" pkg="sound" type="time" />
+</launch>
+
