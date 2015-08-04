@@ -28,7 +28,7 @@
 
 	```rosrun functions mathp```
 
-   To find the other programs, just look through the src files/CMakelists to find the package name (name of the folder with a CMakeList file and a src folder in it) and node names (name of the .c file in the package src file), running each with the pattern ```rosrun (package name) (node name)```.
+   To find the other programs, just look through the src files/CMakelists to find the package name (name of the folder with a CMakeList file and a src folder in it) and node names (name of the .cpp file in the package src file), running each with the pattern ```rosrun (package name) (node name)```.
 
 # CHANGES TO MAKE
 Need to change the statepublihser to call services instead of publishing messages 
