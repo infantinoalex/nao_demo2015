@@ -10,10 +10,9 @@ int main(int argc, char ** argv){
 	nao_interaction_msgs::AudioPlayback play;
 
 	while(ros::ok()){
-		play.request.file_path.data = "/music/jep.wav";
+		play.request.file_path.data = "music/jep.ogg";
                 client_2.call(play);
 		ros::Duration(2).sleep();
-		ros::shutdown();
 	}
 	return 0;
 }

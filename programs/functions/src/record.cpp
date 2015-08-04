@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
 
   //All the services
-  ros::ServiceClient record_client = node.serviceClient<nao_interaction_msgs::AudioRecorder>("nao_audio/record_file");
+  ros::ServiceClient record_client = node.serviceClient<nao_interaction_msgs::AudioRecorder>("nao_audio/record");
   ros::ServiceClient playback_client = node.serviceClient<nao_interaction_msgs::AudioPlayback>("nao_audio/play_file");
 
   //All the message declarations
@@ -28,6 +28,15 @@ int main(int argc, char **argv) {
   ros::Rate loop_rate(15); 
   while (ros::ok()) {
 
+	ros::spinOnce();
+	loop_rate.sleep();
+	ros::spinOnce();
+
+	narration.data = "      ";
+	pub_narration.publish(narration);
+
+
+	ros::Duration(2).sleep();
     /************************************************/
     
       //narration.data = "Intro to Program";
@@ -35,7 +44,7 @@ int main(int argc, char **argv) {
    
       narration.data = "Hello everyone!  My name is Blue, and I am a NAO Robot.  I can also be quite the copycat... let me show you!";
       pub_narration.publish(narration);
-      ros::Duration(2).sleep();
+      ros::Duration(7).sleep();
       /*
       narration.data = "If you touch the middle button on the top of my head, I'll listen really hard to what you have to say.";
       pub_narration.publish(narration);
@@ -50,30 +59,30 @@ int main(int argc, char **argv) {
       ros::Duration(2).sleep();
       */
    
-      narration.data = "Record at the count of three... one...two...three...go!.";
+      narration.data = "Re cord at the count of three... one...two...three...go!.";
       pub_narration.publish(narration);
+      ros::Duration(5).sleep();
 
    /************************************************/
     
     //narration.data = "Intro to Program";
     //pub_narration.publish(narration);
 
-    record.request.file_path.data = "~/recording/recorded_audio.wav";
+    record.request.file_path.data = "recording/recorded_audio.wav";
     record.request.secs.data = 5;
-    record.request.audio_type.data = '0';
+    record.request.audio_type.data = 0;
     record.request.left_channel.data = true;
     record.request.right_channel.data = true;
     record.request.front_channel.data = true;
     record.request.rear_channel.data = true;
     record.request.samplerate.data = 16000;
-
-    ros::Duration(6).sleep();
+    record_client.call(record);
    
     narration.data = "I heard you!  You said...";
     pub_narration.publish(narration);
-    ros::Duration(1).sleep();
+    ros::Duration(3).sleep();
 
-    play.request.file_path.data = "~/recording/recorded_audio.wav";
+    play.request.file_path.data = "recording/recorded_audio.wav";
     playback_client.call(play);
    
     narration.data = "I'm such a copycat!  Let's play again!";

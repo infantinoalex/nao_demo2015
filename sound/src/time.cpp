@@ -12,6 +12,11 @@ int main(int argc, char ** argv){
 	std_msgs::String words;
 
 	while(ros::ok()){
+
+		words.data = "Hello";
+		pub.publish(words);
+		ros::Duration(1).sleep();
+ 
 		words.data = "I need to take a break and cool down. Please comeback later to watch my demo.";
 		pub.publish(words);
 

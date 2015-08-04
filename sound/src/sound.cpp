@@ -49,15 +49,16 @@ int main(int argc, char ** argv){
 		record.request.samplerate.data = 16000;
 		record.request.audio_type.data = 0;
 		record.request.secs.data = 5;
-		record.request.file_path.data = "/recording/test.wav";
+		record.request.file_path.data = "recording/test.wav";
 		client_1.call(record);
 
-		ros::Duration(5).sleep();
 		cout << "RECORDING FINISHED\nPlaying sound back to you";
 		words.data = "Playing back recording.";
-		pub.publish(words);		
+		pub.publish(words);	
 
-		play.request.file_path.data = "/recording/test.wav";
+		ros::Duration(2).sleep();	
+
+		play.request.file_path.data = "recording/test.wav";
 		client_2.call(play);
 	
 		ros::Duration(5).sleep();
