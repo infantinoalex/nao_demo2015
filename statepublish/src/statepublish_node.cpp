@@ -263,7 +263,7 @@ int main(int argc, char ** argv){
 					loop_rate.sleep();
 				}
 				ROS_INFO("WALK COMPLETE\n");
-				all.color.b = 0;a
+				all.color.b = 0;
                 	        all.color.r = 100;
         	                all.color.g = 0;
 	                        led.publish(all);

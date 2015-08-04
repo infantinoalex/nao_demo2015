@@ -113,8 +113,8 @@ int main(int argc, char ** argv){
 				words.data = "I can walk around freely without assistance. Watch me.";
 				talk.publish(words);
 				ros::Duration(5).sleep();		
-				//sun.request.file_path.data = "/music/doit.ogg";
-                                //ros::service::call("/nao_audio/play_file", sun);
+				sun.request.file_path.data = "/music/doit.ogg";
+                                ros::service::call("/nao_audio/play_file", sun);
 				firsttime = false;
 			}
 	
@@ -122,8 +122,8 @@ int main(int argc, char ** argv){
 			else if(!onground){
 				ROS_INFO("ROBOT IS NOT ON GROUND");
 				loop_rate.sleep();
-				//sun.request.file_path.data = "/music/dontit.ogg";
-                                //ros::service::call("/nao_audio/play_file", sun);
+				sun.request.file_path.data = "/music/dontit.ogg";
+                                ros::service::call("/nao_audio/play_file", sun);
 				controlmsgs.walk_detect = false;
 				pub_contrl.publish(controlmsgs);
 				ROS_INFO("STOPPING\n");
