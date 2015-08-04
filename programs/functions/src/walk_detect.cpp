@@ -1,7 +1,10 @@
-/**
-Created by: Alexander Infantino
-**/
+/* This program enabled the NAO to walk around the room using its sonar without outside assistance */
 
+// IMPROVEMENTS //
+/* Walking is very basic and can easily be ruined but an object by the NAO's feet. Need to figure out
+ * how to include another sensor to make the walking more effecient and functional */
+
+// RIS INCLUDES //
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "sensor_msgs/Range.h"
