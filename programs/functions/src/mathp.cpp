@@ -16,7 +16,7 @@ int main(int argc, char ** argv){
 
 	float val1, val2, add, sub, mult, div;
 	int  menu;
-	bool first = true;
+	bool first = true, first2 = true;
 
 	while(ros::ok()){
 		ros::spinOnce();
@@ -52,6 +52,15 @@ int main(int argc, char ** argv){
 				add = val1 + val2;
 				os3 << add;
 				ros::Duration(1).sleep();
+				if(val1 == 2 && val2 == 2){
+					std::cout << val1 << " + " << val2 << " = " << "5" << "\n\n";
+					words.data = "2 plus 2 equals 5";
+					talk.publish(words);
+					ros::Duration(2).sleep();
+					words.data = "Just kidding.";
+					talk.publish(words);
+					ros::Duration(2).sleep();
+				}
 				std::cout << val1 << " + " << val2 << " = " << add << "\n\n";
 				words.data = os1.str();
 				talk.publish(words);
@@ -63,13 +72,19 @@ int main(int argc, char ** argv){
 				talk.publish(words);
 				words.data = os3.str();
 				talk.publish(words);
-				ros::Duration(5).sleep();
+				ros::Duration(10).sleep();
 				os1.clear();
 				os1.str("");
 				os2.clear();
 				os2.str("");
 				os3.clear();
 				os3.str("");
+				if(first2){
+					words.data = "Holy moly sweet mother of guacamole that was too easy. Please give me something harder!";
+					talk.publish(words);
+					first2 = false;
+					ros::Duration(5).sleep();
+				}
 				break;
 
 			case 2:
@@ -103,13 +118,19 @@ int main(int argc, char ** argv){
 				talk.publish(words);
 				words.data = os3.str();
 				talk.publish(words);
-				ros::Duration(5).sleep();
+				ros::Duration(10).sleep();
 				os1.clear();
 				os1.str("");
 				os2.clear();
 				os2.str("");
 				os3.clear();
 				os3.str("");
+				if(first2){
+                                        words.data = "Are you purposefully making this easy?";
+                                        talk.publish(words);
+                                        first2 = false;
+                                        ros::Duration(5).sleep();
+                                }
 				break;
 
 			case 3:
@@ -143,13 +164,19 @@ int main(int argc, char ** argv){
 				talk.publish(words);
 				words.data = os3.str();
 				talk.publish(words);
-				ros::Duration(5).sleep();
+				ros::Duration(10).sleep();
 				os1.clear();
 				os1.str("");
 				os2.clear();
 				os2.str("");
 				os3.clear();
 				os3.str("");
+				if(first2){
+                                        words.data = "Hahaha that was way too easy!";
+                                        talk.publish(words);
+                                        first2 = false;
+                                        ros::Duration(5).sleep();
+                                }
 				break;
 
 			case 4:
@@ -172,6 +199,12 @@ int main(int argc, char ** argv){
 				div = val1 / val2;
 				os3 << div;
 				ros::Duration(1).sleep();
+				if(val2 == 0){
+					words.data = "What do you think I am? Stupid? I know that you cannot divide by zero. Please give me something harder!";
+					talk.publish(words);
+					ros::Duration(5).sleep();
+					break;
+				}
 				std::cout << val1 << " / " << val2 << " = " << div << "\n\n";
 				words.data = os1.str();
 				talk.publish(words);
@@ -183,13 +216,19 @@ int main(int argc, char ** argv){
 				talk.publish(words);
 				words.data = os3.str();
 				talk.publish(words);
-				ros::Duration(5).sleep();
+				ros::Duration(10).sleep();
 				os1.clear();
 				os1.str("");
 				os2.clear();
 				os2.str("");
 				os3.clear();
 				os3.str("");
+				if(first2){
+                                        words.data = "I've taken some advanced math classes so this stuff you are giving me is a walk in the park.";
+                                        talk.publish(words);
+                                        first2 = false;
+                                        ros::Duration(5).sleep();
+                                }
 				break;
 
 			case 5:

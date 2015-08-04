@@ -104,16 +104,16 @@ include_directories(
 # )
 
 ## Declare a cpp executable
-add_executable(standup_faceup src/stand_up.cpp)
+add_executable(stand_up_fu src/stand_up_fu.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(standupfrombelly_node standupfrombelly_generate_messages_cpp)
 
-add_dependencies(standup_faceup custom_msgs ${catkin_EXPORTED_TARGETS})
+add_dependencies(stand_up_fu custom_msgs ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(standup_faceup ${catkin_LIBRARIES})
+target_link_libraries(stand_up_fu ${catkin_LIBRARIES})
 
 #############
 ## Install ##

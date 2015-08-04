@@ -407,7 +407,10 @@ int main(int argc, char **argv) {
 
         walk.linear.x = 0.3;
         pub_walk.publish(walk);
-      
+ 
+	play.request.file_path.data = "/music/creep.ogg";
+        client.call(play);
+     
         ros::Duration(8).sleep();
 
         walk.linear.x = 0;
