@@ -5,13 +5,6 @@
 #include <std_msgs/String.h>
 #include <sstream>
 
-/*
-void callback( const std_msgs::Bool boolean ) {
-
-  sing = boolean.data;
-
-}
-*/
 
 int main(int argc, char **argv) {
 
@@ -21,12 +14,9 @@ int main(int argc, char **argv) {
   //All the publishers
   ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
 
-  //All the subscribers
-  ros::Subscriber sub_sing_command = node.subscribe("hula_dance", 100, callback);
-
   //All the services
-  ros::ServiceClient record = node.serviceClient<nao_interaction_msgs::AudioRecorder>("nao_audio/record_file");
-  ros::ServiceClient playback = node.serviceClient<nao_interaction_msgs::AudioPlayback>("nao_audio/play_file");
+  ros::ServiceClient record_client = node.serviceClient<nao_interaction_msgs::AudioRecorder>("nao_audio/record_file");
+  ros::ServiceClient playback_client = node.serviceClient<nao_interaction_msgs::AudioPlayback>("nao_audio/play_file");
 
   //All the message declarations
   std_msgs::String narration;
@@ -84,7 +74,7 @@ int main(int argc, char **argv) {
     ros::Duration(1).sleep();
 
     play.request.file_path.data = "~/recording/recorded_audio.wav";
-    client.call(play);
+    playback_client.call(play);
    
     narration.data = "I'm such a copycat!  Let's play again!";
     pub_narration.publish(narration);
