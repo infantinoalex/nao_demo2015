@@ -1,42 +1,54 @@
-/* Who needs Documentatoin on code? */
-/* Not Alexander Infantino          */
+/* This code is a quick demonstration of what the head senesors on the NAO can do.
+ * If they are touched, the NAO audibly and visibly responds */
+
+// IMPROVEMENTS //
+/* */
+
+// ROS INCLUDES //
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "nao_msgs/TactileTouch.h"
 #include "nao_msgs/JointAnglesWithSpeed.h"
 
+// Global Variables that store the button states //
 int buttonn, buttonp;
+//bool stringname;
 
-bool stringname;
-
+// Button State Call Back, stores states in the global variables whenever ros::spinOnce() is called //
 void callback(const nao_msgs::TactileTouch::ConstPtr& Buttons){
 	buttonn = Buttons->button;
 	buttonp = Buttons->state;
 }
 
 int main(int argc, char ** argv){
+
+	// Initializes ROS //
 	ros::init(argc, argv, "headtouch");
 	ros::NodeHandle n;
 	ros::Rate loop_rate(1);
 
+	// Subscribes to tactile_touch and uses the callback callback to store the information //
 	ros::Subscriber sub = n.subscribe("/tactile_touch", 100, callback);
+
+	// Publishes to speech to make the NAO talk //
 	ros::Publisher pub = n.advertise<std_msgs::String>("/speech", 100);
+
+	// Publishes to joint_angles to move the NAO's joints //
 	ros::Publisher move = n.advertise<nao_msgs::JointAnglesWithSpeed>("/joint_angles", 100);
 
+	// Variable Declarations //
 	std_msgs::String talk;
 	nao_msgs::JointAnglesWithSpeed mrsp, mlsp;
 	bool run = false, check = true;
 	int i = 0;
 
+	// Initializes the joint angles name, speed, and position //
 	mrsp.joint_names.push_back("RShoulderPitch");
 	mlsp.joint_names.push_back("LShoulderPitch");
 	mrsp.joint_angles.push_back(1.4);
 	mlsp.joint_angles.push_back(1.4);
 	mrsp.speed = 0.4;
 	mlsp.speed = 0.4;
-	move.publish(mrsp);
-	move.publish(mlsp);
-	loop_rate.sleep();
 
 	while(ros::ok()){
 		ros::spinOnce();
@@ -63,14 +75,14 @@ int main(int argc, char ** argv){
 		if(run){
 			if(buttonn == 1 && buttonn == 2 && buttonn == 3 && buttonp == 1){
 				ROS_INFO("TOUCHING ALL BUTTONS\n");
-				talk.data = "Why are you touching all of my buttons";
+				talk.data = "Why are you touching all of my buttons?";
 				pub.publish(talk);
 				ros::Duration(1).sleep();
 			}
 			else if(buttonn == 1 && buttonp == 1){
 				ROS_INFO("TOUCHING FRONT SENSOR\n");
 				loop_rate.sleep();
-				talk.data = "OW Get your hands off my front button!";
+				talk.data = "OW! Get your hands off my front button!";
 				pub.publish(talk);
 				mrsp.joint_angles[0] = -1.4;
 				mlsp.joint_angles[0] = -1.4;
@@ -89,14 +101,14 @@ int main(int argc, char ** argv){
 					talk.data = "Did you not hear me the first time?";
 					pub.publish(talk);
 					ros::Duration(1).sleep();
-					talk.data = "Get your hands off me";
+					talk.data = "Get your hands off me!";
 					pub.publish(talk);
 					ros::Duration(4).sleep();
 					ros::spinOnce();
 				}
 				ros::Duration(2).sleep();
 				if(buttonn == 1 && buttonp == 0){
-					talk.data = "Oh why thank you now dont do that again.";
+					talk.data = "Oh why thank you now don't do that again.";
 					pub.publish(talk);
 					ros::Duration(4).sleep();
 				}
@@ -109,7 +121,7 @@ int main(int argc, char ** argv){
 			else if(buttonn == 2 && buttonp == 1){
 				ROS_INFO("TOUCHING MIDDLE SENSOR\n");
 				loop_rate.sleep();
-				talk.data = "AAH Get your hands off my middle button!";
+				talk.data = "AAH! Get your hands off my middle button!";
 				pub.publish(talk);
 				mrsp.joint_angles[0] = -1.4;
 				mlsp.joint_angles[0] = -1.4;
@@ -128,19 +140,19 @@ int main(int argc, char ** argv){
 					talk.data = "Did you not hear me the first time?";
 					pub.publish(talk);
 					ros::Duration(1).sleep();
-					talk.data = "Get your hands off me";
+					talk.data = "Get your hands off me!";
 					pub.publish(talk);
 					ros::Duration(4).sleep();
 					ros::spinOnce();
 				}
 				ros::Duration(1).sleep();
 				if(buttonn == 2 && buttonp == 0){
-					talk.data = "Finally now dont do that again";
+					talk.data = "Finally now don't do that again.";
 					pub.publish(talk);
 					ros::Duration(4).sleep();
 				}
 				else{
-					talk.data = "I dislike you very much";
+					talk.data = "I dislike you very much!";
 					pub.publish(talk);
 					ros::Duration(2).sleep();
 				}
@@ -148,7 +160,7 @@ int main(int argc, char ** argv){
 			else if(buttonn == 3 && buttonp == 1){
 				ROS_INFO("TOUCHING BACK SENSOR\n");
 				loop_rate.sleep();
-				talk.data = "STOP Get your hands off my back button";
+				talk.data = "STOP! Get your hands off my back button!";
 				pub.publish(talk);
 				mrsp.joint_angles[0] = -1.4;
 				mlsp.joint_angles[0] = -1.4;
@@ -164,22 +176,22 @@ int main(int argc, char ** argv){
 				if(buttonn == 3 && buttonp == 1){
 					ROS_INFO("STILL TOUCHING IT\n");
 					loop_rate.sleep();
-					talk.data = "Did you not hear me the first time";
+					talk.data = "Did you not hear me the first time?";
 					pub.publish(talk);
 					ros::Duration(1).sleep();
-					talk.data = "Get your hands off me";
+					talk.data = "Get your hands off me!";
 					pub.publish(talk);
 					ros::Duration(4).sleep();
 					ros::spinOnce();
 				}
 				ros::Duration(1).sleep();
 				if(buttonn == 3 && buttonp == 0){
-					talk.data = "Holy moley now dont do that again";
+					talk.data = "Holy moley now don't do that again.";
 					pub.publish(talk);
 					ros::Duration(2).sleep();
 				}
 				else{
-					talk.data = "You are the worst";
+					talk.data = "You are literally the worst!";
 					pub.publish(talk);
 					ros::Duration(2).sleep();
 				}
