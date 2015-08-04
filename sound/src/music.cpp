@@ -12,6 +12,7 @@ int main(int argc, char ** argv){
 	while(ros::ok()){
 		play.request.file_path.data = "/music/jep.wav";
                 client_2.call(play);
+		ros::Duration(2).sleep();
 		ros::shutdown();
 	}
 	return 0;
