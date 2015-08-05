@@ -44,7 +44,7 @@ Alexander Infantino
 Victoria Albanese
 
 # WIP
-Last Updated July 7, 2015
+Last Updated August 5, 2015
 
 # WOW THIS CODE IS CRAP
 Yes, we are aware that most of our code could be condensed and organized much better, but we are still newbies
