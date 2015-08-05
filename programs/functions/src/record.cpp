@@ -54,16 +54,16 @@ int main(int argc, char **argv) {
       ros::Duration(7).sleep();
    
       narration.data = "When my chest button turns red, I will start recording what you are saying.  I will keep recording for about 5 seconds.";
-      pub_narration.publis (narration);
+      pub_narration.publish(narration);
       ros::Duration(7.5).sleep();
  
       narration.data = "When I am done recording, my chest button will turn blue again.  Ok. I am ready.";
-      pub_narration.publis (narration);
+      pub_narration.publish(narration);
       ros::Duration(6).sleep();
   
       narration.data = "Re cord at the count of three... one...two...three...go!.";
       pub_narration.publish(narration);
-      ros::Duration(5).sleep();
+      ros::Duration(7).sleep();
 
    /************************************************/
      
@@ -75,7 +75,8 @@ int main(int argc, char **argv) {
       leds.color.g = 0.0;
       leds.color.b = 0.0;
       leds.fade_duration.sec = 1;
- 
+      pub_leds.publish(leds); 
+
     /************************************************/
    
       //narration.data = "Start recording";
@@ -101,7 +102,8 @@ int main(int argc, char **argv) {
       leds.color.g = 0.0;
       leds.color.b = 100.0;
       leds.fade_duration.sec = 1;
- 
+      pub_leds.publish(leds); 
+
     /************************************************/
        
       //narration.data = "Playback audio";
@@ -116,7 +118,7 @@ int main(int argc, char **argv) {
    
       narration.data = "I'm such a copycat!  Let's play again!";
       pub_narration.publish(narration);
-      ros::Duration(2).sleep();
+      ros::Duration(10).sleep();
 
     /************************************************/
 
