@@ -29,6 +29,8 @@
 
 // Declaration of Global Variables
 
+// Used to store joint state data
+
 float hy_state, hp_state, lsp_state, rsp_state,
 	lsr_state, rsr_state, ley_state, rey_state,
 	ler_state, rer_state, lwy_state, rwy_state,

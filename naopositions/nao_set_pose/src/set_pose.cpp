@@ -29,7 +29,12 @@
 
 // Declaration of Global Variables
 
+// Used to store the statepublish data
+
 custom_msgs::states controlmsgs;
+
+
+// Used to store the joint state data
 
 float hy_state, hp_state, lsp_state, rsp_state,
 	lsr_state, rsr_state, ley_state, rey_state,
@@ -135,7 +140,7 @@ int main(int argc, char **argv) {
        		rap_check = false, lar_check = false, rar_check = false;
 
 	// All the loop variable declarations
-	int i = 0;
+	int i;
 
   	// All the joint name statements
         // Must be declared before joint publisher is called

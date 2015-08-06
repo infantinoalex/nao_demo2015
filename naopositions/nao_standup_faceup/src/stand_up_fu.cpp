@@ -39,6 +39,8 @@
 
 // Declaration of Global Variables
 
+// Used to store statepublisher data
+
 custom_msgs::states controlmsgs;
 
 /******************************************************************/
@@ -92,7 +94,7 @@ int main(int argc, char ** argv) {
                                  lar, rar;
  
 	// All the loop variable declarations
-	int i = 0;
+	int i;
 
   	// All the joint name statements
 	// Must be declared before joint publisher is called
