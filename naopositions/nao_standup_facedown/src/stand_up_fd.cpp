@@ -1,7 +1,7 @@
 /******************************************************************/
 /*  Author: Victoria Albanese                                     */ 
 /*  Affiliations: University of Massachusetts Lowell Robotics Lab */ 
-/*  Node Name: nao_standup_facedown.cpp                           */
+/*  Node Name: nao_standup_fd.cpp                                 */
 /*  Overview: This node, meant to be run after the "set_pose"     */
 /*            node has set all the joints to a default position,  */
 /*            puts the nao robot through a set pf positions       */
@@ -65,10 +65,10 @@ int main(int argc, char **argv) {
 	ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
 	ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
 	ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
-  	ros::Publisher pub_contrl = node.advertise<custom_msgs::states>("/control_msgs", 100);
+  	ros::Publisher pub_contrl = node.advertise<custom_msgs::states>("control_msgs", 100);
 
   	// Initializing all the subscriber objects
-  	ros::Subscriber sub = node.subscribe("/control_msgs", 100, controlcb);
+  	ros::Subscriber sub = node.subscribe("control_msgs", 100, controlcb);
 
 	/******************************************************************/
 
@@ -616,7 +616,7 @@ int main(int argc, char **argv) {
     
    			/************************************************/
 
-			// Activate walk command breifly
+			// Activate walk command briefly
 			// This causes the robot to move to a standing position
 			// from his current position		
 
