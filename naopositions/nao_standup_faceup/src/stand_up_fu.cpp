@@ -1,42 +1,101 @@
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include "nao_msgs/JointAnglesWithSpeed.h"
-#include "geometry_msgs/Twist.h"
-#include "custom_msgs/states.h"
+/******************************************************************/
+/*  Author: Victoria Albanese                                     */ 
+/*  Affiliations: University of Massachusetts Lowell Robotics Lab */ 
+/*  Node Name: nao_standup_fu.cpp                                 */
+/*  Overview: This node, meant to be run after the "set_pose"     */
+/*            node has set all the joints to a default position,  */
+/*            puts the nao robot through a set pf positions       */
+/*            which enable it to get up to a standing position    */
+/*            from a position lying on his back, faceup.          */
+/*            This node is meant to run in tandem with the        */
+/*            statepublisher node, enabling the robot to return   */
+/*            to a standing position if it falls down faceup.     */
+/*  Improvements: This program doesn't work very well if the      */
+/*                the robot is on a carpeted surface due to the   */
+/*                friction of the robot's feet against the        */
+/*                carpet; future work would involve getting the   */
+/*                program to work on carpet as well as it does    */
+/*                on hard surfaces. Other additions include       */
+/*                adding periodic imu checks throughout the       */
+/*                running of the program which make sure the      */
+/*                robot hasn't fallen over in a failed attempt    */
+/*                to stand up.                                    */
+/******************************************************************/
+
+
+
+/******************************************************************/
+
+// Inclusion of Necessary Header Files
+
+#include <ros/ros.h> // include for ros functionality
+#include <sstream> // include for print to the terminal functionality
+#include <std_msgs/String.h> // include for speech functionality
+#include <geometry_msgs/Twist.h> // include for walking functionality
+#include <nao_msgs/JointAnglesWithSpeed.h> // include for joint movement publisher functionality
+#include <custom_msgs/states.h> // include for statepublisher functionality
+
+/******************************************************************/
+
+// Declaration of Global Variables
 
 custom_msgs::states controlmsgs;
 
-void controlcb(const custom_msgs::states States){
+/******************************************************************/
+
+// Callback Functions
+
+// Reads state publisher data
+
+void controlcb(const custom_msgs::states States) {
+
 	controlmsgs = States;
+
 }
+
+/******************************************************************/
+
+// Main
 
 int main(int argc, char ** argv) {
 
+
+	/******************************************************************/
+
+	// Various Initializations
+
+	// Initializing "standupfromback_node" topic and node
   	ros::init(argc, argv, "standupfromback_node");
 	ros::NodeHandle node;
 
-  	//All the publishers
+  	// Initializing all the publisher objects
   	ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
   	ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
   	ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
-	ros::Publisher pub_contrl = node.advertise<custom_msgs::states>("/control_msgs", 100);
+	ros::Publisher pub_contrl = node.advertise<custom_msgs::states>("control_msgs", 100);
 
-	// all the subscribers
-	ros::Subscriber sub = node.subscribe("/control_msgs", 100, controlcb);
+	// Initializing all the subscriber objects
+	ros::Subscriber sub = node.subscribe("control_msgs", 100, controlcb);
 
-  	//All the message declarations
+	/******************************************************************/
+
+	// Various Declarations
+
+  	// All the message declarations
+	// Must be declared before joint, walk, or speech publisher is called
   	std_msgs::String narration;
   	geometry_msgs::Twist walk;
-
-	int i = 0;
-
   	nao_msgs::JointAnglesWithSpeed hy, hp, lsp, rsp, lsr, rsr,
                                  ley, rey, ler, rer, lwy, rwy,
                                  lh, rh, lhyp, rhyp, lhr, rhr,
                                  lhp, rhp, lkp, rkp, lap, rap,
                                  lar, rar;
  
-  	//All joint name statements
+	// All the loop variable declarations
+	int i = 0;
+
+  	// All the joint name statements
+	// Must be declared before joint publisher is called
   	hy.joint_names.push_back("HeadYaw");
   	hp.joint_names.push_back("HeadPitch");
   	lsp.joint_names.push_back("LShoulderPitch");
@@ -64,7 +123,8 @@ int main(int argc, char ** argv) {
   	lar.joint_names.push_back("LAnkleRoll");
   	rar.joint_names.push_back("RAnkleRoll");
 
-  	//All joint angle statements
+  	// All the joint angle statements
+	// Must be declared before joint publisher is called
   	hy.joint_angles.push_back(0);
   	hp.joint_angles.push_back(0);
   	lsp.joint_angles.push_back(0);
@@ -92,20 +152,29 @@ int main(int argc, char ** argv) {
   	lar.joint_angles.push_back(0);
   	rar.joint_angles.push_back(0);
 	
+	/******************************************************************/
+
+	// Loop rate and while loop are initialized
+
   	ros::Rate loop_rate(10);
-  	while( ros::ok() ) {
+  	while (ros::ok()) {
+
 		ros::spinOnce();
 		loop_rate.sleep();
-		if(controlmsgs.nao_standup_faceup == true){
-    		
+
 		/************************************************/
+
+		// Check with the statepublisher to see if this node needs to be run
+
+		if ( controlmsgs.nao_standup_faceup == true ) {
+
+			i = 0;    		
 
     			ros::Duration(3).sleep();
 
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Setup arms.";
-    			pub_narration.publish(narration);
+			// Set up arms in a rough "hands on hips" position
 
     			lsp.joint_angles[0] = 1.8;
     			rsp.joint_angles[0] = 1.8; 
@@ -137,10 +206,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(1).sleep();
 
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Upward hip thrust.";
-    			pub_narration.publish(narration);
+			// Move hips up leaving space behind back for hands
 
     			lhp.joint_angles[0] = 0.5;
     			rhp.joint_angles[0] = 0.5; 
@@ -165,10 +233,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(1).sleep();
 	
-    		/************************************************/
+    			/************************************************/
     
-    			//narration.data = "Move arms behind back.";
-    			pub_narration.publish(narration);
+			// Move hands behind back just above the nao's "butt" 
 	
     			lsp.joint_angles[0] = 2.1;
     			rsp.joint_angles[0] = 2.1; 
@@ -209,10 +276,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(1).sleep();
 
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Move arms further behind back.";
-    			pub_narration.publish(narration);
+			// Adjustments... moving arms further behind back
 
     			lsr.joint_angles[0] = -0.3142;
     			rsr.joint_angles[0] = 0.3142; 
@@ -223,10 +289,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(1).sleep();
     	
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Assume basic sitting position.";
-    			pub_narration.publish(narration);
+			// Sitting up
 	
     			lhyp.joint_angles[0] = 0.1;
     			rhyp.joint_angles[0] = 0.1; 
@@ -265,10 +330,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(1).sleep();
     
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Move arms further behind back.";
-    			pub_narration.publish(narration);
+			// Straightening arms to lean back on for support
 
     			ler.joint_angles[0] = -0.95;
     			rer.joint_angles[0] = 0.95; 
@@ -279,10 +343,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(1).sleep();
     	
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Sit forward a bit.";
-    			pub_narration.publish(narration);
+			// Sitting forward a bit
 
     			lhyp.joint_angles[0] = -0.5;
     			rhyp.joint_angles[0] = -0.5; 
@@ -307,10 +370,9 @@ int main(int argc, char ** argv) {
 		
     			ros::Duration(1).sleep();
      
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Adjust arms.";
-    			pub_narration.publish(narration);
+			// Adjustments... moving arms to a good supporting position
 
     			lsp.joint_angles[0] = 1.65;
     			rsp.joint_angles[0] = 1.65; 
@@ -335,10 +397,9 @@ int main(int argc, char ** argv) {
 
    		 	ros::Duration(1).sleep();
     	
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Bend legs.";
-    			pub_narration.publish(narration);
+			// Bend legs
 	
     			lhyp.joint_angles[0] = -0.85;
     			rhyp.joint_angles[0] = -0.85; 
@@ -377,10 +438,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(1).sleep();
     
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Adjust arms.";
-    			pub_narration.publish(narration);
+			// Adjustments... moving arms to a good supporting position
 
     			lsp.joint_angles[0] = 1.9;
     			rsp.joint_angles[0] = 1.9; 
@@ -405,10 +465,9 @@ int main(int argc, char ** argv) {
 	
     			ros::Duration(1).sleep();
     	
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Leg tuck position 1.";
-    			pub_narration.publish(narration);
+			// Leg tuck part 1 of 6
 		
     			lhyp.joint_angles[0] = -1.05;
     			lhyp.speed = 0.2;
@@ -449,10 +508,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(1).sleep();
     
-    		/************************************************/
+    			/************************************************/
 
-    			//narration.data = "Adjust arms.";
-    			pub_narration.publish(narration);
+			// Move arms up
 
     			lsp.joint_angles[0] = 1.05;
     			lsp.speed = 0.5;
@@ -485,10 +543,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(1).sleep();
      
-    		/************************************************/
- 
-    			//narration.data = "Leg tuck position 2.";
-    			pub_narration.publish(narration);
+    			/************************************************/
+
+			// Leg tuck part 2 of 6	
     			
     			lhyp.joint_angles[0] = -1.15;
     			lhyp.speed = 0.2;
@@ -517,10 +574,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(1).sleep();
     
-    		/************************************************/
+    			/************************************************/
         
-    			//narration.data = "Fixed leg tuck position 3.";
-    			pub_narration.publish(narration);
+			// Leg tuck part 3 of 6
      		
     			lhyp.joint_angles[0] = -1.12;
     			lhyp.speed = 0.2;
@@ -556,10 +612,9 @@ int main(int argc, char ** argv) {
 	
     			ros::Duration(1).sleep();
     
-    		/************************************************/
-        
-    			//narration.data = "Leg tuck position 4.";
-    			pub_narration.publish(narration);
+    			/************************************************/
+       
+			// Leg tuck position 4 of 6 
     		
     			lhyp.joint_angles[0] = -1.14;
     			lhyp.speed = 0.2;
@@ -607,10 +662,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(2).sleep();
     
-    		/************************************************/
-       
-    			//narration.data = "Leg tuck position 5.";
-    			pub_narration.publish(narration);
+    			/************************************************/
+      
+			// Leg tuck part 5 of 6 
      		
     			lhyp.joint_angles[0] = -0.888;
     			lhyp.speed = 0.2;
@@ -662,10 +716,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(3).sleep();
     
-    		/************************************************/
-     
-    			//narration.data = "Leg tuck position 6.";
-    			pub_narration.publish(narration);
+    			/************************************************/
+    
+			// Leg tuck part 6 of 6 
      		
     			lhyp.joint_angles[0] = -0.77;
     			lhyp.speed = 0.2;
@@ -709,10 +762,9 @@ int main(int argc, char ** argv) {
 
     			ros::Duration(3).sleep();
     
-    		/************************************************/
-        
-    			//narration.data = "Leg tuck position 7.";
-    			pub_narration.publish(narration);
+    			/************************************************/
+       
+			// Shifting weight over freshly tucked leg 
      		
     			lhyp.joint_angles[0] = -0.74;
     			lhyp.speed = 0.2;
@@ -755,8 +807,9 @@ int main(int argc, char ** argv) {
     
     			/************************************************/
 
-    			//narration.data = "Cheating... step forward.";
-    			pub_narration.publish(narration);
+			// Activate walk command briefly
+			// This causes the robot to move to a standing position
+			// from his current position
 
     			walk.linear.x = 1;
     			pub_walk.publish(walk);
@@ -766,32 +819,61 @@ int main(int argc, char ** argv) {
     			walk.linear.x = 0;
     			pub_walk.publish(walk);
 
-    			ros::Duration(1).sleep();
-    
-    		/************************************************/
-
     			ros::Duration(3).sleep();
 
-    		/************************************************/
+    			/************************************************/
+
+			// Since the robot has completed the standup sequence,
+			// a message is printed to the terminal indicating
+			// this, and the robot says "standup complete".
 
 			ros::spinOnce();
 			loop_rate.sleep();
+
+			ROS_INFO("All done!");
+
+			narration.data = "Standup complete.";
+			pub_narration.publish(narration);
 
 			controlmsgs.nao_standup_faceup = false;
 			pub_contrl.publish(controlmsgs);
 			ROS_INFO("STANDUP COMPLETE\n");
+
 			loop_rate.sleep();
 			ros::spinOnce();
+
 		}
-		else{
-			if(i == 0){
+
+		/************************************************/
+
+		// Resetting the program and directing control to
+		// the statepublisher node
+
+		else {
+
+			if ( i == 0 ) {
+
 				ROS_INFO("WAITING FOR STATEPUBLISHER\n");
+
 			}
+
 			i++;
 			ros::spinOnce();
 			loop_rate.sleep();
+
 		}
+
 	}
+
+	// End of while loop
+
+	/******************************************************************/
 		
  	return 0;
+
 }
+
+// End of Main
+
+/******************************************************************/
+
