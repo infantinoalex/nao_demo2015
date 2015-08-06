@@ -228,7 +228,7 @@ int main(int argc, char **argv) {
 
     		/************************************************/
 	
-		// Check to see if this node needs to be run
+		// Check with the statepublisher to see if this node needs to be run
 
 		if ( controlmsgs.nao_set_pose == true ) {
 
@@ -1027,6 +1027,7 @@ int main(int argc, char **argv) {
 				controlmsgs.nao_set_pose = false;
 				pub_contrl.publish(controlmsgs);
 				ROS_INFO("SET POSE COMPLETE\n");
+				
 				loop_rate.sleep();
 				ros::spinOnce();
     			}
