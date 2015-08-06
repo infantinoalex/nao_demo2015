@@ -1,7 +1,7 @@
 /******************************************************************/
 /*  Author: Victoria Albanese                                     */ 
 /*  Affiliations: University of Massachusetts Lowell Robotics Lab */ 
-/*  Node Name: nao_set_pose.cpp                                   */
+/*  Node Name: print_states.cpp                                   */
 /*  Overview: This node reads in the position of each of the      */
 /*            individual joints and prints them to the terminal   */
 /*            in an organized, readable manner.  Basically,       */
