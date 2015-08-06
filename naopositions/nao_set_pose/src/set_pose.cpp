@@ -80,7 +80,9 @@ void callback(const sensor_msgs::JointState::ConstPtr& Joints){
 // Reads statepublisher data
 
 void controlcb(const custom_msgs::states States){
+
 	controlmsgs = States;
+
 }
 
 /******************************************************************/
@@ -1060,7 +1062,7 @@ int main(int argc, char **argv) {
 
 }
 
-// End of main
+// End of Main
 
 /******************************************************************/
 
