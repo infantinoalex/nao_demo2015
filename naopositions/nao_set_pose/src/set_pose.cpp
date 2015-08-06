@@ -110,7 +110,7 @@ int main(int argc, char **argv) {
 
 	/******************************************************************/
 	
-	// Various declarations
+	// Various Declarations
 
   	// All the message declarations 
         // Must be declared before joint or speech publisher is called
@@ -218,7 +218,7 @@ int main(int argc, char **argv) {
 
 	/******************************************************************/
 
-	// Loop rate and loop are initialized
+	// Loop rate and while loop are initialized
 
   	ros::Rate loop_rate(10); 
 	while (ros::ok()) {
