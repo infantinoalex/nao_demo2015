@@ -84,9 +84,11 @@ int main(int argc, char **argv) {
                                  lhp, rhp, lkp, rkp, lap, rap,
                                  lar, rar;
 
+	// All the loop variable declarations
   	int i = 0;
 
-  	//All joint name statements
+  	// All the joint name statements
+	// Must be declared before joint publisher is called
   	hy.joint_names.push_back("HeadYaw");
   	hp.joint_names.push_back("HeadPitch");
   	lsp.joint_names.push_back("LShoulderPitch");
@@ -114,7 +116,8 @@ int main(int argc, char **argv) {
   	lar.joint_names.push_back("LAnkleRoll");
   	rar.joint_names.push_back("RAnkleRoll");
 	
-	//All joint angle statements
+	// All the joint angle statements
+	// Must be declared before joint publisher is called
 	hy.joint_angles.push_back(0);
   	hp.joint_angles.push_back(0);
   	lsp.joint_angles.push_back(0);
@@ -142,20 +145,29 @@ int main(int argc, char **argv) {
   	lar.joint_angles.push_back(0);
   	rar.joint_angles.push_back(0);
 	
+	/******************************************************************/
+
+	// Loop rate and while loop are initialized
+
 	ros::Rate loop_rate(10); 
 	while (ros::ok()) {
+
     		ros::spinOnce();
     		loop_rate.sleep();
-    		if(controlmsgs.nao_standup_facedown == true){
+
+    		/************************************************/
+
+		// Check with the statepublisher to see if this node needs to be run
+
+    		if ( controlmsgs.nao_standup_facedown == true ) {
+
     			i = 0;
-    		/************************************************/
-    
+
     			ros::Duration(3).sleep();
-    
-    		/************************************************/
-   
-    			//narration.data = "Arms out.";
-    			pub_narration.publish(narration);
+
+	    		/************************************************/
+  
+			// Moves arms stright out on either side of the nao 
 
     			lsr.joint_angles[0] = 1.35;
     			rsr.joint_angles[0] = -1.35;
@@ -175,10 +187,9 @@ int main(int argc, char **argv) {
 
     			ros::Duration(1).sleep();
    
-   		/************************************************/
+   			/************************************************/
 
-    			//narration.data = "Arms up.";
-    			pub_narration.publish(narration);
+			// Moves arms straight up over the robot's head
 
     			lsr.joint_angles[0] = 0.0;
     			rsr.joint_angles[0] = 0.0;
@@ -203,10 +214,9 @@ int main(int argc, char **argv) {
 			
     			ros::Duration(1).sleep();
    
-   		/************************************************/
+   			/************************************************/
 
-    			//narration.data = "On all fours.";
-    			pub_narration.publish(narration);
+			// Pushes the robot up on all fours
 	
     			ler.joint_angles[0] = -1.5;
     			rer.joint_angles[0] = 1.5;
@@ -246,10 +256,9 @@ int main(int argc, char **argv) {
 			
 	    		ros::Duration(1).sleep();
 
-   		/************************************************/
+   			/************************************************/
 
-    			//narration.data = "Open hips.";
-    			pub_narration.publish(narration);
+			// Opens up hips wide to get into a wide squat position
 			
     			lhr.joint_angles[0] = 0.8;
     			rhr.joint_angles[0] = -0.8;
@@ -290,10 +299,9 @@ int main(int argc, char **argv) {
 		
     			ros::Duration(1).sleep();
    
-   		/************************************************/
+   			/************************************************/
 
-    			//narration.data = "Turn feet in.";
-    			pub_narration.publish(narration);
+			// Adjustments... turn legs in a bit
 		
     			lhr.joint_angles[0] = 0.4;
     			rhr.joint_angles[0] = -0.4;
@@ -325,10 +333,9 @@ int main(int argc, char **argv) {
 
     			ros::Duration(1).sleep();
    
-   		/************************************************/
+   			/************************************************/
 
-    			//narration.data = "Turn in hips.";
-    			pub_narration.publish(narration);
+			// More adjustments... turn legs in a bit more
 			
 			lhr.joint_angles[0] = -0.4;
     			rhr.joint_angles[0] = 0.4;
@@ -361,10 +368,9 @@ int main(int argc, char **argv) {
 
     			ros::Duration(1).sleep();
 
-   		/************************************************/
+   			/************************************************/
 
-    			//narration.data = "Now I look like a gorilla.";
-    			pub_narration.publish(narration);
+			// Moving to stable "ape-like" position
 	
     			lkp.joint_angles[0] = 1.8;
     			rkp.joint_angles[0] = 1.8;
@@ -397,10 +403,9 @@ int main(int argc, char **argv) {
 		
     			ros::Duration(1.5).sleep();
 
-		   /************************************************/
-  
-    			//narration.data = "Sit back a bit.";
-    			pub_narration.publish(narration);
+			/************************************************/
+ 
+			// Sitting back a bit 
 
     			lhyp.joint_angles[0] = -1.15;
     			rhyp.joint_angles[0] = -1.15;
@@ -432,10 +437,9 @@ int main(int argc, char **argv) {
 			
 			ros::Duration(1.5).sleep();
 
- 		/************************************************/
+ 			/************************************************/
 
-    			//narration.data = "Unbend knees and ankles.";
-    			pub_narration.publish(narration);
+			// Adjustments... shifting weight over legs
 			
     			lhr.joint_angles[0] = -0.25;
     			rhr.joint_angles[0] = 0.25;
@@ -467,10 +471,9 @@ int main(int argc, char **argv) {
 			
     			ros::Duration(1.5).sleep();
 	
-   		/************************************************/
+   			/************************************************/
 
-    			//narration.data = "Close hips a smidge.";
-    			pub_narration.publish(narration);
+			// More adjustments... shifting weight more over legs
 			
     			lhyp.joint_angles[0] = -1.15;
     			rhyp.joint_angles[0] = -1.15;
@@ -509,10 +512,10 @@ int main(int argc, char **argv) {
 			
     			ros::Duration(1.5).sleep();
 	
-   		/************************************************/
-     
-   			//narration.data = "Look ma, no hands!.";
-   		 	pub_narration.publish(narration);
+   			/************************************************/
+    
+			// Moving hands behind torso
+			// Look ma, no hands! 
 
     			lsr.joint_angles[0] = 0.8;
     			rsr.joint_angles[0] = -0.8;
@@ -541,10 +544,10 @@ int main(int argc, char **argv) {
 	
     			ros::Duration(1.5).sleep();
     		
-   		/************************************************/
+   			/************************************************/
     
-    			//narration.data = "Halfway there... oh, oh, living on a prayer!.";
-    			pub_narration.publish(narration);
+			// Adjustments... sitting up a bit
+    			// Halfway there... oh, oh, living on a prayer!
 
     			lhyp.joint_angles[0] = -0.875;
     			rhyp.joint_angles[0] = -0.875;
@@ -576,10 +579,10 @@ int main(int argc, char **argv) {
 	
     			ros::Duration(1.5).sleep();
     	
-   		/************************************************/
-  
-    			//narration.data = "Welcome to platform 9 and three quarters of the way there!!!.";
-    			pub_narration.publish(narration);
+   			/************************************************/
+
+			// More adjustments... sitting up a bit more  
+    			// Welcome to platform nine and three quarters of the way there!!!
 
     			lhyp.joint_angles[0] = -1.0125;
     			rhyp.joint_angles[0] = -1.0125;
@@ -611,55 +614,11 @@ int main(int argc, char **argv) {
 
     			ros::Duration(1.5).sleep();
     
-			
+   			/************************************************/
 
-   		/************************************************/
-	/*
-    			//narration.data = "Move to squat position.";
-    			pub_narration.publish(narration);
-			
-    			lhyp.joint_angles[0] = 0.0;
-    			rhyp.joint_angles[0] = 0.0;
-    			lhyp.speed = 0.183;
-    			rhyp.speed = 0.183;
-    			pub_move.publish(lhyp);
-    			pub_move.publish(rhyp);
-			
-    			lhr.joint_angles[0] = 0.0;
-    			rhr.joint_angles[0] = 0.0;
-    			lhr.speed = 0.063;
-    			rhr.speed = 0.063;
-    			pub_move.publish(lhr);
-    			pub_move.publish(rhr);
-			
-    			lhp.joint_angles[0] = -1.0;
-    			rhp.joint_angles[0] = -1.0;
-    			lhp.speed = 0.0945;
-    			rhp.speed = 0.0945;
-    			pub_move.publish(lhp);
-    			pub_move.publish(rhp);
-
-    			lap.joint_angles[0] = -1.2;
-    			rap.joint_angles[0] = -1.2;
-    			lap.speed = 0.2;//0.134;
-    			rap.speed = 0.2;//0.134;
-    			pub_move.publish(lap);
-    			pub_move.publish(rap);
-			
-    			lar.joint_angles[0] = 0.0;
-    			rar.joint_angles[0] = 0.0;
-    			lar.speed = 0.01;
-    			rar.speed = 0.01;
-    			pub_move.publish(lar);
-    			pub_move.publish(rar);
-			
-    			ros::Duration(5).sleep();
-	
-	*/
-   		/************************************************/
-		
-    			//narration.data = "Cheating... step forward.";
-    			pub_narration.publish(narration);
+			// Activate walk command breifly
+			// This causes the robot to move to a standing position
+			// from his current position		
 
     			walk.linear.x = 1;
     			pub_walk.publish(walk);
@@ -671,33 +630,55 @@ int main(int argc, char **argv) {
 
     			ros::Duration(3).sleep();
     			
-   		/************************************************/
+   			/************************************************/
 
-    			//ros::Duration(3).sleep();
-    			//ros::shutdown();
+			// Since the robot has completed the stand up sequence,
+			// a message is printed to the terminal indicating 
+			// this, and the robot says "standup complete".
 
-   		/************************************************/
- 	 
     			ros::spinOnce();
     			loop_rate.sleep();
 	
+			ROS_INFO("All done!");
+
+			narration.data = "Standup complete.";
+			pub_narration.publish(narration);
+
     			controlmsgs.nao_standup_facedown = false;
     			pub_contrl.publish(controlmsgs);
     			ROS_INFO("STANDUP COMPLETE\n");
+
     			loop_rate.sleep();
     			ros::spinOnce();
-    		}
-    	else{
-		if(i == 0){
-			ROS_INFO("WAITING FOR STATEPUBLISHER\n");
-		}
-		i++;
-		ros::spinOnce();
-		loop_rate.sleep();
-    	}
-  }
 
-  return 0;
+    		}
+    			
+		/************************************************/
+
+		// Resetting the program and directing control to
+		// the statepublisher node 
+
+		else {
+
+			if ( i == 0 ) {
+
+				ROS_INFO("WAITING FOR STATEPUBLISHER\n");
+
+			}
+	
+			i++;
+			ros::spinOnce();
+			loop_rate.sleep();
+
+	    	}
+
+  	}
+
+	// End of while loop
+
+	/******************************************************************/
+
+	return 0;
 
 }
 
