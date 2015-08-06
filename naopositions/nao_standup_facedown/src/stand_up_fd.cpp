@@ -1,33 +1,81 @@
-#include <ros/ros.h>
-#include <std_msgs/String.h>
-#include <geometry_msgs/Twist.h>
-#include <nao_msgs/JointAnglesWithSpeed.h>
-#include <sstream>
-#include "custom_msgs/states.h"
+/******************************************************************/
+/*  Author: Victoria Albanese                                     */ 
+/*  Affiliations: University of Massachusetts Lowell Robotics Lab */ 
+/*  Node Name: nao_standup_facedown.cpp                           */
+/*  Overview: This node, meant to be run after the "set_pose"     */
+/*            node has set all the joints to a default position,  */
+/*            puts the nao robot through a set pf positions       */
+/*            which enable it to get up to a standing position    */
+/*            from a position lying on his stomach, facedown.     */
+/*            This node is meant to run in tandem with the        */
+/*            statepublisher node, enabling the robot to return   */
+/*            to a standing position if it falls down facedown.   */
+/*  Improvements: Could add in periodic imu checks throughout     */
+/*                the running of the program which make sure the  */
+/*                robot hasn't fallen over in a failed attempt    */
+/*                to stand up.                                    */
+/******************************************************************/
+
+
+
+/******************************************************************/
+
+// Inclusion of Necessary Header Files
+
+#include <ros/ros.h> // include for ros functionality
+#include <sstream> // include for print to the terminal functionality
+#include <std_msgs/String.h> // include for speech functionality
+#include <geometry_msgs/Twist.h> // include for walking functionality
+#include <nao_msgs/JointAnglesWithSpeed.h> // include for joint movement publisher functionality
+#include "custom_msgs/states.h" // include for statepublisher functionality
+
+/******************************************************************/
+
+// Declaration of Global Variables
 
 custom_msgs::states controlmsgs;
 
-void controlcb(const custom_msgs::states States){
+/******************************************************************/
+
+// Callback Functions
+
+// Reads statepublisher data
+
+void controlcb(const custom_msgs::states States) {
+
 	controlmsgs = States;
+
 }
+
+/******************************************************************/
+
+// Main
 
 int main(int argc, char **argv) {
 
+	/******************************************************************/
+
+	// Various Initializations
+
+	// Initializing "face_down" topic and node
 	ros::init(argc, argv, "face_down");
 	ros::NodeHandle node;
 
-	//All the publishers
+	// Initializing all the publisher objects
 	ros::Publisher pub_narration = node.advertise<std_msgs::String>("speech", 100);
 	ros::Publisher pub_walk = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
 	ros::Publisher pub_move = node.advertise<nao_msgs::JointAnglesWithSpeed>("joint_angles", 100);
   	ros::Publisher pub_contrl = node.advertise<custom_msgs::states>("/control_msgs", 100);
 
-  	// subscriber
+  	// Initializing all the subscriber objects
   	ros::Subscriber sub = node.subscribe("/control_msgs", 100, controlcb);
 
-  	int i = 0;
+	/******************************************************************/
 
-  	//All the message declarations
+	// Various Declarations
+
+  	// All the message declarations
+	// Must be declared before joint, walk, or speech publisher is called
   	std_msgs::String narration;
   	geometry_msgs::Twist walk;
  	nao_msgs::JointAnglesWithSpeed hy, hp, lsp, rsp, lsr, rsr,
@@ -35,6 +83,8 @@ int main(int argc, char **argv) {
                                  lh, rh, lhyp, rhyp, lhr, rhr,
                                  lhp, rhp, lkp, rkp, lap, rap,
                                  lar, rar;
+
+  	int i = 0;
 
   	//All joint name statements
   	hy.joint_names.push_back("HeadYaw");
@@ -646,5 +696,12 @@ int main(int argc, char **argv) {
 		loop_rate.sleep();
     	}
   }
+
   return 0;
+
 }
+
+// End of Main
+
+/******************************************************************/
+

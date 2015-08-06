@@ -100,32 +100,11 @@ int main(int argc, char **argv) {
 
   	// All the message declarations
 	// Must be declared before joint publisher is called
-  	nao_msgs::JointAnglesWithSpeed hy;
-  	nao_msgs::JointAnglesWithSpeed hp;
-  	nao_msgs::JointAnglesWithSpeed lsp;
-  	nao_msgs::JointAnglesWithSpeed rsp;
-  	nao_msgs::JointAnglesWithSpeed lsr;
-  	nao_msgs::JointAnglesWithSpeed rsr;
-  	nao_msgs::JointAnglesWithSpeed ley;
-  	nao_msgs::JointAnglesWithSpeed rey;
-  	nao_msgs::JointAnglesWithSpeed ler;
-  	nao_msgs::JointAnglesWithSpeed rer;
-  	nao_msgs::JointAnglesWithSpeed lwy;
-  	nao_msgs::JointAnglesWithSpeed rwy;
-  	nao_msgs::JointAnglesWithSpeed lh;
-  	nao_msgs::JointAnglesWithSpeed rh;
-  	nao_msgs::JointAnglesWithSpeed lhyp;
-  	nao_msgs::JointAnglesWithSpeed rhyp;
-  	nao_msgs::JointAnglesWithSpeed lhp;
-  	nao_msgs::JointAnglesWithSpeed rhp;
-  	nao_msgs::JointAnglesWithSpeed lhr;
-  	nao_msgs::JointAnglesWithSpeed rhr;
-  	nao_msgs::JointAnglesWithSpeed lkp;
-  	nao_msgs::JointAnglesWithSpeed rkp;
-  	nao_msgs::JointAnglesWithSpeed lap;
-  	nao_msgs::JointAnglesWithSpeed rap;
-  	nao_msgs::JointAnglesWithSpeed lar;
-  	nao_msgs::JointAnglesWithSpeed rar;
+  	nao_msgs::JointAnglesWithSpeed 	hy, hp, lsp, rsp, lsr, rsr,
+					ley, rey, ler, rer, lwy, rwy, 
+					lh, rh, lhyp, rhyp, lhp, rhp, 
+					lhr, rhr, lkp, rkp, lap, rap,
+					lar, rar;
 
   	// All the joint name statements
 	// Must be declared before joint publisher is called
