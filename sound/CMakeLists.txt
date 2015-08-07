@@ -106,6 +106,7 @@ include_directories(
 add_executable(sound src/sound.cpp)
 add_executable(time src/time.cpp)
 add_executable(music src/music.cpp)
+add_executable(lol src/lolpalooza.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -121,7 +122,9 @@ target_link_libraries(time
 target_link_libraries(music
   ${catkin_LIBRARIES}
 )
-
+target_link_libraries(lol
+  ${catkin_LIBRARIES}
+)
 #############
 ## Install ##
 #############

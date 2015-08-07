@@ -11,10 +11,10 @@ int main(int argc, char ** argv){
 	ros::Rate loop_rate(50);
 
 	ros::Publisher talk = n.advertise<std_msgs::String>("/speech", 100);
-	ros::ServiceClient play = n.serviceClient<nao_interaction_msgs::AudioPlayback>("/nao_audio/play_file");
+	ros::ServiceClient music = n.serviceClient<nao_interaction_msgs::AudioPlayback>("/nao_audio/play_file");
 	
 	std_msgs::String words;
-	nao_interaction_msgs::AudioPlayback music;
+	nao_interaction_msgs::AudioPlayback play;
 
 	while(ros::ok()){
 		ros::spinOnce();
@@ -68,7 +68,7 @@ int main(int argc, char ** argv){
 	
 		words.data = "It is simple I say. I just listen to that T Swift.";
 		talk.publish(words);
-		ros::Duratin(4).sleep();
+		ros::Duration(4).sleep();
 
 		play.request.file_path.data = "/music/tswift.ogg";
 		music.call(play);
