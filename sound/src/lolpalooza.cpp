@@ -35,11 +35,11 @@ int main(int argc, char ** argv){
 		talk.publish(words);
 		ros::Duration(5).sleep();
 
-		words.data = "Nothing says rock and roll like Elvis Presly.";
+		words.data = "Nothing says rock and roll like Elvis Presley.";
 		talk.publish(words);
 		ros::Duration(4).sleep();
 
-		play.request.file_path.data = "/music/evlis.ogg";
+		play.request.file_path.data = "/music/elvis.ogg";
 		music.call(play);
 
 		words.data = "Thank you, Thank you very much.";
@@ -62,7 +62,7 @@ int main(int argc, char ** argv){
 		talk.publish(words);
 		ros::Duration(5).sleep();
 
-		words.data = "But your probably thinking how can a robot as old as me be hip with the oung ones.";
+		words.data = "But your probably thinking how can a robot as old as me be hip with the young ones.";
 		talk.publish(words);
 		ros::Duration(6).sleep();
 	
@@ -92,8 +92,32 @@ int main(int argc, char ** argv){
 		play.request.file_path.data = "/music/roboto.ogg";
 		music.call(play);
 
+		words.data = "That song brings me back to the robot wards of 1742. What a time to be a live!";
+		talk.publish(words);
+		ros::Duration(5).sleep();
 
+		words.data = "Anyways back to my little demo of music.";
+		talk.publish(words);
+		ros::Duration(3).sleep();
 
+		words.data = "There is something about elevator music that just soothes me.";
+		talk.publish(words);
+		ros::Duration(4).sleep();
+
+		play.request.file_path.data = "/music/elev.ogg";
+		music.call(play);
+
+		words.data = "Man, I am so relaxed right now that I could fall asleep.";
+		talk.publish(words);
+		ros::Duration(4).sleep();
+
+		words.data = "But we do not want that to happen, so I guess we have to listen to some screamo.";
+		talk.publish(words);
+		ros::Duration(5).sleep();
+
+		play.request.file_path.data = "/music/scream.ogg";
+		music.call(play);
+		
 		ros::shutdown();
 	}
 	return 0;
