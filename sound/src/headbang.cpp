@@ -18,20 +18,20 @@ int main(int argc, char ** argv){
 
 	while(ros::ok()){
 		ros::spinOnce();
-		head.joint_angles[0] = -0.5;
-		arm.joint_angles[0] = -2;
+		head.joint_angles[0] = 0.5;
+		arm.joint_angles[0] = -1.5;
 		head.speed = 0.7;
-		arm.speed = 0.7;
+		arm.speed = 0.5;
 		move.publish(head);
 		move.publish(arm);
-		ros::Duration(0.5).sleep();
-		head.joint_angles[0] = 0.5;
-                arm.joint_angles[0] = 2;
+		ros::Duration(1).sleep();
+		head.joint_angles[0] = -0.5;
+                arm.joint_angles[0] = -0.5;
                 head.speed = 0.7;
-                arm.speed = 0.7;
+                arm.speed = 0.5;
                 move.publish(head);
                 move.publish(arm);
-                ros::Duration(0.5).sleep();
+                ros::Duration(1).sleep();
 	}
 	return 0;
 }

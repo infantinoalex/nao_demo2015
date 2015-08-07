@@ -1,3 +1,5 @@
+/** This code is just for fun as I am testing out how audio service calls work with the NAO **/
+
 #include "ros/ros.h"
 #include "nao_interaction_msgs/AudioPlayback.h"
 #include "std_msgs/String.h"
@@ -22,7 +24,6 @@ int main(int argc, char ** argv){
 		words.data = "Music";
 		talk.publish(words);
 		ros::Duration(2).sleep();
-
 
 		words.data = "Let us start off with some nice rock and roll.";
 		talk.publish(words);
