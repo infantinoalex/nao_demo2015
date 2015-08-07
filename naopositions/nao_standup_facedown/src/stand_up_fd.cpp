@@ -1,7 +1,7 @@
 /******************************************************************/
 /*  Author: Victoria Albanese                                     */ 
 /*  Affiliations: University of Massachusetts Lowell Robotics Lab */ 
-/*  Node Name: nao_standup_fd.cpp                                 */
+/*  File Name: nao_standup_fd.cpp                                 */
 /*  Overview: This node, meant to be run after the "set_pose"     */
 /*            node has set all the joints to a default position,  */
 /*            puts the nao robot through a set pf positions       */
