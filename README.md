@@ -8,7 +8,7 @@
 
 4. To launch correctly, you must know what the NAO's IP address is. To retrieve it, double tap the chest button. The NAO should say something along the lines of "Hello, my name is NAO (or whatever name he is given). My internet address is 10.0.3.16" (or whatever IP he has). 
 
-5. Now that you have the launch file and the IP address, you can go a head and start up the nodes. To launch the file, you must type in: ```NAO_IP=10.0.3.16 roslaunch nao_bringup nao.launch```This will launch every node that is needed to get the demo working.
+5. Now that you have the launch file and the IP address, you can go a head and start up the nodes. To launch the file, you must type in: ```NAO_IP=10.0.3.16 roslaunch nao_bringup nao.launch force_python:=true```This will launch every node that is needed to get the demo working.
 
 6. To launch the demo, make sure that the workspace where the demo is located is sourced, much like you did in step 2, but with the demo package now. The demo package can be found by typing ```roscd statepublish``` 
 
