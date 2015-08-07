@@ -20,7 +20,7 @@
 
 #include <ros/ros.h> // include for ros functionality
 #include <sstream> // include for print to terminal functionality
-#include <std_msgs/String.h> // include for narration functionality
+#include <std_msgs/String.h> // include for speech functionality
 #include <nao_msgs/JointAnglesWithSpeed.h> // include for joint movement publisher functionality
 #include <sensor_msgs/JointState.h> // include for joint movement subscriber functionality
 #include <custom_msgs/states.h> // include for statepublisher node functionality
