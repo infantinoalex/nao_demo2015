@@ -1,80 +1,41 @@
+
+# Header
 cmake_minimum_required(VERSION 2.8.3)
 project(nao_standup_facedown)
 
-## Find catkin macros and libraries
+
+## Find Catkin Macros and Libraries
 find_package(catkin REQUIRED COMPONENTS
-  nao_msgs
-  roscpp
-  std_msgs
-  custom_msgs
+	nao_msgs
+	roscpp
+	std_msgs
+	custom_msgs
 )
 
-## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
 
-
-################################################
-## Declare ROS messages, services and actions ##
-################################################
-
-## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
-
-## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
-
-## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
-
-## Generate added messages and services with any dependencies listed here
-
-
-###################################
-## catkin specific configuration ##
-###################################
-
+# Catkin Specific Configuration
 catkin_package(
-  #INCLUDE_DIRS include
-  #LIBRARIES nao_standup
-  #CATKIN_DEPENDS nao_msgs roscpp std_msgs
-  #DEPENDS system_lib
+	#INCLUDE_DIRS include
+	#LIBRARIES nao_standup
+	#CATKIN_DEPENDS nao_msgs roscpp std_msgs
+	#DEPENDS system_lib
 )
 
 
-###########
-## Build ##
-###########
-
-## Specify additional locations of header files
+# Specify Additional Locations of Header Files
 include_directories(
-  ${catkin_INCLUDE_DIRS}
+	${catkin_INCLUDE_DIRS}
 )
 
-## Declare a cpp library
-#add_library(nao_standup
-#   src/${PROJECT_NAME}/nao_standup.cpp
-# )
 
-## Declare a cpp executable
+# Declare a CPP Executable
 add_executable(stand_up_fd src/stand_up_fd.cpp)
 
-## Add cmake target dependencies of the executable/library
-## as an example, message headers may need to be generated before nodes
-# add_dependencies(nao_standup_node nao_standup_generate_messages_cpp)
 
-## Specify libraries to link a library or executable target against
+# Add CMake Target Dependancies of the Executable/Library
+add_dependencies(stand_up_fd custom_msgs ${catkin_EXPORTED_TARGETS})
+
+
+# Specify Libraries to Link a Library or Executable Target Against
 target_link_libraries(stand_up_fd ${catkin_LIBRARIES})
 
-add_dependencies(stand_up_fd custom_msgs ${catkin_EXPORTED_TARGETS})

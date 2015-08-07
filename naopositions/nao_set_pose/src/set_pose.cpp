@@ -1,7 +1,7 @@
 /******************************************************************/
 /*  Author: Victoria Albanese                                     */ 
 /*  Affiliations: University of Massachusetts Lowell Robotics Lab */ 
-/*  Node Name: nao_set_pose.cpp                                   */
+/*  File Name: set_pose.cpp                                       */
 /*  Overview: This node sets all of the NAO Robot's joints to     */
 /*            an upright position (arms down, legs straight).     */
 /*            This node is used by the statepublisher node to     */
@@ -36,7 +36,7 @@ custom_msgs::states controlmsgs;
 
 // Used to store the joint state data
 
-float hy_state, hp_state, lsp_state, rsp_state,
+float 	hy_state, hp_state, lsp_state, rsp_state,
 	lsr_state, rsr_state, ley_state, rey_state,
 	ler_state, rer_state, lwy_state, rwy_state,
 	lh_state, rh_state, lhyp_state, rhyp_state,
