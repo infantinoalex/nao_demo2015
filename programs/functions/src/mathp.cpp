@@ -1,23 +1,30 @@
+/** This program manipulates strings and numbers so that the NAO can calculate and say math problems outloud.
+  * It works by converting the numbers into strings so that the NAO's speech topic can understand it */
+
+// ROS INCLUDE //
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include <iostream>
 #include <sstream>
 
 int main(int argc, char ** argv){
+
+	// Initializes ROS //
 	ros::init(argc, argv, "Mathmatical");
 	ros::NodeHandle n;
 	ros::Rate loop_rate(10);
-
+	
+	// Publishes to speech topic so that the nao can talk //
 	ros::Publisher talk = n.advertise<std_msgs::String>("speech", 100);
 	
+	// Variable Declaration //
 	std_msgs::String words;
-	
 	std::ostringstream os1, os2, os3;
-
 	float val1, val2, add, sub, mult, div;
 	int  menu;
 	bool first = true, first2 = true;
 
+	// Code should be self explanatory //
 	while(ros::ok()){
 		ros::spinOnce();
 		loop_rate.sleep();

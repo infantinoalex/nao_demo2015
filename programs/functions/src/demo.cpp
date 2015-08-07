@@ -1,3 +1,11 @@
+/** This code is currently really messy. The goal of the code is to get the NAO
+  * to say a few things in preparation to do the Hula. This code has been changed multiple 
+  * times and is long */
+
+// IMPROVEMENTS //
+/** Need to somehow figure out how to make the talking with hands sections into a separate function **/
+
+// ROS INCLUDES //
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "nao_msgs/JointAnglesWithSpeed.h"

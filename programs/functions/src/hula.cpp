@@ -1,3 +1,6 @@
+/** This program simply makes it so that the NAO does the hula **/
+
+// ROS INCLUDES //
 #include <ros/ros.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
 #include "geometry_msgs/Twist.h"

@@ -1,3 +1,8 @@
+/** This program takes advantage of the NAO's ability to play sound files
+  * by playing a creepy laugh to make it appear as though the NAO
+  * is in a horror movie */
+
+// ROS INCLUDES //
 #include <ros/ros.h>
 #include <nao_msgs/JointAnglesWithSpeed.h>
 #include <nao_msgs/TactileTouch.h>

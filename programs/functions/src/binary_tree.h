@@ -1,3 +1,7 @@
+/** Working on code to use a binary tree with the NAO
+  * This would allow the NAO to play a guessing game with a user
+  * and exemplify how easy it is to use DATA structures with ROS and the NAO */
+
 using namespace std;
 
 struct node{
